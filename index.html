@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>KurdMan</title>
+
+<style>
+
+body{
+ padding-bottom:90px;
+animation:fadein 1s;
+scroll-behavior:smooth;
+background-image:linear-gradient(to bottom,#000,#111,#000);
+background:black;
+background-attachment:fixed;
+overflow-x:hidden;
+color:white;
+font-family:Arial;
+padding:20px;
+}
+
+#loader{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+transition:1s;
+}
+
+#loader h1{
+color:red;
+font-size:50px;
+text-shadow:0 0 25px red;
+animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.1);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+h1{
+color:red;
+font-size:45px;
+text-align:center;
+text-shadow:0 0 20px red;
+animation:pulse 2s infinite;
+}
+
+input{
+width:90%;
+padding:12px;
+border-radius:10px;
+border:none;
+font-size:18px;
+background:#222;
+box-shadow:0 0 15px red;
+transition:0.3s;
+caret-color:red;
+border:1px solid red;
+outline:none;
+color:white;
+}
+
+input:focus{
+box-shadow:0 0 25px red;
+}
+
+.movie{
+background:#111;
+padding:15px;
+margin-top:20px;
+border-radius:15px;
+box-shadow:0 0 20px red;
+text-align:center;
+}
+
+img{
+width:100%;
+border-radius:15px;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:red;
+color:white;
+font-size:18px;
+margin-top:10px;
+}
+
+video{
+width:100%;
+border-radius:15px;
+margin-top:10px;
+}
+.menu{
+display:flex;
+gap:10px;
+justify-content:center;
+margin-bottom:20px;
+}
+
+.menu button{
+padding:10px 20px;
+background:red;
+color:white;
+border:none;
+border-radius:10px;
+font-size:18px;
+}
+ 
+.menu button:hover{
+transform:scale(1.1);
+background:#ff2222;
+}
+.mobile-menu{
+
+display:none;
+
+font-size:35px;
+
+color:white;
+
+margin-bottom:20px;
+
+cursor:pointer;
+
+}
+
+@media(max-width:700px){
+
+.menu{
+
+flex-direction:column;
+
+display:none;
+
+}
+
+.menu.show{
+
+display:flex;
+
+}
+
+.mobile-menu{
+
+display:block;
+
+}
+
+}
+.slider{
+display:flex;
+gap:20px;
+overflow-x:auto;
+padding:10px;
+scroll-behavior:smooth;
+}
+
+.slider::-webkit-scrollbar{
+display:none;
+}
+.slider{
+display:flex;
+gap:15px;
+overflow-x:auto;
+padding:10px;
+scroll-behavior:smooth;
+}
+
+.slider img{
+width:300px;
+height:180px;
+border-radius:20px;
+object-fit:cover;
+box-shadow:0 0 20px red;
+flex:none;
+}
+
+.slider::-webkit-scrollbar{
+display:none;
+}
+.bottom-nav{
+  position:fixed;
+bottom:0;
+left:0;
+width:100%;
+z-index:1000;
+background:#111;
+
+display:flex;
+
+justify-content:space-around;
+
+padding:15px 0;
+
+box-shadow:0 0 20px red;
+
+z-index:999;
+
+}
+
+.bottom-nav button{
+
+background:none;
+
+
+border:none;
+
+color:white;
+
+font-size:28px;
+
+}
+
+.bottom-nav button:hover{
+
+color:red;
+
+transform:scale(1.2);
+text-shadow:0 0 15px red;
+
+}
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+animation: zoom 0.3s;
+justify-content:center;
+align-items:center;
+z-index:2000;
+}
+
+.popup video{
+width:90%;
+border-radius:20px;
+box-shadow:0 0 30px red;
+}
+
+.popup button{
+position:absolute;
+top:20px;
+right:20px;
+background:red;
+color:white;
+border:none;
+padding:10px 15px;
+font-size:20px;
+border-radius:10px;
+}
+@keyframes zoom{
+
+from{
+transform:scale(0.5);
+opacity:0;
+}
+
+to{
+transform:scale(1);
+opacity:1;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div id="loader">
+<h1>KurdMan 🎬</h1>
+</div>
+<div class="mobile-menu" onclick="toggleMenu()">
+☰
+</div>
+<div class="menu">
+  <button>🏠 Home</button>
+
+<button>🔥 Trending</button>
+
+<button>🎬 Movies</button>
+
+<button>⭐ Favorite</button>
+
+</div>
+<h1>KurdMan 🎬</h1>
+<div class="slider">
+
+<img src="https://picsum.photos/300/200?1">
+
+<img src="https://picsum.photos/300/200?2">
+
+<img src="https://picsum.photos/300/200?3">
+
+<img src="https://picsum.photos/300/200?4">
+
+</div>
+
+<input type="text" id="search" placeholder="Search Movie...">
+<div class="slider">
+<div class="movie">
+
+<h2>فیلمی نوێ</h2>
+
+<video src="movie.mp4" controls autoplay muted loop></video>
+
+<img src="https://picsum.photos/300/200"
+onclick="window.open('movie.mp4')">
+
+<h3>Fast X</h3>
+
+<button onclick="this.innerHTML='❤️ Liked'">
+🤍 Favorite
+</button>
+
+<a href="movie.mp4" target="_blank">
+
+<button onclick="openPopup('movie.mp4')">
+Play ▶
+</button>
+
+</a>
+
+</div>
+</div>
+
+<div class="movie">
+
+<img src="https://picsum.photos/300/201">
+
+<h3>Action Movie</h3>
+
+<a href="movie2.mp4" target="_blank">
+<button onclick="openPopup('movie2.mp4')">
+Play ▶
+</button>
+</a>
+
+</div>
+
+<script>
+
+let search = document.getElementById("search");
+
+search.onkeyup = function(){
+
+let value = search.value.toLowerCase();
+
+let movies = document.querySelectorAll(".movie");
+
+movies.forEach((movie)=>{
+
+let title = movie.innerText.toLowerCase();
+
+if(title.includes(value)){
+
+movie.style.display = "block";
+
+}else{
+
+movie.style.display = "none";
+
+}
+
+});
+
+}
+
+setTimeout(function(){
+
+document.getElementById("loader").style.display = "none";
+
+},2000);
+function toggleMenu(){
+
+document.querySelector(".menu").classList.toggle("show");
+
+}
+
+let slider = document.querySelector(".slider");
+
+setInterval(function(){
+
+slider.scrollLeft += 320;
+
+if(slider.scrollLeft >= slider.scrollWidth - slider.clientWidth){
+
+slider.scrollLeft = 0;
+
+}
+
+},3000);
+function toggleFavorite(btn){
+
+if(btn.innerHTML == "🤍 Favorite"){
+
+btn.innerHTML = "❤️ Liked";
+
+btn.style.background = "red";
+
+}else{
+
+btn.innerHTML = "🤍 Favorite";
+
+btn.style.background = "#222";
+
+}
+
+}
+function openPopup(video){
+
+document.getElementById("popup").style.display = "flex";
+
+document.getElementById("popupVideo").src = video;
+
+document.getElementById("popupVideo").play();
+
+}
+
+function closePopup(){
+
+document.getElementById("popup").style.display = "none";
+
+document.getElementById("popupVideo").pause();
+
+}
+</script>
+<div class="bottom-nav">
+
+<button onclick="this.style.color='red'">🏠</button>
+
+<button>🔥</button>
+
+<button>🎬</button>
+
+<button>❤️</button>
+
+</div>
+<div class="popup" id="popup">
+
+<button onclick="closePopup()">✖</button>
+
+<video id="popupVideo" controls></video>
+
+</div>
+</body>
+</html>
