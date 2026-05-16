@@ -5,9 +5,50 @@
 <title>KurdMan</title>
 
 <style>
+ @media(max-width:768px){
 
 body{
- padding-bottom:90px;
+padding:10px;
+}
+
+.slider img{
+width:100%;
+height:140px;
+object-fit:cover;
+}
+
+.movie-card{
+width:100%;
+margin:auto;
+}
+
+button{
+font-size:14px;
+padding:10px 15px;
+}
+
+h1{
+font-size:32px;
+}
+
+input{
+width:95%;
+font-size:16px;
+}
+
+.bottom-nav{
+height:60px;
+font-size:24px;
+}
+video{
+width:100%;
+border-radius:15px;
+}
+
+}
+
+body{
+padding-bottom:90px;
 animation:fadein 1s;
 scroll-behavior:smooth;
 background-image:linear-gradient(to bottom,#000,#111,#000);
@@ -38,7 +79,7 @@ color:red;
 font-size:50px;
 text-shadow:0 0 25px red;
 animation:pulse 1s infinite;
- <!-- test -->
+ 
 }
 
 @keyframes pulse{
