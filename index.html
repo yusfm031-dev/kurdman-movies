@@ -607,7 +607,7 @@ document.getElementById("popup").style.display = "none";
 
 document.getElementById("popupVideo").pause();
 
-}
+
 </script>
 <div class="bottom-nav">
 
@@ -640,6 +640,15 @@ menu.style.left="-250px";
 menu.style.left="0px";
 }
 }
+ window.onload = function(){
+
+setTimeout(function(){
+
+document.getElementById("loader").style.display = "none";
+
+},2000);
+
+ }
                                    </script>
 </body>
 </html>
