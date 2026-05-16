@@ -107,6 +107,7 @@ cursor:pointer;
 }
 
 .sidebar{
+ display:none;
 position:fixed;
 top:0;
 left:-250px;
@@ -635,13 +636,13 @@ function toggleMenu(){
 
 let menu = document.getElementById("sidebar");
 
-if(menu.style.left === "0px"){
+if(menu.style.display == "block"){
 
-menu.style.left = "-250px";
+menu.style.display = "none";
 
 }else{
 
-menu.style.left = "0px";
+menu.style.display = "block";
 
 }
 
