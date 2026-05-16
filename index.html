@@ -86,6 +86,51 @@ box-shadow:0 0 10px red;
 }
 
 .bottom-nav{
+ .topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+background:#111;
+box-shadow:0 0 20px red;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.topbar button{
+font-size:28px;
+background:none;
+border:none;
+color:white;
+cursor:pointer;
+}
+
+.sidebar{
+position:fixed;
+top:0;
+left:-250px;
+width:220px;
+height:100%;
+background:#0b0014;
+padding-top:80px;
+transition:0.4s;
+z-index:9999;
+box-shadow:0 0 30px red;
+}
+
+.sidebar a{
+display:block;
+color:white;
+padding:20px;
+text-decoration:none;
+font-size:22px;
+border-bottom:1px solid #222;
+}
+
+.sidebar a:hover{
+background:red;
+}
 height:60px;
 font-size:24px;
  background:#111;
