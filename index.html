@@ -109,47 +109,41 @@ cursor:pointer;
 #sidebar{
 position:fixed;
 top:0;
-left:-260px;
-width:250px;
+left:-100%;
+width:80%;
 height:100%;
-background:#0b0014;
+background:#090012;
+z-index:99999;
 transition:0.5s;
-z-index:9999;
-padding-top:80px;
-box-shadow:0 0 30px red;
+padding-top:100px;
+box-shadow:0 0 40px rgba(255,0,0,0.5);
 }
 
 #sidebar a{
-display:block;
+display:flex;
+justify-content:space-between;
+align-items:center;
 color:white;
-padding:20px;
-font-size:24px;
 text-decoration:none;
-border-bottom:1px solid #222;
+padding:22px 30px;
+font-size:28px;
+border-bottom:1px solid rgba(255,255,255,0.05);
 transition:0.3s;
 }
 
 #sidebar a:hover{
-background:red;
-padding-left:30px;
+background:rgba(255,0,0,0.2);
+padding-left:40px;
 }
 
-#sidebar a:hover{
-background:red;
-}
-height:60px;
-font-size:24px;
- background:#111;
-box-shadow:0 0 20px red;
- position:fixed;
-bottom:0;
-left:0;
-width:100%;
-display:flex;
-justify-content:space-around;
-align-items:center;
- gap:25px;
-padding:0 20px;
+#closeBtn{
+position:absolute;
+top:20px;
+right:20px;
+background:none;
+border:none;
+color:white;
+font-size:40px;
 }
 video{
 width:100%;
@@ -450,13 +444,16 @@ opacity:1;
 <button onclick="toggleMenu()">☰</button>
 <h1>KurdMan 🎬</h1>
 </div>
-<div id="sidebar">
- <button onclick="toggleMenu()">✕</button>
 
-<a href="#">🏠 Home</a>
-<a href="#">🎬 Movies</a>
-<a href="#">🔥 Trending</a>
-<a href="#">❤️ Favorite</a>
+<div id="sidebar">
+
+<button id="closeBtn" onclick="toggleMenu()">✕</button>
+
+<a href="#">سەرەتا 🏠</a>
+<a href="#">فیلمەکان 🎬</a>
+<a href="#">زنجیرەکان 📺</a>
+<a href="#">ترێند 🔥</a>
+<a href="#">پێشنیارەکان 💡</a>
 
 </div>
 <div id="loader">
