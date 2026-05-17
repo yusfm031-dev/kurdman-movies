@@ -15,11 +15,16 @@ padding:10px;
 width:100%;
 height:140px;
 object-fit:cover;
- transition:0.5s;
- box-shadow:0 0 20px rgba(255,0,0,0.6);
- .slider img:hover{
+transition:0.5s;
+box-shadow:0 0 20px rgba(255,0,0,0.6);
+}
+
+.slider img:hover{
 transform:scale(1.05);
- }
+}
+
+.slider{
+position:relative;
 }
 
 .movie-card{
@@ -278,10 +283,13 @@ border-radius:15px;
 margin-top:10px;
 }
 .menu{
+position:absolute;
+bottom:15px;
+left:50%;
+transform:translateX(-50%);
 display:flex;
 gap:10px;
-justify-content:center;
-margin-bottom:20px;
+z-index:1000;
 }
 
 .menu button{
