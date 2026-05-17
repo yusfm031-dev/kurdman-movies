@@ -666,21 +666,39 @@ document.getElementById("popupVideo").pause();
 </video>
 
 </div>
-
 <script>
 
 function toggleMenu(){
 
 let menu = document.getElementById("sidebar");
 
-if(menu.style.left === "-100%"){
-menu.style.left = "0";
-}else{
+if(menu.style.left === "0px" || menu.style.left === "0"){
 menu.style.left = "-100%";
+}else{
+menu.style.left = "0";
 }
+
+}
+
+function openPopup(video){
+
+document.getElementById("popup").style.display = "flex";
+
+document.getElementById("popupVideo").src = video;
+
+document.getElementById("popupVideo").play();
+
+}
+
+function closePopup(){
+
+document.getElementById("popup").style.display = "none";
+
+document.getElementById("popupVideo").pause();
 
 }
 
 </script>
+
 </body>
 </html>
