@@ -470,7 +470,7 @@ opacity:1;
 <h1>KurdMan 🎬</h1>
 </div>
 
-<div id="sidebar">
+<div id="sidebar" style="left:-100%;">
 
 <button id="closeBtn" onclick="toggleMenu()">✕</button>
 
@@ -667,33 +667,17 @@ document.getElementById("popupVideo").pause();
  
 
 <script>
-
 function toggleMenu(){
 
 let menu = document.getElementById("sidebar");
 
-if(menu.style.left == "0px"){
-
+if(menu.style.left === "0px"){
 menu.style.left = "-100%";
-
 }else{
-
 menu.style.left = "0px";
-
 }
 
 }
-
-window.onload = function(){
-
-setTimeout(function(){
-
-document.getElementById("loader").style.display = "none";
-
-},2000);
-
-};
-
 </script>
 </body>
 </html>
