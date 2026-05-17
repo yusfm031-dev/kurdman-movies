@@ -144,6 +144,46 @@ padding:15px;
 border-radius:20px;
 box-shadow:0 0 20px red;
 text-align:center;
+}  
+.movies-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+padding:15px;
+}
+
+.movie-card{
+background:#111;
+border-radius:20px;
+padding:10px;
+box-shadow:0 0 15px red;
+overflow:hidden;
+}
+
+.movie-card img{
+width:100%;
+height:260px;
+object-fit:cover;
+border-radius:15px;
+}
+
+.movie-card h3{
+text-align:center;
+color:white;
+margin-top:10px;
+}
+}
+
+.movie{
+margin:0;
+width:100%;
+box-sizing:border-box;
+}
+
+.movie img{
+height:260px;
+object-fit:cover;
+}
 }
 
 .movie h2{
@@ -290,31 +330,39 @@ transform:scale(1.2);
 
 <!-- MOVIE -->
 
-<div class="movie">
+<div class="movies-grid">
 
-<h2>فیلمی نوێ</h2>
+<div class="movie-card">
 
-<video src="movie.mp4" controls autoplay muted loop></video>
-
-<img src="https://picsum.photos/300/201">
+<img src="https://picsum.photos/300/450?1">
 
 <h3>Fast X</h3>
 
-<button onclick="this.innerHTML='❤️ Liked'">🤍 Favorite</button>
+</div>
 
-<button onclick="openPopup('movie.mp4')">Play ▶</button>
+<div class="movie-card">
+
+<img src="https://picsum.photos/300/450?2">
+
+<h3>The Beekeeper</h3>
 
 </div>
 
-<!-- SECOND MOVIE -->
+<div class="movie-card">
 
-<div class="movie">
+<img src="https://picsum.photos/300/450?3">
 
-<img src="https://picsum.photos/300/202">
+<h3>John Wick</h3>
+
+</div>
+
+<div class="movie-card">
+
+<img src="https://picsum.photos/300/450?4">
 
 <h3>Action Movie</h3>
 
-<button onclick="openPopup('movie2.mp4')">Play ▶</button>
+</div>
 
 </div>
 
