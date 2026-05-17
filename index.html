@@ -64,7 +64,7 @@ box-shadow:0 0 35px red;
 transform:scale(1.03);
 box-shadow:0 0 25px red;
 transition:0.5s ease;
-
+}
 
 
 h1{
@@ -646,6 +646,8 @@ document.getElementById("popupVideo").pause();
 }
 
 
+</div>
+
 <div class="bottom-nav">
 
 <button onclick="this.style.color='red'">🏠</button>
@@ -657,18 +659,19 @@ document.getElementById("popupVideo").pause();
 <button>❤️</button>
 
 </div>
+
 <div class="popup" id="popup">
 
 <button onclick="closePopup()">✖</button>
 
-<video controls width="100%">
+<video id="popupVideo" controls width="100%">
 <source src="movie.mp4" type="video/mp4">
 </video>
 
 </div>
- 
 
 <script>
+
 function toggleMenu(){
 
 let menu = document.getElementById("sidebar");
@@ -680,6 +683,7 @@ menu.style.left = "-100%";
 }
 
 }
+
 </script>
 </body>
 </html>
