@@ -12,12 +12,14 @@
 <meta property="og:description" content="Movies & Series Kurdish Website">
 <meta property="og:image" content="logo.png">
 
+
+
 <style>
 
 body{
 margin:0;
-background:black;
-font-family:Arial,sans-serif;
+background:#000;
+font-family:sans-serif;
 color:white;
 overflow-x:hidden;
 }
@@ -33,20 +35,20 @@ padding:15px;
 position:sticky;
 top:0;
 z-index:999;
-box-shadow:0 0 20px red;
+border-bottom:1px solid #222;
 }
 
 .topbar h1{
-color:red;
-font-size:35px;
-text-shadow:0 0 15px red;
+color:white;
+font-size:32px;
+margin:0;
 }
 
 .topbar button{
 background:none;
 border:none;
 color:white;
-font-size:35px;
+font-size:32px;
 cursor:pointer;
 }
 
@@ -55,50 +57,55 @@ cursor:pointer;
 #sidebar{
 position:fixed;
 top:0;
-left:-100%;
-width:75%;
-height:100vh;
-background:#0b0717;
-z-index:999999;
-transition:left 0.4s ease;
-padding-top:80px;
-box-shadow:0 0 30px red;
+right:-100%;
+width:260px;
+height:100%;
+background:#111;
+transition:0.4s;
+padding-top:70px;
+z-index:9999;
 }
 
 #sidebar a{
 display:block;
-padding:20px;
+padding:18px;
 color:white;
 text-decoration:none;
-font-size:24px;
-border-bottom:1px solid rgba(255,255,255,0.1);
+font-size:20px;
+border-bottom:1px solid #222;
 }
 
 #sidebar a:hover{
-background:red;
+background:#1f1f1f;
 }
 
 #closeBtn{
 position:absolute;
-top:15px;
-right:15px;
-background:red;
+top:10px;
+left:10px;
+background:none;
 border:none;
 color:white;
-font-size:25px;
-padding:10px 15px;
-border-radius:10px;
-cursor:pointer;
+font-size:28px;
+}
+
+/* TITLE */
+
+.main-title{
+text-align:center;
+font-size:40px;
+margin-top:20px;
+color:white;
 }
 
 /* SLIDER */
 
 .slider{
 display:flex;
-gap:15px;
 overflow-x:auto;
+gap:12px;
 padding:15px;
-scroll-behavior:smooth;
+scrollbar-width:none;
 }
 
 .slider::-webkit-scrollbar{
@@ -106,12 +113,11 @@ display:none;
 }
 
 .slider img{
-width:300px;
+width:320px;
 height:180px;
 object-fit:cover;
 border-radius:20px;
 flex:none;
-box-shadow:0 0 20px red;
 }
 
 /* SEARCH */
@@ -119,14 +125,13 @@ box-shadow:0 0 20px red;
 .search-box{
 width:90%;
 display:block;
-margin:auto;
+margin:15px auto;
 padding:15px;
-border:none;
-border-radius:15px;
 background:#111;
+border:none;
+border-radius:30px;
 color:white;
 font-size:18px;
-box-shadow:0 0 15px red;
 outline:none;
 }
 
@@ -141,23 +146,21 @@ padding:15px;
 
 .movie-card{
 background:#111;
-border-radius:20px;
-padding:10px;
-box-shadow:0 0 15px red;
+border-radius:18px;
 overflow:hidden;
 }
 
 .movie-card img{
 width:100%;
-height:260px;
+height:270px;
 object-fit:cover;
-border-radius:15px;
 }
 
 .movie-card h3{
+padding:10px;
+font-size:17px;
 text-align:center;
-color:white;
-margin-top:10px;
+margin:0;
 }
 
 /* POPUP */
@@ -168,27 +171,27 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.9);
+background:rgba(0,0,0,0.95);
 display:none;
 justify-content:center;
 align-items:center;
-z-index:999999999;
+z-index:999999;
 }
 
 .popup video{
 width:90%;
-border-radius:20px;
+border-radius:15px;
 }
 
 .popup button{
 position:absolute;
 top:20px;
 right:20px;
-background:red;
+background:white;
+color:black;
 border:none;
-color:white;
-font-size:20px;
 padding:10px 15px;
+font-size:20px;
 border-radius:10px;
 }
 
@@ -202,9 +205,8 @@ width:100%;
 background:#111;
 display:flex;
 justify-content:space-around;
-padding:10px 0;
-box-shadow:0 0 20px red;
-z-index:10;
+padding:12px 0;
+border-top:1px solid #222;
 }
 
 .bottom-nav button{
@@ -212,11 +214,6 @@ background:none;
 border:none;
 color:white;
 font-size:25px;
-}
-
-.bottom-nav button:hover{
-color:red;
-transform:scale(1.2);
 }
 
 </style>
