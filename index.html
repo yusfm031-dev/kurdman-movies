@@ -282,37 +282,35 @@ font-size:25px;
 
 <div class="movies-grid">
 
-<div class="movie-card">
-
-<img src="https://picsum.photos/300/450?1">
-
+<img src="https://image.tmdb.org/t/p/w500/fiVW06jE7z9YnO4trhaMEdclSiC.jpg">
 <h3>Fast X</h3>
 
-</div>
-
-<div class="movie-card">
-
-<img src="https://picsum.photos/300/450?2">
-
+<img src="https://image.tmdb.org/t/p/w500/A7EByudX0eOzlkQ2FIbogzyazm2.jpg">
 <h3>The Beekeeper</h3>
 
-</div>
+<img src="https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg">
+<h3>John Wick 4</h3>
 
-<div class="movie-card">
+<img src="https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg">
+<h3>Interstellar</h3>
 
-<img src="https://picsum.photos/300/450?3">
+<img src="https://image.tmdb.org/t/p/w500/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg">
+<h3>Batman</h3>
 
-<h3>John Wick</h3>
+<img src="https://image.tmdb.org/t/p/w500/kHlWmdG0Li3YPr7bHSHZV23TyRr.jpg">
+<h3>Avengers Endgame</h3>
 
-</div>
+<img src="https://image.tmdb.org/t/p/w500/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg">
+<h3>Joker</h3>
 
-<div class="movie-card">
+<img src="https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg">
+<h3>Spider Man</h3>
 
-<img src="https://picsum.photos/300/450?4">
+<img src="https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg">
+<h3>Infinity War</h3>
 
-<h3>Action Movie</h3>
-
-</div>
+<img src="https://image.tmdb.org/t/p/w500/cvsXj3I9Q2iyyIo95AecSd1tad7.jpg">
+<h3>Aquaman</h3>
 
 </div>
 
@@ -393,6 +391,27 @@ slider.scrollLeft = 0;
 }
 
 },3000);
+  const search = document.querySelector(".search-box");
+
+search.addEventListener("keyup", function(){
+
+let value = search.value.toLowerCase();
+
+let cards = document.querySelectorAll(".movie-card");
+
+cards.forEach(card => {
+
+let title = card.innerText.toLowerCase();
+
+if(title.includes(value)){
+card.style.display = "block";
+}else{
+card.style.display = "none";
+}
+
+});
+
+});
 
 </script>
 
