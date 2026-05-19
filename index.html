@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,118 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KurdMan</title>
 
+<link rel="icon" type="image/png" href="logo.png">
+
+<meta property="og:title" content="KurdMan">
+<meta property="og:description" content="Movies & Series Kurdish Website">
+<meta property="og:image" content="logo.png">
+
 <style>
 
 body{
-background:black;
 margin:0;
-font-family:sans-serif;
-color:white;
-}
-
-/* TOPBAR */
-
-.topbar{
-background:#1a1a1a;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px;
-position:sticky;
-top:0;
-z-index:999;
-}
-
-.logo{
-height:45px;
-}
-
-.top-icons{
-display:flex;
-align-items:center;
-gap:15px;
-}
-
-.top-icons button{
-background:none;
-border:none;
-color:white;
-font-size:28px;
-}
-
-/* SIDEBAR */
-
-#sidebar{
-position:fixed;
-top:0;
-right:-100%;
-width:260px;
-height:100%;
-background:#111;
-transition:0.4s;
-padding-top:60px;
-z-index:9999;
-}
-
-#sidebar a{
-display:block;
-padding:15px;
-color:white;
-text-decoration:none;
-border-bottom:1px solid #222;
-font-size:20px;
-}
-
-#sidebar a:hover{
-background:#222;
-}
-
-/* SEARCH */
-
-.search-box{
-width:90%;
-margin:15px auto;
-display:block;
-padding:14px;
-border:none;
-border-radius:30px;
-background:#1a1a1a;
-color:white;
-font-size:18px;
-outline:none;
-}
-
-/* MOVIES */
-
-.movies-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-padding:15px;
-}
-
-.movie-card{
-background:#111;
-border-radius:20px;
-overflow:hidden;
-}
-
-.movie-card img{
-width:100%;
-height:280px;
-object-fit:cover;
-}
-
-.movie-card h3{
-padding:10px;
-font-size:18px;
-text-align:center;
-}
-  
-margin:0;
-padding:0;
 background:black;
-font-family:Arial;
+font-family:Arial,sans-serif;
 color:white;
 overflow-x:hidden;
 }
@@ -124,14 +25,14 @@ overflow-x:hidden;
 /* TOPBAR */
 
 .topbar{
+background:#111;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px;
-background:#111;
 position:sticky;
 top:0;
-z-index:1;
+z-index:999;
 box-shadow:0 0 20px red;
 }
 
@@ -158,7 +59,7 @@ left:-100%;
 width:75%;
 height:100vh;
 background:#0b0717;
-z-index:99999999;
+z-index:999999;
 transition:left 0.4s ease;
 padding-top:80px;
 box-shadow:0 0 30px red;
@@ -188,16 +89,6 @@ font-size:25px;
 padding:10px 15px;
 border-radius:10px;
 cursor:pointer;
-}
-
-/* TITLE */
-
-.main-title{
-text-align:center;
-color:red;
-font-size:45px;
-margin-top:20px;
-text-shadow:0 0 20px red;
 }
 
 /* SLIDER */
@@ -239,17 +130,8 @@ box-shadow:0 0 15px red;
 outline:none;
 }
 
-/* MOVIE CARD */
+/* MOVIES */
 
-.movie{
-width:85%;
-margin:25px auto;
-background:#111;
-padding:15px;
-border-radius:20px;
-box-shadow:0 0 20px red;
-text-align:center;
-}  
 .movies-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
@@ -276,47 +158,6 @@ border-radius:15px;
 text-align:center;
 color:white;
 margin-top:10px;
-}
-}
-
-.movie{
-margin:0;
-width:100%;
-box-sizing:border-box;
-}
-
-.movie img{
-height:260px;
-object-fit:cover;
-}
-}
-
-.movie h2{
-color:white;
-}
-
-.movie img{
-width:100%;
-border-radius:15px;
-margin-top:10px;
-box-shadow:0 0 15px red;
-}
-
-.movie video{
-width:100%;
-border-radius:15px;
-box-shadow:0 0 15px red;
-}
-
-.movie button{
-background:red;
-border:none;
-color:white;
-padding:10px 20px;
-margin-top:10px;
-border-radius:10px;
-font-size:16px;
-cursor:pointer;
 }
 
 /* POPUP */
@@ -379,13 +220,9 @@ transform:scale(1.2);
 }
 
 </style>
+</head>
 
-  <link rel="icon" type="image/png" href="logo.png">
-  <meta property="og:title" content="KurdMan">
-
-<meta property="og:description" content="Movies & Series Kurdish Website">
-
-<meta property="og:image" content="logo.png">
+<body>
 
 <!-- TOPBAR -->
 
@@ -415,10 +252,6 @@ transform:scale(1.2);
 
 </div>
 
-<!-- TITLE -->
-
-<h1 class="main-title">KurdMan 🎬</h1>
-
 <!-- SLIDER -->
 
 <div class="slider">
@@ -437,7 +270,7 @@ transform:scale(1.2);
 
 <input class="search-box" type="text" placeholder="🔍 Search Movie...">
 
-<!-- MOVIE -->
+<!-- MOVIES -->
 
 <div class="movies-grid">
 
