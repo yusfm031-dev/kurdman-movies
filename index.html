@@ -51,6 +51,16 @@ color:white;
 font-size:32px;
 cursor:pointer;
 }
+  .top-search{
+width:45%;
+padding:10px;
+border:none;
+border-radius:20px;
+background:#1a1a1a;
+color:white;
+font-size:15px;
+outline:none;
+  }
 
 /* SIDEBAR */
 
@@ -222,6 +232,15 @@ font-size:25px;
 <body>
 
 <!-- TOPBAR -->
+  <div class="topbar">
+
+<button onclick="toggleMenu()">☰</button>
+
+<input class="top-search" type="text" placeholder="🔍 Search">
+
+<h1>KurdMan 🎬</h1>
+
+  </div>
 
 <div class="topbar">
 
@@ -265,7 +284,6 @@ font-size:25px;
 
 <!-- SEARCH -->
 
-<input class="search-box" type="text" placeholder="🔍 Search Movie...">
 
 <!-- MOVIES -->
 
