@@ -427,7 +427,7 @@ function openPopup(videoUrl) {
 document.getElementById("popup").style.display = "flex";
 
 document.getElementById("popupVideo").src = videoUrl;
-
+document.getElementById("popupVideo").load();
 document.getElementById("popupVideo").play();
 
 }
