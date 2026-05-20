@@ -435,12 +435,11 @@ sidebar.style.left = "0";
 }
 
 }
-
-function openPopup(video){
+function openPopup(videoUrl) {
 
 document.getElementById("popup").style.display = "flex";
 
-document.getElementById("popupVideo").src = video;
+document.getElementById("popupVideo").src = videoUrl;
 
 document.getElementById("popupVideo").play();
 
