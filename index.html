@@ -219,6 +219,26 @@ padding:10px 15px;
 font-size:20px;
 border-radius:10px;
 }
+  .popup-content{
+width:95%;
+height:80%;
+position:relative;
+}
+
+.popup-content iframe{
+width:100%;
+height:100%;
+border-radius:15px;
+}
+
+.close-btn{
+position:absolute;
+top:-40px;
+right:0;
+font-size:30px;
+color:white;
+cursor:pointer;
+}
 
 /* BOTTOM NAV */
 
@@ -367,6 +387,21 @@ font-size:25px;
 <video id="popupVideo" controls></video>
 
 </div>
+  <div class="popup" id="popup">
+
+<div class="popup-content">
+
+<span onclick="closePopup()" class="close-btn">✖</span>
+
+<iframe id="movieFrame"
+src=""
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+</div>
+
+  </div>
 
 
 
@@ -397,6 +432,21 @@ document.getElementById("popup").style.display = "flex";
 document.getElementById("popupVideo").src = video;
 
 document.getElementById("popupVideo").play();
+
+}
+  function openPopup(link){
+
+document.getElementById("popup").style.display = "flex";
+
+document.getElementById("movieFrame").src = link;
+
+}
+
+function closePopup(){
+
+document.getElementById("popup").style.display = "none";
+
+document.getElementById("movieFrame").src = "";
 
 }
 
