@@ -609,13 +609,26 @@ onValue(moviesRef, (snapshot) => {
 
 const data = snapshot.val();
 
-console.log(data);
-  
+  let moviesContainer = document.querySelector(".movies");
+
+moviesContainer.innerHTML = "";
+
 for (let key in data) {
 
-console.log(data[key].name);
+moviesContainer.innerHTML += `
 
- }
+<div class="movie-card">
+
+<h3>${data[key].name}</h3>
+
+<p>Views: ${data[key].views}</p>
+
+</div>
+
+`;
+
+}
+
 });
 
 </script>
