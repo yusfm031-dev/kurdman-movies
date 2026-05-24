@@ -610,7 +610,12 @@ onValue(moviesRef, (snapshot) => {
 const data = snapshot.val();
 
 console.log(data);
+  
+for (let key in data) {
 
+console.log(data[key].name);
+
+ }
 });
 
 </script>
