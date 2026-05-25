@@ -599,10 +599,9 @@ if(movieId){
 fetch(API + "/" + movieId)
 .then(res => res.json())
 .then(movie => {
-
+  
 fetch(API + "/" + movieId, {
-
-method:"PUT",
+method: "PATCH",
 
 headers:{
 "Content-Type":"application/json"
