@@ -623,9 +623,15 @@ moviesContainer.innerHTML += `
 
 <div class="movie-card">
 
-<h3>${data[key].name}</h3>
+<div class="info-bar">
 
-<p>Views: ${data[key].views}</p>
+<span>⭐ ${data[key].rating}</span>
+
+<span>👁️ ${data[key].views}</span>
+
+</div>
+
+<h3>${data[key].name}</h3>
 
 </div>
 
