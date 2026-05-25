@@ -564,7 +564,39 @@ card.style.display = "none";
 
 });
   
+fetch(API)
+.then(res => res.json())
+.then(data => {
 
+let moviesContainer = document.querySelector(".movies");
+
+moviesContainer.innerHTML = "";
+
+data.forEach(movie => {
+
+moviesContainer.innerHTML += `
+
+<div class="movie-card">
+
+<div class="rating">⭐ ${movie.rating}</div>
+
+<div class="views">👁 ${movie.views}</div>
+
+<img src="${movie.image}">
+
+<h3>${movie.name}</h3>
+
+<button onclick="openPopup('${movie.video}', ${movie.id})">
+▶ Play
+</button>
+
+</div>
+
+`;
+
+});
+
+});
   
 const API = "https://6a14c3a091ff9a63de0704c1.mockapi.io/movies";
 
