@@ -407,7 +407,7 @@ font-size:25px;
 <div class="movie-card">
 <img src="https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg">
 <h3>Infinity War</h3>
-  <button onclick="openPopup('video.mp4')">▶ Play</button>
+  <button onclick="openPopup('video.mp4','movie2')">▶ Play</button>
   </div>
   
 <div class="movie-card">
@@ -513,13 +513,16 @@ sidebar.style.left = "0";
 }
 
 }
-function openPopup(videoUrl) {
+function openPopup(videoUrl, movieId) {
 
 document.getElementById("popup").style.display = "flex";
 
 document.getElementById("popupVideo").src = videoUrl;
 document.getElementById("popupVideo").load();
 document.getElementById("popupVideo").play();
+  update(ref(db, "movies/" + movieId), {
+views: increment(1)
+});
 
 }
   
