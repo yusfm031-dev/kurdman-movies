@@ -580,13 +580,11 @@ card.style.display = "none";
 
 });
   
-</script>
 
 
-<script type="module">
 const API = "https://6a14c3a091ff9a63de0704c1.mockapi.io/movies";
-  
-function openPopup(videoUrl, movieId) {
+
+function openPopup(videoUrl, movieId){
 
 document.getElementById("popup").style.display = "flex";
 
@@ -596,19 +594,21 @@ document.getElementById("popupVideo").load();
 
 document.getElementById("popupVideo").play();
 
+if(movieId){
+
 fetch(API + "/" + movieId)
 .then(res => res.json())
 .then(movie => {
 
 fetch(API + "/" + movieId, {
 
-method: "PUT",
+method:"PUT",
 
-headers: {
-"Content-Type": "application/json"
+headers:{
+"Content-Type":"application/json"
 },
 
-body: JSON.stringify({
+body:JSON.stringify({
 
 id: movie.id,
 name: movie.name,
@@ -619,53 +619,13 @@ rating: movie.rating
 
 })
 
-})
+});
+
 });
 
 }
 
-  
-fetch(API)
-.then(res => res.json())
-.then(data => {
-
-let moviesContainer = document.querySelector(".movies");
-
-moviesContainer.innerHTML = "";
-
-data.forEach(movie => {
-
-moviesContainer.innerHTML += `
-
-<div class="movie-card">
-
-<div class="info-bar">
-<span>⭐ ${movie.rating}</span>
-<span>👁 ${movie.views}</span>
-</div>
-
-<img src="${movie.image}">
-
-<h3>${movie.name}</h3>
-
-<button onclick="openPopup('${movie.video}', ${movie.id})">
-▶ Play
-</button>
-
-</div>
-
-`;
-
-});
-
-});
-
-
-`;
-
 }
-
-});
 
 </script>
 </body>
