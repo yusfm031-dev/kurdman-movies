@@ -523,9 +523,11 @@ document.getElementById("popup").style.display = "flex";
 document.getElementById("popupVideo").src = videoUrl;
 document.getElementById("popupVideo").load();
 document.getElementById("popupVideo").play();
-  update(ref(db, "movies/" + movieId), {
+  if(movieId){
+update(ref(db, "movies/" + movieId), {
 views: increment(1)
 });
+}
 
 }
   
