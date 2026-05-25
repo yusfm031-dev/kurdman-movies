@@ -607,9 +607,15 @@ method: "PUT",
 headers: {
 "Content-Type": "application/json"
 },
-
 body: JSON.stringify({
-views: movie.views + 1
+
+id: movie.id,
+name: movie.name,
+image: movie.image,
+video: movie.video,
+views: movie.views + 1,
+rating: movie.rating
+
 })
 
 });
