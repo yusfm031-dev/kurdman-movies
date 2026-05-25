@@ -629,14 +629,17 @@ moviesContainer.innerHTML += `
 <div class="movie-card">
 
 <div class="info-bar">
-
 <span>⭐ ${data[key].rating}</span>
-
-<span>👁️ ${data[key].views}</span>
-
+<span>👁 ${data[key].views}</span>
 </div>
 
+<img src="${data[key].image}">
+
 <h3>${data[key].name}</h3>
+
+<button onclick="openPopup('${data[key].video}','${key}')">
+▶ Play
+</button>
 
 </div>
 
