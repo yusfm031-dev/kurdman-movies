@@ -585,7 +585,40 @@ card.style.display = "none";
 
 <script type="module">
 const API = "https://6a14c3a091ff9a63de0704c1.mockapi.io/movies";
+  
+function openPopup(videoUrl, movieId) {
 
+document.getElementById("popup").style.display = "flex";
+
+document.getElementById("popupVideo").src = videoUrl;
+
+document.getElementById("popupVideo").load();
+
+document.getElementById("popupVideo").play();
+
+fetch(API + "/" + movieId)
+.then(res => res.json())
+.then(movie => {
+
+fetch(API + "/" + movieId, {
+
+method: "PUT",
+
+headers: {
+"Content-Type": "application/json"
+},
+
+body: JSON.stringify({
+views: movie.views + 1
+})
+
+});
+
+});
+
+}
+
+  
 fetch(API)
 .then(res => res.json())
 .then(data => {
