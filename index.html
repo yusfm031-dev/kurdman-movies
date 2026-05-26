@@ -123,77 +123,83 @@ padding:12px;
 }
 
 .movie-card{
+position:relative;
 background:#111;
 border-radius:18px;
 overflow:hidden;
 box-shadow:0 0 15px rgba(0,0,0,0.7);
-transition:0.3s;
 }
 
-.movie-card:hover{
-transform:scale(1.02);
-}
+/* IMAGE */
 
 .movie-card img{
 width:100%;
-height:300px;
-object-fit:contain;
-background:#000;
+height:320px;
+object-fit:cover;
 display:block;
 }
-  
+
+/* RATING */
+
 .rating{
 position:absolute;
 top:10px;
 left:10px;
 background:#ffcc00;
-color:black;
-padding:5px 10px;
+color:#000;
+padding:6px 12px;
 border-radius:12px;
+font-size:15px;
 font-weight:bold;
-font-size:14px;
-z-index:10;
+z-index:20;
 }
+
+/* VIEWS */
 
 .views{
 position:absolute;
 top:10px;
 right:10px;
 background:#222;
-color:white;
-padding:5px 10px;
+color:#fff;
+padding:6px 12px;
 border-radius:12px;
-font-size:13px;
-z-index:10;
+font-size:15px;
+font-weight:bold;
+z-index:20;
 }
 
+/* NAME */
+
 .movie-card h3{
-padding:12px 8px 5px;
+padding:14px 10px;
 margin:0;
 font-size:20px;
 text-align:center;
 color:white;
-font-weight:bold;
+background:#111;
 }
 
+/* PLAY BUTTON */
+
 .movie-card button{
-width:88%;
-margin:12px auto 16px;
+width:90%;
+margin:0 auto 15px;
 display:block;
-padding:12px;
-background:#ff1a1a;
+padding:14px;
+background:red;
 border:none;
 border-radius:14px;
 color:white;
-font-size:18px;
+font-size:20px;
 font-weight:bold;
 cursor:pointer;
-transition:0.3s;
 }
 
 .movie-card button:hover{
-background:#cc0000;
+background:#ff2222;
 }
+
 
 /* POPUP */
 
