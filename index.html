@@ -1,18 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KurdMan</title>
-
-<link rel="icon" type="image/png" href="logo.png">
-
-<meta property="og:title" content="KurdMan">
-<meta property="og:description" content="Movies & Series Kurdish Website">
-<meta property="og:image" content="logo.png">
-
-
 
 <style>
 
@@ -51,7 +42,8 @@ color:white;
 font-size:32px;
 cursor:pointer;
 }
-  .top-search{
+
+.top-search{
 width:45%;
 padding:10px;
 border:none;
@@ -60,7 +52,7 @@ background:#1a1a1a;
 color:white;
 font-size:15px;
 outline:none;
-  }
+}
 
 /* SIDEBAR */
 
@@ -84,11 +76,6 @@ text-decoration:none;
 font-size:20px;
 border-bottom:1px solid #222;
 }
-.movie-card img{
-width:100%;
-height:auto;
-border-radius:15px;
-}
 
 #sidebar a:hover{
 background:#1f1f1f;
@@ -102,15 +89,6 @@ background:none;
 border:none;
 color:white;
 font-size:28px;
-}
-
-/* TITLE */
-
-.main-title{
-text-align:center;
-font-size:40px;
-margin-top:20px;
-color:white;
 }
 
 /* SLIDER */
@@ -135,21 +113,6 @@ border-radius:20px;
 flex:none;
 }
 
-/* SEARCH */
-
-.search-box{
-width:90%;
-display:block;
-margin:15px auto;
-padding:15px;
-background:#111;
-border:none;
-border-radius:30px;
-color:white;
-font-size:18px;
-outline:none;
-}
-
 /* MOVIES */
 
 .movies-grid{
@@ -157,6 +120,10 @@ display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:15px;
 padding:15px;
+}
+
+.movies{
+display:contents;
 }
 
 .movie-card{
@@ -169,7 +136,8 @@ display:flex;
 flex-direction:column;
 justify-content:space-between;
 }
-  .rating{
+
+.rating{
 position:absolute;
 top:10px;
 left:10px;
@@ -196,9 +164,6 @@ z-index:10;
 
 .movie-card img{
 width:100%;
-  height:300px;
-object-fit:cover;
-border-radius:15px;
 height:260px;
 object-fit:cover;
 display:block;
@@ -211,7 +176,8 @@ font-size:18px;
 text-align:center;
 color:white;
 }
-  .movie-card button{
+
+.movie-card button{
 width:90%;
 margin:10px auto;
 display:block;
@@ -223,7 +189,8 @@ color:white;
 font-size:16px;
 font-weight:bold;
 cursor:pointer;
-  }
+}
+
 /* POPUP */
 
 .popup{
@@ -255,26 +222,6 @@ padding:10px 15px;
 font-size:20px;
 border-radius:10px;
 }
-  .popup-content{
-width:95%;
-height:80%;
-position:relative;
-}
-
-.popup-content iframe{
-width:100%;
-height:100%;
-border-radius:15px;
-}
-
-.close-btn{
-position:absolute;
-top:-40px;
-right:0;
-font-size:30px;
-color:white;
-cursor:pointer;
-}
 
 /* BOTTOM NAV */
 
@@ -303,7 +250,8 @@ font-size:25px;
 <body>
 
 <!-- TOPBAR -->
-  <div class="topbar">
+
+<div class="topbar">
 
 <button onclick="toggleMenu()">☰</button>
 
@@ -311,8 +259,7 @@ font-size:25px;
 
 <h1>KurdMan 🎬</h1>
 
-  </div>
-
+</div>
 
 <!-- SIDEBAR -->
 
@@ -321,13 +268,9 @@ font-size:25px;
 <button id="closeBtn" onclick="toggleMenu()">✖</button>
 
 <a href="#">🏠 سەرەتا</a>
-
 <a href="#">🎬 فیلمەکان</a>
-
 <a href="#">📺 زنجیرەکان</a>
-
 <a href="#">🔥 ترێند</a>
-
 <a href="#">💡 پێشنیارەکان</a>
 
 </div>
@@ -336,109 +279,29 @@ font-size:25px;
 
 <div class="slider">
 
-<img src="IMG_20260519_122720_858.png" class="slide-img">
+<img src="IMG_20260519_122720_858.png">
 
-<img src="IMG_20260522_140604_218.png" class="slide-img">
+<img src="IMG_20260522_140604_218.png">
 
-<img src="IMG_20260522_140704_502.png" class="slide-img">
+<img src="IMG_20260522_140704_502.png">
 
-<img src="IMG_20260522_140721_798.jpg" class="slide-img">
+<img src="IMG_20260522_140721_798.jpg">
 
-<img src="file_0000000051487246a1b2420930fbe215.png" class="slide-img">
+<img src="file_0000000051487246a1b2420930fbe215.png">
 
 <img src="file_000000005c747243afea6f664474190f.png">
-  
+
 <img src="file_00000000e7f0720abc4f1aa0333335d7.png">
 
 </div>
-
-<!-- SEARCH -->
-
 
 <!-- MOVIES -->
 
 <div class="movies-grid">
 
-  <div class="movies"></div>
-  <script>
-const API = "https://6a14c3a091ff9a63de0704c1.mockapi.io/movies";
-
-fetch(API)
-.then(res => res.json())
-.then(data => {
-
-let moviesContainer = document.querySelector(".movies");
-
-moviesContainer.innerHTML = "";
-
-data.forEach(movie => {
-
-moviesContainer.innerHTML += `
-
-<div class="movie-card">
-
-<div class="rating">⭐ ${movie.rating}</div>
-
-<div class="views">👁 ${movie.views}</div>
-
-<img src="${movie.image}">
-
-<h3>${movie.name}</h3>
-
-<button onclick="openPopup('${movie.video}', ${movie.id})">
-▶ Play
-</button>
+<div class="movies"></div>
 
 </div>
-
-`;
-
-});
-
-});
-
-function openPopup(videoUrl, movieId){
-
-document.getElementById("popup").style.display = "flex";
-
-document.getElementById("popupVideo").src = videoUrl;
-
-document.getElementById("popupVideo").play();
-
-fetch(API + "/" + movieId)
-.then(res => res.json())
-.then(movie => {
-
-fetch(API + "/" + movieId, {
-
-method: "PUT",
-
-headers: {
-"Content-Type":"application/json"
-},
-
-body: JSON.stringify({
-name: movie.name,
-image: movie.image,
-video: movie.video,
-views: movie.views + 1,
-rating: movie.rating
-})
-
-});
-
-});
-
-}
-
-function closePopup(){
-
-document.getElementById("popup").style.display = "none";
-
-document.getElementById("popupVideo").pause();
-
-}
-</script>
 
 <!-- POPUP -->
 
@@ -448,19 +311,40 @@ document.getElementById("popupVideo").pause();
 
 <video id="popupVideo" controls></video>
 
-  
-  </div>
-
-
+</div>
 
 <!-- JAVASCRIPT -->
 
+<script>
 
+const API = "https://6a14c3a091ff9a63de0704c1.mockapi.io/movies";
 
-});
-  
+/* MENU */
+
+function toggleMenu(){
+
+let sidebar = document.getElementById("sidebar");
+
+if(sidebar.style.right === "0px"){
+
+sidebar.style.right = "-100%";
+
+}else{
+
+sidebar.style.right = "0";
+
+}
+
+}
+
+/* LOAD MOVIES */
+
+function loadMovies(){
+
 fetch(API)
+
 .then(res => res.json())
+
 .then(data => {
 
 let moviesContainer = document.querySelector(".movies");
@@ -482,7 +366,9 @@ moviesContainer.innerHTML += `
 <h3>${movie.name}</h3>
 
 <button onclick="openPopup('${movie.video}', ${movie.id})">
+
 ▶ Play
+
 </button>
 
 </div>
@@ -492,8 +378,12 @@ moviesContainer.innerHTML += `
 });
 
 });
-  
-const API = "https://6a14c3a091ff9a63de0704c1.mockapi.io/movies";
+
+}
+
+loadMovies();
+
+/* PLAY VIDEO */
 
 function openPopup(videoUrl, movieId){
 
@@ -505,33 +395,83 @@ document.getElementById("popupVideo").load();
 
 document.getElementById("popupVideo").play();
 
-if(movieId){
+/* ADD VIEW */
 
-  fetch(API + "/" + movieId)
+fetch(API + "/" + movieId)
+
 .then(res => res.json())
+
 .then(movie => {
 
 fetch(API + "/" + movieId, {
 
-method: "PATCH",
+method:"PUT",
 
 headers:{
 "Content-Type":"application/json"
 },
 
-body: JSON.stringify({
-views: movie.views + 1
+body:JSON.stringify({
+
+name: movie.name,
+image: movie.image,
+video: movie.video,
+views: Number(movie.views) + 1,
+rating: movie.rating
+
 })
 
-});
+})
+
+.then(() => {
+
+loadMovies();
 
 });
 
+});
 
 }
 
+/* CLOSE POPUP */
+
+function closePopup(){
+
+document.getElementById("popup").style.display = "none";
+
+document.getElementById("popupVideo").pause();
+
 }
+
+/*  SEARCH */
+
+const search = document.querySelector(".top-search");
+
+search.addEventListener("keyup", function(){
+
+let value = search.value.toLowerCase();
+
+let cards = document.querySelectorAll(".movie-card");
+
+cards.forEach(card => {
+
+let title = card.innerText.toLowerCase();
+
+if(title.includes(value)){
+
+card.style.display = "block";
+
+}else{
+
+card.style.display = "none";
+
+}
+
+});
+
+});
 
 </script>
+
 </body>
 </html>
