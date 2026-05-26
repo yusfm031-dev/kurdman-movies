@@ -357,6 +357,85 @@ font-size:25px;
 <div class="movies-grid">
 
   <div class="movies"></div>
+  <script>
+const API = "https://6a14c3a091ff9a63de0704c1.mockapi.io/movies";
+
+fetch(API)
+.then(res => res.json())
+.then(data => {
+
+let moviesContainer = document.querySelector(".movies");
+
+moviesContainer.innerHTML = "";
+
+data.forEach(movie => {
+
+moviesContainer.innerHTML += `
+
+<div class="movie-card">
+
+<div class="rating">⭐ ${movie.rating}</div>
+
+<div class="views">👁 ${movie.views}</div>
+
+<img src="${movie.image}">
+
+<h3>${movie.name}</h3>
+
+<button onclick="openPopup('${movie.video}', ${movie.id})">
+▶ Play
+</button>
+
+</div>
+
+`;
+
+});
+
+});
+
+function openPopup(videoUrl, movieId){
+
+document.getElementById("popup").style.display = "flex";
+
+document.getElementById("popupVideo").src = videoUrl;
+
+document.getElementById("popupVideo").play();
+
+fetch(API + "/" + movieId)
+.then(res => res.json())
+.then(movie => {
+
+fetch(API + "/" + movieId, {
+
+method: "PUT",
+
+headers: {
+"Content-Type":"application/json"
+},
+
+body: JSON.stringify({
+name: movie.name,
+image: movie.image,
+video: movie.video,
+views: movie.views + 1,
+rating: movie.rating
+})
+
+});
+
+});
+
+}
+
+function closePopup(){
+
+document.getElementById("popup").style.display = "none";
+
+document.getElementById("popupVideo").pause();
+
+}
+</script>
 
 <!-- POPUP -->
 
