@@ -371,7 +371,7 @@ width:40%;
 
 <button onclick="closePopup()">✖</button>
 
-<video id="popupVideo" controls></video>
+<video id="popupVideo" controls playsinline></video>
 
 </div>
 
@@ -398,6 +398,7 @@ function openPopup(videoUrl){
 document.getElementById("popup").style.display="flex";
 
 let video=document.getElementById("popupVideo");
+  video.muted=false;
 
 if(Hls.isSupported()){
 
