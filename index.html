@@ -321,7 +321,7 @@ width:40%;
 
 <h3>عەشق و فیتنە</h3>
 
-<button onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
+<button onclick="addView(1); openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
 ▶ Play
 </button>
 
@@ -463,7 +463,30 @@ let randomRate=(Math.random()*2+7).toFixed(1);
 rate.innerText=randomRate;
 
 });
+  
+async function addView(id){
 
+let response = await fetch(`https://6a14c3a091ff9a63de0704c1.mockapi.io/movies/${id},{
+
+let movie = await response.json();
+
+let newViews = movie.views + 1;
+
+await fetch(`https://6a14c3a091ff9a63de0704c1.mockapi.io/movies/${id}`,{
+
+method:"PUT",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+views:newViews
+})
+
+});
+
+  }
 </script>
 
 </body>
