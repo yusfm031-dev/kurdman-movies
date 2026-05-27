@@ -393,17 +393,37 @@ sidebar.style.right="0";
 
 }
 
-function openPopup(videoUrl){
+funcfunction openPopup(videoUrl){
 
 document.getElementById("popup").style.display="flex";
 
-document.getElementById("popupVideo").src=videoUrl;
+let video=document.getElementById("popupVideo");
 
-document.getElementById("popupVideo").load();
+if(Hls.isSupported()){
 
-document.getElementById("popupVideo").play();
+let hls=new Hls();
+
+hls.loadSource(videoUrl);
+
+hls.attachMedia(video);
+
+hls.on(Hls.Events.MANIFEST_PARSED,function(){
+
+video.play();
+
+});
 
 }
+
+else if(video.canPlayType('application/vnd.apple.mpegurl')){
+
+video.src=videoUrl;
+
+video.play();
+
+}
+
+  }
 
 function closePopup(){
 
@@ -488,7 +508,7 @@ views:newViews
 
   }
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </body>
 </body>
 </html>
