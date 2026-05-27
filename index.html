@@ -486,15 +486,17 @@ movie.rating;
 
 loadViews();
 
+<script>
+
 async function addView(id){
 
 try{
 
-let response=await fetch(`https://6a14c3a091ff9a63de0704c1.mockapi.io/movies/${id}`);
+let response = await fetch(`https://6a14c3a091ff9a63de0704c1.mockapi.io/movies/${id}`);
 
-let movie=await response.json();
+let movie = await response.json();
 
-let newViews=Number(movie.views || 0)+1;
+let newViews = Number(movie.views || 0) + 1;
 
 await fetch(`https://6a14c3a091ff9a63de0704c1.mockapi.io/movies/${id}`,{
 
@@ -510,8 +512,6 @@ views:newViews
 
 });
 
-loadViews();
-
 }catch(error){
 
 console.log(error);
@@ -519,8 +519,6 @@ console.log(error);
 }
 
 }
-
-</script>
 
 
 </script>
