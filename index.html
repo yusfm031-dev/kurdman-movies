@@ -464,27 +464,27 @@ card.style.display="none";
 
 });
 
-/* RANDOM VIEWS */
+<script>
 
-document.querySelectorAll(".view-count").forEach(view=>{
+async function loadViews(){
 
-let random=Math.floor(Math.random()*90000)+10000;
+for(let i=1;i<=4;i++){
 
-view.innerText=random.toLocaleString();
+let response=await fetch(`https://6a14c3a091ff9a63de0704c1.mockapi.io/movies/${i}`);
 
-});
+let movie=await response.json();
 
-/* RANDOM RATING */
+document.querySelectorAll(".view-count")[i-1].innerText=
+Number(movie.views).toLocaleString();
 
-document.querySelectorAll(".rate").forEach(rate=>{
+document.querySelectorAll(".rate")[i-1].innerText=
+movie.rating;
 
-let randomRate=(Math.random()*2+7).toFixed(1);
+}
 
-rate.innerText=randomRate;
+}
 
-});
-
-/* ADD VIEW */
+loadViews();
 
 async function addView(id){
 
@@ -510,6 +510,8 @@ views:newViews
 
 });
 
+loadViews();
+
 }catch(error){
 
 console.log(error);
@@ -517,6 +519,9 @@ console.log(error);
 }
 
 }
+
+</script>
+
 
 </script>
 
