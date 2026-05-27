@@ -130,33 +130,39 @@ overflow:hidden;
 box-shadow:0 0 12px rgba(0,0,0,0.7);
 }
 
+/* IMAGE */
+
 .movie-card img{
 width:100%;
-height:320px;
+height:260px;
 object-fit:cover;
 display:block;
 border-radius:18px 18px 0 0;
 }
 
+/* TITLE */
+
 .movie-card h3{
-padding:6px;
+padding:8px;
 margin:0;
-font-size:15px;
+font-size:17px;
 text-align:center;
 background:#111;
 color:white;
 }
 
+/* PLAY BUTTON */
+
 .movie-card button{
 width:82%;
 margin:8px auto 12px;
 display:block;
-padding:8px;
+padding:10px;
 background:red;
 border:none;
 border-radius:12px;
 color:white;
-font-size:15px;
+font-size:17px;
 font-weight:bold;
 cursor:pointer;
 }
@@ -233,7 +239,7 @@ grid-template-columns:repeat(2,1fr);
 }
 
 .movie-card img{
-height:220px;
+height:180px;
 }
 
 .topbar h1{
@@ -328,7 +334,7 @@ width:40%;
 
 <img src="file_000000001dd871f49685c5a6ef226e96.png">
 
-<div class="rating">⭐ <span class="rate">8.7</span></div>
+<div class="rating">⭐ <span class="rate">8.9</span></div>
 
 <div class="views">👁 <span class="view-count">0</span></div>
 
@@ -344,7 +350,7 @@ width:40%;
 
 <img src="file_000000006ec871f4a20f395a91e29602 (1).png">
 
-<div class="rating">⭐ <span class="rate">8.9</span></div>
+<div class="rating">⭐ <span class="rate">8.7</span></div>
 
 <div class="views">👁 <span class="view-count">0</span></div>
 
@@ -368,13 +374,9 @@ width:40%;
 
 </div>
 
-<!-- HLS -->
-
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
 <script>
-
-/* MENU */
 
 function toggleMenu(){
 
@@ -392,15 +394,11 @@ sidebar.style.right="0";
 
 }
 
-/* OPEN VIDEO */
-
 function openPopup(videoUrl){
 
 document.getElementById("popup").style.display="flex";
 
 let video=document.getElementById("popupVideo");
-
-video.muted=false;
 
 if(Hls.isSupported()){
 
@@ -425,8 +423,6 @@ video.play();
 }
 
 }
-
-/* CLOSE VIDEO */
 
 function closePopup(){
 
@@ -464,7 +460,7 @@ card.style.display="none";
 
 });
 
-<script>
+/* LOAD VIEWS + RATING */
 
 async function loadViews(){
 
@@ -486,7 +482,7 @@ movie.rating;
 
 loadViews();
 
-<script>
+/* ADD VIEW */
 
 async function addView(id){
 
@@ -512,6 +508,8 @@ views:newViews
 
 });
 
+loadViews();
+
 }catch(error){
 
 console.log(error);
@@ -519,7 +517,6 @@ console.log(error);
 }
 
 }
-
 
 </script>
 
