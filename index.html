@@ -112,6 +112,7 @@ object-fit:cover;
 border-radius:20px;
 flex:none;
 }
+
 /* MOVIES */
 
 .movies-grid{
@@ -129,8 +130,6 @@ overflow:hidden;
 box-shadow:0 0 12px rgba(0,0,0,0.7);
 }
 
-/* IMAGE */
-
 .movie-card img{
 width:100%;
 height:320px;
@@ -138,8 +137,6 @@ object-fit:cover;
 display:block;
 border-radius:18px 18px 0 0;
 }
-
-/* TITLE */
 
 .movie-card h3{
 padding:6px;
@@ -149,8 +146,6 @@ text-align:center;
 background:#111;
 color:white;
 }
-
-/* PLAY BUTTON */
 
 .movie-card button{
 width:82%;
@@ -194,21 +189,6 @@ border-radius:20px;
 font-size:15px;
 font-weight:bold;
 z-index:20;
-}
-
-.movie-card{
-position:relative;
-background:#111;
-border-radius:15px;
-overflow:hidden;
-box-shadow:0 0 10px #000;
-}
-
-.movie-card img{
-width:100%;
-height:320px;
-object-fit:cover;
-display:block;
 }
 
 /* POPUP */
@@ -315,7 +295,8 @@ width:40%;
 <div class="movie-card">
 
 <img src="file_00000000e440720a9828825168bd0226.png">
-  <div class="rating">⭐ <span class="rate">8.5</span></div>
+
+<div class="rating">⭐ <span class="rate">8.5</span></div>
 
 <div class="views">👁 <span class="view-count">0</span></div>
 
@@ -331,17 +312,25 @@ width:40%;
 
 <img src="file_00000000b37872469944d35385c90010.png">
 
+<div class="rating">⭐ <span class="rate">8.3</span></div>
+
+<div class="views">👁 <span class="view-count">0</span></div>
+
 <h3>ساوا</h3>
 
-  <button onclick="addView(2); openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+<button onclick="addView(2); openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
 ▶ Play
-  </button>
+</button>
 
 </div>
 
 <div class="movie-card">
 
 <img src="file_000000001dd871f49685c5a6ef226e96.png">
+
+<div class="rating">⭐ <span class="rate">8.7</span></div>
+
+<div class="views">👁 <span class="view-count">0</span></div>
 
 <h3>رۆستەم</h3>
 
@@ -354,6 +343,10 @@ width:40%;
 <div class="movie-card">
 
 <img src="file_000000006ec871f4a20f395a91e29602 (1).png">
+
+<div class="rating">⭐ <span class="rate">8.9</span></div>
+
+<div class="views">👁 <span class="view-count">0</span></div>
 
 <h3>لمبی</h3>
 
@@ -375,7 +368,13 @@ width:40%;
 
 </div>
 
+<!-- HLS -->
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
 <script>
+
+/* MENU */
 
 function toggleMenu(){
 
@@ -393,12 +392,15 @@ sidebar.style.right="0";
 
 }
 
+/* OPEN VIDEO */
+
 function openPopup(videoUrl){
 
 document.getElementById("popup").style.display="flex";
 
 let video=document.getElementById("popupVideo");
-  video.muted=false;
+
+video.muted=false;
 
 if(Hls.isSupported()){
 
@@ -424,7 +426,7 @@ video.play();
 
 }
 
-
+/* CLOSE VIDEO */
 
 function closePopup(){
 
@@ -462,10 +464,7 @@ card.style.display="none";
 
 });
 
-</script>
-<script>
-
-/* RANDOM REALISTIC VIEWS */
+/* RANDOM VIEWS */
 
 document.querySelectorAll(".view-count").forEach(view=>{
 
@@ -484,14 +483,18 @@ let randomRate=(Math.random()*2+7).toFixed(1);
 rate.innerText=randomRate;
 
 });
-  
+
+/* ADD VIEW */
+
 async function addView(id){
 
-let response = await fetch(`https://6a14c3a091ff9a63de0704c1.mockapi.io/movies/${id},{
+try{
 
-let movie = await response.json();
+let response=await fetch(`https://6a14c3a091ff9a63de0704c1.mockapi.io/movies/${id}`);
 
-let newViews = movie.views + 1;
+let movie=await response.json();
+
+let newViews=Number(movie.views || 0)+1;
 
 await fetch(`https://6a14c3a091ff9a63de0704c1.mockapi.io/movies/${id}`,{
 
@@ -507,9 +510,15 @@ views:newViews
 
 });
 
-  }
+}catch(error){
+
+console.log(error);
+
+}
+
+}
+
 </script>
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-</body>
+
 </body>
 </html>
