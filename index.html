@@ -10,9 +10,14 @@
 
 <style>
 
-body{
+*{
 margin:0;
-background:#000;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#050505;
 font-family:sans-serif;
 color:white;
 overflow-x:hidden;
@@ -25,40 +30,76 @@ position:fixed;
 top:0;
 left:0;
 width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px;
+height:70px;
 background:rgba(0,0,0,0.7);
 backdrop-filter:blur(10px);
-z-index:999;
-}
-
-.menu-btn{
-font-size:30px;
-cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 15px;
+z-index:9999;
 }
 
 .logo{
-font-size:30px;
+font-size:26px;
 font-weight:bold;
-margin-right:20px;
+}
+
+.menu-btn{
+font-size:32px;
+cursor:pointer;
 }
 
 .search{
-background:#111;
-border:none;
-padding:12px 20px;
-border-radius:20px;
-color:white;
 width:150px;
+padding:10px 15px;
+border:none;
+border-radius:30px;
+background:#111;
+color:white;
+outline:none;
+}
+
+/* SIDEBAR */
+
+#sidebar{
+position:fixed;
+top:0;
+left:-100%;
+width:260px;
+height:100%;
+background:#0b0b0b;
+z-index:99999;
+transition:0.4s;
+padding-top:80px;
+}
+
+#sidebar a{
+display:block;
+padding:18px;
+color:white;
+text-decoration:none;
+font-size:18px;
+border-bottom:1px solid #222;
+}
+
+#sidebar a:hover{
+background:#111;
+}
+
+.close-menu{
+position:absolute;
+top:15px;
+right:15px;
+font-size:30px;
+cursor:pointer;
 }
 
 /* HERO */
 
 .hero{
 position:relative;
-height:500px;
+height:520px;
 overflow:hidden;
 }
 
@@ -66,103 +107,132 @@ overflow:hidden;
 width:100%;
 height:100%;
 object-fit:cover;
-filter:brightness(0.4);
+filter:brightness(0.45);
+}
+
+.overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(to top,#050505,transparent);
 }
 
 .hero-content{
 position:absolute;
-bottom:50px;
+bottom:40px;
 left:20px;
 z-index:5;
 }
 
-.hero-content h1{
+.hero-title{
 font-size:45px;
-margin:0;
+font-weight:bold;
+margin-bottom:10px;
 }
 
-.hero-content p{
+.hero-desc{
+font-size:15px;
 color:#ddd;
-font-size:17px;
-margin-top:10px;
+line-height:1.7;
+width:90%;
+margin-bottom:20px;
 }
 
-.hero-btn{
-margin-top:20px;
-padding:14px 30px;
-background:red;
+.watch-btn{
+padding:14px 28px;
+background:#ff0055;
 border:none;
-border-radius:15px;
+border-radius:30px;
 color:white;
 font-size:18px;
 font-weight:bold;
+cursor:pointer;
 }
 
 /* MOVIES */
+
+.section-title{
+font-size:26px;
+font-weight:bold;
+padding:20px 15px 10px;
+color:#ff3355;
+}
 
 .movies-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:14px;
 padding:15px;
-margin-top:-40px;
-position:relative;
-z-index:10;
 }
 
 .movie-card{
 background:#111;
 border-radius:20px;
 overflow:hidden;
-box-shadow:0 0 15px rgba(0,0,0,0.8);
+box-shadow:0 0 15px rgba(0,0,0,0.7);
+position:relative;
 }
 
 .movie-card img{
 width:100%;
-height:250px;
+height:240px;
 object-fit:cover;
 display:block;
 }
+
+/* RATING */
+
+.rating{
+position:absolute;
+top:10px;
+left:10px;
+background:#ffcc00;
+color:black;
+padding:5px 10px;
+border-radius:20px;
+font-size:13px;
+font-weight:bold;
+}
+
+/* VIEWS */
+
+.views{
+position:absolute;
+top:10px;
+right:10px;
+background:#222;
+padding:5px 10px;
+border-radius:20px;
+font-size:13px;
+font-weight:bold;
+}
+
+/* INFO */
 
 .info{
 padding:10px;
 }
 
-.rating{
-display:inline-block;
-background:#ffcc00;
-color:#000;
-padding:6px 12px;
-border-radius:20px;
-font-size:14px;
-font-weight:bold;
+.info h3{
+text-align:center;
+font-size:17px;
 margin-bottom:10px;
 }
 
-.views{
-display:inline-block;
-background:#222;
-padding:6px 12px;
-border-radius:20px;
-font-size:14px;
-margin-right:8px;
-}
+/* PLAY BUTTON */
 
-.movie-card h3{
-margin:12px 0;
-font-size:18px;
-text-align:center;
-}
-
-.movie-card button{
+.play-btn{
 width:100%;
 padding:12px;
-background:red;
+background:linear-gradient(45deg,#ff5500,#ff0055);
 border:none;
+border-radius:14px;
 color:white;
 font-size:17px;
 font-weight:bold;
-border-radius:14px;
+cursor:pointer;
 }
 
 /* POPUP */
@@ -185,7 +255,7 @@ width:100%;
 height:auto;
 }
 
-.close-btn{
+.close-popup{
 position:absolute;
 top:20px;
 right:20px;
@@ -194,8 +264,8 @@ border:none;
 color:white;
 padding:10px 15px;
 font-size:20px;
-border-radius:10px;
-z-index:1000000;
+border-radius:12px;
+cursor:pointer;
 }
 
 /* MOBILE */
@@ -203,15 +273,15 @@ z-index:1000000;
 @media(max-width:700px){
 
 .hero{
-height:350px;
+height:420px;
 }
 
-.hero-content h1{
-font-size:35px;
+.hero-title{
+font-size:34px;
 }
 
 .movie-card img{
-height:220px;
+height:210px;
 }
 
 }
@@ -225,11 +295,25 @@ height:220px;
 
 <div class="topbar">
 
-<div class="menu-btn">☰</div>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 
 <input class="search" type="text" placeholder="🔍 Search">
 
 <div class="logo">KurdMan 🎬</div>
+
+</div>
+
+<!-- SIDEBAR -->
+
+<div id="sidebar">
+
+<div class="close-menu" onclick="toggleMenu()">✖</div>
+
+<a href="#">🏠 سەرەتا</a>
+<a href="#">🎬 فیلمەکان</a>
+<a href="#">📺 زنجیرەکان</a>
+<a href="#">🔥 ترێند</a>
+<a href="#">❤️ دڵخوازەکان</a>
 
 </div>
 
@@ -239,13 +323,17 @@ height:220px;
 
 <img src="IMG_20260519_122720_858.png">
 
+<div class="overlay"></div>
+
 <div class="hero-content">
 
-<h1>KurdMan Movies</h1>
+<div class="hero-title">KurdMan Movies</div>
 
-<p>باشترین فیلم و زنجیرە کوردی</p>
+<div class="hero-desc">
+باشترین فیلم و زنجیرە کوردی و دۆبلاژکراو
+</div>
 
-<button class="hero-btn">
+<button class="watch-btn">
 ▶ Watch Now
 </button>
 
@@ -255,21 +343,28 @@ height:220px;
 
 <!-- MOVIES -->
 
+<div class="section-title">
+🔥 نوێترین فیلمەکان
+</div>
+
 <div class="movies-grid">
+
+<!-- MOVIE 1 -->
 
 <div class="movie-card">
 
 <img src="file_00000000e440720a9828825168bd0226.png">
 
-<div class="info">
-
 <div class="rating">⭐ 8.5</div>
 
 <div class="views">👁 120K</div>
 
+<div class="info">
+
 <h3>عەشق و فیتنە</h3>
 
-<button onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
+<button class="play-btn"
+onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
 ▶ Play
 </button>
 
@@ -277,19 +372,68 @@ height:220px;
 
 </div>
 
+<!-- MOVIE 2 -->
+
 <div class="movie-card">
 
 <img src="file_00000000b37872469944d35385c90010.png">
-
-<div class="info">
 
 <div class="rating">⭐ 8.3</div>
 
 <div class="views">👁 95K</div>
 
+<div class="info">
+
 <h3>ساوا</h3>
 
-<button onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+<button class="play-btn"
+onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+▶ Play
+</button>
+
+</div>
+
+</div>
+
+<!-- MOVIE 3 -->
+
+<div class="movie-card">
+
+<img src="file_000000001dd871f49685c5a6ef226e96.png">
+
+<div class="rating">⭐ 8.1</div>
+
+<div class="views">👁 77K</div>
+
+<div class="info">
+
+<h3>رۆستەم</h3>
+
+<button class="play-btn"
+onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
+▶ Play
+</button>
+
+</div>
+
+</div>
+
+<!-- MOVIE 4 -->
+
+<div class="movie-card">
+
+<img src="file_000000006ec871f4a20f395a91e29602 (1).png">
+
+<div class="rating">⭐ 8.9</div>
+
+<div class="views">👁 150K</div>
+
+<div class="info">
+
+<h3>لمبی</h3>
+
+<button class="play-btn"
+onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
 ▶ Play
 </button>
 
@@ -303,13 +447,37 @@ height:220px;
 
 <div class="popup" id="popup">
 
-<button class="close-btn" onclick="closePopup()">✖</button>
+<button class="close-popup"
+onclick="closePopup()">✖</button>
 
-<video id="popupVideo" controls playsinline></video>
+<video id="popupVideo"
+controls
+playsinline>
+</video>
 
 </div>
 
 <script>
+
+/* MENU */
+
+function toggleMenu(){
+
+let sidebar=document.getElementById("sidebar");
+
+if(sidebar.style.left==="0px"){
+
+sidebar.style.left="-100%";
+
+}else{
+
+sidebar.style.left="0";
+
+}
+
+}
+
+/* VIDEO */
 
 function openPopup(videoUrl){
 
@@ -348,6 +516,34 @@ document.getElementById("popup").style.display="none";
 document.getElementById("popupVideo").pause();
 
 }
+
+/* SEARCH */
+
+const search=document.querySelector(".search");
+
+search.addEventListener("keyup",function(){
+
+let value=search.value.toLowerCase();
+
+let cards=document.querySelectorAll(".movie-card");
+
+cards.forEach(card=>{
+
+let text=card.innerText.toLowerCase();
+
+if(text.includes(value)){
+
+card.style.display="block";
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+});
 
 </script>
 
