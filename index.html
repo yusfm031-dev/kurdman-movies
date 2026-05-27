@@ -393,7 +393,7 @@ sidebar.style.right="0";
 
 }
 
-funcfunction openPopup(videoUrl){
+function openPopup(videoUrl){
 
 document.getElementById("popup").style.display="flex";
 
@@ -413,9 +413,7 @@ video.play();
 
 });
 
-}
-
-else if(video.canPlayType('application/vnd.apple.mpegurl')){
+}else if(video.canPlayType('application/vnd.apple.mpegurl')){
 
 video.src=videoUrl;
 
@@ -423,7 +421,9 @@ video.play();
 
 }
 
-  }
+}
+
+
 
 function closePopup(){
 
