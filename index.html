@@ -425,6 +425,30 @@ card.style.display="none";
 });
 
 </script>
+<script>
 
+/* RANDOM REALISTIC VIEWS */
+
+document.querySelectorAll(".view-count").forEach(view=>{
+
+let random=Math.floor(Math.random()*90000)+10000;
+
+view.innerText=random.toLocaleString();
+
+});
+
+/* RANDOM RATING */
+
+document.querySelectorAll(".rate").forEach(rate=>{
+
+let randomRate=(Math.random()*2+7).toFixed(1);
+
+rate.innerText=randomRate;
+
+});
+
+</script>
+
+</body>
 </body>
 </html>
