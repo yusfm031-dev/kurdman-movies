@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>KurdMan Movies</title>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
 <style>
 
@@ -18,184 +21,148 @@ overflow-x:hidden;
 /* TOPBAR */
 
 .topbar{
-background:#111;
+position:fixed;
+top:0;
+left:0;
+width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px;
-position:sticky;
-top:0;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
 z-index:999;
-border-bottom:1px solid #222;
 }
 
-.topbar h1{
-font-size:28px;
-margin:0;
-}
-
-.topbar button{
-background:none;
-border:none;
-color:white;
+.menu-btn{
 font-size:30px;
 cursor:pointer;
 }
 
-.top-search{
-width:45%;
-padding:10px;
-border:none;
-border-radius:20px;
-background:#1a1a1a;
-color:white;
-font-size:15px;
-outline:none;
+.logo{
+font-size:30px;
+font-weight:bold;
+margin-right:20px;
 }
 
-/* SIDEBAR */
-
-#sidebar{
-position:fixed;
-top:0;
-right:-100%;
-width:250px;
-height:100%;
+.search{
 background:#111;
-transition:0.4s;
-padding-top:70px;
-z-index:9999;
-}
-
-#sidebar a{
-display:block;
-padding:18px;
-color:white;
-text-decoration:none;
-font-size:20px;
-border-bottom:1px solid #222;
-}
-
-#sidebar a:hover{
-background:#1f1f1f;
-}
-
-#closeBtn{
-position:absolute;
-top:10px;
-left:10px;
-background:none;
 border:none;
-color:white;
-font-size:28px;
-cursor:pointer;
-}
-
-/* SLIDER */
-
-.slider{
-display:flex;
-overflow-x:auto;
-gap:12px;
-padding:15px;
-scrollbar-width:none;
-}
-
-.slider::-webkit-scrollbar{
-display:none;
-}
-
-.slider img{
-width:320px;
-height:180px;
-object-fit:cover;
+padding:12px 20px;
 border-radius:20px;
-flex:none;
+color:white;
+width:150px;
+}
+
+/* HERO */
+
+.hero{
+position:relative;
+height:500px;
+overflow:hidden;
+}
+
+.hero img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.4);
+}
+
+.hero-content{
+position:absolute;
+bottom:50px;
+left:20px;
+z-index:5;
+}
+
+.hero-content h1{
+font-size:45px;
+margin:0;
+}
+
+.hero-content p{
+color:#ddd;
+font-size:17px;
+margin-top:10px;
+}
+
+.hero-btn{
+margin-top:20px;
+padding:14px 30px;
+background:red;
+border:none;
+border-radius:15px;
+color:white;
+font-size:18px;
+font-weight:bold;
 }
 
 /* MOVIES */
 
 .movies-grid{
 display:grid;
-grid-template-columns:repeat(2,minmax(160px,1fr));
-gap:18px;
-padding:18px;
-justify-content:center;
+grid-template-columns:repeat(2,1fr);
+gap:14px;
+padding:15px;
+margin-top:-40px;
+position:relative;
+z-index:10;
 }
 
 .movie-card{
 background:#111;
-border-radius:18px;
+border-radius:20px;
 overflow:hidden;
-box-shadow:0 0 15px rgba(0,0,0,0.7);
-max-width:190px;
-margin:auto;
+box-shadow:0 0 15px rgba(0,0,0,0.8);
 }
 
 .movie-card img{
 width:100%;
-aspect-ratio:2/3;
-object-fit:contain;
-background:#111;
+height:250px;
+object-fit:cover;
 display:block;
 }
 
-.movie-card h3{
-min-height:55px;
-display:flex;
-align-items:center;
-justify-content:center;
+.info{
 padding:10px;
-margin:0;
-font-size:18px;
-text-align:center;
-color:white;
 }
 
-.movie-card button{
-width:90%;
-margin:10px auto;
-display:block;
-padding:10px;
-background:red;
-border:none;
-border-radius:12px;
-color:white;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
-  .rating{
-position:absolute;
-top:10px;
-left:10px;
+.rating{
+display:inline-block;
 background:#ffcc00;
 color:#000;
-padding:4px 10px;
+padding:6px 12px;
 border-radius:20px;
-font-size:12px;
+font-size:14px;
 font-weight:bold;
-z-index:20;
+margin-bottom:10px;
 }
 
 .views{
-position:absolute;
-top:10px;
-right:10px;
+display:inline-block;
 background:#222;
-color:#fff;
-padding:4px 10px;
+padding:6px 12px;
 border-radius:20px;
-font-size:12px;
-font-weight:bold;
-z-index:20;
+font-size:14px;
+margin-right:8px;
 }
 
-.movie-card{
-position:relative;
-background:#111;
-border-radius:18px;
-overflow:hidden;
+.movie-card h3{
+margin:12px 0;
+font-size:18px;
+text-align:center;
+}
+
+.movie-card button{
+width:100%;
+padding:12px;
+background:red;
+border:none;
+color:white;
+font-size:17px;
+font-weight:bold;
+border-radius:14px;
 }
 
 /* POPUP */
@@ -206,7 +173,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.95);
+background:black;
 display:none;
 justify-content:center;
 align-items:center;
@@ -214,42 +181,37 @@ z-index:999999;
 }
 
 .popup video{
-width:90%;
-border-radius:15px;
+width:100%;
+height:auto;
 }
 
-.popup button{
+.close-btn{
 position:absolute;
 top:20px;
 right:20px;
-background:white;
-color:black;
+background:red;
 border:none;
+color:white;
 padding:10px 15px;
 font-size:20px;
 border-radius:10px;
-cursor:pointer;
+z-index:1000000;
 }
 
 /* MOBILE */
 
 @media(max-width:700px){
 
-.movies-grid{
-grid-template-columns:repeat(2,1fr);
-gap:16px;
+.hero{
+height:350px;
+}
+
+.hero-content h1{
+font-size:35px;
 }
 
 .movie-card img{
-height:auto;
-}
-
-.topbar h1{
-font-size:22px;
-}
-
-.top-search{
-width:40%;
+height:220px;
 }
 
 }
@@ -263,36 +225,31 @@ width:40%;
 
 <div class="topbar">
 
-<button onclick="toggleMenu()">☰</button>
+<div class="menu-btn">☰</div>
 
-<input class="top-search" type="text" placeholder="🔍 Search">
+<input class="search" type="text" placeholder="🔍 Search">
 
-<h1>KurdMan 🎬</h1>
-
-</div>
-
-<!-- SIDEBAR -->
-
-<div id="sidebar">
-
-<button id="closeBtn" onclick="toggleMenu()">✖</button>
-
-<a href="#">🏠 سەرەتا</a>
-<a href="#">🎬 فیلمەکان</a>
-<a href="#">📺 زنجیرەکان</a>
-<a href="#">🔥 ترێند</a>
-<a href="#">💡 پێشنیارەکان</a>
+<div class="logo">KurdMan 🎬</div>
 
 </div>
 
-<!-- SLIDER -->
+<!-- HERO -->
 
-<div class="slider">
+<div class="hero">
 
 <img src="IMG_20260519_122720_858.png">
-<img src="IMG_20260522_140604_218.png">
-<img src="IMG_20260522_140704_502.png">
-<img src="IMG_20260522_140721_798.jpg">
+
+<div class="hero-content">
+
+<h1>KurdMan Movies</h1>
+
+<p>باشترین فیلم و زنجیرە کوردی</p>
+
+<button class="hero-btn">
+▶ Watch Now
+</button>
+
+</div>
 
 </div>
 
@@ -303,9 +260,12 @@ width:40%;
 <div class="movie-card">
 
 <img src="file_00000000e440720a9828825168bd0226.png">
-  <div class="rating">⭐ 8.5</div>
 
-<div class="views">👁 120</div>
+<div class="info">
+
+<div class="rating">⭐ 8.5</div>
+
+<div class="views">👁 120K</div>
 
 <h3>عەشق و فیتنە</h3>
 
@@ -315,10 +275,17 @@ width:40%;
 
 </div>
 
+</div>
+
 <div class="movie-card">
 
 <img src="file_00000000b37872469944d35385c90010.png">
 
+<div class="info">
+
+<div class="rating">⭐ 8.3</div>
+
+<div class="views">👁 95K</div>
 
 <h3>ساوا</h3>
 
@@ -327,28 +294,6 @@ width:40%;
 </button>
 
 </div>
-  
-<div class="movie-card">
-
-<img src="file_000000001dd871f49685c5a6ef226e96.png">
-
-<h3>رۆستەم</h3>
-
-<button onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
-▶ Play
-</button>
-
-</div>
-
-<div class="movie-card">
-
-<img src="file_000000006ec871f4a20f395a91e29602 (1).png">
-
-<h3>لمبی</h3>
-
-<button onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
-▶ Play
-</button>
 
 </div>
 
@@ -358,14 +303,51 @@ width:40%;
 
 <div class="popup" id="popup">
 
-<button onclick="closePopup()">✖</button>
+<button class="close-btn" onclick="closePopup()">✖</button>
 
 <video id="popupVideo" controls playsinline></video>
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
 
+function openPopup(videoUrl){
+
+document.getElementById("popup").style.display="flex";
+
+let video=document.getElementById("popupVideo");
+
+if(Hls.isSupported()){
+
+let hls=new Hls();
+
+hls.loadSource(videoUrl);
+
+hls.attachMedia(video);
+
+hls.on(Hls.Events.MANIFEST_PARSED,function(){
+
+video.play();
+
+});
+
+}else{
+
+video.src=videoUrl;
+
+video.play();
+
+}
+
+}
+
+function closePopup(){
+
+document.getElementById("popup").style.display="none";
+
+document.getElementById("popupVideo").pause();
+
+}
 
 </script>
 
