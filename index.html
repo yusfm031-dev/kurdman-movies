@@ -134,8 +134,9 @@ margin:auto;
 
 .movie-card img{
 width:100%;
-height:260px;
-object-fit:cover;
+aspect-ratio:2/3;
+object-fit:contain;
+background:#111;
 display:block;
 }
 
@@ -144,20 +145,26 @@ min-height:55px;
 display:flex;
 align-items:center;
 justify-content:center;
+padding:10px;
+margin:0;
+font-size:18px;
+text-align:center;
+color:white;
 }
-  .movie-card button{
+
+.movie-card button{
 width:90%;
 margin:10px auto;
 display:block;
 padding:10px;
 background:red;
 border:none;
-border-radius:10px;
+border-radius:12px;
 color:white;
 font-size:16px;
 font-weight:bold;
 cursor:pointer;
-  }
+}
 
 /* POPUP */
 
@@ -198,22 +205,11 @@ cursor:pointer;
 
 .movies-grid{
 grid-template-columns:repeat(2,1fr);
-}
-  .movie-card img{
-height:260px;
-}
-
-.movie-card h3{
-font-size:17px;
-}
-
-.movie-card button{
-font-size:18px;
-padding:10px;
+gap:16px;
 }
 
 .movie-card img{
-height:180px;
+height:auto;
 }
 
 .topbar h1{
@@ -276,13 +272,9 @@ width:40%;
 
 <img src="file_00000000e440720a9828825168bd0226.png">
 
-<div class="rating">⭐ <span class="rate">8.5</span></div>
-
-<div class="views">👁 <span class="view-count">0</span></div>
-
 <h3>عەشق و فیتنە</h3>
 
-<button onclick="addView(1); openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
+<button onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
 ▶ Play
 </button>
 
@@ -292,13 +284,9 @@ width:40%;
 
 <img src="file_00000000b37872469944d35385c90010.png">
 
-<div class="rating">⭐ <span class="rate">8.3</span></div>
-
-<div class="views">👁 <span class="view-count">0</span></div>
-
 <h3>ساوا</h3>
 
-<button onclick="addView(2); openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+<button onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
 ▶ Play
 </button>
 
@@ -308,13 +296,9 @@ width:40%;
 
 <img src="file_000000001dd871f49685c5a6ef226e96.png">
 
-<div class="rating">⭐ <span class="rate">8.9</span></div>
-
-<div class="views">👁 <span class="view-count">0</span></div>
-
 <h3>رۆستەم</h3>
 
-<button onclick="addView(3); openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
+<button onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
 ▶ Play
 </button>
 
@@ -324,13 +308,9 @@ width:40%;
 
 <img src="file_000000006ec871f4a20f395a91e29602 (1).png">
 
-<div class="rating">⭐ <span class="rate">8.7</span></div>
-
-<div class="views">👁 <span class="view-count">0</span></div>
-
 <h3>لمبی</h3>
 
-<button onclick="addView(4); openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
+<button onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
 ▶ Play
 </button>
 
@@ -433,64 +413,6 @@ card.style.display="none";
 });
 
 });
-
-/* LOAD VIEWS + RATING */
-
-async function loadViews(){
-
-for(let i=1;i<=4;i++){
-
-let response=await fetch(`https://6a14c3a091ff9a63de0704c1.mockapi.io/movies/${i}`);
-
-let movie=await response.json();
-
-document.querySelectorAll(".view-count")[i-1].innerText=
-Number(movie.views).toLocaleString();
-
-document.querySelectorAll(".rate")[i-1].innerText=
-movie.rating;
-
-}
-
-}
-
-loadViews();
-
-/* ADD VIEW */
-
-async function addView(id){
-
-try{
-
-let response = await fetch(`https://6a14c3a091ff9a63de0704c1.mockapi.io/movies/${id}`);
-
-let movie = await response.json();
-
-let newViews = Number(movie.views || 0) + 1;
-
-await fetch(`https://6a14c3a091ff9a63de0704c1.mockapi.io/movies/${id}`,{
-
-method:"PUT",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-views:newViews
-})
-
-});
-
-loadViews();
-
-}catch(error){
-
-console.log(error);
-
-}
-
-}
 
 </script>
 
