@@ -30,7 +30,7 @@ border-bottom:1px solid #222;
 }
 
 .topbar h1{
-font-size:30px;
+font-size:28px;
 margin:0;
 }
 
@@ -106,95 +106,94 @@ display:none;
 }
 
 .slider img{
-width:420px;
+width:320px;
 height:180px;
 object-fit:cover;
 border-radius:20px;
 flex:none;
 }
 
-
 /* MOVIES */
 
-.movies{
+.movies-grid{
 display:grid;
-grid-template-columns:1fr 1fr;
+grid-template-columns:repeat(2,1fr);
 gap:14px;
-padding:12px;
+padding:14px;
 }
-
-/* CARD */
 
 .movie-card{
 position:relative;
 background:#111;
-border-radius:20px;
+border-radius:18px;
 overflow:hidden;
-box-shadow:0 0 15px rgba(0,0,0,0.6);
+box-shadow:0 0 15px rgba(0,0,0,0.7);
 }
-
-/* IMAGE */
 
 .movie-card img{
 width:100%;
-height:230px;
+height:250px;
 object-fit:cover;
-border-radius:20px 20px 0 0;
 display:block;
 }
-
-/* RATING */
-
-.rating{
-position:absolute;
-top:10px;
-left:10px;
-background:#ffcc00;
-color:#000;
-padding:5px 12px;
-border-radius:15px;
-font-size:14px;
-font-weight:bold;
-z-index:20;
-}
-
-/* VIEWS */
-
-.views{
-position:absolute;
-top:10px;
-right:10px;
-background:#222;
-color:#fff;
-padding:5px 12px;
-border-radius:15px;
-font-size:14px;
-font-weight:bold;
-z-index:20;
-}
-
-/* NAME */
 
 .movie-card h3{
-margin:10px 0 5px;
-font-size:15px;
+padding:8px;
+margin:0;
+font-size:16px;
 text-align:center;
 color:white;
+background:#111;
 }
 
-/* PLAY */
-
 .movie-card button{
-width:78%;
-height:42px;
+width:85%;
 margin:10px auto 14px;
 display:block;
+padding:10px;
 background:red;
 border:none;
-border-radius:14px;
+border-radius:12px;
 color:white;
 font-size:15px;
 font-weight:bold;
+cursor:pointer;
+}
+
+.movie-card button:hover{
+background:#ff2222;
+}
+
+/* POPUP */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999999;
+}
+
+.popup video{
+width:90%;
+border-radius:15px;
+}
+
+.popup button{
+position:absolute;
+top:20px;
+right:20px;
+background:white;
+color:black;
+border:none;
+padding:10px 15px;
+font-size:20px;
+border-radius:10px;
 cursor:pointer;
 }
 
@@ -202,7 +201,7 @@ cursor:pointer;
 
 @media(max-width:700px){
 
-.movies{
+.movies-grid{
 grid-template-columns:repeat(2,1fr);
 }
 
@@ -256,18 +255,9 @@ width:40%;
 <div class="slider">
 
 <img src="IMG_20260519_122720_858.png">
-
 <img src="IMG_20260522_140604_218.png">
-
 <img src="IMG_20260522_140704_502.png">
-
 <img src="IMG_20260522_140721_798.jpg">
-
-<img src="file_0000000051487246a1b2420930fbe215.png">
-
-<img src="file_000000005c747243afea6f664474190f.png">
-
-<img src="file_00000000e7f0720abc4f1aa0333335d7.png">
 
 </div>
 
@@ -275,7 +265,53 @@ width:40%;
 
 <div class="movies-grid">
 
-<div class="movies"></div>
+<div class="movie-card">
+
+<img src="file_00000000e440720a9828825168bd0226.png">
+
+<h3>عەشق و فیتنە</h3>
+
+<button onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
+▶ Play
+</button>
+
+</div>
+
+<div class="movie-card">
+
+<img src="file_00000000b37872469944d35385c90010.png">
+
+<h3>ساوا</h3>
+
+<button onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+▶ Play
+</button>
+
+</div>
+
+<div class="movie-card">
+
+<img src="file_000000001dd871f49685c5a6ef226e96.png">
+
+<h3>رۆستەم</h3>
+
+<button onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
+▶ Play
+</button>
+
+</div>
+
+<div class="movie-card">
+
+<img src="file_000000006ec871f4a20f395a91e29602 (1).png">
+
+<h3>لمبی</h3>
+
+<button onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
+▶ Play
+</button>
+
+</div>
 
 </div>
 
@@ -289,131 +325,39 @@ width:40%;
 
 </div>
 
-<!-- JAVASCRIPT -->
-
 <script>
-
-const API = "https://6a14c3a091ff9a63de0704c1.mockapi.io/movies";
-
-/* MENU */
 
 function toggleMenu(){
 
-let sidebar = document.getElementById("sidebar");
+let sidebar=document.getElementById("sidebar");
 
-if(sidebar.style.right === "0px"){
+if(sidebar.style.right==="0px"){
 
-sidebar.style.right = "-100%";
+sidebar.style.right="-100%";
 
 }else{
 
-sidebar.style.right = "0";
+sidebar.style.right="0";
 
 }
 
 }
 
-/* LOAD MOVIES */
+function openPopup(videoUrl){
 
-function loadMovies(){
+document.getElementById("popup").style.display="flex";
 
-fetch(API)
-
-.then(res => res.json())
-
-.then(data => {
-
-let moviesContainer = document.querySelector(".movies");
-
-moviesContainer.innerHTML = "";
-
-data.forEach(movie => {
-
-moviesContainer.innerHTML += `
-
-<div class="movie-card">
-
-<div class="rating">⭐ ${movie.rating}</div>
-
-<div class="views">👁 ${movie.views}</div>
-
-<img src="${movie.image}">
-
-<h3>${movie.name}</h3>
-
-<button onclick="openPopup('${movie.video}', ${movie.id})">
-
-▶ Play
-
-</button>
-
-</div>
-
-`;
-
-});
-
-});
-
-}
-
-loadMovies();
-
-/* PLAY VIDEO */
-
-function openPopup(videoUrl, movieId){
-
-document.getElementById("popup").style.display = "flex";
-
-document.getElementById("popupVideo").src = videoUrl;
+document.getElementById("popupVideo").src=videoUrl;
 
 document.getElementById("popupVideo").load();
 
 document.getElementById("popupVideo").play();
 
-/* ADD VIEW */
-
-fetch(API + "/" + movieId)
-
-.then(res => res.json())
-
-.then(movie => {
-
-fetch(API + "/" + movieId, {
-
-method:"PUT",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-
-name: movie.name,
-image: movie.image,
-video: movie.video,
-views: Number(movie.views) + 1,
-rating: movie.rating
-
-})
-
-})
-
-.then(() => {
-
-loadMovies();
-
-});
-
-});
-
 }
-
-/* CLOSE POPUP */
 
 function closePopup(){
 
-document.getElementById("popup").style.display = "none";
+document.getElementById("popup").style.display="none";
 
 document.getElementById("popupVideo").pause();
 
@@ -421,25 +365,25 @@ document.getElementById("popupVideo").pause();
 
 /* SEARCH */
 
-const search = document.querySelector(".top-search");
+const search=document.querySelector(".top-search");
 
-search.addEventListener("keyup", function(){
+search.addEventListener("keyup",function(){
 
-let value = search.value.toLowerCase();
+let value=search.value.toLowerCase();
 
-let cards = document.querySelectorAll(".movie-card");
+let cards=document.querySelectorAll(".movie-card");
 
-cards.forEach(card => {
+cards.forEach(card=>{
 
-let title = card.innerText.toLowerCase();
+let title=card.innerText.toLowerCase();
 
 if(title.includes(value)){
 
-card.style.display = "flex";
+card.style.display="block";
 
 }else{
 
-card.style.display = "none";
+card.style.display="none";
 
 }
 
