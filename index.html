@@ -112,14 +112,13 @@ object-fit:cover;
 border-radius:20px;
 flex:none;
 }
-
 /* MOVIES */
 
 .movies-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:16px;
-padding:16px;
+gap:14px;
+padding:14px;
 }
 
 .movie-card{
@@ -134,7 +133,7 @@ box-shadow:0 0 12px rgba(0,0,0,0.7);
 
 .movie-card img{
 width:100%;
-height:300px;
+height:320px;
 object-fit:cover;
 display:block;
 border-radius:18px 18px 0 0;
@@ -143,9 +142,9 @@ border-radius:18px 18px 0 0;
 /* TITLE */
 
 .movie-card h3{
-padding:8px;
+padding:6px;
 margin:0;
-font-size:16px;
+font-size:15px;
 text-align:center;
 background:#111;
 color:white;
@@ -155,9 +154,9 @@ color:white;
 
 .movie-card button{
 width:82%;
-margin:10px auto 14px;
+margin:8px auto 12px;
 display:block;
-padding:9px;
+padding:8px;
 background:red;
 border:none;
 border-radius:12px;
@@ -167,6 +166,8 @@ font-weight:bold;
 cursor:pointer;
 }
 
+/* RATING */
+
 .rating{
 position:absolute;
 top:10px;
@@ -175,10 +176,12 @@ background:#ffcc00;
 color:#000;
 padding:6px 12px;
 border-radius:20px;
-font-size:16px;
+font-size:15px;
 font-weight:bold;
-z-index:5;
+z-index:20;
 }
+
+/* VIEWS */
 
 .views{
 position:absolute;
@@ -188,9 +191,9 @@ background:#222;
 color:#fff;
 padding:6px 12px;
 border-radius:20px;
-font-size:16px;
+font-size:15px;
 font-weight:bold;
-z-index:5;
+z-index:20;
 }
 
 .movie-card{
