@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="ku">
+<html lang="ku" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>KurdMan Movies</title>
 
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 
@@ -22,113 +26,121 @@ color:white;
 overflow-x:hidden;
 }
 
-/* ===== TOP BAR ===== */
+/* TOPBAR */
 
 .topbar{
 position:fixed;
 top:0;
 left:0;
 width:100%;
-height:75px;
-padding:0 14px;
+padding:14px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-background:rgba(0,0,0,.45);
-backdrop-filter:blur(12px);
-z-index:999999;
+z-index:999;
+background:rgba(0,0,0,.55);
+backdrop-filter:blur(10px);
 }
 
 .menu-btn{
 width:55px;
 height:55px;
 border-radius:18px;
-background:rgba(255,255,255,.06);
+background:rgba(255,255,255,.08);
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
+font-size:26px;
 cursor:pointer;
 }
 
-.menu-btn span{
-font-size:34px;
-color:white;
-}
-
 .logo{
-position:absolute;
-left:50%;
-transform:translateX(-50%);
-font-size:22px;
+font-size:34px;
 font-weight:bold;
 }
 
 .search-box{
-width:130px;
-padding:12px 16px;
-border:none;
-outline:none;
-border-radius:30px;
-background:rgba(255,255,255,.08);
-color:white;
-font-size:15px;
+width:45%;
+height:52px;
+background:#101010;
+border-radius:40px;
+display:flex;
+align-items:center;
+padding:0 18px;
 }
 
-/* ===== SIDEBAR ===== */
+.search-box input{
+background:none;
+border:none;
+outline:none;
+color:white;
+width:100%;
+font-size:18px;
+}
 
-#sidebar{
+.search-box i{
+margin-left:10px;
+color:#00d0ff;
+}
+
+/* SIDEBAR */
+
+.sidebar{
 position:fixed;
 top:0;
-left:-100%;
-width:82%;
+right:-100%;
+width:78%;
 height:100%;
-background:#09060f;
-z-index:9999999;
-transition:.4s;
-padding-top:110px;
+background:#090909;
+z-index:1000;
+transition:.5s;
+padding:40px 30px;
+}
+
+.sidebar a{
+display:flex;
+align-items:center;
+justify-content:space-between;
+color:white;
+text-decoration:none;
+margin:35px 0;
+font-size:28px;
 }
 
 .close-btn{
-position:absolute;
-top:20px;
-right:20px;
-font-size:45px;
+font-size:40px;
+margin-bottom:50px;
 cursor:pointer;
 }
 
-#sidebar a{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:24px;
-font-size:24px;
-color:white;
-text-decoration:none;
-border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-/* ===== HERO ===== */
+/* HERO */
 
 .hero-slider{
 position:relative;
 width:100%;
-height:560px;
+height:640px;
 overflow:hidden;
+margin-top:85px;
 }
 
 .slide{
-display:none;
 position:absolute;
 width:100%;
 height:100%;
-animation:fade 1s;
+opacity:0;
+transition:1s;
+}
+
+.active-slide{
+opacity:1;
+z-index:2;
 }
 
 .slide img{
 width:100%;
 height:100%;
 object-fit:cover;
-filter:brightness(.35);
+filter:brightness(.38);
 }
 
 .overlay{
@@ -137,120 +149,92 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(to top,#050505 10%,transparent 60%);
+background:linear-gradient(to top,#050505 5%,transparent 60%);
 }
-
-/* ===== HERO CONTENT ===== */
 
 .hero-content{
 position:absolute;
-bottom:90px;
-left:20px;
-width:90%;
+bottom:130px;
+right:25px;
+width:85%;
 z-index:5;
 }
 
-.hero-logo{
-font-size:38px;
-font-weight:bold;
+.hero-content h1{
+font-size:54px;
 margin-bottom:18px;
 }
 
-.hero-title{
-font-size:34px;
-font-weight:bold;
-margin-bottom:15px;
-}
-
-.hero-desc{
-font-size:16px;
+.hero-content p{
+font-size:18px;
 line-height:1.8;
 color:#ddd;
-margin-bottom:20px;
-}
-
-.hero-info{
-display:flex;
-gap:15px;
-align-items:center;
 margin-bottom:25px;
 }
 
-.hero-rating{
-background:#ffb400;
-padding:10px 20px;
-border-radius:18px;
-font-size:20px;
-font-weight:bold;
-color:black;
-}
+/* HERO PLAY BUTTON */
 
-/* ===== WATCH BTN ===== */
-
-.watch-btn{
-padding:16px 45px;
+.hero-play{
+padding:18px 38px;
 border:none;
 border-radius:40px;
 background:linear-gradient(45deg,#ff0066,#ff6600);
 color:white;
-font-size:20px;
+font-size:22px;
 font-weight:bold;
 cursor:pointer;
-box-shadow:0 0 25px rgba(255,80,0,.4);
+box-shadow:0 0 25px rgba(255,0,80,.5);
 }
 
-/* ===== DOTS ===== */
+/* DOTS */
 
-.dots{
+.slider-dots{
 position:absolute;
-bottom:30px;
+bottom:45px;
 left:50%;
 transform:translateX(-50%);
 display:flex;
-gap:8px;
-background:rgba(0,0,0,.55);
-padding:10px 20px;
-border-radius:30px;
+gap:12px;
+z-index:10;
 }
 
 .dot{
-width:10px;
-height:10px;
-background:#666;
+width:12px;
+height:12px;
+background:#aaa;
 border-radius:50%;
 transition:.4s;
 }
 
-.active{
-width:30px;
+.active-dot{
+width:38px;
+border-radius:20px;
 background:#ff6600;
-border-radius:30px;
 }
 
-/* ===== SECTION ===== */
+/* TITLE */
 
 .section-title{
-font-size:28px;
-padding:25px 18px 10px;
+font-size:38px;
 font-weight:bold;
-color:#ff3355;
+padding:20px;
+color:#ff004c;
 }
 
-/* ===== MOVIES ===== */
+/* MOVIES */
 
 .movies-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:14px;
+gap:18px;
 padding:15px;
 }
 
 .movie-card{
-background:#0f0f0f;
-border-radius:24px;
+background:#101010;
+border-radius:26px;
 overflow:hidden;
-position:relative;
-box-shadow:0 0 15px rgba(0,0,0,.5);
+box-shadow:0 0 20px rgba(0,0,0,.5);
 }
 
 .movie-image{
@@ -260,81 +244,81 @@ overflow:hidden;
 
 .movie-image img{
 width:100%;
-height:270px;
-object-fit:contain;
-background:black;
+height:320px;
+object-fit:cover;
 display:block;
 }
 
-/* ===== RATING ===== */
+/* CENTER PLAY */
+
+.center-play{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:72px;
+height:72px;
+border-radius:50%;
+background:linear-gradient(45deg,#ff0066,#ff6600);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
+color:white;
+cursor:pointer;
+box-shadow:0 0 20px rgba(255,0,80,.6);
+}
+
+/* RATING */
 
 .rating{
 position:absolute;
 top:10px;
 left:10px;
 background:#ffcc00;
-padding:5px 11px;
+padding:7px 14px;
 border-radius:14px;
-font-size:12px;
+font-size:13px;
 font-weight:bold;
 color:black;
 }
-
-/* ===== VIEWS ===== */
 
 .views{
 position:absolute;
 top:10px;
 right:10px;
 background:rgba(0,0,0,.7);
-padding:5px 11px;
+padding:7px 14px;
 border-radius:14px;
-font-size:12px;
-font-weight:bold;
+font-size:13px;
 }
 
-/* ===== PLAY CENTER ===== */
-
-.play-overlay{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:78px;
-height:78px;
-border-radius:50%;
-background:linear-gradient(45deg,#ff0066,#ff6600);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:34px;
-color:white;
-cursor:pointer;
-opacity:0;
-transition:.3s;
-}
-
-.movie-image:hover .play-overlay{
-opacity:1;
-}
-
-.movie-image:active .play-overlay{
-opacity:1;
-}
-
-/* ===== INFO ===== */
+/* MOVIE INFO */
 
 .movie-info{
-padding:14px;
+padding:16px;
+text-align:center;
 }
 
 .movie-info h3{
-font-size:18px;
-text-align:center;
-margin-bottom:5px;
+font-size:25px;
+margin-bottom:10px;
 }
 
-/* ===== POPUP ===== */
+.movie-info p{
+font-size:15px;
+line-height:1.8;
+color:#ccc;
+margin-bottom:12px;
+}
+
+.movie-info span{
+color:#ff6600;
+font-weight:bold;
+font-size:15px;
+}
+
+/* POPUP */
 
 .popup{
 position:fixed;
@@ -342,11 +326,11 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:black;
+background:rgba(0,0,0,.92);
 display:none;
 justify-content:center;
 align-items:center;
-z-index:99999999;
+z-index:2000;
 }
 
 .popup video{
@@ -357,18 +341,427 @@ height:auto;
 .close-popup{
 position:absolute;
 top:20px;
-right:20px;
-background:red;
-border:none;
-padding:10px 16px;
-font-size:20px;
+left:20px;
+font-size:45px;
 color:white;
-border-radius:14px;
 cursor:pointer;
 }
 
-/* ===== ANIMATION ===== */
+</style>
 
-@keyframes fade{
-from{opacity:.4}
-to{op
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+<div class="menu-btn" onclick="openMenu()">
+☰
+</div>
+
+<div class="search-box">
+
+<i class="fa fa-search"></i>
+
+<input type="text" id="searchInput"
+placeholder="Search">
+
+</div>
+
+<div class="logo">
+KurdMan
+</div>
+
+</div>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar" id="sidebar">
+
+<div class="close-btn" onclick="closeMenu()">
+✕
+</div>
+
+<a href="#">سەرەتا <i class="fa fa-house"></i></a>
+
+<a href="#">فیلمەکان <i class="fa fa-film"></i></a>
+
+<a href="#">زنجیرەکان <i class="fa fa-tv"></i></a>
+
+<a href="#">ترێند <i class="fa fa-fire"></i></a>
+
+<a href="#">پێشنیارەکان <i class="fa fa-star"></i></a>
+
+<a href="#">زیاتر <i class="fa fa-table-cells"></i></a>
+
+</div>
+
+<!-- HERO -->
+
+<div class="hero-slider">
+
+<!-- SLIDE 1 -->
+
+<div class="slide active-slide">
+
+<img src="file_000000003f7c72468ed2de136707e5e5">
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+
+<h1>ساوا</h1>
+
+<p>
+فیلمی ئەکشن و ماجەرا
+دۆبلاژکراوی کوردی
+</p>
+
+<button class="hero-play"
+onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+
+▶ تماشا بکە
+
+</button>
+
+</div>
+
+</div>
+
+<!-- SLIDE 2 -->
+
+<div class="slide">
+
+<img src="file_0000000077ac7246986808f9a611d7fe">
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+
+<h1>KurdMan Movies</h1>
+
+<p>
+باشترین فیلم و زنجیرە کوردیەکان
+</p>
+
+</div>
+
+</div>
+
+<!-- SLIDE 3 -->
+
+<div class="slide">
+
+<img src="file_0000000018887246917a0b104d8684dd">
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+
+<h1>TOP MOVIES</h1>
+
+<p>
+فیلمی نوێ • ئەکشن • دراما
+</p>
+
+</div>
+
+</div>
+
+<!-- DOTS -->
+
+<div class="slider-dots">
+
+<span class="dot active-dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+
+</div>
+
+</div>
+
+<!-- SECTION -->
+
+<div class="section-title">
+جاوەڕوانی دواتر
+</div>
+
+<!-- MOVIES -->
+
+<div class="movies-grid" id="moviesGrid">
+
+<!-- SAWA -->
+
+<div class="movie-card">
+
+<div class="movie-image">
+
+<img src="file_000000003f7c72468ed2de136707e5e5">
+
+<div class="rating">⭐ 8.3</div>
+
+<div class="views">👁 95K</div>
+
+<div class="center-play"
+onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+
+▶
+
+</div>
+
+</div>
+
+<div class="movie-info">
+
+<h3>ساوا</h3>
+
+<p>
+فیلمی ئەکشن و ماجەرا
+</p>
+
+<span>2026 • ACTION</span>
+
+</div>
+
+</div>
+
+<!-- MOVIE -->
+
+<div class="movie-card">
+
+<div class="movie-image">
+
+<img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=1200">
+
+<div class="rating">⭐ 8.9</div>
+
+<div class="views">👁 150K</div>
+
+<div class="center-play">▶</div>
+
+</div>
+
+<div class="movie-info">
+
+<h3>Crime Night</h3>
+
+<p>
+فیلمی تاوان و دراما
+</p>
+
+<span>2025 • CRIME</span>
+
+</div>
+
+</div>
+
+<!-- MOVIE -->
+
+<div class="movie-card">
+
+<div class="movie-image">
+
+<img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1200">
+
+<div class="rating">⭐ 8.5</div>
+
+<div class="views">👁 120K</div>
+
+<div class="center-play">▶</div>
+
+</div>
+
+<div class="movie-info">
+
+<h3>Last Hero</h3>
+
+<p>
+ئەکشن و شەڕ
+</p>
+
+<span>2024 • ACTION</span>
+
+</div>
+
+</div>
+
+<!-- MOVIE -->
+
+<div class="movie-card">
+
+<div class="movie-image">
+
+<img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=1200">
+
+<div class="rating">⭐ 8.1</div>
+
+<div class="views">👁 77K</div>
+
+<div class="center-play">▶</div>
+
+</div>
+
+<div class="movie-info">
+
+<h3>Dark City</h3>
+
+<p>
+ترسناک و نهێنی
+</p>
+
+<span>2023 • HORROR</span>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- VIDEO POPUP -->
+
+<div class="popup" id="popup">
+
+<div class="close-popup"
+onclick="closePopup()">
+
+✕
+
+</div>
+
+<video id="videoPlayer"
+controls
+autoplay
+playsinline>
+
+</video>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+<script>
+
+/* MENU */
+
+function openMenu(){
+
+document.getElementById("sidebar").style.right="0";
+
+}
+
+function closeMenu(){
+
+document.getElementById("sidebar").style.right="-100%";
+
+}
+
+/* HERO SLIDER */
+
+let slides=document.querySelectorAll(".slide");
+let dots=document.querySelectorAll(".dot");
+
+let current=0;
+
+function showSlide(index){
+
+slides.forEach(slide=>{
+slide.classList.remove("active-slide");
+});
+
+dots.forEach(dot=>{
+dot.classList.remove("active-dot");
+});
+
+slides[index].classList.add("active-slide");
+
+dots[index].classList.add("active-dot");
+
+}
+
+setInterval(()=>{
+
+current++;
+
+if(current >= slides.length){
+current=0;
+}
+
+showSlide(current);
+
+},3000);
+
+/* SEARCH */
+
+const searchInput=document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup",()=>{
+
+let value=searchInput.value.toLowerCase();
+
+let cards=document.querySelectorAll(".movie-card");
+
+cards.forEach(card=>{
+
+let text=card.innerText.toLowerCase();
+
+if(text.includes(value)){
+
+card.style.display="block";
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+});
+
+/* VIDEO */
+
+function openPopup(videoUrl){
+
+document.getElementById("popup").style.display="flex";
+
+let video=document.getElementById("videoPlayer");
+
+if(Hls.isSupported()){
+
+let hls=new Hls();
+
+hls.loadSource(videoUrl);
+
+hls.attachMedia(video);
+
+hls.on(Hls.Events.MANIFEST_PARSED,function(){
+
+video.play();
+
+});
+
+}else{
+
+video.src=videoUrl;
+
+video.play();
+
+}
+
+}
+
+function closePopup(){
+
+document.getElementById("popup").style.display="none";
+
+document.getElementById("videoPlayer").pause();
+
+}
+
+</script>
+
+</body>
+
+</html>
