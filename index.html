@@ -50,7 +50,7 @@ color:white;
 }
 
 .logo{
-font-size:25px;
+font-size:24px;
 font-weight:bold;
 color:white;
 }
@@ -113,15 +113,16 @@ font-size:22px;
 margin:30px 0;
 }
 
-/* HERO SLIDER */
+/* HERO */
 
 .hero-slider{
 position:relative;
 width:100%;
-height:520px;
+height:540px;
 overflow:hidden;
 margin-top:75px;
-border-bottom:3px solid #ff004c;
+border-bottom:3px solid #ff0055;
+background:#000;
 }
 
 .slide{
@@ -141,6 +142,8 @@ z-index:5;
 width:100%;
 height:100%;
 object-fit:cover;
+opacity:1 !important;
+visibility:visible !important;
 }
 
 .hero-overlay{
@@ -178,20 +181,27 @@ margin-bottom:18px;
 }
 
 .hero-watch-btn{
-padding:12px 28px;
+padding:11px 24px;
 border:none;
 border-radius:40px;
-background:linear-gradient(45deg,#ff0066,#ff8800);
+background:linear-gradient(45deg,#ff0066,#ff9900);
 color:white;
-font-size:15px;
+font-size:14px;
 font-weight:bold;
 cursor:pointer;
-box-shadow:0 0 20px rgba(255,0,100,.5);
+box-shadow:0 0 20px rgba(255,0,100,.45);
+transition:.3s;
 }
+
+.hero-watch-btn:hover{
+transform:scale(1.06);
+}
+
+/* DOTS */
 
 .slider-dots{
 position:absolute;
-bottom:30px;
+bottom:28px;
 left:50%;
 transform:translateX(-50%);
 display:flex;
@@ -237,9 +247,16 @@ padding:15px;
 
 .movie-card{
 background:#101010;
-border-radius:24px;
+border-radius:22px;
 overflow:hidden;
 position:relative;
+box-shadow:0 0 20px rgba(255,255,255,.05);
+transition:.3s;
+}
+
+.movie-card:hover{
+transform:translateY(-6px);
+box-shadow:0 0 25px rgba(255,0,100,.25);
 }
 
 .movie-image{
@@ -250,17 +267,20 @@ cursor:pointer;
 
 .movie-image img{
 width:100%;
-height:300px;
+height:320px;
 object-fit:cover;
 display:block;
 transition:.4s;
+border-radius:20px;
+opacity:1 !important;
+visibility:visible !important;
 }
 
 .movie-image:hover img{
 transform:scale(1.05);
 }
 
-/* PLAY BUTTON */
+/* PLAY */
 
 .play-icon{
 position:absolute;
@@ -277,6 +297,7 @@ justify-content:center;
 font-size:30px;
 opacity:0;
 transition:.4s;
+backdrop-filter:blur(8px);
 }
 
 .movie-image:hover .play-icon{
@@ -308,7 +329,7 @@ font-size:12px;
 font-weight:bold;
 }
 
-/* INFO */
+/* MOVIE NAME */
 
 .movie-info{
 padding:14px;
@@ -316,7 +337,16 @@ text-align:center;
 }
 
 .movie-info h3{
-font-size:24px;
+font-size:22px;
+font-weight:700;
+color:white;
+margin-top:6px;
+font-family:'Trebuchet MS',sans-serif;
+letter-spacing:1px;
+text-shadow:0 0 12px rgba(255,255,255,.25);
+background:linear-gradient(45deg,#ffffff,#ffcc70,#ff0066);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 /* POPUP */
@@ -394,6 +424,7 @@ cursor:pointer;
 <div class="hero-slider">
 
 <!-- 1 -->
+
 <div class="slide active-slide">
 
 <img src="file_0000000047c871f4b496c9fba737d301">
@@ -417,6 +448,7 @@ cursor:pointer;
 </div>
 
 <!-- 2 -->
+
 <div class="slide">
 
 <img src="file_00000000335871f497008dd3ddaa53cd">
@@ -440,6 +472,7 @@ cursor:pointer;
 </div>
 
 <!-- 3 -->
+
 <div class="slide">
 
 <img src="file_00000000880c71f4afb4c952c5f5e7a6">
@@ -463,6 +496,7 @@ cursor:pointer;
 </div>
 
 <!-- 4 -->
+
 <div class="slide">
 
 <img src="IMG_20260519_122720_858.png">
@@ -486,6 +520,7 @@ cursor:pointer;
 </div>
 
 <!-- 5 -->
+
 <div class="slide">
 
 <img src="IMG_20260522_140604_218.png">
@@ -508,35 +543,11 @@ cursor:pointer;
 
 </div>
 
-<!-- 6 -->
-<div class="slide">
-
-<img src="IMG_20260522_140704_502.png">
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<h1>CRIME 101</h1>
-
-<p>
-ئەکشن و تاوان
-</p>
-
-<button class="hero-watch-btn">
-▶ تماشا بکە
-</button>
-
-</div>
-
-</div>
-
 <!-- DOTS -->
 
 <div class="slider-dots">
 
 <span class="dot active-dot"></span>
-<span class="dot"></span>
 <span class="dot"></span>
 <span class="dot"></span>
 <span class="dot"></span>
