@@ -159,25 +159,26 @@ opacity:1;
 z-index:5;
 }
 
-/* HERO IMAGE FULL + NO ZOOM */
+/* لاپەری سەرەکی زووم نەکات + تەواوی وێنە دیاربێت */
 
 .slide img{
 width:100%;
 height:100%;
 
-/* تەواوی وێنە دیار دەبێت */
+/* تەواوی وێنە دیاربێت */
 object-fit:contain;
 
+/* ڕەش لە دەوروبەر */
 background:#000;
 
-opacity:1 !important;
-visibility:visible !important;
-
-/* زووم نەکات */
+/* زووم و موڤی لاچوو */
 transform:none !important;
 scale:1 !important;
 animation:none !important;
 transition:none !important;
+
+opacity:1 !important;
+visibility:visible !important;
 }
 
 /* OVERLAY */
@@ -210,8 +211,6 @@ font-size:28px;
 font-weight:900;
 margin-bottom:8px;
 
-font-family:'Cairo',sans-serif;
-
 background:linear-gradient(45deg,#ffffff,#ffcc70,#ff0066);
 
 -webkit-background-clip:text;
@@ -227,8 +226,6 @@ font-size:13px;
 line-height:1.8;
 color:#f1f1f1;
 margin-bottom:14px;
-
-text-shadow:0 0 10px rgba(0,0,0,.8);
 }
 
 .hero-watch-btn{
@@ -284,8 +281,6 @@ background:linear-gradient(45deg,#ff0066,#ff8800);
 font-size:34px;
 font-weight:900;
 padding:28px 18px;
-
-font-family:'Cairo',sans-serif;
 
 background:linear-gradient(45deg,#ff0066,#ffcc00,#ffffff);
 
@@ -400,10 +395,6 @@ font-size:24px;
 font-weight:900;
 margin-top:6px;
 
-font-family:'Cairo',sans-serif;
-
-letter-spacing:.5px;
-
 background:linear-gradient(45deg,#ffffff,#ffcc70,#ff0066);
 
 -webkit-background-clip:text;
@@ -448,6 +439,7 @@ cursor:pointer;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -510,60 +502,6 @@ cursor:pointer;
 
 </div>
 
-<div class="slide">
-
-<img src="image_1779992286895.jpeg">
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<h1>ڕۆبین هود</h1>
-
-<p>
-فیلمی ئەکشن و مێژوویی
-</p>
-
-<button class="hero-watch-btn">
-▶ تماشا بکە
-</button>
-
-</div>
-
-</div>
-
-<div class="slide">
-
-<img src="image_1779988565013.jpeg">
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<h1>ئاکشن .کۆمیدی .رۆمانسی</h1>
-
-<p>
-شەڕی بەهێز و ئەکشنی ئاگری
-</p>
-
-<button class="hero-watch-btn">
-▶ تماشا بکە
-</button>
-
-</div>
-
-</div>
-
-<!-- DOTS -->
-
-<div class="slider-dots">
-
-<span class="dot active-dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
-
-</div>
-
 </div>
 
 <!-- MOVIES -->
@@ -572,31 +510,14 @@ cursor:pointer;
 نوێترین فیلمەکان
 </div>
 
-<div class="movies-grid" id="moviesGrid">
+<div class="movies-grid">
+
+<!-- MOVIE 1 -->
 
 <div class="movie-card">
 
-<div class="movie-image">
-
-<img src="file_00000000e440720a9828825168bd0226.png">
-
-<div class="play-icon">▶</div>
-
-<div class="rating">⭐ 8.5</div>
-
-<div class="views">👁 120K</div>
-
-</div>
-
-<div class="movie-info">
-<h3>عەشق و فیتنە</h3>
-</div>
-
-</div>
-
-<div class="movie-card">
-
-<div class="movie-image">
+<div class="movie-image"
+onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
 
 <img src="file_00000000b37872469944d35385c90010.png">
 
@@ -614,6 +535,62 @@ cursor:pointer;
 
 </div>
 
+<!-- MOVIE 2 -->
+
+<div class="movie-card">
+
+<div class="movie-image"
+onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
+
+<img src="file_000000001dd871f49685c5a6ef226e96.png">
+
+<div class="play-icon">▶</div>
+
+<div class="rating">⭐ 8.1</div>
+
+<div class="views">👁 77K</div>
+
+</div>
+
+<div class="movie-info">
+<h3>رۆستەم</h3>
+</div>
+
+</div>
+
+<!-- MOVIE 3 -->
+
+<div class="movie-card">
+
+<div class="movie-image"
+onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
+
+<img src="file_000000006ec871f4a20f395a91e29602 (1).png">
+
+<div class="play-icon">▶</div>
+
+<div class="rating">⭐ 8.9</div>
+
+<div class="views">👁 150K</div>
+
+</div>
+
+<div class="movie-info">
+<h3>لمبی</h3>
+</div>
+
+</div>
+
+</div>
+
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+
+<button class="close-popup" onclick="closePopup()">✕</button>
+
+<video id="popupVideo" controls playsinline></video>
+
 </div>
 
 <script>
@@ -628,42 +605,48 @@ function closeMenu(){
 document.getElementById("sidebar").classList.remove("active");
 }
 
-/* SLIDER */
+/* VIDEO */
 
-let slides=document.querySelectorAll(".slide");
-let dots=document.querySelectorAll(".dot");
+function openPopup(videoUrl){
 
-let current=0;
+document.getElementById("popup").style.display="flex";
 
-function showSlide(index){
+let video=document.getElementById("popupVideo");
 
-slides.forEach(slide=>{
-slide.classList.remove("active-slide");
+if(Hls.isSupported()){
+
+let hls=new Hls();
+
+hls.loadSource(videoUrl);
+
+hls.attachMedia(video);
+
+hls.on(Hls.Events.MANIFEST_PARSED,function(){
+
+video.play();
+
 });
 
-dots.forEach(dot=>{
-dot.classList.remove("active-dot");
-});
+}else if(video.canPlayType('application/vnd.apple.mpegurl')){
 
-slides[index].classList.add("active-slide");
+video.src=videoUrl;
 
-dots[index].classList.add("active-dot");
+video.play();
 
 }
 
-setInterval(()=>{
-
-current++;
-
-if(current >= slides.length){
-current=0;
 }
 
-showSlide(current);
+function closePopup(){
 
-},4000);
+document.getElementById("popup").style.display="none";
+
+document.getElementById("popupVideo").pause();
+
+}
 
 </script>
 
 </body>
+
 </html>
