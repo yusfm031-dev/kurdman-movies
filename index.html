@@ -8,7 +8,9 @@
 
 <title>KurdMan Movies</title>
 
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -16,113 +18,76 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
 background:#050505;
+font-family:'Cairo',sans-serif;
 color:white;
 overflow-x:hidden;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 
-.topbar{
+header{
 position:fixed;
 top:0;
+right:0;
 left:0;
-width:100%;
-height:75px;
-background:rgba(0,0,0,.55);
-backdrop-filter:blur(12px);
+height:70px;
+background:#090909;
 display:flex;
 align-items:center;
 justify-content:space-between;
 padding:0 18px;
-z-index:99999;
-border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.menu-btn{
-font-size:32px;
-cursor:pointer;
-color:white;
+z-index:999;
+border-bottom:1px solid rgba(255,255,255,.07);
 }
 
 .logo{
-font-size:24px;
-font-weight:bold;
-color:white;
+font-size:28px;
+font-weight:900;
+background:linear-gradient(45deg,#ff0055,#ffcc00);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.search-box{
-width:45%;
-height:44px;
-background:#111;
-border-radius:30px;
+.search{
+font-size:22px;
+}
+
+/* 4- مینوی نوێ */
+
+.menu-btn{
+width:48px;
+height:48px;
+border-radius:14px;
+background:linear-gradient(45deg,#ff0066,#ff9900);
 display:flex;
 align-items:center;
-padding:0 15px;
-}
-
-.search-box input{
-width:100%;
-background:none;
-border:none;
-outline:none;
-color:white;
-font-size:15px;
-}
-
-.search-box span{
-margin-left:8px;
-}
-
-/* SIDEBAR */
-
-.sidebar{
-position:fixed;
-top:0;
-right:-100%;
-width:78%;
-height:100%;
-background:#080808;
-z-index:999999;
-padding:35px 25px;
-transition:.5s;
-}
-
-.sidebar.active{
-right:0;
-}
-
-.close-menu{
-font-size:35px;
-margin-bottom:40px;
+justify-content:center;
+font-size:24px;
 cursor:pointer;
 color:white;
+box-shadow:0 0 18px rgba(255,0,100,.35);
+transition:.3s;
 }
 
-.sidebar a{
-display:flex;
-align-items:center;
-gap:14px;
-color:white;
-text-decoration:none;
-font-size:22px;
-margin:30px 0;
+.menu-btn:hover{
+transform:scale(1.08);
 }
 
-/* HERO */
+/* ===== HERO ===== */
 
 .hero-slider{
 position:relative;
 width:100%;
 height:540px;
 overflow:hidden;
-margin-top:75px;
+margin-top:70px;
+background:black;
 border-bottom:3px solid #ff0055;
-background:#000;
 }
 
 .slide{
@@ -133,187 +98,167 @@ opacity:0;
 transition:1s;
 }
 
-.active-slide{
+.slide.active{
 opacity:1;
-z-index:5;
+z-index:2;
 }
+
+/* 2- زووم نەکات */
 
 .slide img{
 width:100%;
 height:100%;
 object-fit:cover;
-opacity:1 !important;
-visibility:visible !important;
+transform:none !important;
+animation:none !important;
+scale:1 !important;
 }
 
-.hero-overlay{
+.overlay{
 position:absolute;
-top:0;
-left:0;
+inset:0;
+background:linear-gradient(to top,#000 15%,transparent 60%);
+}
+
+.slide-content{
+position:absolute;
+bottom:60px;
+right:25px;
+left:25px;
+z-index:5;
+}
+
+.slide-content h1{
+font-size:52px;
+font-weight:900;
+line-height:1.1;
+margin-bottom:10px;
+}
+
+.slide-content p{
+font-size:16px;
+color:#ddd;
+margin-bottom:20px;
+line-height:1.8;
+max-width:90%;
+}
+
+.watch-btn{
+display:inline-block;
+padding:12px 26px;
+border-radius:50px;
+background:linear-gradient(45deg,#ff0066,#ffcc00);
+color:white;
+font-weight:800;
+font-size:16px;
+text-decoration:none;
+box-shadow:0 0 20px rgba(255,0,100,.4);
+}
+
+/* ===== DOTS ===== */
+
+.dots{
+position:absolute;
+bottom:18px;
 width:100%;
-height:100%;
-background:
-linear-gradient(to top,#050505 5%,transparent 70%),
-linear-gradient(to right,rgba(0,0,0,.65),rgba(0,0,0,.15));
-}
-
-.hero-content{
-position:absolute;
-bottom:90px;
-right:20px;
-z-index:10;
-width:85%;
-}
-
-.hero-content h1{
-font-size:42px;
-font-weight:bold;
-margin-bottom:12px;
-color:white;
-text-shadow:0 0 20px rgba(0,0,0,.8);
-}
-
-.hero-content p{
-font-size:17px;
-line-height:1.7;
-color:#eee;
-margin-bottom:18px;
-}
-
-.hero-watch-btn{
-padding:11px 24px;
-border:none;
-border-radius:40px;
-background:linear-gradient(45deg,#ff0066,#ff9900);
-color:white;
-font-size:14px;
-font-weight:bold;
-cursor:pointer;
-box-shadow:0 0 20px rgba(255,0,100,.45);
-transition:.3s;
-}
-
-.hero-watch-btn:hover{
-transform:scale(1.06);
-}
-
-/* DOTS */
-
-.slider-dots{
-position:absolute;
-bottom:28px;
-left:50%;
-transform:translateX(-50%);
 display:flex;
-gap:10px;
-z-index:50;
-background:rgba(0,0,0,.45);
-padding:10px 18px;
-border-radius:30px;
-backdrop-filter:blur(10px);
+justify-content:center;
+gap:8px;
+z-index:10;
 }
 
 .dot{
 width:10px;
 height:10px;
-background:#ddd;
 border-radius:50%;
-transition:.4s;
+background:#777;
+transition:.3s;
 }
 
-.active-dot{
-width:34px;
+.dot.active{
+width:30px;
 border-radius:20px;
-background:linear-gradient(45deg,#ff0066,#ff8800);
+background:linear-gradient(45deg,#ff0055,#ffcc00);
 }
 
-/* SECTION */
+/* 5- نوێترین فیلمەکان */
 
 .section-title{
-font-size:30px;
-font-weight:bold;
-color:#ff2255;
-padding:25px 18px;
+font-size:34px;
+font-weight:900;
+padding:28px 18px;
+
+font-family:'Cairo',sans-serif;
+
+background:linear-gradient(45deg,#ff0066,#ffcc00,#ffffff);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+text-shadow:0 0 20px rgba(255,0,100,.25);
 }
 
-/* MOVIES */
+/* ===== MOVIES ===== */
 
-.movies-grid{
+.movies{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:16px;
-padding:15px;
+padding:0 16px 110px;
 }
 
 .movie-card{
-background:#101010;
-border-radius:22px;
-overflow:hidden;
 position:relative;
-box-shadow:0 0 20px rgba(255,255,255,.05);
+background:#111;
+border-radius:18px;
+overflow:hidden;
 transition:.3s;
 }
 
 .movie-card:hover{
-transform:translateY(-6px);
-box-shadow:0 0 25px rgba(255,0,100,.25);
+transform:translateY(-5px);
 }
 
-.movie-image{
-position:relative;
-overflow:hidden;
-cursor:pointer;
-}
-
-.movie-image img{
+.movie-card img{
 width:100%;
-height:320px;
+height:280px;
 object-fit:cover;
 display:block;
-transition:.4s;
-border-radius:20px;
-opacity:1 !important;
-visibility:visible !important;
 }
 
-.movie-image:hover img{
-transform:scale(1.05);
-}
+/* ===== PLAY BUTTON ===== */
 
-/* PLAY */
-
-.play-icon{
+.play-btn{
 position:absolute;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
-width:72px;
-height:72px;
+width:70px;
+height:70px;
 border-radius:50%;
-background:linear-gradient(45deg,#ff0066,#ff8800);
+background:linear-gradient(45deg,#ff0066,#ffcc00);
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:30px;
+font-size:28px;
 opacity:0;
-transition:.4s;
-backdrop-filter:blur(8px);
+transition:.3s;
 }
 
-.movie-image:hover .play-icon{
+.movie-card:hover .play-btn{
 opacity:1;
 }
 
-/* RATING */
+/* 1- ریتینگ و فیو بجووک */
 
 .rating{
 position:absolute;
 top:10px;
 left:10px;
 background:#ffcc00;
-padding:6px 12px;
-border-radius:14px;
-font-size:12px;
+padding:3px 9px;
+border-radius:10px;
+font-size:9px;
 font-weight:bold;
 color:black;
 }
@@ -323,13 +268,13 @@ position:absolute;
 top:10px;
 right:10px;
 background:rgba(0,0,0,.7);
-padding:6px 12px;
-border-radius:14px;
-font-size:12px;
+padding:3px 9px;
+border-radius:10px;
+font-size:9px;
 font-weight:bold;
 }
 
-/* MOVIE NAME */
+/* 3- ناوی فیلمەکان */
 
 .movie-info{
 padding:14px;
@@ -338,48 +283,77 @@ text-align:center;
 
 .movie-info h3{
 font-size:22px;
-font-weight:700;
-color:white;
-margin-top:6px;
-font-family:'Trebuchet MS',sans-serif;
-letter-spacing:1px;
-text-shadow:0 0 12px rgba(255,255,255,.25);
+font-weight:900;
+font-family:'Cairo',sans-serif;
+letter-spacing:.5px;
+
 background:linear-gradient(45deg,#ffffff,#ffcc70,#ff0066);
+
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+
+text-shadow:0 0 15px rgba(255,255,255,.15);
 }
 
-/* POPUP */
+/* ===== MENU ===== */
 
-.popup{
+.side-menu{
 position:fixed;
 top:0;
-left:0;
-width:100%;
+right:-260px;
+width:260px;
 height:100%;
-background:black;
-display:none;
-justify-content:center;
-align-items:center;
-z-index:999999;
+background:#0d0d0d;
+z-index:9999;
+padding-top:90px;
+transition:.4s;
 }
 
-.popup video{
-width:100%;
-height:auto;
+.side-menu.active{
+right:0;
 }
 
-.close-popup{
-position:absolute;
-top:20px;
-right:20px;
-background:red;
+.side-menu a{
+display:block;
+padding:18px 30px;
 color:white;
-border:none;
-padding:10px 15px;
-font-size:22px;
-border-radius:14px;
-cursor:pointer;
+text-decoration:none;
+font-size:18px;
+border-bottom:1px solid rgba(255,255,255,.06);
+transition:.3s;
+}
+
+.side-menu a:hover{
+background:#171717;
+padding-right:40px;
+}
+
+/* ===== BOTTOM NAV ===== */
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+right:0;
+left:0;
+height:78px;
+background:#090909;
+display:flex;
+justify-content:space-around;
+align-items:center;
+z-index:999;
+border-top:1px solid rgba(255,255,255,.07);
+}
+
+.bottom-nav div{
+font-size:13px;
+text-align:center;
+color:#ccc;
+}
+
+.bottom-nav i{
+display:block;
+font-size:24px;
+margin-bottom:4px;
 }
 
 </style>
@@ -387,35 +361,26 @@ cursor:pointer;
 
 <body>
 
-<!-- HEADER -->
+<header>
 
-<div class="topbar">
-
-<div class="menu-btn" onclick="openMenu()">☰</div>
-
-<div class="search-box">
-
-<span>🔍</span>
-
-<input type="text" placeholder="گەران..." id="searchInput">
-
-</div>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 
 <div class="logo">KurdMan</div>
 
-</div>
+<div class="search">🔍</div>
 
-<!-- SIDEBAR -->
+</header>
 
-<div class="sidebar" id="sidebar">
+<!-- MENU -->
 
-<div class="close-menu" onclick="closeMenu()">✕</div>
+<div class="side-menu" id="menu">
 
-<a href="#">🏠 سەرەتا</a>
+<a href="#">🏠 سەرەکی</a>
 <a href="#">🎬 فیلمەکان</a>
-<a href="#">📺 زنجیرەکان</a>
 <a href="#">🔥 ترێند</a>
-<a href="#">⭐ پێشنیارەکان</a>
+<a href="#">⭐ دڵخوازەکان</a>
+<a href="#">📺 زنجیرەکان</a>
+<a href="#">⚙️ زیادتر</a>
 
 </div>
 
@@ -423,249 +388,189 @@ cursor:pointer;
 
 <div class="hero-slider">
 
-<!-- 1 -->
+<div class="slide active">
 
-<div class="slide active-slide">
+<img src="https://i.postimg.cc/g0GQ8K7S/IMG-20260528-214857.jpg">
 
-<img src="file_0000000047c871f4b496c9fba737d301">
+<div class="overlay"></div>
 
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<h1>چیست لینەری</h1>
-
-<p>
-فیلمی کۆمیدی و ڕۆمانسی کۆری
-</p>
-
-<button class="hero-watch-btn">
-▶ تماشا بکە
-</button>
-
-</div>
-
-</div>
-
-<!-- 2 -->
-
-<div class="slide">
-
-<img src="file_00000000335871f497008dd3ddaa53cd">
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<h1>ڕۆبین هود</h1>
-
-<p>
-فیلمی ئەکشن و مێژوویی
-</p>
-
-<button class="hero-watch-btn">
-▶ تماشا بکە
-</button>
-
-</div>
-
-</div>
-
-<!-- 3 -->
-
-<div class="slide">
-
-<img src="file_00000000880c71f4afb4c952c5f5e7a6">
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
+<div class="slide-content">
 
 <h1>IMMORTAL KOMBAT</h1>
 
 <p>
-شەڕی بەهێز و ئەکشنی ئاگری
+جەنگێکی گەورە لە نێوان پاڵەوانانی ئاگر و تاریکی
 </p>
 
-<button class="hero-watch-btn">
-▶ تماشا بکە
-</button>
+<a class="watch-btn">
+تماشا بکە
+</a>
 
 </div>
 
 </div>
-
-<!-- 4 -->
 
 <div class="slide">
 
-<img src="IMG_20260519_122720_858.png">
+<img src="https://i.postimg.cc/Fs1JcQqQ/IMG-20260528-214903.jpg">
 
-<div class="hero-overlay"></div>
+<div class="overlay"></div>
 
-<div class="hero-content">
+<div class="slide-content">
 
-<h1>THE PITT</h1>
+<h1>ROBIN HOOD</h1>
 
 <p>
-باشترین فیلم و زنجیرە دۆبلاژکراوەکان
+چیرۆکی پاڵەوانێک کە دژی ستەم دەجەنگێت
 </p>
 
-<button class="hero-watch-btn">
-▶ تماشا بکە
-</button>
+<a class="watch-btn">
+تماشا بکە
+</a>
 
 </div>
 
 </div>
-
-<!-- 5 -->
 
 <div class="slide">
 
-<img src="IMG_20260522_140604_218.png">
+<img src="https://i.postimg.cc/rwK2j4Nx/IMG-20260528-214909.jpg">
 
-<div class="hero-overlay"></div>
+<div class="overlay"></div>
 
-<div class="hero-content">
+<div class="slide-content">
 
-<h1>FROM</h1>
+<h1>چیشت لینەری</h1>
 
 <p>
-فیلمی ترسناک و نهێنی
+فیلمێکی کۆمیدی و خێزانی
 </p>
 
-<button class="hero-watch-btn">
-▶ تماشا بکە
-</button>
+<a class="watch-btn">
+تماشا بکە
+</a>
 
 </div>
 
 </div>
 
-<!-- DOTS -->
+<div class="dots">
 
-<div class="slider-dots">
-
-<span class="dot active-dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
+<div class="dot active"></div>
+<div class="dot"></div>
+<div class="dot"></div>
 
 </div>
 
 </div>
+
+<!-- SECTION -->
+
+<h2 class="section-title">
+نوێترین فیلمەکان
+</h2>
 
 <!-- MOVIES -->
 
-<div class="section-title">
-نوێترین فیلمەکان
-</div>
-
-<div class="movies-grid" id="moviesGrid">
-
-<!-- MOVIE 1 -->
+<div class="movies">
 
 <div class="movie-card">
 
-<div class="movie-image"
-onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
+<img src="https://i.postimg.cc/Fs1JcQqQ/IMG-20260528-214903.jpg">
 
-<img src="file_00000000e440720a9828825168bd0226.png">
+<div class="rating">8.7 ⭐</div>
 
-<div class="play-icon">▶</div>
+<div class="views">150K 👁</div>
 
-<div class="rating">⭐ 8.5</div>
-
-<div class="views">👁 120K</div>
-
-</div>
+<div class="play-btn">▶</div>
 
 <div class="movie-info">
-<h3>عەشق و فیتنە</h3>
-</div>
+
+<h3>ڕۆبین هود</h3>
 
 </div>
 
-<!-- MOVIE 2 -->
+</div>
 
 <div class="movie-card">
 
-<div class="movie-image"
-onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+<img src="https://i.postimg.cc/g0GQ8K7S/IMG-20260528-214857.jpg">
 
-<img src="file_00000000b37872469944d35385c90010.png">
+<div class="rating">9.1 ⭐</div>
 
-<div class="play-icon">▶</div>
+<div class="views">240K 👁</div>
 
-<div class="rating">⭐ 8.3</div>
-
-<div class="views">👁 95K</div>
-
-</div>
+<div class="play-btn">▶</div>
 
 <div class="movie-info">
-<h3>ساوا</h3>
-</div>
+
+<h3>Immortal Kombat</h3>
 
 </div>
 
-<!-- MOVIE 3 -->
+</div>
 
 <div class="movie-card">
 
-<div class="movie-image"
-onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
+<img src="https://i.postimg.cc/rwK2j4Nx/IMG-20260528-214909.jpg">
 
-<img src="file_000000001dd871f49685c5a6ef226e96.png">
+<div class="rating">8.5 ⭐</div>
 
-<div class="play-icon">▶</div>
+<div class="views">120K 👁</div>
 
-<div class="rating">⭐ 8.1</div>
-
-<div class="views">👁 77K</div>
-
-</div>
+<div class="play-btn">▶</div>
 
 <div class="movie-info">
-<h3>رۆستەم</h3>
-</div>
+
+<h3>چیشت لینەری</h3>
 
 </div>
 
-<!-- MOVIE 4 -->
+</div>
 
 <div class="movie-card">
 
-<div class="movie-image"
-onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
+<img src="https://i.postimg.cc/9f6v4j0Y/IMG-20260528-214914.jpg">
 
-<img src="file_000000006ec871f4a20f395a91e29602 (1).png">
+<div class="rating">8.9 ⭐</div>
 
-<div class="play-icon">▶</div>
+<div class="views">310K 👁</div>
 
-<div class="rating">⭐ 8.9</div>
-
-<div class="views">👁 150K</div>
-
-</div>
+<div class="play-btn">▶</div>
 
 <div class="movie-info">
-<h3>لمبی</h3>
-</div>
+
+<h3>Resident Evil 4</h3>
 
 </div>
 
 </div>
 
-<!-- POPUP -->
+</div>
 
-<div class="popup" id="popup">
+<!-- BOTTOM NAV -->
 
-<button class="close-popup" onclick="closePopup()">✕</button>
+<div class="bottom-nav">
 
-<video id="popupVideo" controls playsinline></video>
+<div>
+<i>🏠</i>
+سەرەکی
+</div>
+
+<div>
+<i>🎬</i>
+فیلم
+</div>
+
+<div>
+<i>🔥</i>
+ترێند
+</div>
+
+<div>
+<i>❤️</i>
+دڵخواز
+</div>
 
 </div>
 
@@ -673,12 +578,8 @@ onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-78
 
 /* MENU */
 
-function openMenu(){
-document.getElementById("sidebar").classList.add("active");
-}
-
-function closeMenu(){
-document.getElementById("sidebar").classList.remove("active");
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
 }
 
 /* SLIDER */
@@ -690,17 +591,13 @@ let current=0;
 
 function showSlide(index){
 
-slides.forEach(slide=>{
-slide.classList.remove("active-slide");
-});
+slides.forEach(slide=>slide.classList.remove("active"));
 
-dots.forEach(dot=>{
-dot.classList.remove("active-dot");
-});
+dots.forEach(dot=>dot.classList.remove("active"));
 
-slides[index].classList.add("active-slide");
+slides[index].classList.add("active");
 
-dots[index].classList.add("active-dot");
+dots[index].classList.add("active");
 
 }
 
@@ -708,81 +605,13 @@ setInterval(()=>{
 
 current++;
 
-if(current >= slides.length){
+if(current>=slides.length){
 current=0;
 }
 
 showSlide(current);
 
 },4000);
-
-/* VIDEO */
-
-function openPopup(videoUrl){
-
-document.getElementById("popup").style.display="flex";
-
-let video=document.getElementById("popupVideo");
-
-if(Hls.isSupported()){
-
-let hls=new Hls();
-
-hls.loadSource(videoUrl);
-
-hls.attachMedia(video);
-
-hls.on(Hls.Events.MANIFEST_PARSED,function(){
-
-video.play();
-
-});
-
-}else if(video.canPlayType('application/vnd.apple.mpegurl')){
-
-video.src=videoUrl;
-
-video.play();
-
-}
-
-}
-
-function closePopup(){
-
-document.getElementById("popup").style.display="none";
-
-document.getElementById("popupVideo").pause();
-
-}
-
-/* SEARCH */
-
-const searchInput=document.getElementById("searchInput");
-
-searchInput.addEventListener("keyup",function(){
-
-let value=searchInput.value.toLowerCase();
-
-let cards=document.querySelectorAll(".movie-card");
-
-cards.forEach(card=>{
-
-let text=card.innerText.toLowerCase();
-
-if(text.includes(value)){
-
-card.style.display="block";
-
-}else{
-
-card.style.display="none";
-
-}
-
-});
-
-});
 
 </script>
 
