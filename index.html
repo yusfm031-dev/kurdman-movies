@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ku">
+<html lang="ku" dir="rtl">
+
 <head>
 
 <meta charset="UTF-8">
@@ -24,46 +25,41 @@ color:white;
 overflow-x:hidden;
 }
 
-/* TOPBAR */
+/* HEADER */
 
 .topbar{
 position:fixed;
 top:0;
 left:0;
 width:100%;
-height:74px;
+height:75px;
 background:rgba(0,0,0,.55);
 backdrop-filter:blur(12px);
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:0 16px;
+padding:0 18px;
 z-index:99999;
+border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .menu-btn{
 font-size:32px;
-color:white;
 cursor:pointer;
-width:52px;
-height:52px;
-border-radius:18px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:rgba(255,255,255,.06);
+color:white;
 }
 
 .logo{
-font-size:20px;
+font-size:25px;
 font-weight:bold;
+color:white;
 }
 
 .search-box{
-width:48%;
-height:46px;
-background:rgba(255,255,255,.06);
-border-radius:40px;
+width:45%;
+height:44px;
+background:#111;
+border-radius:30px;
 display:flex;
 align-items:center;
 padding:0 15px;
@@ -79,8 +75,7 @@ font-size:15px;
 }
 
 .search-box span{
-margin-right:8px;
-color:#00d0ff;
+margin-left:8px;
 }
 
 /* SIDEBAR */
@@ -88,50 +83,45 @@ color:#00d0ff;
 .sidebar{
 position:fixed;
 top:0;
-left:-100%;
+right:-100%;
 width:78%;
 height:100%;
-background:#0b0b0f;
+background:#080808;
 z-index:999999;
 padding:35px 25px;
 transition:.5s;
 }
 
 .sidebar.active{
-left:0;
+right:0;
 }
 
 .close-menu{
-font-size:36px;
+font-size:35px;
 margin-bottom:40px;
 cursor:pointer;
-text-align:right;
 color:white;
 }
 
 .sidebar a{
 display:flex;
 align-items:center;
-justify-content:space-between;
+gap:14px;
 color:white;
 text-decoration:none;
-font-size:24px;
-margin:32px 0;
-font-weight:bold;
+font-size:22px;
+margin:30px 0;
 }
 
-.sidebar a span{
-font-size:28px;
-}
-
-/* HERO */
+/* HERO SLIDER */
 
 .hero-slider{
 position:relative;
 width:100%;
 height:520px;
 overflow:hidden;
-margin-top:74px;
+margin-top:75px;
+border-bottom:3px solid #ff004c;
 }
 
 .slide{
@@ -144,14 +134,13 @@ transition:1s;
 
 .active-slide{
 opacity:1;
-z-index:2;
+z-index:5;
 }
 
 .slide img{
 width:100%;
 height:100%;
 object-fit:cover;
-filter:brightness(.45);
 }
 
 .hero-overlay{
@@ -160,42 +149,45 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(to top,#050505 8%,transparent 70%);
+background:
+linear-gradient(to top,#050505 5%,transparent 70%),
+linear-gradient(to right,rgba(0,0,0,.65),rgba(0,0,0,.15));
 }
 
 .hero-content{
 position:absolute;
-bottom:85px;
-left:20px;
-z-index:5;
-width:90%;
+bottom:90px;
+right:20px;
+z-index:10;
+width:85%;
 }
 
 .hero-content h1{
-font-size:48px;
-margin-bottom:10px;
+font-size:42px;
+font-weight:bold;
+margin-bottom:12px;
+color:white;
+text-shadow:0 0 20px rgba(0,0,0,.8);
 }
 
 .hero-content p{
 font-size:17px;
 line-height:1.7;
-color:#ddd;
+color:#eee;
 margin-bottom:18px;
 }
 
-.watch-btn{
-padding:13px 28px;
+.hero-watch-btn{
+padding:12px 28px;
 border:none;
 border-radius:40px;
-background:linear-gradient(45deg,#ff0066,#ff6600);
+background:linear-gradient(45deg,#ff0066,#ff8800);
 color:white;
-font-size:16px;
+font-size:15px;
 font-weight:bold;
 cursor:pointer;
-box-shadow:0 0 18px rgba(255,0,120,.5);
+box-shadow:0 0 20px rgba(255,0,100,.5);
 }
-
-/* DOTS */
 
 .slider-dots{
 position:absolute;
@@ -204,13 +196,17 @@ left:50%;
 transform:translateX(-50%);
 display:flex;
 gap:10px;
-z-index:10;
+z-index:50;
+background:rgba(0,0,0,.45);
+padding:10px 18px;
+border-radius:30px;
+backdrop-filter:blur(10px);
 }
 
 .dot{
-width:11px;
-height:11px;
-background:#bbb;
+width:10px;
+height:10px;
+background:#ddd;
 border-radius:50%;
 transition:.4s;
 }
@@ -218,16 +214,16 @@ transition:.4s;
 .active-dot{
 width:34px;
 border-radius:20px;
-background:#ff6600;
+background:linear-gradient(45deg,#ff0066,#ff8800);
 }
 
 /* SECTION */
 
 .section-title{
-font-size:34px;
+font-size:30px;
 font-weight:bold;
-color:#ff1b6b;
-padding:28px 18px;
+color:#ff2255;
+padding:25px 18px;
 }
 
 /* MOVIES */
@@ -235,59 +231,56 @@ padding:28px 18px;
 .movies-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:18px;
+gap:16px;
 padding:15px;
 }
 
 .movie-card{
-background:#0f0f14;
+background:#101010;
 border-radius:24px;
 overflow:hidden;
+position:relative;
 }
 
 .movie-image{
 position:relative;
 overflow:hidden;
+cursor:pointer;
 }
 
 .movie-image img{
 width:100%;
-height:310px;
+height:300px;
 object-fit:cover;
 display:block;
+transition:.4s;
 }
 
-/* PLAY OVERLAY */
+.movie-image:hover img{
+transform:scale(1.05);
+}
 
-.play-overlay{
+/* PLAY BUTTON */
+
+.play-icon{
 position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-display:flex;
-justify-content:center;
-align-items:center;
-opacity:0;
-transition:.3s;
-background:rgba(0,0,0,.25);
-}
-
-.movie-image:active .play-overlay{
-opacity:1;
-}
-
-.play-circle{
-width:82px;
-height:82px;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:72px;
+height:72px;
 border-radius:50%;
-background:linear-gradient(45deg,#ff0080,#ff6600);
+background:linear-gradient(45deg,#ff0066,#ff8800);
 display:flex;
-justify-content:center;
 align-items:center;
-font-size:34px;
-color:white;
-box-shadow:0 0 25px rgba(255,0,120,.7);
+justify-content:center;
+font-size:30px;
+opacity:0;
+transition:.4s;
+}
+
+.movie-image:hover .play-icon{
+opacity:1;
 }
 
 /* RATING */
@@ -296,9 +289,9 @@ box-shadow:0 0 25px rgba(255,0,120,.7);
 position:absolute;
 top:10px;
 left:10px;
-background:#ffd400;
+background:#ffcc00;
 padding:6px 12px;
-border-radius:18px;
+border-radius:14px;
 font-size:12px;
 font-weight:bold;
 color:black;
@@ -308,9 +301,9 @@ color:black;
 position:absolute;
 top:10px;
 right:10px;
-background:rgba(0,0,0,.6);
+background:rgba(0,0,0,.7);
 padding:6px 12px;
-border-radius:18px;
+border-radius:14px;
 font-size:12px;
 font-weight:bold;
 }
@@ -318,12 +311,12 @@ font-weight:bold;
 /* INFO */
 
 .movie-info{
-padding:15px;
+padding:14px;
 text-align:center;
 }
 
 .movie-info h3{
-font-size:26px;
+font-size:24px;
 }
 
 /* POPUP */
@@ -354,7 +347,7 @@ background:red;
 color:white;
 border:none;
 padding:10px 15px;
-font-size:24px;
+font-size:22px;
 border-radius:14px;
 cursor:pointer;
 }
@@ -364,7 +357,7 @@ cursor:pointer;
 
 <body>
 
-<!-- TOPBAR -->
+<!-- HEADER -->
 
 <div class="topbar">
 
@@ -372,9 +365,9 @@ cursor:pointer;
 
 <div class="search-box">
 
-<span>🔎</span>
+<span>🔍</span>
 
-<input type="text" placeholder="Search..." id="searchInput">
+<input type="text" placeholder="گەران..." id="searchInput">
 
 </div>
 
@@ -388,12 +381,11 @@ cursor:pointer;
 
 <div class="close-menu" onclick="closeMenu()">✕</div>
 
-<a href="#"><span>🏠</span> سەرەتا</a>
-<a href="#"><span>🎬</span> فیلمەکان</a>
-<a href="#"><span>📺</span> زنجیرەکان</a>
-<a href="#"><span>🔥</span> ترێند</a>
-<a href="#"><span>⭐</span> پێشنیارەکان</a>
-<a href="#"><span>👥</span> ستاف</a>
+<a href="#">🏠 سەرەتا</a>
+<a href="#">🎬 فیلمەکان</a>
+<a href="#">📺 زنجیرەکان</a>
+<a href="#">🔥 ترێند</a>
+<a href="#">⭐ پێشنیارەکان</a>
 
 </div>
 
@@ -401,7 +393,77 @@ cursor:pointer;
 
 <div class="hero-slider">
 
+<!-- 1 -->
 <div class="slide active-slide">
+
+<img src="file_0000000047c871f4b496c9fba737d301">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>چیست لینەری</h1>
+
+<p>
+فیلمی کۆمیدی و ڕۆمانسی کۆری
+</p>
+
+<button class="hero-watch-btn">
+▶ تماشا بکە
+</button>
+
+</div>
+
+</div>
+
+<!-- 2 -->
+<div class="slide">
+
+<img src="file_00000000335871f497008dd3ddaa53cd">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>ڕۆبین هود</h1>
+
+<p>
+فیلمی ئەکشن و مێژوویی
+</p>
+
+<button class="hero-watch-btn">
+▶ تماشا بکە
+</button>
+
+</div>
+
+</div>
+
+<!-- 3 -->
+<div class="slide">
+
+<img src="file_00000000880c71f4afb4c952c5f5e7a6">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>IMMORTAL KOMBAT</h1>
+
+<p>
+شەڕی بەهێز و ئەکشنی ئاگری
+</p>
+
+<button class="hero-watch-btn">
+▶ تماشا بکە
+</button>
+
+</div>
+
+</div>
+
+<!-- 4 -->
+<div class="slide">
 
 <img src="IMG_20260519_122720_858.png">
 
@@ -412,10 +474,10 @@ cursor:pointer;
 <h1>THE PITT</h1>
 
 <p>
-باشترین فیلم و زنجیرە دۆبلاژکراوە کوردییەکان
+باشترین فیلم و زنجیرە دۆبلاژکراوەکان
 </p>
 
-<button class="watch-btn">
+<button class="hero-watch-btn">
 ▶ تماشا بکە
 </button>
 
@@ -423,6 +485,7 @@ cursor:pointer;
 
 </div>
 
+<!-- 5 -->
 <div class="slide">
 
 <img src="IMG_20260522_140604_218.png">
@@ -437,7 +500,7 @@ cursor:pointer;
 فیلمی ترسناک و نهێنی
 </p>
 
-<button class="watch-btn">
+<button class="hero-watch-btn">
 ▶ تماشا بکە
 </button>
 
@@ -445,6 +508,7 @@ cursor:pointer;
 
 </div>
 
+<!-- 6 -->
 <div class="slide">
 
 <img src="IMG_20260522_140704_502.png">
@@ -459,7 +523,7 @@ cursor:pointer;
 ئەکشن و تاوان
 </p>
 
-<button class="watch-btn">
+<button class="hero-watch-btn">
 ▶ تماشا بکە
 </button>
 
@@ -467,49 +531,7 @@ cursor:pointer;
 
 </div>
 
-<div class="slide">
-
-<img src="IMG_20260522_140721_798.jpg">
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<h1>LAST NIGHT</h1>
-
-<p>
-فیلمی نوێی ئەکشن
-</p>
-
-<button class="watch-btn">
-▶ تماشا بکە
-</button>
-
-</div>
-
-</div>
-
-<div class="slide">
-
-<img src="file_00000000b37872469944d35385c90010.png">
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<h1>ساوا</h1>
-
-<p>
-فیلمی دۆبلاژکراوی کوردی
-</p>
-
-<button class="watch-btn">
-▶ تماشا بکە
-</button>
-
-</div>
-
-</div>
+<!-- DOTS -->
 
 <div class="slider-dots">
 
@@ -518,22 +540,21 @@ cursor:pointer;
 <span class="dot"></span>
 <span class="dot"></span>
 <span class="dot"></span>
+<span class="dot"></span>
 
 </div>
 
-</div>
-
-<!-- SECTION -->
-
-<div class="section-title">
-جاوەڕوانی دواتر
 </div>
 
 <!-- MOVIES -->
 
-<div class="movies-grid">
+<div class="section-title">
+نوێترین فیلمەکان
+</div>
 
-<!-- MOVIE -->
+<div class="movies-grid" id="moviesGrid">
+
+<!-- MOVIE 1 -->
 
 <div class="movie-card">
 
@@ -542,27 +563,21 @@ onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef
 
 <img src="file_00000000e440720a9828825168bd0226.png">
 
+<div class="play-icon">▶</div>
+
 <div class="rating">⭐ 8.5</div>
 
 <div class="views">👁 120K</div>
 
-<div class="play-overlay">
-
-<div class="play-circle">▶</div>
-
-</div>
-
 </div>
 
 <div class="movie-info">
-
 <h3>عەشق و فیتنە</h3>
-
 </div>
 
 </div>
 
-<!-- MOVIE -->
+<!-- MOVIE 2 -->
 
 <div class="movie-card">
 
@@ -571,27 +586,21 @@ onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-56
 
 <img src="file_00000000b37872469944d35385c90010.png">
 
+<div class="play-icon">▶</div>
+
 <div class="rating">⭐ 8.3</div>
 
 <div class="views">👁 95K</div>
 
-<div class="play-overlay">
-
-<div class="play-circle">▶</div>
-
-</div>
-
 </div>
 
 <div class="movie-info">
-
 <h3>ساوا</h3>
-
 </div>
 
 </div>
 
-<!-- MOVIE -->
+<!-- MOVIE 3 -->
 
 <div class="movie-card">
 
@@ -600,27 +609,21 @@ onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3
 
 <img src="file_000000001dd871f49685c5a6ef226e96.png">
 
+<div class="play-icon">▶</div>
+
 <div class="rating">⭐ 8.1</div>
 
 <div class="views">👁 77K</div>
 
-<div class="play-overlay">
-
-<div class="play-circle">▶</div>
-
-</div>
-
 </div>
 
 <div class="movie-info">
-
 <h3>رۆستەم</h3>
-
 </div>
 
 </div>
 
-<!-- MOVIE -->
+<!-- MOVIE 4 -->
 
 <div class="movie-card">
 
@@ -629,22 +632,16 @@ onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-78
 
 <img src="file_000000006ec871f4a20f395a91e29602 (1).png">
 
+<div class="play-icon">▶</div>
+
 <div class="rating">⭐ 8.9</div>
 
 <div class="views">👁 150K</div>
 
-<div class="play-overlay">
-
-<div class="play-circle">▶</div>
-
-</div>
-
 </div>
 
 <div class="movie-info">
-
 <h3>لمبی</h3>
-
 </div>
 
 </div>
@@ -706,7 +703,7 @@ current=0;
 
 showSlide(current);
 
-},3000);
+},4000);
 
 /* VIDEO */
 
