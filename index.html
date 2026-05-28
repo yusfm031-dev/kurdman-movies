@@ -1,6 +1,5 @@
-DOCTYPE html>
-<html lang="ku" dir="rtl">
-
+<!DOCTYPE html>
+<html lang="ku">
 <head>
 
 <meta charset="UTF-8">
@@ -10,15 +9,13 @@ DOCTYPE html>
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-
 <style>
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Cairo',sans-serif;
+font-family:sans-serif;
 }
 
 body{
@@ -27,58 +24,46 @@ color:white;
 overflow-x:hidden;
 }
 
-/* HEADER */
+/* TOPBAR */
 
 .topbar{
 position:fixed;
 top:0;
 left:0;
 width:100%;
-height:75px;
+height:74px;
 background:rgba(0,0,0,.55);
 backdrop-filter:blur(12px);
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:0 18px;
+padding:0 16px;
 z-index:99999;
-border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-/* MENU BUTTON */
-
 .menu-btn{
-width:48px;
-height:48px;
-border-radius:14px;
-background:linear-gradient(45deg,#ff0066,#ff9900);
+font-size:32px;
+color:white;
+cursor:pointer;
+width:52px;
+height:52px;
+border-radius:18px;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:24px;
-cursor:pointer;
-color:white;
-box-shadow:0 0 18px rgba(255,0,100,.35);
-transition:.3s;
-}
-
-.menu-btn:hover{
-transform:scale(1.08);
+background:rgba(255,255,255,.06);
 }
 
 .logo{
-font-size:24px;
+font-size:20px;
 font-weight:bold;
-color:white;
 }
 
-/* SEARCH */
-
 .search-box{
-width:45%;
-height:44px;
-background:#111;
-border-radius:30px;
+width:48%;
+height:46px;
+background:rgba(255,255,255,.06);
+border-radius:40px;
 display:flex;
 align-items:center;
 padding:0 15px;
@@ -94,7 +79,8 @@ font-size:15px;
 }
 
 .search-box span{
-margin-left:8px;
+margin-right:8px;
+color:#00d0ff;
 }
 
 /* SIDEBAR */
@@ -102,34 +88,40 @@ margin-left:8px;
 .sidebar{
 position:fixed;
 top:0;
-right:-100%;
+left:-100%;
 width:78%;
 height:100%;
-background:#080808;
+background:#0b0b0f;
 z-index:999999;
 padding:35px 25px;
 transition:.5s;
 }
 
 .sidebar.active{
-right:0;
+left:0;
 }
 
 .close-menu{
-font-size:35px;
+font-size:36px;
 margin-bottom:40px;
 cursor:pointer;
+text-align:right;
 color:white;
 }
 
 .sidebar a{
 display:flex;
 align-items:center;
-gap:14px;
+justify-content:space-between;
 color:white;
 text-decoration:none;
-font-size:22px;
-margin:30px 0;
+font-size:24px;
+margin:32px 0;
+font-weight:bold;
+}
+
+.sidebar a span{
+font-size:28px;
 }
 
 /* HERO */
@@ -137,11 +129,9 @@ margin:30px 0;
 .hero-slider{
 position:relative;
 width:100%;
-height:540px;
+height:520px;
 overflow:hidden;
-margin-top:75px;
-border-bottom:3px solid #ff0055;
-background:#000;
+margin-top:74px;
 }
 
 .slide{
@@ -154,22 +144,14 @@ transition:1s;
 
 .active-slide{
 opacity:1;
-z-index:5;
+z-index:2;
 }
-
-/* HERO NO ZOOM */
 
 .slide img{
 width:100%;
 height:100%;
 object-fit:cover;
-opacity:1 !important;
-visibility:visible !important;
-
-transform:none !important;
-scale:1 !important;
-animation:none !important;
-transition:none !important;
+filter:brightness(.45);
 }
 
 .hero-overlay{
@@ -178,71 +160,57 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:
-linear-gradient(to top,#050505 5%,transparent 70%),
-linear-gradient(to right,rgba(0,0,0,.65),rgba(0,0,0,.15));
+background:linear-gradient(to top,#050505 8%,transparent 70%);
 }
 
 .hero-content{
 position:absolute;
-bottom:90px;
-right:20px;
-z-index:10;
-width:85%;
+bottom:85px;
+left:20px;
+z-index:5;
+width:90%;
 }
 
 .hero-content h1{
-font-size:42px;
-font-weight:bold;
-margin-bottom:12px;
-color:white;
-text-shadow:0 0 20px rgba(0,0,0,.8);
+font-size:48px;
+margin-bottom:10px;
 }
 
 .hero-content p{
 font-size:17px;
 line-height:1.7;
-color:#eee;
+color:#ddd;
 margin-bottom:18px;
 }
 
-.hero-watch-btn{
-padding:11px 24px;
+.watch-btn{
+padding:13px 28px;
 border:none;
 border-radius:40px;
-background:linear-gradient(45deg,#ff0066,#ff9900);
+background:linear-gradient(45deg,#ff0066,#ff6600);
 color:white;
-font-size:14px;
+font-size:16px;
 font-weight:bold;
 cursor:pointer;
-box-shadow:0 0 20px rgba(255,0,100,.45);
-transition:.3s;
-}
-
-.hero-watch-btn:hover{
-transform:scale(1.06);
+box-shadow:0 0 18px rgba(255,0,120,.5);
 }
 
 /* DOTS */
 
 .slider-dots{
 position:absolute;
-bottom:28px;
+bottom:30px;
 left:50%;
 transform:translateX(-50%);
 display:flex;
 gap:10px;
-z-index:50;
-background:rgba(0,0,0,.45);
-padding:10px 18px;
-border-radius:30px;
-backdrop-filter:blur(10px);
+z-index:10;
 }
 
 .dot{
-width:10px;
-height:10px;
-background:#ddd;
+width:11px;
+height:11px;
+background:#bbb;
 border-radius:50%;
 transition:.4s;
 }
@@ -250,24 +218,16 @@ transition:.4s;
 .active-dot{
 width:34px;
 border-radius:20px;
-background:linear-gradient(45deg,#ff0066,#ff8800);
+background:#ff6600;
 }
 
-/* SECTION TITLE */
+/* SECTION */
 
 .section-title{
 font-size:34px;
-font-weight:900;
+font-weight:bold;
+color:#ff1b6b;
 padding:28px 18px;
-
-font-family:'Cairo',sans-serif;
-
-background:linear-gradient(45deg,#ff0066,#ffcc00,#ffffff);
-
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
-text-shadow:0 0 20px rgba(255,0,100,.25);
 }
 
 /* MOVIES */
@@ -275,78 +235,71 @@ text-shadow:0 0 20px rgba(255,0,100,.25);
 .movies-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:16px;
+gap:18px;
 padding:15px;
 }
-  .movie-card{
-background:#101010;
-border-radius:22px;
-overflow:hidden;
-position:relative;
-box-shadow:0 0 20px rgba(255,255,255,.05);
-transition:.3s;
-}
 
-.movie-card:hover{
-transform:translateY(-6px);
-box-shadow:0 0 25px rgba(255,0,100,.25);
+.movie-card{
+background:#0f0f14;
+border-radius:24px;
+overflow:hidden;
 }
 
 .movie-image{
 position:relative;
 overflow:hidden;
-cursor:pointer;
 }
 
 .movie-image img{
 width:100%;
-height:320px;
+height:310px;
 object-fit:cover;
 display:block;
-transition:.4s;
-border-radius:20px;
-opacity:1 !important;
-visibility:visible !important;
 }
 
-.movie-image:hover img{
-transform:scale(1.05);
-}
+/* PLAY OVERLAY */
 
-/* PLAY */
-
-.play-icon{
+.play-overlay{
 position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:72px;
-height:72px;
-border-radius:50%;
-background:linear-gradient(45deg,#ff0066,#ff8800);
+top:0;
+left:0;
+width:100%;
+height:100%;
 display:flex;
-align-items:center;
 justify-content:center;
-font-size:30px;
+align-items:center;
 opacity:0;
-transition:.4s;
-backdrop-filter:blur(8px);
+transition:.3s;
+background:rgba(0,0,0,.25);
 }
 
-.movie-image:hover .play-icon{
+.movie-image:active .play-overlay{
 opacity:1;
 }
 
-/* RATING SMALL */
+.play-circle{
+width:82px;
+height:82px;
+border-radius:50%;
+background:linear-gradient(45deg,#ff0080,#ff6600);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:34px;
+color:white;
+box-shadow:0 0 25px rgba(255,0,120,.7);
+}
+
+/* RATING */
 
 .rating{
 position:absolute;
 top:10px;
 left:10px;
-background:#ffcc00;
-padding:3px 9px;
-border-radius:10px;
-font-size:9px;
+background:#ffd400;
+padding:6px 12px;
+border-radius:18px;
+font-size:12px;
 font-weight:bold;
 color:black;
 }
@@ -355,37 +308,22 @@ color:black;
 position:absolute;
 top:10px;
 right:10px;
-background:rgba(0,0,0,.7);
-padding:3px 9px;
-border-radius:10px;
-font-size:9px;
+background:rgba(0,0,0,.6);
+padding:6px 12px;
+border-radius:18px;
+font-size:12px;
 font-weight:bold;
 }
 
-/* MOVIE NAME */
+/* INFO */
 
 .movie-info{
-padding:14px;
+padding:15px;
 text-align:center;
 }
 
 .movie-info h3{
-font-size:24px;
-font-weight:900;
-margin-top:6px;
-
-font-family:'Cairo',sans-serif;
-
-letter-spacing:.5px;
-
-background:linear-gradient(45deg,#ffffff,#ffcc70,#ff0066);
-
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
-text-shadow:
-0 0 12px rgba(255,255,255,.18),
-0 0 25px rgba(255,0,100,.15);
+font-size:26px;
 }
 
 /* POPUP */
@@ -416,7 +354,7 @@ background:red;
 color:white;
 border:none;
 padding:10px 15px;
-font-size:22px;
+font-size:24px;
 border-radius:14px;
 cursor:pointer;
 }
@@ -426,7 +364,7 @@ cursor:pointer;
 
 <body>
 
-<!-- HEADER -->
+<!-- TOPBAR -->
 
 <div class="topbar">
 
@@ -434,9 +372,9 @@ cursor:pointer;
 
 <div class="search-box">
 
-<span>🔍</span>
+<span>🔎</span>
 
-<input type="text" placeholder="گەران..." id="searchInput">
+<input type="text" placeholder="Search..." id="searchInput">
 
 </div>
 
@@ -450,11 +388,12 @@ cursor:pointer;
 
 <div class="close-menu" onclick="closeMenu()">✕</div>
 
-<a href="#">🏠 سەرەتا</a>
-<a href="#">🎬 فیلمەکان</a>
-<a href="#">📺 زنجیرەکان</a>
-<a href="#">🔥 ترێند</a>
-<a href="#">⭐ پێشنیارەکان</a>
+<a href="#"><span>🏠</span> سەرەتا</a>
+<a href="#"><span>🎬</span> فیلمەکان</a>
+<a href="#"><span>📺</span> زنجیرەکان</a>
+<a href="#"><span>🔥</span> ترێند</a>
+<a href="#"><span>⭐</span> پێشنیارەکان</a>
+<a href="#"><span>👥</span> ستاف</a>
 
 </div>
 
@@ -462,71 +401,65 @@ cursor:pointer;
 
 <div class="hero-slider">
 
-<!-- 1 -->
-
 <div class="slide active-slide">
 
-<img src="image_1779992223418.jpeg">
+<img src="IMG_20260519_122720_858.png">
 
 <div class="hero-overlay"></div>
 
 <div class="hero-content">
 
-<h1> چیشت لینەر</h1>
+<h1>THE PITT</h1>
 
 <p>
-فیلمی کۆمیدی و سەرنج ڕاکێش کۆری
+باشترین فیلم و زنجیرە دۆبلاژکراوە کوردییەکان
 </p>
 
-<button class="hero-watch-btn">
+<button class="watch-btn">
 ▶ تماشا بکە
 </button>
 
 </div>
 
 </div>
-
-<!-- 2 -->
 
 <div class="slide">
 
-<img src="image_1779992286895.jpeg">
+<img src="IMG_20260522_140604_218.png">
 
 <div class="hero-overlay"></div>
 
 <div class="hero-content">
 
-<h1>ڕۆبین هود</h1>
+<h1>FROM</h1>
 
 <p>
-فیلمی ئەکشن و مێژوویی
+فیلمی ترسناک و نهێنی
 </p>
 
-<button class="hero-watch-btn">
+<button class="watch-btn">
 ▶ تماشا بکە
 </button>
 
 </div>
 
 </div>
-
-<!-- 3 -->
 
 <div class="slide">
 
-<img src="image_1779988565013.jpeg">
+<img src="IMG_20260522_140704_502.png">
 
 <div class="hero-overlay"></div>
 
 <div class="hero-content">
 
-<h1>ئاکشن .کۆمیدی.رۆمانسی</h1>
+<h1>CRIME 101</h1>
 
 <p>
-شەڕی بەهێز و ئەکشنی ئاگری
+ئەکشن و تاوان
 </p>
 
-<button class="hero-watch-btn">
+<button class="watch-btn">
 ▶ تماشا بکە
 </button>
 
@@ -534,27 +467,73 @@ cursor:pointer;
 
 </div>
 
-<!-- DOTS -->
+<div class="slide">
+
+<img src="IMG_20260522_140721_798.jpg">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>LAST NIGHT</h1>
+
+<p>
+فیلمی نوێی ئەکشن
+</p>
+
+<button class="watch-btn">
+▶ تماشا بکە
+</button>
+
+</div>
+
+</div>
+
+<div class="slide">
+
+<img src="file_00000000b37872469944d35385c90010.png">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>ساوا</h1>
+
+<p>
+فیلمی دۆبلاژکراوی کوردی
+</p>
+
+<button class="watch-btn">
+▶ تماشا بکە
+</button>
+
+</div>
+
+</div>
 
 <div class="slider-dots">
 
 <span class="dot active-dot"></span>
 <span class="dot"></span>
 <span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
 
 </div>
 
+</div>
+
+<!-- SECTION -->
+
+<div class="section-title">
+جاوەڕوانی دواتر
 </div>
 
 <!-- MOVIES -->
 
-<div class="section-title">
-نوێترین فیلمەکان
-</div>
+<div class="movies-grid">
 
-<div class="movies-grid" id="moviesGrid">
-
-<!-- MOVIE 1 -->
+<!-- MOVIE -->
 
 <div class="movie-card">
 
@@ -563,43 +542,56 @@ onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef
 
 <img src="file_00000000e440720a9828825168bd0226.png">
 
-<div class="play-icon">▶</div>
-
 <div class="rating">⭐ 8.5</div>
 
 <div class="views">👁 120K</div>
 
+<div class="play-overlay">
+
+<div class="play-circle">▶</div>
+
+</div>
+
 </div>
 
 <div class="movie-info">
+
 <h3>عەشق و فیتنە</h3>
-</div>
 
 </div>
 
-<!-- MOVIE 2 -->
+</div>
+
+<!-- MOVIE -->
 
 <div class="movie-card">
-  <div class="movie-image"
+
+<div class="movie-image"
 onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
 
 <img src="file_00000000b37872469944d35385c90010.png">
-
-<div class="play-icon">▶</div>
 
 <div class="rating">⭐ 8.3</div>
 
 <div class="views">👁 95K</div>
 
+<div class="play-overlay">
+
+<div class="play-circle">▶</div>
+
+</div>
+
 </div>
 
 <div class="movie-info">
+
 <h3>ساوا</h3>
-</div>
 
 </div>
 
-<!-- MOVIE 3 -->
+</div>
+
+<!-- MOVIE -->
 
 <div class="movie-card">
 
@@ -608,21 +600,27 @@ onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3
 
 <img src="file_000000001dd871f49685c5a6ef226e96.png">
 
-<div class="play-icon">▶</div>
-
 <div class="rating">⭐ 8.1</div>
 
 <div class="views">👁 77K</div>
 
+<div class="play-overlay">
+
+<div class="play-circle">▶</div>
+
+</div>
+
 </div>
 
 <div class="movie-info">
+
 <h3>رۆستەم</h3>
-</div>
 
 </div>
 
-<!-- MOVIE 4 -->
+</div>
+
+<!-- MOVIE -->
 
 <div class="movie-card">
 
@@ -631,16 +629,22 @@ onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-78
 
 <img src="file_000000006ec871f4a20f395a91e29602 (1).png">
 
-<div class="play-icon">▶</div>
-
 <div class="rating">⭐ 8.9</div>
 
 <div class="views">👁 150K</div>
 
+<div class="play-overlay">
+
+<div class="play-circle">▶</div>
+
+</div>
+
 </div>
 
 <div class="movie-info">
+
 <h3>لمبی</h3>
+
 </div>
 
 </div>
@@ -702,7 +706,7 @@ current=0;
 
 showSlide(current);
 
-},4000);
+},3000);
 
 /* VIDEO */
 
