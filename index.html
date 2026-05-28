@@ -22,27 +22,26 @@ color:white;
 overflow-x:hidden;
 }
 
-/* ===== TOPBAR ===== */
+/* ===== TOP BAR ===== */
 
 .topbar{
 position:fixed;
 top:0;
 left:0;
 width:100%;
-height:78px;
+height:75px;
+padding:0 18px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:0 15px;
 background:rgba(0,0,0,0.45);
-backdrop-filter:blur(14px);
+backdrop-filter:blur(12px);
 z-index:99999;
-border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .menu-btn{
-width:52px;
-height:52px;
+width:50px;
+height:50px;
 border-radius:18px;
 background:rgba(255,255,255,.08);
 display:flex;
@@ -53,19 +52,21 @@ cursor:pointer;
 }
 
 .logo{
-font-size:28px;
+font-size:24px;
 font-weight:bold;
+position:absolute;
+left:50%;
+transform:translateX(-50%);
 }
 
 .search-box{
-width:150px;
-padding:12px 16px;
+width:140px;
+padding:11px 15px;
 border:none;
 outline:none;
 border-radius:30px;
 background:rgba(255,255,255,.08);
 color:white;
-font-size:15px;
 }
 
 /* ===== SIDEBAR ===== */
@@ -76,10 +77,9 @@ top:0;
 left:-100%;
 width:260px;
 height:100%;
-background:#0c0c0c;
-backdrop-filter:blur(15px);
-transition:.4s;
+background:#0b0b0b;
 z-index:999999;
+transition:.4s;
 padding-top:90px;
 }
 
@@ -89,11 +89,7 @@ padding:18px;
 color:white;
 text-decoration:none;
 font-size:18px;
-border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-#sidebar a:hover{
-background:#171717;
+border-bottom:1px solid #1a1a1a;
 }
 
 .close-menu{
@@ -104,14 +100,13 @@ font-size:30px;
 cursor:pointer;
 }
 
-/* ===== HERO SLIDER ===== */
+/* ===== HERO ===== */
 
 .hero-slider{
 position:relative;
 width:100%;
-height:470px;
+height:520px;
 overflow:hidden;
-border-bottom:3px solid #ff3c00;
 }
 
 .slide{
@@ -127,7 +122,7 @@ width:100%;
 height:100%;
 object-fit:cover;
 filter:brightness(0.22);
-transform:scale(1.05);
+transform:scale(1.08);
 }
 
 .overlay{
@@ -136,28 +131,27 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(to top,#050505 5%,transparent 60%);
+background:linear-gradient(to top,#050505 10%,transparent 60%);
 }
 
 /* ===== HERO CONTENT ===== */
 
 .hero-content{
 position:absolute;
-bottom:70px;
+bottom:95px;
 left:20px;
 width:88%;
 z-index:5;
 }
 
 .hero-title{
-font-size:35px;
+font-size:38px;
 font-weight:bold;
 margin-bottom:14px;
-text-shadow:0 0 10px black;
 }
 
 .hero-desc{
-font-size:15px;
+font-size:16px;
 line-height:1.8;
 color:#ddd;
 margin-bottom:18px;
@@ -166,35 +160,30 @@ margin-bottom:18px;
 .hero-info{
 display:flex;
 gap:15px;
-margin-bottom:20px;
 align-items:center;
+margin-bottom:20px;
 }
 
 .hero-rating{
 background:#ffb400;
 padding:8px 16px;
-border-radius:15px;
+border-radius:16px;
 font-weight:bold;
 color:black;
 }
 
-/* ===== MODERN PLAY BUTTON ===== */
+/* ===== WATCH BUTTON ===== */
 
 .watch-btn{
-padding:14px 34px;
+padding:15px 38px;
 border:none;
 border-radius:40px;
-background:linear-gradient(45deg,#ff0066,#ff8800);
+background:linear-gradient(45deg,#ff0066,#ff5500);
 color:white;
 font-size:18px;
 font-weight:bold;
 cursor:pointer;
-box-shadow:0 0 20px rgba(255,80,0,.5);
-transition:0.3s;
-}
-
-.watch-btn:hover{
-transform:scale(1.05);
+box-shadow:0 0 20px rgba(255,80,0,.4);
 }
 
 /* ===== DOTS ===== */
@@ -206,10 +195,9 @@ left:50%;
 transform:translateX(-50%);
 display:flex;
 gap:8px;
-background:rgba(0,0,0,0.55);
+background:rgba(0,0,0,.5);
 padding:10px 18px;
 border-radius:30px;
-z-index:50;
 }
 
 .dot{
@@ -230,7 +218,7 @@ border-radius:20px;
 
 .section-title{
 font-size:28px;
-padding:25px 15px 10px;
+padding:20px 15px 10px;
 font-weight:bold;
 color:#ff3355;
 }
@@ -249,19 +237,13 @@ background:#101010;
 border-radius:24px;
 overflow:hidden;
 position:relative;
-box-shadow:0 0 20px rgba(0,0,0,0.5);
-transition:0.3s;
-}
-
-.movie-card:hover{
-transform:scale(1.03);
+box-shadow:0 0 20px rgba(0,0,0,.5);
 }
 
 .movie-card img{
 width:100%;
 height:270px;
-object-fit:contain;
-background:black;
+object-fit:cover;
 display:block;
 }
 
@@ -272,11 +254,11 @@ position:absolute;
 top:10px;
 left:10px;
 background:#ffcc00;
-color:black;
-padding:5px 12px;
-border-radius:16px;
+padding:6px 13px;
+border-radius:15px;
 font-size:13px;
 font-weight:bold;
+color:black;
 }
 
 /* ===== VIEWS ===== */
@@ -285,23 +267,52 @@ font-weight:bold;
 position:absolute;
 top:10px;
 right:10px;
-background:rgba(0,0,0,0.75);
-padding:5px 12px;
-border-radius:16px;
+background:rgba(0,0,0,.75);
+padding:6px 13px;
+border-radius:15px;
 font-size:13px;
 font-weight:bold;
+}
+
+/* ===== PLAY ICON ===== */
+
+.play-overlay{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:75px;
+height:75px;
+border-radius:50%;
+background:linear-gradient(45deg,#ff0066,#ff5500);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+color:white;
+opacity:0;
+transition:.3s;
+cursor:pointer;
+}
+
+.movie-card:hover .play-overlay{
+opacity:1;
+}
+
+.movie-card:active .play-overlay{
+opacity:1;
 }
 
 /* ===== MOVIE INFO ===== */
 
 .movie-info{
-padding:12px;
+padding:14px;
 }
 
 .movie-info h3{
 font-size:18px;
-margin-bottom:12px;
 text-align:center;
+margin-bottom:12px;
 }
 
 /* ===== PLAY BUTTON ===== */
@@ -317,8 +328,6 @@ font-size:18px;
 font-weight:bold;
 cursor:pointer;
 display:none;
-box-shadow:0 0 20px rgba(255,80,0,.4);
-transition:.3s;
 }
 
 .movie-card:hover .play-btn{
@@ -374,11 +383,11 @@ to{opacity:1}
 @media(max-width:700px){
 
 .hero-slider{
-height:460px;
+height:500px;
 }
 
 .movie-card img{
-height:240px;
+height:250px;
 }
 
 }
@@ -394,9 +403,9 @@ height:240px;
 
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-<input type="text" class="search-box" placeholder="🔍 Search">
-
 <div class="logo">KurdMan 🎬</div>
+
+<input type="text" class="search-box" placeholder="🔍 Search">
 
 </div>
 
@@ -537,6 +546,11 @@ height:240px;
 
 <div class="views">👁 120K</div>
 
+<div class="play-overlay"
+onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
+▶
+</div>
+
 <div class="movie-info">
 
 <h3>عەشق و فیتنە</h3>
@@ -559,6 +573,11 @@ onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef
 <div class="rating">⭐ 8.3</div>
 
 <div class="views">👁 95K</div>
+
+<div class="play-overlay"
+onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+▶
+</div>
 
 <div class="movie-info">
 
@@ -583,6 +602,11 @@ onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-56
 
 <div class="views">👁 77K</div>
 
+<div class="play-overlay"
+onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
+▶
+</div>
+
 <div class="movie-info">
 
 <h3>رۆستەم</h3>
@@ -606,6 +630,11 @@ onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3
 
 <div class="views">👁 150K</div>
 
+<div class="play-overlay"
+onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
+▶
+</div>
+
 <div class="movie-info">
 
 <h3>لمبی</h3>
@@ -621,7 +650,7 @@ onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-78
 
 </div>
 
-<!-- ===== VIDEO POPUP ===== -->
+<!-- ===== POPUP ===== -->
 
 <div class="popup" id="popup">
 
@@ -720,7 +749,7 @@ card.style.display="none";
 
 });
 
-/* ===== AUTO SLIDER ===== */
+/* ===== SLIDER ===== */
 
 let slideIndex=0;
 
@@ -752,7 +781,7 @@ slides[slideIndex-1].style.display="block";
 
 dots[slideIndex-1].className += " active";
 
-setTimeout(showSlides,4000);
+setTimeout(showSlides,3500);
 
 }
 
