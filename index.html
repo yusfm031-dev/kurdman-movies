@@ -32,28 +32,35 @@ top:0;
 left:0;
 width:100%;
 height:75px;
-background:rgba(0,0,0,.55);
+background:rgba(0,0,0,.65);
 backdrop-filter:blur(10px);
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:0 18px;
+padding:0 15px;
 z-index:99999;
 }
 
 .menu-btn{
-font-size:34px;
+width:50px;
+height:50px;
+background:rgba(255,255,255,.08);
+border-radius:16px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
 cursor:pointer;
 }
 
 .logo{
-font-size:22px;
+font-size:25px;
 font-weight:bold;
 }
 
 .search-box{
-width:45%;
-height:45px;
+width:46%;
+height:44px;
 background:#111;
 border-radius:30px;
 display:flex;
@@ -74,15 +81,15 @@ font-size:16px;
 margin-right:8px;
 }
 
-/* SIDEBAR */
+/* MENU */
 
 .sidebar{
 position:fixed;
 top:0;
 left:-100%;
-width:78%;
+width:80%;
 height:100%;
-background:#0d0d0d;
+background:#090909;
 z-index:999999;
 padding:40px 25px;
 transition:.5s;
@@ -103,7 +110,7 @@ display:block;
 color:white;
 text-decoration:none;
 font-size:24px;
-margin:28px 0;
+margin:30px 0;
 }
 
 /* HERO */
@@ -111,7 +118,7 @@ margin:28px 0;
 .hero-slider{
 position:relative;
 width:100%;
-height:520px;
+height:540px;
 overflow:hidden;
 margin-top:75px;
 }
@@ -133,7 +140,7 @@ z-index:2;
 width:100%;
 height:100%;
 object-fit:cover;
-filter:brightness(.45);
+filter:brightness(.42);
 }
 
 .hero-overlay{
@@ -148,28 +155,42 @@ background:linear-gradient(to top,#050505 5%,transparent 70%);
 .hero-content{
 position:absolute;
 bottom:90px;
-left:22px;
+left:20px;
 z-index:5;
+width:90%;
 }
 
 .hero-content h1{
-font-size:48px;
+font-size:46px;
+margin-bottom:10px;
 font-weight:bold;
-margin-bottom:12px;
 }
 
 .hero-content p{
 font-size:17px;
-line-height:1.8;
 color:#ddd;
-width:90%;
+line-height:1.8;
+margin-bottom:20px;
+}
+
+/* PLAY HERO */
+
+.hero-play{
+padding:15px 35px;
+border:none;
+border-radius:40px;
+background:linear-gradient(45deg,#ff0066,#ff6600);
+color:white;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
 }
 
 /* DOTS */
 
 .slider-dots{
 position:absolute;
-bottom:35px;
+bottom:30px;
 left:50%;
 transform:translateX(-50%);
 display:flex;
@@ -180,21 +201,21 @@ z-index:10;
 .dot{
 width:10px;
 height:10px;
-background:#888;
+background:#999;
 border-radius:50%;
 transition:.4s;
 }
 
 .active-dot{
-width:32px;
+width:30px;
 border-radius:20px;
 background:#ff6600;
 }
 
-/* SECTION */
+/* TITLE */
 
 .section-title{
-font-size:32px;
+font-size:30px;
 font-weight:bold;
 color:#ff2255;
 padding:25px 18px;
@@ -210,10 +231,10 @@ padding:15px;
 }
 
 .movie-card{
-background:#101010;
-border-radius:26px;
+background:#111;
+border-radius:25px;
 overflow:hidden;
-box-shadow:0 0 15px rgba(0,0,0,.5);
+box-shadow:0 0 20px rgba(0,0,0,.5);
 }
 
 .movie-image{
@@ -253,6 +274,24 @@ font-size:11px;
 font-weight:bold;
 }
 
+/* PLAY ICON */
+
+.play-icon{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:75px;
+height:75px;
+background:rgba(255,0,100,.9);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:35px;
+cursor:pointer;
+}
+
 /* INFO */
 
 .movie-info{
@@ -261,11 +300,18 @@ text-align:center;
 }
 
 .movie-info h3{
-font-size:21px;
-margin-bottom:14px;
+font-size:22px;
+margin-bottom:8px;
 }
 
-/* PLAY BUTTON */
+.movie-info p{
+font-size:14px;
+color:#bbb;
+line-height:1.7;
+margin-bottom:12px;
+}
+
+/* PLAY BTN */
 
 .play-btn{
 width:100%;
@@ -335,7 +381,6 @@ cursor:pointer;
 
 </div>
 
-
 <!-- SIDEBAR -->
 
 <div class="sidebar" id="sidebar">
@@ -346,16 +391,16 @@ cursor:pointer;
 <a href="#">🎬 فیلمەکان</a>
 <a href="#">📺 زنجیرەکان</a>
 <a href="#">🔥 ترێند</a>
-<a href="#">⭐ پێشنیارەکان</a>
+<a href="#">⭐ پێشنیار</a>
+<a href="#">📂 زیادتر</a>
 
 </div>
-
 
 <!-- HERO -->
 
 <div class="hero-slider">
 
-<!-- 1 -->
+<!-- SLIDE 1 -->
 
 <div class="slide active-slide">
 
@@ -371,11 +416,18 @@ cursor:pointer;
 باشترین فیلم و زنجیرە دۆبلاژکراوە کوردییەکان
 </p>
 
-</div>
+<button class="hero-play"
+onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
+
+▶ تماشا بکە
+
+</button>
 
 </div>
 
-<!-- 2 -->
+</div>
+
+<!-- SLIDE 2 -->
 
 <div class="slide">
 
@@ -391,11 +443,18 @@ cursor:pointer;
 فیلمی ترسناک و نهێنی
 </p>
 
-</div>
+<button class="hero-play"
+onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+
+▶ تماشا بکە
+
+</button>
 
 </div>
 
-<!-- 3 -->
+</div>
+
+<!-- SLIDE 3 -->
 
 <div class="slide">
 
@@ -411,11 +470,18 @@ cursor:pointer;
 ئەکشن و تاوان
 </p>
 
-</div>
+<button class="hero-play"
+onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
+
+▶ تماشا بکە
+
+</button>
 
 </div>
 
-<!-- 4 -->
+</div>
+
+<!-- SLIDE 4 -->
 
 <div class="slide">
 
@@ -431,11 +497,18 @@ cursor:pointer;
 فیلمی نوێی ئەکشن
 </p>
 
-</div>
+<button class="hero-play"
+onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
+
+▶ تماشا بکە
+
+</button>
 
 </div>
 
-<!-- 5 -->
+</div>
+
+<!-- SLIDE 5 -->
 
 <div class="slide">
 
@@ -451,6 +524,148 @@ cursor:pointer;
 فیلمی دۆبلاژکراوی کوردی
 </p>
 
+<button class="hero-play"
+onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+
+▶ تماشا بکە
+
+</button>
+
+</div>
+
+</div>
+
+<!-- SLIDE 6 -->
+
+<div class="slide">
+
+<img src="file_000000001dd871f49685c5a6ef226e96.png">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>رۆستەم</h1>
+
+<p>
+ئەکشن و ماجەرا
+</p>
+
+<button class="hero-play"
+onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
+
+▶ تماشا بکە
+
+</button>
+
+</div>
+
+</div>
+
+<!-- SLIDE 7 -->
+
+<div class="slide">
+
+<img src="file_000000006ec871f4a20f395a91e29602 (1).png">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>لمبی عشق</h1>
+
+<p>
+خۆشەویستی و دراما
+</p>
+
+<button class="hero-play"
+onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
+
+▶ تماشا بکە
+
+</button>
+
+</div>
+
+</div>
+
+<!-- SLIDE 8 -->
+
+<div class="slide">
+
+<img src="file_00000000e440720a9828825168bd0226.png">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>عەشق و فیتنە</h1>
+
+<p>
+کۆمیدی و دراما
+</p>
+
+<button class="hero-play"
+onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
+
+▶ تماشا بکە
+
+</button>
+
+</div>
+
+</div>
+
+<!-- SLIDE 9 -->
+
+<div class="slide">
+
+<img src="IMG_20260522_140704_502.png">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>DARK CITY</h1>
+
+<p>
+فیلمی تاوان و شەڕ
+</p>
+
+<button class="hero-play"
+onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+
+▶ تماشا بکە
+
+</button>
+
+</div>
+
+</div>
+
+<!-- SLIDE 10 -->
+
+<div class="slide">
+
+<img src="IMG_20260522_140604_218.png">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>SHADOW</h1>
+
+<p>
+ترسناک و نهێنی
+</p>
+
+<button class="hero-play"
+onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
+
+▶ تماشا بکە
+
+</button>
+
 </div>
 
 </div>
@@ -464,11 +679,15 @@ cursor:pointer;
 <span class="dot"></span>
 <span class="dot"></span>
 <span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
 
 </div>
 
 </div>
-
 
 <!-- MOVIES -->
 
@@ -490,18 +709,22 @@ cursor:pointer;
 
 <div class="views">👁 120K</div>
 
+<div class="play-icon"
+onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
+
+▶
+
+</div>
+
 </div>
 
 <div class="movie-info">
 
 <h3>عەشق و فیتنە</h3>
 
-<button class="play-btn"
-onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
-
-▶ تماشا بکە
-
-</button>
+<p>
+کۆمیدی • ماجەرا • دۆبلاژکراوی کوردی
+</p>
 
 </div>
 
@@ -519,18 +742,22 @@ onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef
 
 <div class="views">👁 95K</div>
 
+<div class="play-icon"
+onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+
+▶
+
+</div>
+
 </div>
 
 <div class="movie-info">
 
 <h3>ساوا</h3>
 
-<button class="play-btn"
-onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
-
-▶ تماشا بکە
-
-</button>
+<p>
+ئەکشن • تاوان • 2026
+</p>
 
 </div>
 
@@ -548,18 +775,22 @@ onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-56
 
 <div class="views">👁 77K</div>
 
+<div class="play-icon"
+onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
+
+▶
+
+</div>
+
 </div>
 
 <div class="movie-info">
 
 <h3>رۆستەم</h3>
 
-<button class="play-btn"
-onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
-
-▶ تماشا بکە
-
-</button>
+<p>
+شەڕ • ماجەرا • دۆبلاژکراو
+</p>
 
 </div>
 
@@ -577,25 +808,28 @@ onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3
 
 <div class="views">👁 150K</div>
 
+<div class="play-icon"
+onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
+
+▶
+
+</div>
+
 </div>
 
 <div class="movie-info">
 
-<h3>لمبی</h3>
+<h3>لمبی عشق</h3>
 
-<button class="play-btn"
-onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
-
-▶ تماشا بکە
-
-</button>
+<p>
+دراما • خۆشەویستی • 2026
+</p>
 
 </div>
 
 </div>
 
 </div>
-
 
 <!-- POPUP -->
 
@@ -606,7 +840,6 @@ onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-78
 <video id="popupVideo" controls playsinline></video>
 
 </div>
-
 
 <script>
 
@@ -654,7 +887,6 @@ current=0;
 showSlide(current);
 
 },3000);
-
 
 /* VIDEO */
 
@@ -727,4 +959,4 @@ card.style.display="none";
 </script>
 
 </body>
-</html>
+  </html>
