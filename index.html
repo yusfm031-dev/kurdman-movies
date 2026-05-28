@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>KurdMan Movies</title>
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -14,53 +13,53 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:sans-serif;
 }
 
 body{
-background:#050505;
-font-family:sans-serif;
+background:#070707;
 color:white;
 overflow-x:hidden;
 }
 
-/* TOPBAR */
+/* ===== TOP BAR ===== */
 
 .topbar{
 position:fixed;
 top:0;
 left:0;
 width:100%;
-height:70px;
-background:rgba(0,0,0,0.7);
-backdrop-filter:blur(10px);
+height:75px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:0 15px;
+padding:0 18px;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
 z-index:9999;
 }
 
-.logo{
-font-size:26px;
-font-weight:bold;
-}
-
 .menu-btn{
-font-size:32px;
+font-size:34px;
 cursor:pointer;
 }
 
-.search{
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+.search-box{
 width:150px;
 padding:10px 15px;
 border:none;
+outline:none;
 border-radius:30px;
 background:#111;
 color:white;
-outline:none;
 }
 
-/* SIDEBAR */
+/* ===== SIDEBAR ===== */
 
 #sidebar{
 position:fixed;
@@ -68,10 +67,10 @@ top:0;
 left:-100%;
 width:260px;
 height:100%;
-background:#0b0b0b;
+background:#0d0d0d;
 z-index:99999;
 transition:0.4s;
-padding-top:80px;
+padding-top:90px;
 }
 
 #sidebar a{
@@ -84,158 +83,235 @@ border-bottom:1px solid #222;
 }
 
 #sidebar a:hover{
-background:#111;
+background:#161616;
 }
 
 .close-menu{
 position:absolute;
-top:15px;
-right:15px;
+top:20px;
+right:20px;
 font-size:30px;
 cursor:pointer;
 }
 
-/* HERO SLIDER */
+/* ===== HERO SLIDER ===== */
 
 .hero-slider{
 position:relative;
 width:100%;
-height:520px;
+height:560px;
 overflow:hidden;
 }
 
-.slides{
+.slide{
 display:none;
 position:absolute;
 width:100%;
 height:100%;
+animation:fade 1s;
 }
 
-.slides img{
+.slide img{
 width:100%;
 height:100%;
 object-fit:cover;
-filter:brightness(0.45);
+filter:brightness(0.35);
+}
+
+.overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(to top,#070707 5%,transparent 50%);
 }
 
 .hero-content{
 position:absolute;
-bottom:40px;
+bottom:90px;
 left:20px;
+width:90%;
 z-index:5;
 }
 
-.hero-content h1{
+.hero-title{
 font-size:40px;
-margin-bottom:10px;
+font-weight:bold;
+margin-bottom:15px;
 }
 
-.hero-content p{
-font-size:15px;
+.hero-desc{
+font-size:16px;
+line-height:1.8;
 color:#ddd;
 margin-bottom:20px;
-width:90%;
+}
+
+.hero-info{
+display:flex;
+gap:15px;
+margin-bottom:20px;
+align-items:center;
+}
+
+.hero-rating{
+background:#ffb400;
+padding:8px 16px;
+border-radius:15px;
+font-weight:bold;
+color:black;
+}
+
+.hero-year{
+font-size:18px;
+color:#ddd;
 }
 
 .watch-btn{
-padding:14px 28px;
-background:#ff0055;
+padding:14px 35px;
 border:none;
-border-radius:30px;
+border-radius:35px;
+background:linear-gradient(45deg,#ff0066,#ff5500);
 color:white;
 font-size:18px;
 font-weight:bold;
 cursor:pointer;
 }
 
-.fade{
-animation:fade 1s;
+/* ===== DOTS ===== */
+
+.dots{
+position:absolute;
+bottom:35px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:8px;
+z-index:20;
+background:rgba(0,0,0,0.5);
+padding:10px 20px;
+border-radius:30px;
 }
 
-@keyframes fade{
-from{opacity:.4}
-to{opacity:1}
+.dot{
+width:10px;
+height:10px;
+background:#666;
+border-radius:50%;
+transition:0.3s;
 }
 
-/* SECTION */
+.active{
+width:28px;
+background:#ff6600;
+border-radius:20px;
+}
+
+/* ===== SECTION ===== */
 
 .section-title{
-font-size:26px;
+font-size:28px;
+padding:25px 15px 10px;
 font-weight:bold;
-padding:20px 15px 10px;
 color:#ff3355;
 }
 
-/* MOVIES */
+/* ===== MOVIES ===== */
 
 .movies-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:14px;
+gap:15px;
 padding:15px;
 }
 
 .movie-card{
 background:#111;
-border-radius:20px;
+border-radius:22px;
 overflow:hidden;
-box-shadow:0 0 15px rgba(0,0,0,0.7);
 position:relative;
+box-shadow:0 0 15px rgba(0,0,0,0.6);
+transition:0.3s;
+}
+
+.movie-card:hover{
+transform:scale(1.03);
 }
 
 .movie-card img{
 width:100%;
-height:240px;
+height:260px;
 object-fit:cover;
 display:block;
 }
 
+/* ===== RATING ===== */
+
 .rating{
 position:absolute;
-top:10px;
-left:10px;
+top:12px;
+left:12px;
 background:#ffcc00;
 color:black;
-padding:5px 10px;
-border-radius:20px;
+padding:6px 12px;
+border-radius:15px;
 font-size:13px;
 font-weight:bold;
 }
+
+/* ===== VIEWS ===== */
 
 .views{
 position:absolute;
-top:10px;
-right:10px;
-background:#222;
-padding:5px 10px;
-border-radius:20px;
+top:12px;
+right:12px;
+background:rgba(0,0,0,0.7);
+padding:6px 12px;
+border-radius:15px;
 font-size:13px;
 font-weight:bold;
 }
 
-.info{
-padding:10px;
+/* ===== MOVIE INFO ===== */
+
+.movie-info{
+padding:12px;
 }
 
-.info h3{
-text-align:center;
-font-size:17px;
+.movie-info h3{
+font-size:19px;
 margin-bottom:10px;
+text-align:center;
 }
+
+/* ===== PLAY BUTTON ===== */
 
 .play-btn{
 width:100%;
-padding:12px;
-background:linear-gradient(45deg,#ff5500,#ff0055);
+padding:13px;
 border:none;
-border-radius:14px;
+border-radius:15px;
+background:linear-gradient(45deg,#ff6600,#ff0055);
 color:white;
-font-size:17px;
+font-size:18px;
 font-weight:bold;
 cursor:pointer;
+display:none;
+transition:0.3s;
 }
 
-/* POPUP */
+/* PLAY BUTTON SHOW WHEN TOUCH */
+
+.movie-card:hover .play-btn{
+display:block;
+}
+
+.movie-card:active .play-btn{
+display:block;
+}
+
+/* ===== POPUP ===== */
 
 .popup{
 position:fixed;
@@ -259,29 +335,36 @@ height:auto;
 position:absolute;
 top:20px;
 right:20px;
+padding:10px 16px;
 background:red;
 border:none;
 color:white;
-padding:10px 15px;
 font-size:20px;
 border-radius:12px;
 cursor:pointer;
 }
 
-/* MOBILE */
+/* ===== ANIMATION ===== */
+
+@keyframes fade{
+from{opacity:.4}
+to{opacity:1}
+}
+
+/* ===== MOBILE ===== */
 
 @media(max-width:700px){
 
 .hero-slider{
-height:420px;
+height:520px;
 }
 
-.hero-content h1{
+.hero-title{
 font-size:34px;
 }
 
 .movie-card img{
-height:210px;
+height:230px;
 }
 
 }
@@ -291,19 +374,19 @@ height:210px;
 
 <body>
 
-<!-- TOPBAR -->
+<!-- ===== TOPBAR ===== -->
 
 <div class="topbar">
 
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-<input class="search" type="text" placeholder="🔍 Search">
+<input type="text" class="search-box" placeholder="🔍 Search">
 
 <div class="logo">KurdMan 🎬</div>
 
 </div>
 
-<!-- SIDEBAR -->
+<!-- ===== SIDEBAR ===== -->
 
 <div id="sidebar">
 
@@ -317,67 +400,119 @@ height:210px;
 
 </div>
 
-<!-- HERO SLIDER -->
+<!-- ===== HERO SLIDER ===== -->
 
 <div class="hero-slider">
 
-<div class="slides fade">
+<!-- SLIDE 1 -->
+
+<div class="slide">
 
 <img src="IMG_20260519_122720_858.png">
 
+<div class="overlay"></div>
+
 <div class="hero-content">
 
-<h1>KurdMan Movies</h1>
+<div class="hero-title">KurdMan Movies</div>
 
-<p>باشترین فیلم و زنجیرە کوردی</p>
+<div class="hero-info">
+
+<div class="hero-rating">⭐ 8.7</div>
+
+<div class="hero-year">2025</div>
+
+</div>
+
+<div class="hero-desc">
+باشترین فیلم و زنجیرە دۆبلاژکراوە کوردییەکان
+</div>
 
 <button class="watch-btn">
-▶ Watch Now
+▶ تماشا بکە
 </button>
 
 </div>
 
 </div>
 
-<div class="slides fade">
+<!-- SLIDE 2 -->
+
+<div class="slide">
 
 <img src="IMG_20260522_140604_218.png">
 
+<div class="overlay"></div>
+
 <div class="hero-content">
 
-<h1>New Kurdish Movies</h1>
+<div class="hero-title">New Movies</div>
 
-<p>نوێترین فیلمە دۆبلاژکراوەکان</p>
+<div class="hero-info">
+
+<div class="hero-rating">⭐ 9.1</div>
+
+<div class="hero-year">2026</div>
+
+</div>
+
+<div class="hero-desc">
+نوێترین فیلمە ئەکشن و خۆشەویستییەکان
+</div>
 
 <button class="watch-btn">
-▶ Watch Now
+▶ تماشا بکە
 </button>
 
 </div>
 
 </div>
 
-<div class="slides fade">
+<!-- SLIDE 3 -->
+
+<div class="slide">
 
 <img src="IMG_20260522_140704_502.png">
 
+<div class="overlay"></div>
+
 <div class="hero-content">
 
-<h1>Action Movies</h1>
+<div class="hero-title">Action Movies</div>
 
-<p>باشترین فیلمە ئەکشنەکان</p>
+<div class="hero-info">
+
+<div class="hero-rating">⭐ 8.9</div>
+
+<div class="hero-year">2026</div>
+
+</div>
+
+<div class="hero-desc">
+باشترین فیلمە ئەکشنەکانی ئێستا
+</div>
 
 <button class="watch-btn">
-▶ Watch Now
+▶ تماشا بکە
 </button>
 
 </div>
 
 </div>
 
+<!-- DOTS -->
+
+<div class="dots">
+
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+
 </div>
 
-<!-- MOVIES -->
+</div>
+
+<!-- ===== MOVIES ===== -->
 
 <div class="section-title">
 🔥 نوێترین فیلمەکان
@@ -395,7 +530,7 @@ height:210px;
 
 <div class="views">👁 120K</div>
 
-<div class="info">
+<div class="movie-info">
 
 <h3>عەشق و فیتنە</h3>
 
@@ -418,7 +553,7 @@ onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef
 
 <div class="views">👁 95K</div>
 
-<div class="info">
+<div class="movie-info">
 
 <h3>ساوا</h3>
 
@@ -441,7 +576,7 @@ onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-56
 
 <div class="views">👁 77K</div>
 
-<div class="info">
+<div class="movie-info">
 
 <h3>رۆستەم</h3>
 
@@ -464,7 +599,7 @@ onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3
 
 <div class="views">👁 150K</div>
 
-<div class="info">
+<div class="movie-info">
 
 <h3>لمبی</h3>
 
@@ -479,23 +614,20 @@ onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-78
 
 </div>
 
-<!-- POPUP -->
+<!-- ===== POPUP ===== -->
 
 <div class="popup" id="popup">
 
 <button class="close-popup"
 onclick="closePopup()">✖</button>
 
-<video id="popupVideo"
-controls
-playsinline>
-</video>
+<video id="popupVideo" controls playsinline></video>
 
 </div>
 
 <script>
 
-/* MENU */
+/* ===== MENU ===== */
 
 function toggleMenu(){
 
@@ -513,7 +645,7 @@ sidebar.style.left="0";
 
 }
 
-/* VIDEO */
+/* ===== VIDEO ===== */
 
 function openPopup(videoUrl){
 
@@ -553,9 +685,9 @@ document.getElementById("popupVideo").pause();
 
 }
 
-/* SEARCH */
+/* ===== SEARCH ===== */
 
-const search=document.querySelector(".search");
+const search=document.querySelector(".search-box");
 
 search.addEventListener("keyup",function(){
 
@@ -581,19 +713,23 @@ card.style.display="none";
 
 });
 
-/* AUTO SLIDER */
+/* ===== AUTO SLIDER ===== */
 
-let slideIndex = 0;
+let slideIndex=0;
 
 showSlides();
 
 function showSlides(){
 
-let slides=document.getElementsByClassName("slides");
+let slides=document.getElementsByClassName("slide");
+
+let dots=document.getElementsByClassName("dot");
 
 for(let i=0;i<slides.length;i++){
 
 slides[i].style.display="none";
+
+dots[i].className=dots[i].className.replace(" active","");
 
 }
 
@@ -601,11 +737,13 @@ slideIndex++;
 
 if(slideIndex > slides.length){
 
-slideIndex = 1;
+slideIndex=1;
 
 }
 
 slides[slideIndex-1].style.display="block";
+
+dots[slideIndex-1].className += " active";
 
 setTimeout(showSlides,4000);
 
