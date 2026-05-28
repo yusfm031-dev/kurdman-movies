@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="ku">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>KurdMan Movies</title>
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -22,117 +24,119 @@ color:white;
 overflow-x:hidden;
 }
 
-/* ===== TOPBAR ===== */
+/* HEADER */
 
 .topbar{
 position:fixed;
 top:0;
 left:0;
 width:100%;
-height:78px;
-padding:0 16px;
+height:75px;
+background:rgba(0,0,0,.55);
+backdrop-filter:blur(10px);
 display:flex;
 align-items:center;
 justify-content:space-between;
-background:rgba(0,0,0,.35);
-backdrop-filter:blur(12px);
-z-index:999999;
+padding:0 18px;
+z-index:99999;
 }
 
 .menu-btn{
-width:55px;
-height:55px;
-border-radius:18px;
-background:rgba(255,255,255,.07);
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-}
-
-.menu-btn span{
 font-size:34px;
-color:white;
-}
-
-.search-box{
-width:170px;
-padding:12px 18px;
-border:none;
-outline:none;
-border-radius:30px;
-background:rgba(255,255,255,.08);
-color:white;
-font-size:15px;
-position:absolute;
-left:50%;
-transform:translateX(-50%);
+cursor:pointer;
 }
 
 .logo{
-font-size:20px;
+font-size:22px;
 font-weight:bold;
 }
 
-/* ===== SIDEBAR ===== */
+.search-box{
+width:45%;
+height:45px;
+background:#111;
+border-radius:30px;
+display:flex;
+align-items:center;
+padding:0 15px;
+}
 
-#sidebar{
+.search-box input{
+width:100%;
+background:none;
+border:none;
+outline:none;
+color:white;
+font-size:16px;
+}
+
+.search-box span{
+margin-right:8px;
+}
+
+/* SIDEBAR */
+
+.sidebar{
 position:fixed;
 top:0;
 left:-100%;
-width:82%;
+width:78%;
 height:100%;
-background:#09060f;
-z-index:99999999;
-transition:.4s;
-padding-top:110px;
+background:#0d0d0d;
+z-index:999999;
+padding:40px 25px;
+transition:.5s;
 }
 
-.close-btn{
-position:absolute;
-top:20px;
-right:20px;
-font-size:42px;
+.sidebar.active{
+left:0;
+}
+
+.close-menu{
+font-size:35px;
+margin-bottom:40px;
 cursor:pointer;
 }
 
-#sidebar a{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:24px;
-font-size:24px;
+.sidebar a{
+display:block;
 color:white;
 text-decoration:none;
-border-bottom:1px solid rgba(255,255,255,.05);
+font-size:24px;
+margin:28px 0;
 }
 
-/* ===== HERO ===== */
+/* HERO */
 
 .hero-slider{
 position:relative;
 width:100%;
-height:420px;
+height:520px;
 overflow:hidden;
-margin-top:78px;
+margin-top:75px;
 }
 
 .slide{
-display:none;
 position:absolute;
 width:100%;
 height:100%;
-animation:fade 1s;
+opacity:0;
+transition:1s;
+}
+
+.active-slide{
+opacity:1;
+z-index:2;
 }
 
 .slide img{
 width:100%;
 height:100%;
 object-fit:cover;
-filter:brightness(.35);
+filter:brightness(.45);
 }
 
-.overlay{
+.hero-overlay{
 position:absolute;
 top:0;
 left:0;
@@ -141,136 +145,74 @@ height:100%;
 background:linear-gradient(to top,#050505 5%,transparent 70%);
 }
 
-/* ===== HERO CONTENT ===== */
-
 .hero-content{
 position:absolute;
-bottom:80px;
-left:20px;
-width:90%;
+bottom:90px;
+left:22px;
 z-index:5;
 }
 
-.hero-title{
-font-size:34px;
+.hero-content h1{
+font-size:48px;
 font-weight:bold;
-margin-bottom:14px;
+margin-bottom:12px;
 }
 
-.hero-desc{
-font-size:15px;
+.hero-content p{
+font-size:17px;
 line-height:1.8;
 color:#ddd;
-margin-bottom:18px;
 width:90%;
 }
 
-/* ===== WATCH BTN ===== */
+/* DOTS */
 
-.watch-btn{
-padding:14px 38px;
-border:none;
-border-radius:40px;
-background:linear-gradient(45deg,#ff0066,#ff6600);
-color:white;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-box-shadow:0 0 25px rgba(255,80,0,.4);
-}
-
-/* ===== SLIDER LINE ===== */
-
-.slider-line{
+.slider-dots{
 position:absolute;
-bottom:20px;
+bottom:35px;
 left:50%;
 transform:translateX(-50%);
 display:flex;
-gap:7px;
-background:rgba(0,0,0,.5);
-padding:10px 18px;
-border-radius:30px;
+gap:10px;
+z-index:10;
 }
 
-.line{
-width:9px;
-height:9px;
-background:#666;
+.dot{
+width:10px;
+height:10px;
+background:#888;
 border-radius:50%;
 transition:.4s;
 }
 
-.active{
-width:28px;
-background:#ff6600;
+.active-dot{
+width:32px;
 border-radius:20px;
+background:#ff6600;
 }
 
-/* ===== WATCHING ===== */
-
-.watching{
-padding:15px;
-}
-
-.watching-title{
-font-size:24px;
-font-weight:bold;
-margin-bottom:14px;
-color:#ff3355;
-}
-
-.watching-slider{
-display:flex;
-gap:14px;
-overflow-x:auto;
-scrollbar-width:none;
-}
-
-.watching-slider::-webkit-scrollbar{
-display:none;
-}
-
-.watch-card{
-min-width:170px;
-background:#111;
-border-radius:22px;
-overflow:hidden;
-}
-
-.watch-card img{
-width:100%;
-height:240px;
-object-fit:cover;
-display:block;
-}
-
-.watch-info{
-padding:12px;
-text-align:center;
-}
-
-/* ===== MOVIES ===== */
+/* SECTION */
 
 .section-title{
-font-size:28px;
-padding:25px 18px 10px;
+font-size:32px;
 font-weight:bold;
-color:#ff3355;
+color:#ff2255;
+padding:25px 18px;
 }
+
+/* MOVIES */
 
 .movies-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:14px;
+gap:16px;
 padding:15px;
 }
 
 .movie-card{
-background:#0f0f0f;
-border-radius:24px;
+background:#101010;
+border-radius:26px;
 overflow:hidden;
-position:relative;
 box-shadow:0 0 15px rgba(0,0,0,.5);
 }
 
@@ -281,12 +223,12 @@ overflow:hidden;
 
 .movie-image img{
 width:100%;
-height:270px;
+height:290px;
 object-fit:cover;
 display:block;
 }
 
-/* ===== RATING ===== */
+/* RATING */
 
 .rating{
 position:absolute;
@@ -295,7 +237,7 @@ left:10px;
 background:#ffcc00;
 padding:5px 10px;
 border-radius:14px;
-font-size:12px;
+font-size:11px;
 font-weight:bold;
 color:black;
 }
@@ -307,40 +249,37 @@ right:10px;
 background:rgba(0,0,0,.7);
 padding:5px 10px;
 border-radius:14px;
-font-size:12px;
+font-size:11px;
 font-weight:bold;
 }
 
-/* ===== PLAY BUTTON ===== */
-
-.play-overlay{
-position:absolute;
-bottom:14px;
-left:50%;
-transform:translateX(-50%);
-width:60px;
-height:60px;
-border-radius:50%;
-background:linear-gradient(45deg,#ff0066,#ff6600);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:28px;
-color:white;
-cursor:pointer;
-box-shadow:0 0 20px rgba(255,0,80,.5);
-}
+/* INFO */
 
 .movie-info{
-padding:14px;
+padding:16px;
 text-align:center;
 }
 
 .movie-info h3{
-font-size:18px;
+font-size:21px;
+margin-bottom:14px;
 }
 
-/* ===== POPUP ===== */
+/* PLAY BUTTON */
+
+.play-btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:40px;
+background:linear-gradient(45deg,#ff0066,#ff6600);
+color:white;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* POPUP */
 
 .popup{
 position:fixed;
@@ -352,7 +291,7 @@ background:black;
 display:none;
 justify-content:center;
 align-items:center;
-z-index:99999999;
+z-index:999999;
 }
 
 .popup video{
@@ -365,19 +304,12 @@ position:absolute;
 top:20px;
 right:20px;
 background:red;
-border:none;
-padding:10px 16px;
-font-size:20px;
 color:white;
+border:none;
+padding:10px 15px;
+font-size:22px;
 border-radius:14px;
 cursor:pointer;
-}
-
-/* ===== ANIMATION ===== */
-
-@keyframes fade{
-from{opacity:.4}
-to{opacity:1}
 }
 
 </style>
@@ -385,184 +317,168 @@ to{opacity:1}
 
 <body>
 
-<!-- ===== TOPBAR ===== -->
+<!-- HEADER -->
 
 <div class="topbar">
 
-<div class="menu-btn" onclick="toggleMenu()">
-<span>☰</span>
-</div>
+<div class="menu-btn" onclick="openMenu()">☰</div>
 
-<input type="text" class="search-box" placeholder="🔍 Search">
+<div class="search-box">
+
+<span>🔎</span>
+
+<input type="text" placeholder="Search..." id="searchInput">
+
+</div>
 
 <div class="logo">KurdMan</div>
 
 </div>
 
-<!-- ===== SIDEBAR ===== -->
 
-<div id="sidebar">
+<!-- SIDEBAR -->
 
-<div class="close-btn" onclick="toggleMenu()">✕</div>
+<div class="sidebar" id="sidebar">
+
+<div class="close-menu" onclick="closeMenu()">✕</div>
 
 <a href="#">🏠 سەرەتا</a>
 <a href="#">🎬 فیلمەکان</a>
 <a href="#">📺 زنجیرەکان</a>
 <a href="#">🔥 ترێند</a>
-<a href="#">💡 پێشنیارەکان</a>
-<a href="#">📑 هەواڵ</a>
-<a href="#">👥 ستاف</a>
+<a href="#">⭐ پێشنیارەکان</a>
 
 </div>
 
-<!-- ===== HERO ===== -->
+
+<!-- HERO -->
 
 <div class="hero-slider">
 
-<!-- SLIDE 1 -->
+<!-- 1 -->
 
-<div class="slide">
+<div class="slide active-slide">
 
 <img src="IMG_20260519_122720_858.png">
 
-<div class="overlay"></div>
+<div class="hero-overlay"></div>
 
 <div class="hero-content">
 
-<div class="hero-title">THE PITT</div>
+<h1>THE PITT</h1>
 
-<div class="hero-desc">
+<p>
 باشترین فیلم و زنجیرە دۆبلاژکراوە کوردییەکان
-</div>
-
-<button class="watch-btn">
-▶ تماشا بکە
-</button>
+</p>
 
 </div>
 
 </div>
 
-<!-- SLIDE 2 -->
+<!-- 2 -->
 
 <div class="slide">
 
 <img src="IMG_20260522_140604_218.png">
 
-<div class="overlay"></div>
+<div class="hero-overlay"></div>
 
 <div class="hero-content">
 
-<div class="hero-title">FROM</div>
+<h1>FROM</h1>
 
-<div class="hero-desc">
-نوێترین فیلمە ترسناکەکان
-</div>
-
-<button class="watch-btn">
-▶ تماشا بکە
-</button>
+<p>
+فیلمی ترسناک و نهێنی
+</p>
 
 </div>
 
 </div>
 
-<!-- SLIDE 3 -->
+<!-- 3 -->
 
 <div class="slide">
 
 <img src="IMG_20260522_140704_502.png">
 
-<div class="overlay"></div>
+<div class="hero-overlay"></div>
 
 <div class="hero-content">
 
-<div class="hero-title">KurdMan</div>
+<h1>CRIME 101</h1>
 
-<div class="hero-desc">
-فیلمی ئەکشن و دۆبلاژی کوردی
-</div>
-
-<button class="watch-btn">
-▶ تماشا بکە
-</button>
+<p>
+ئەکشن و تاوان
+</p>
 
 </div>
 
 </div>
 
-<!-- 10 SLIDES -->
+<!-- 4 -->
 
-<div class="slide"><img src="IMG_20260522_140721_798.jpg"><div class="overlay"></div></div>
-<div class="slide"><img src="IMG_20260519_122720_858.png"><div class="overlay"></div></div>
-<div class="slide"><img src="IMG_20260522_140604_218.png"><div class="overlay"></div></div>
-<div class="slide"><img src="IMG_20260522_140704_502.png"><div class="overlay"></div></div>
-<div class="slide"><img src="IMG_20260522_140721_798.jpg"><div class="overlay"></div></div>
-<div class="slide"><img src="IMG_20260519_122720_858.png"><div class="overlay"></div></div>
-<div class="slide"><img src="IMG_20260522_140604_218.png"><div class="overlay"></div></div>
+<div class="slide">
+
+<img src="IMG_20260522_140721_798.jpg">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>LAST NIGHT</h1>
+
+<p>
+فیلمی نوێی ئەکشن
+</p>
+
+</div>
+
+</div>
+
+<!-- 5 -->
+
+<div class="slide">
+
+<img src="file_00000000b37872469944d35385c90010.png">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>ساوا</h1>
+
+<p>
+فیلمی دۆبلاژکراوی کوردی
+</p>
+
+</div>
+
+</div>
 
 <!-- DOTS -->
 
-<div class="slider-line">
+<div class="slider-dots">
 
-<div class="line"></div>
-<div class="line"></div>
-<div class="line"></div>
-<div class="line"></div>
-<div class="line"></div>
-<div class="line"></div>
-<div class="line"></div>
-<div class="line"></div>
-<div class="line"></div>
-<div class="line"></div>
+<span class="dot active-dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
 
 </div>
 
 </div>
 
-<!-- ===== WATCHING ===== -->
 
-<div class="watching">
+<!-- MOVIES -->
 
-<div class="watching-title">
+<div class="section-title">
 جاوەڕوانی دواتر
 </div>
 
-<div class="watching-slider">
+<div class="movies-grid" id="moviesGrid">
 
-<div class="watch-card">
-<img src="file_00000000e440720a9828825168bd0226.png">
-<div class="watch-info">عەشق و فیتنە</div>
-</div>
-
-<div class="watch-card">
-<img src="file_00000000b37872469944d35385c90010.png">
-<div class="watch-info">ساوا</div>
-</div>
-
-<div class="watch-card">
-<img src="file_000000001dd871f49685c5a6ef226e96.png">
-<div class="watch-info">رۆستەم</div>
-</div>
-
-<div class="watch-card">
-<img src="file_000000006ec871f4a20f395a91e29602 (1).png">
-<div class="watch-info">لمبی</div>
-</div>
-
-</div>
-
-</div>
-
-<!-- ===== MOVIES ===== -->
-
-<div class="section-title">
-🔥 نوێترین فیلمەکان
-</div>
-
-<div class="movies-grid">
-
-<!-- MOVIE -->
+<!-- MOVIE 1 -->
 
 <div class="movie-card">
 
@@ -574,20 +490,24 @@ to{opacity:1}
 
 <div class="views">👁 120K</div>
 
-<div class="play-overlay"
-onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
-▶
-</div>
-
 </div>
 
 <div class="movie-info">
+
 <h3>عەشق و فیتنە</h3>
-</div>
+
+<button class="play-btn"
+onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
+
+▶ تماشا بکە
+
+</button>
 
 </div>
 
-<!-- MOVIE -->
+</div>
+
+<!-- MOVIE 2 -->
 
 <div class="movie-card">
 
@@ -599,20 +519,24 @@ onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef
 
 <div class="views">👁 95K</div>
 
-<div class="play-overlay"
-onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
-▶
-</div>
-
 </div>
 
 <div class="movie-info">
+
 <h3>ساوا</h3>
-</div>
+
+<button class="play-btn"
+onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+
+▶ تماشا بکە
+
+</button>
 
 </div>
 
-<!-- MOVIE -->
+</div>
+
+<!-- MOVIE 3 -->
 
 <div class="movie-card">
 
@@ -624,20 +548,24 @@ onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-56
 
 <div class="views">👁 77K</div>
 
-<div class="play-overlay"
-onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
-▶
-</div>
-
 </div>
 
 <div class="movie-info">
+
 <h3>رۆستەم</h3>
-</div>
+
+<button class="play-btn"
+onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
+
+▶ تماشا بکە
+
+</button>
 
 </div>
 
-<!-- MOVIE -->
+</div>
+
+<!-- MOVIE 4 -->
 
 <div class="movie-card">
 
@@ -649,51 +577,84 @@ onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3
 
 <div class="views">👁 150K</div>
 
-<div class="play-overlay"
-onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
-▶
-</div>
-
 </div>
 
 <div class="movie-info">
+
 <h3>لمبی</h3>
-</div>
+
+<button class="play-btn"
+onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
+
+▶ تماشا بکە
+
+</button>
 
 </div>
 
 </div>
 
-<!-- ===== POPUP ===== -->
+</div>
+
+
+<!-- POPUP -->
 
 <div class="popup" id="popup">
 
-<button class="close-popup"
-onclick="closePopup()">✖</button>
+<button class="close-popup" onclick="closePopup()">✕</button>
 
 <video id="popupVideo" controls playsinline></video>
 
 </div>
 
+
 <script>
 
 /* MENU */
 
-function toggleMenu(){
+function openMenu(){
+document.getElementById("sidebar").classList.add("active");
+}
 
-let sidebar=document.getElementById("sidebar");
+function closeMenu(){
+document.getElementById("sidebar").classList.remove("active");
+}
 
-if(sidebar.style.left==="0px"){
+/* SLIDER */
 
-sidebar.style.left="-100%";
+let slides=document.querySelectorAll(".slide");
+let dots=document.querySelectorAll(".dot");
 
-}else{
+let current=0;
 
-sidebar.style.left="0";
+function showSlide(index){
+
+slides.forEach(slide=>{
+slide.classList.remove("active-slide");
+});
+
+dots.forEach(dot=>{
+dot.classList.remove("active-dot");
+});
+
+slides[index].classList.add("active-slide");
+
+dots[index].classList.add("active-dot");
 
 }
 
+setInterval(()=>{
+
+current++;
+
+if(current >= slides.length){
+current=0;
 }
+
+showSlide(current);
+
+},3000);
+
 
 /* VIDEO */
 
@@ -717,7 +678,7 @@ video.play();
 
 });
 
-}else{
+}else if(video.canPlayType('application/vnd.apple.mpegurl')){
 
 video.src=videoUrl;
 
@@ -737,19 +698,19 @@ document.getElementById("popupVideo").pause();
 
 /* SEARCH */
 
-const search=document.querySelector(".search-box");
+const searchInput=document.getElementById("searchInput");
 
-search.addEventListener("keyup",function(){
+searchInput.addEventListener("keyup",function(){
 
-let value=search.value.toLowerCase();
+let value=searchInput.value.toLowerCase();
 
 let cards=document.querySelectorAll(".movie-card");
 
 cards.forEach(card=>{
 
-let title=card.innerText.toLowerCase();
+let text=card.innerText.toLowerCase();
 
-if(title.includes(value)){
+if(text.includes(value)){
 
 card.style.display="block";
 
@@ -762,50 +723,6 @@ card.style.display="none";
 });
 
 });
-
-/* SLIDER */
-
-let slideIndex=0;
-
-showSlides();
-
-function showSlides(){
-
-let slides=document.getElementsByClassName("slide");
-
-let dots=document.getElementsByClassName("line");
-
-for(let i=0;i<slides.length;i++){
-
-slides[i].style.display="none";
-
-}
-
-for(let i=0;i<dots.length;i++){
-
-dots[i].className=dots[i].className.replace(" active","");
-
-}
-
-slideIndex++;
-
-if(slideIndex > slides.length){
-
-slideIndex=1;
-
-}
-
-slides[slideIndex-1].style.display="block";
-
-if(dots[slideIndex-1]){
-
-dots[slideIndex-1].className += " active";
-
-}
-
-setTimeout(showSlides,3000);
-
-}
 
 </script>
 
