@@ -3,7 +3,7 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>KurdMan Movies</title>
 
@@ -18,10 +18,15 @@ box-sizing:border-box;
 font-family:sans-serif;
 }
 
+html{
+touch-action:manipulation;
+}
+
 body{
 background:#050505;
 color:white;
 overflow-x:hidden;
+max-width:100%;
 }
 
 /* HEADER */
@@ -33,7 +38,7 @@ left:0;
 width:100%;
 height:75px;
 background:rgba(0,0,0,.55);
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -44,6 +49,7 @@ z-index:99999;
 .menu-btn{
 font-size:34px;
 cursor:pointer;
+color:white;
 }
 
 .logo{
@@ -74,7 +80,7 @@ font-size:16px;
 margin-right:8px;
 }
 
-/* SIDEBAR */
+/* MENU */
 
 .sidebar{
 position:fixed;
@@ -82,7 +88,7 @@ top:0;
 left:-100%;
 width:82%;
 height:100%;
-background:#080808;
+background:#070707;
 z-index:999999;
 padding:35px 25px;
 transition:.5s;
@@ -108,13 +114,12 @@ cursor:pointer;
 .sidebar a{
 display:flex;
 align-items:center;
-justify-content:space-between;
+gap:14px;
+font-size:24px;
+font-weight:bold;
 color:white;
 text-decoration:none;
-font-size:25px;
-margin:32px 0;
-padding-bottom:10px;
-border-bottom:1px solid rgba(255,255,255,.08);
+padding:16px 0;
 }
 
 /* HERO */
@@ -177,7 +182,7 @@ width:90%;
 margin-bottom:20px;
 }
 
-/* PLAY BUTTON */
+/* HERO PLAY */
 
 .hero-play{
 padding:15px 38px;
@@ -235,10 +240,10 @@ padding:15px;
 }
 
 .movie-card{
-background:#0d0d0d;
-border-radius:28px;
+background:#0c0c0c;
+border-radius:26px;
 overflow:hidden;
-box-shadow:0 0 20px rgba(0,0,0,.6);
+box-shadow:0 0 18px rgba(0,0,0,.55);
 }
 
 .movie-image{
@@ -248,7 +253,7 @@ overflow:hidden;
 
 .movie-image img{
 width:100%;
-height:300px;
+height:320px;
 object-fit:cover;
 display:block;
 }
@@ -278,42 +283,46 @@ font-size:11px;
 font-weight:bold;
 }
 
+/* PLAY */
+
+.play-btn{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:78px;
+height:78px;
+border-radius:50%;
+border:none;
+background:linear-gradient(45deg,#ff0080,#ff6600);
+color:white;
+font-size:32px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+box-shadow:0 0 25px rgba(255,0,120,.6);
+}
+
 /* INFO */
 
 .movie-info{
-padding:18px;
+padding:14px;
 text-align:center;
 }
 
 .movie-info h3{
-font-size:23px;
-margin-bottom:10px;
-}
-
-.movie-info p{
-font-size:15px;
-color:#ccc;
-line-height:1.7;
-margin-bottom:16px;
-}
-
-/* PLAY */
-
-.play-btn{
-width:100%;
-padding:15px;
-border:none;
-border-radius:40px;
-background:linear-gradient(45deg,#ff0080,#ff7700);
+font-size:24px;
+margin:0;
 color:white;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-transition:.3s;
 }
 
-.play-btn:hover{
-transform:scale(1.05);
+.movie-desc{
+font-size:14px;
+color:#ccc;
+padding:0 10px 15px;
+line-height:1.6;
+text-align:center;
 }
 
 /* POPUP */
@@ -483,33 +492,6 @@ onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3
 
 <div class="slide">
 
-<img src="IMG_20260522_140721_798.jpg">
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<h1>LAST NIGHT</h1>
-
-<p>
-فیلمی نوێی ئەکشن
-</p>
-
-<button class="hero-play"
-onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
-
-▶ تماشا بکە
-
-</button>
-
-</div>
-
-</div>
-
-<!-- 5 -->
-
-<div class="slide">
-
 <img src="file_00000000b37872469944d35385c90010.png">
 
 <div class="hero-overlay"></div>
@@ -519,7 +501,7 @@ onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-78
 <h1>ساوا</h1>
 
 <p>
-فیلمی دۆبلاژکراوی کوردی
+فیلمی ئەکشن و تاوان
 </p>
 
 <button class="hero-play"
@@ -533,7 +515,7 @@ onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-56
 
 </div>
 
-<!-- 6 -->
+<!-- 5 -->
 
 <div class="slide">
 
@@ -546,7 +528,7 @@ onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-56
 <h1>رۆستەم</h1>
 
 <p>
-شەڕ و ماجەرا
+فیلمی شەڕ و ماجەرا
 </p>
 
 <button class="hero-play"
@@ -560,7 +542,7 @@ onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3
 
 </div>
 
-<!-- 7 -->
+<!-- 6 -->
 
 <div class="slide">
 
@@ -587,93 +569,11 @@ onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-78
 
 </div>
 
-<!-- 8 -->
-
-<div class="slide">
-
-<img src="IMG_20260522_140604_218.png">
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<h1>DARK CITY</h1>
-
-<p>
-نهێنی و ترسناک
-</p>
-
-<button class="hero-play">
-
-▶ تماشا بکە
-
-</button>
-
-</div>
-
-</div>
-
-<!-- 9 -->
-
-<div class="slide">
-
-<img src="IMG_20260522_140721_798.jpg">
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<h1>SHADOW</h1>
-
-<p>
-فیلمی ئەکشن
-</p>
-
-<button class="hero-play">
-
-▶ تماشا بکە
-
-</button>
-
-</div>
-
-</div>
-
-<!-- 10 -->
-
-<div class="slide">
-
-<img src="IMG_20260519_122720_858.png">
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<h1>NIGHT WAR</h1>
-
-<p>
-فیلمی شەڕ
-</p>
-
-<button class="hero-play">
-
-▶ تماشا بکە
-
-</button>
-
-</div>
-
-</div>
-
 <!-- DOTS -->
 
 <div class="slider-dots">
 
 <span class="dot active-dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
 <span class="dot"></span>
 <span class="dot"></span>
 <span class="dot"></span>
@@ -706,22 +606,24 @@ onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-78
 
 <div class="views">👁 120K</div>
 
+<button class="play-btn"
+onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
+
+▶
+
+</button>
+
 </div>
 
 <div class="movie-info">
 
 <h3>عەشق و فیتنە</h3>
 
-<p>
-کۆمیدی و ماجەرا - 2026
-</p>
+</div>
 
-<button class="play-btn"
-onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
+<div class="movie-desc">
 
-▶ تماشا بکە
-
-</button>
+کۆمیدی و ماجەرا • 2026
 
 </div>
 
@@ -739,22 +641,24 @@ onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef
 
 <div class="views">👁 95K</div>
 
+<button class="play-btn"
+onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+
+▶
+
+</button>
+
 </div>
 
 <div class="movie-info">
 
 <h3>ساوا</h3>
 
-<p>
-ئەکشن و تاوان - 2026
-</p>
+</div>
 
-<button class="play-btn"
-onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+<div class="movie-desc">
 
-▶ تماشا بکە
-
-</button>
+ئەکشن و تاوان • 2026
 
 </div>
 
@@ -772,22 +676,24 @@ onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-56
 
 <div class="views">👁 77K</div>
 
+<button class="play-btn"
+onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
+
+▶
+
+</button>
+
 </div>
 
 <div class="movie-info">
 
 <h3>رۆستەم</h3>
 
-<p>
-شەڕ و ماجەرا - 2026
-</p>
+</div>
 
-<button class="play-btn"
-onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
+<div class="movie-desc">
 
-▶ تماشا بکە
-
-</button>
+شەڕ و ماجەرا • 2026
 
 </div>
 
@@ -805,22 +711,24 @@ onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3
 
 <div class="views">👁 150K</div>
 
+<button class="play-btn"
+onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
+
+▶
+
+</button>
+
 </div>
 
 <div class="movie-info">
 
 <h3>لمبی عشق</h3>
 
-<p>
-خۆشەویستی و دراما - 2026
-</p>
+</div>
 
-<button class="play-btn"
-onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
+<div class="movie-desc">
 
-▶ تماشا بکە
-
-</button>
+خۆشەویستی و دراما • 2026
 
 </div>
 
