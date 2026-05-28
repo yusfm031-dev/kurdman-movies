@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+DOCTYPE html>
 <html lang="ku" dir="rtl">
 
 <head>
@@ -144,8 +144,6 @@ border-bottom:3px solid #ff0055;
 background:#000;
 }
 
-/* SLIDES */
-
 .slide{
 position:absolute;
 width:100%;
@@ -159,29 +157,20 @@ opacity:1;
 z-index:5;
 }
 
-/* لاپەری سەرەکی زووم نەکات + تەواوی وێنە دیاربێت */
+/* HERO NO ZOOM */
 
 .slide img{
 width:100%;
 height:100%;
+object-fit:cover;
+opacity:1 !important;
+visibility:visible !important;
 
-/* تەواوی وێنە دیاربێت */
-object-fit:contain;
-
-/* ڕەش لە دەوروبەر */
-background:#000;
-
-/* زووم و موڤی لاچوو */
 transform:none !important;
 scale:1 !important;
 animation:none !important;
 transition:none !important;
-
-opacity:1 !important;
-visibility:visible !important;
 }
-
-/* OVERLAY */
 
 .hero-overlay{
 position:absolute;
@@ -194,47 +183,36 @@ linear-gradient(to top,#050505 5%,transparent 70%),
 linear-gradient(to right,rgba(0,0,0,.65),rgba(0,0,0,.15));
 }
 
-/* HERO CONTENT */
-
 .hero-content{
 position:absolute;
-bottom:65px;
+bottom:90px;
 right:20px;
 z-index:10;
 width:85%;
 }
 
-/* نوسینی سەر وێنە جولاوەکان */
-
 .hero-content h1{
-font-size:28px;
-font-weight:900;
-margin-bottom:8px;
-
-background:linear-gradient(45deg,#ffffff,#ffcc70,#ff0066);
-
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
-text-shadow:
-0 0 10px rgba(255,255,255,.15),
-0 0 18px rgba(255,0,100,.25);
+font-size:42px;
+font-weight:bold;
+margin-bottom:12px;
+color:white;
+text-shadow:0 0 20px rgba(0,0,0,.8);
 }
 
 .hero-content p{
-font-size:13px;
-line-height:1.8;
-color:#f1f1f1;
-margin-bottom:14px;
+font-size:17px;
+line-height:1.7;
+color:#eee;
+margin-bottom:18px;
 }
 
 .hero-watch-btn{
-padding:10px 22px;
+padding:11px 24px;
 border:none;
 border-radius:40px;
 background:linear-gradient(45deg,#ff0066,#ff9900);
 color:white;
-font-size:13px;
+font-size:14px;
 font-weight:bold;
 cursor:pointer;
 box-shadow:0 0 20px rgba(255,0,100,.45);
@@ -242,7 +220,7 @@ transition:.3s;
 }
 
 .hero-watch-btn:hover{
-transform:scale(1.05);
+transform:scale(1.06);
 }
 
 /* DOTS */
@@ -282,6 +260,8 @@ font-size:34px;
 font-weight:900;
 padding:28px 18px;
 
+font-family:'Cairo',sans-serif;
+
 background:linear-gradient(45deg,#ff0066,#ffcc00,#ffffff);
 
 -webkit-background-clip:text;
@@ -298,8 +278,7 @@ grid-template-columns:repeat(2,1fr);
 gap:16px;
 padding:15px;
 }
-
-.movie-card{
+  .movie-card{
 background:#101010;
 border-radius:22px;
 overflow:hidden;
@@ -358,7 +337,7 @@ backdrop-filter:blur(8px);
 opacity:1;
 }
 
-/* RATING */
+/* RATING SMALL */
 
 .rating{
 position:absolute;
@@ -394,6 +373,10 @@ text-align:center;
 font-size:24px;
 font-weight:900;
 margin-top:6px;
+
+font-family:'Cairo',sans-serif;
+
+letter-spacing:.5px;
 
 background:linear-gradient(45deg,#ffffff,#ffcc70,#ff0066);
 
@@ -439,7 +422,6 @@ cursor:pointer;
 }
 
 </style>
-
 </head>
 
 <body>
@@ -480,6 +462,8 @@ cursor:pointer;
 
 <div class="hero-slider">
 
+<!-- 1 -->
+
 <div class="slide active-slide">
 
 <img src="image_1779992223418.jpeg">
@@ -488,7 +472,7 @@ cursor:pointer;
 
 <div class="hero-content">
 
-<h1>چیشت لینەر</h1>
+<h1> چیشت لینەر</h1>
 
 <p>
 فیلمی کۆمیدی و سەرنج ڕاکێش کۆری
@@ -502,6 +486,64 @@ cursor:pointer;
 
 </div>
 
+<!-- 2 -->
+
+<div class="slide">
+
+<img src="image_1779992286895.jpeg">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>ڕۆبین هود</h1>
+
+<p>
+فیلمی ئەکشن و مێژوویی
+</p>
+
+<button class="hero-watch-btn">
+▶ تماشا بکە
+</button>
+
+</div>
+
+</div>
+
+<!-- 3 -->
+
+<div class="slide">
+
+<img src="image_1779988565013.jpeg">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>ئاکشن .کۆمیدی.رۆمانسی</h1>
+
+<p>
+شەڕی بەهێز و ئەکشنی ئاگری
+</p>
+
+<button class="hero-watch-btn">
+▶ تماشا بکە
+</button>
+
+</div>
+
+</div>
+
+<!-- DOTS -->
+
+<div class="slider-dots">
+
+<span class="dot active-dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+
+</div>
+
 </div>
 
 <!-- MOVIES -->
@@ -510,13 +552,35 @@ cursor:pointer;
 نوێترین فیلمەکان
 </div>
 
-<div class="movies-grid">
+<div class="movies-grid" id="moviesGrid">
 
 <!-- MOVIE 1 -->
 
 <div class="movie-card">
 
 <div class="movie-image"
+onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
+
+<img src="file_00000000e440720a9828825168bd0226.png">
+
+<div class="play-icon">▶</div>
+
+<div class="rating">⭐ 8.5</div>
+
+<div class="views">👁 120K</div>
+
+</div>
+
+<div class="movie-info">
+<h3>عەشق و فیتنە</h3>
+</div>
+
+</div>
+
+<!-- MOVIE 2 -->
+
+<div class="movie-card">
+  <div class="movie-image"
 onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
 
 <img src="file_00000000b37872469944d35385c90010.png">
@@ -535,7 +599,7 @@ onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-56
 
 </div>
 
-<!-- MOVIE 2 -->
+<!-- MOVIE 3 -->
 
 <div class="movie-card">
 
@@ -558,7 +622,7 @@ onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3
 
 </div>
 
-<!-- MOVIE 3 -->
+<!-- MOVIE 4 -->
 
 <div class="movie-card">
 
@@ -605,6 +669,41 @@ function closeMenu(){
 document.getElementById("sidebar").classList.remove("active");
 }
 
+/* SLIDER */
+
+let slides=document.querySelectorAll(".slide");
+let dots=document.querySelectorAll(".dot");
+
+let current=0;
+
+function showSlide(index){
+
+slides.forEach(slide=>{
+slide.classList.remove("active-slide");
+});
+
+dots.forEach(dot=>{
+dot.classList.remove("active-dot");
+});
+
+slides[index].classList.add("active-slide");
+
+dots[index].classList.add("active-dot");
+
+}
+
+setInterval(()=>{
+
+current++;
+
+if(current >= slides.length){
+current=0;
+}
+
+showSlide(current);
+
+},4000);
+
 /* VIDEO */
 
 function openPopup(videoUrl){
@@ -645,8 +744,35 @@ document.getElementById("popupVideo").pause();
 
 }
 
+/* SEARCH */
+
+const searchInput=document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup",function(){
+
+let value=searchInput.value.toLowerCase();
+
+let cards=document.querySelectorAll(".movie-card");
+
+cards.forEach(card=>{
+
+let text=card.innerText.toLowerCase();
+
+if(text.includes(value)){
+
+card.style.display="block";
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+});
+
 </script>
 
 </body>
-
 </html>
