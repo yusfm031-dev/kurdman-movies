@@ -3,7 +3,7 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>KurdMan Movies</title>
 
@@ -18,50 +18,52 @@ box-sizing:border-box;
 font-family:sans-serif;
 }
 
-html{
-touch-action:manipulation;
-}
-
 body{
 background:#050505;
 color:white;
 overflow-x:hidden;
-max-width:100%;
 }
 
-/* HEADER */
+/* TOPBAR */
 
 .topbar{
 position:fixed;
 top:0;
 left:0;
 width:100%;
-height:75px;
+height:74px;
 background:rgba(0,0,0,.55);
 backdrop-filter:blur(12px);
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:0 18px;
+padding:0 16px;
 z-index:99999;
 }
 
 .menu-btn{
-font-size:34px;
-cursor:pointer;
+font-size:32px;
 color:white;
+cursor:pointer;
+width:52px;
+height:52px;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,.06);
 }
 
 .logo{
-font-size:24px;
+font-size:20px;
 font-weight:bold;
 }
 
 .search-box{
-width:45%;
-height:45px;
-background:#111;
-border-radius:30px;
+width:48%;
+height:46px;
+background:rgba(255,255,255,.06);
+border-radius:40px;
 display:flex;
 align-items:center;
 padding:0 15px;
@@ -73,22 +75,23 @@ background:none;
 border:none;
 outline:none;
 color:white;
-font-size:16px;
+font-size:15px;
 }
 
 .search-box span{
 margin-right:8px;
+color:#00d0ff;
 }
 
-/* MENU */
+/* SIDEBAR */
 
 .sidebar{
 position:fixed;
 top:0;
 left:-100%;
-width:82%;
+width:78%;
 height:100%;
-background:#070707;
+background:#0b0b0f;
 z-index:999999;
 padding:35px 25px;
 transition:.5s;
@@ -99,27 +102,26 @@ left:0;
 }
 
 .close-menu{
-width:60px;
-height:60px;
-background:#111;
-border-radius:20px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:32px;
+font-size:36px;
 margin-bottom:40px;
 cursor:pointer;
+text-align:right;
+color:white;
 }
 
 .sidebar a{
 display:flex;
 align-items:center;
-gap:14px;
-font-size:24px;
-font-weight:bold;
+justify-content:space-between;
 color:white;
 text-decoration:none;
-padding:16px 0;
+font-size:24px;
+margin:32px 0;
+font-weight:bold;
+}
+
+.sidebar a span{
+font-size:28px;
 }
 
 /* HERO */
@@ -129,7 +131,7 @@ position:relative;
 width:100%;
 height:520px;
 overflow:hidden;
-margin-top:75px;
+margin-top:74px;
 }
 
 .slide{
@@ -158,48 +160,46 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(to top,#050505 5%,transparent 70%);
+background:linear-gradient(to top,#050505 8%,transparent 70%);
 }
 
 .hero-content{
 position:absolute;
-bottom:90px;
-left:22px;
+bottom:85px;
+left:20px;
 z-index:5;
+width:90%;
 }
 
 .hero-content h1{
 font-size:48px;
-font-weight:bold;
-margin-bottom:12px;
+margin-bottom:10px;
 }
 
 .hero-content p{
 font-size:17px;
-line-height:1.8;
+line-height:1.7;
 color:#ddd;
-width:90%;
-margin-bottom:20px;
+margin-bottom:18px;
 }
 
-/* HERO PLAY */
-
-.hero-play{
-padding:15px 38px;
+.watch-btn{
+padding:13px 28px;
 border:none;
 border-radius:40px;
-background:linear-gradient(45deg,#ff0066,#ff8800);
+background:linear-gradient(45deg,#ff0066,#ff6600);
 color:white;
-font-size:19px;
+font-size:16px;
 font-weight:bold;
 cursor:pointer;
+box-shadow:0 0 18px rgba(255,0,120,.5);
 }
 
 /* DOTS */
 
 .slider-dots{
 position:absolute;
-bottom:35px;
+bottom:30px;
 left:50%;
 transform:translateX(-50%);
 display:flex;
@@ -208,15 +208,15 @@ z-index:10;
 }
 
 .dot{
-width:12px;
-height:12px;
-background:#ddd;
+width:11px;
+height:11px;
+background:#bbb;
 border-radius:50%;
 transition:.4s;
 }
 
 .active-dot{
-width:36px;
+width:34px;
 border-radius:20px;
 background:#ff6600;
 }
@@ -226,8 +226,8 @@ background:#ff6600;
 .section-title{
 font-size:34px;
 font-weight:bold;
-color:#ff1177;
-padding:20px 18px;
+color:#ff1b6b;
+padding:28px 18px;
 }
 
 /* MOVIES */
@@ -240,10 +240,9 @@ padding:15px;
 }
 
 .movie-card{
-background:#0c0c0c;
-border-radius:26px;
+background:#0f0f14;
+border-radius:24px;
 overflow:hidden;
-box-shadow:0 0 18px rgba(0,0,0,.55);
 }
 
 .movie-image{
@@ -253,9 +252,42 @@ overflow:hidden;
 
 .movie-image img{
 width:100%;
-height:320px;
+height:310px;
 object-fit:cover;
 display:block;
+}
+
+/* PLAY OVERLAY */
+
+.play-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:0;
+transition:.3s;
+background:rgba(0,0,0,.25);
+}
+
+.movie-image:active .play-overlay{
+opacity:1;
+}
+
+.play-circle{
+width:82px;
+height:82px;
+border-radius:50%;
+background:linear-gradient(45deg,#ff0080,#ff6600);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:34px;
+color:white;
+box-shadow:0 0 25px rgba(255,0,120,.7);
 }
 
 /* RATING */
@@ -264,10 +296,10 @@ display:block;
 position:absolute;
 top:10px;
 left:10px;
-background:#ffcc00;
-padding:5px 10px;
-border-radius:14px;
-font-size:11px;
+background:#ffd400;
+padding:6px 12px;
+border-radius:18px;
+font-size:12px;
 font-weight:bold;
 color:black;
 }
@@ -276,53 +308,22 @@ color:black;
 position:absolute;
 top:10px;
 right:10px;
-background:rgba(0,0,0,.7);
-padding:5px 10px;
-border-radius:14px;
-font-size:11px;
+background:rgba(0,0,0,.6);
+padding:6px 12px;
+border-radius:18px;
+font-size:12px;
 font-weight:bold;
-}
-
-/* PLAY */
-
-.play-btn{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:78px;
-height:78px;
-border-radius:50%;
-border:none;
-background:linear-gradient(45deg,#ff0080,#ff6600);
-color:white;
-font-size:32px;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-box-shadow:0 0 25px rgba(255,0,120,.6);
 }
 
 /* INFO */
 
 .movie-info{
-padding:14px;
+padding:15px;
 text-align:center;
 }
 
 .movie-info h3{
-font-size:24px;
-margin:0;
-color:white;
-}
-
-.movie-desc{
-font-size:14px;
-color:#ccc;
-padding:0 10px 15px;
-line-height:1.6;
-text-align:center;
+font-size:26px;
 }
 
 /* POPUP */
@@ -353,7 +354,7 @@ background:red;
 color:white;
 border:none;
 padding:10px 15px;
-font-size:22px;
+font-size:24px;
 border-radius:14px;
 cursor:pointer;
 }
@@ -363,7 +364,7 @@ cursor:pointer;
 
 <body>
 
-<!-- HEADER -->
+<!-- TOPBAR -->
 
 <div class="topbar">
 
@@ -381,33 +382,24 @@ cursor:pointer;
 
 </div>
 
-<!-- MENU -->
+<!-- SIDEBAR -->
 
 <div class="sidebar" id="sidebar">
 
 <div class="close-menu" onclick="closeMenu()">✕</div>
 
-<a href="#">🏠 سەرەتا</a>
-
-<a href="#">🎬 فیلمەکان</a>
-
-<a href="#">📺 زنجیرەکان</a>
-
-<a href="#">🔥 ترێند</a>
-
-<a href="#">⭐ پێشنیارەکان</a>
-
-<a href="#">📂 هاوڵ</a>
-
-<a href="#">👥 ستاف</a>
+<a href="#"><span>🏠</span> سەرەتا</a>
+<a href="#"><span>🎬</span> فیلمەکان</a>
+<a href="#"><span>📺</span> زنجیرەکان</a>
+<a href="#"><span>🔥</span> ترێند</a>
+<a href="#"><span>⭐</span> پێشنیارەکان</a>
+<a href="#"><span>👥</span> ستاف</a>
 
 </div>
 
 <!-- HERO -->
 
 <div class="hero-slider">
-
-<!-- 1 -->
 
 <div class="slide active-slide">
 
@@ -423,18 +415,13 @@ cursor:pointer;
 باشترین فیلم و زنجیرە دۆبلاژکراوە کوردییەکان
 </p>
 
-<button class="hero-play"
-onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
-
+<button class="watch-btn">
 ▶ تماشا بکە
-
 </button>
 
 </div>
 
 </div>
-
-<!-- 2 -->
 
 <div class="slide">
 
@@ -450,18 +437,13 @@ onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef
 فیلمی ترسناک و نهێنی
 </p>
 
-<button class="hero-play"
-onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
-
+<button class="watch-btn">
 ▶ تماشا بکە
-
 </button>
 
 </div>
 
 </div>
-
-<!-- 3 -->
 
 <div class="slide">
 
@@ -477,18 +459,35 @@ onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-56
 ئەکشن و تاوان
 </p>
 
-<button class="hero-play"
-onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
-
+<button class="watch-btn">
 ▶ تماشا بکە
-
 </button>
 
 </div>
 
 </div>
 
-<!-- 4 -->
+<div class="slide">
+
+<img src="IMG_20260522_140721_798.jpg">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>LAST NIGHT</h1>
+
+<p>
+فیلمی نوێی ئەکشن
+</p>
+
+<button class="watch-btn">
+▶ تماشا بکە
+</button>
+
+</div>
+
+</div>
 
 <div class="slide">
 
@@ -501,80 +500,20 @@ onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3
 <h1>ساوا</h1>
 
 <p>
-فیلمی ئەکشن و تاوان
+فیلمی دۆبلاژکراوی کوردی
 </p>
 
-<button class="hero-play"
-onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
-
+<button class="watch-btn">
 ▶ تماشا بکە
-
 </button>
 
 </div>
 
 </div>
-
-<!-- 5 -->
-
-<div class="slide">
-
-<img src="file_000000001dd871f49685c5a6ef226e96.png">
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<h1>رۆستەم</h1>
-
-<p>
-فیلمی شەڕ و ماجەرا
-</p>
-
-<button class="hero-play"
-onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
-
-▶ تماشا بکە
-
-</button>
-
-</div>
-
-</div>
-
-<!-- 6 -->
-
-<div class="slide">
-
-<img src="file_000000006ec871f4a20f395a91e29602 (1).png">
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<h1>لمبی عشق</h1>
-
-<p>
-خۆشەویستی و دراما
-</p>
-
-<button class="hero-play"
-onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
-
-▶ تماشا بکە
-
-</button>
-
-</div>
-
-</div>
-
-<!-- DOTS -->
 
 <div class="slider-dots">
 
 <span class="dot active-dot"></span>
-<span class="dot"></span>
 <span class="dot"></span>
 <span class="dot"></span>
 <span class="dot"></span>
@@ -587,18 +526,19 @@ onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-78
 <!-- SECTION -->
 
 <div class="section-title">
-فیلمە نوێکان
+جاوەڕوانی دواتر
 </div>
 
 <!-- MOVIES -->
 
-<div class="movies-grid" id="moviesGrid">
+<div class="movies-grid">
 
-<!-- MOVIE 1 -->
+<!-- MOVIE -->
 
 <div class="movie-card">
 
-<div class="movie-image">
+<div class="movie-image"
+onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
 
 <img src="file_00000000e440720a9828825168bd0226.png">
 
@@ -606,12 +546,11 @@ onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-78
 
 <div class="views">👁 120K</div>
 
-<button class="play-btn"
-onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
+<div class="play-overlay">
 
-▶
+<div class="play-circle">▶</div>
 
-</button>
+</div>
 
 </div>
 
@@ -621,19 +560,14 @@ onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef
 
 </div>
 
-<div class="movie-desc">
-
-کۆمیدی و ماجەرا • 2026
-
 </div>
 
-</div>
-
-<!-- MOVIE 2 -->
+<!-- MOVIE -->
 
 <div class="movie-card">
 
-<div class="movie-image">
+<div class="movie-image"
+onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
 
 <img src="file_00000000b37872469944d35385c90010.png">
 
@@ -641,12 +575,11 @@ onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef
 
 <div class="views">👁 95K</div>
 
-<button class="play-btn"
-onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
+<div class="play-overlay">
 
-▶
+<div class="play-circle">▶</div>
 
-</button>
+</div>
 
 </div>
 
@@ -656,19 +589,14 @@ onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-56
 
 </div>
 
-<div class="movie-desc">
-
-ئەکشن و تاوان • 2026
-
 </div>
 
-</div>
-
-<!-- MOVIE 3 -->
+<!-- MOVIE -->
 
 <div class="movie-card">
 
-<div class="movie-image">
+<div class="movie-image"
+onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
 
 <img src="file_000000001dd871f49685c5a6ef226e96.png">
 
@@ -676,12 +604,11 @@ onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-56
 
 <div class="views">👁 77K</div>
 
-<button class="play-btn"
-onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
+<div class="play-overlay">
 
-▶
+<div class="play-circle">▶</div>
 
-</button>
+</div>
 
 </div>
 
@@ -691,19 +618,14 @@ onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3
 
 </div>
 
-<div class="movie-desc">
-
-شەڕ و ماجەرا • 2026
-
 </div>
 
-</div>
-
-<!-- MOVIE 4 -->
+<!-- MOVIE -->
 
 <div class="movie-card">
 
-<div class="movie-image">
+<div class="movie-image"
+onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
 
 <img src="file_000000006ec871f4a20f395a91e29602 (1).png">
 
@@ -711,24 +633,17 @@ onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3
 
 <div class="views">👁 150K</div>
 
-<button class="play-btn"
-onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
+<div class="play-overlay">
 
-▶
+<div class="play-circle">▶</div>
 
-</button>
+</div>
 
 </div>
 
 <div class="movie-info">
 
-<h3>لمبی عشق</h3>
-
-</div>
-
-<div class="movie-desc">
-
-خۆشەویستی و دراما • 2026
+<h3>لمبی</h3>
 
 </div>
 
