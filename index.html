@@ -421,6 +421,51 @@ transition:.3s;
 .movie-card:hover .movie-info h3{
 color:#ffb347;
 }
+  
+  /* TOP 10 */
+
+.top10-row{
+display:flex;
+gap:18px;
+overflow-x:auto;
+padding:10px 15px 25px;
+scrollbar-width:none;
+}
+
+.top10-row::-webkit-scrollbar{
+display:none;
+}
+
+.top10-item{
+position:relative;
+flex:0 0 160px;
+}
+
+.top10-item img{
+width:100%;
+height:240px;
+object-fit:cover;
+border-radius:18px;
+box-shadow:0 0 20px rgba(0,0,0,.4);
+}
+
+.top-rank{
+position:absolute;
+left:-8px;
+bottom:-15px;
+
+font-size:95px;
+font-weight:900;
+line-height:1;
+
+color:white;
+
+text-shadow:
+4px 4px 0 #000,
+0 0 20px rgba(0,0,0,.8);
+
+z-index:10;
+}
 /* POPUP */
 
 .popup{
@@ -578,7 +623,35 @@ cursor:pointer;
 </div>
 
 </div>
+<!-- TOP 10 -->
 
+<div class="section-title">
+🏆 TOP 10 KurdMan
+</div>
+
+<div class="top10-row">
+
+<div class="top10-item">
+<span class="top-rank">1</span>
+<img src="file_000000001dd871f49685c5a6ef226e96.png">
+</div>
+
+<div class="top10-item">
+<span class="top-rank">2</span>
+<img src="file_00000000b37872469944d35385c90010.png">
+</div>
+
+<div class="top10-item">
+<span class="top-rank">3</span>
+<img src="file_000000006ec871f4a20f395a91e29602 (1).png">
+</div>
+
+<div class="top10-item">
+<span class="top-rank">4</span>
+<img src="file_00000000e440720a9828825168bd0226.png">
+</div>
+
+</div>
 <!-- MOVIES -->
 
 <div class="section-title">
