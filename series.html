@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,6 @@ body{
 background:#000;
 font-family:sans-serif;
 color:white;
-overflow:hidden;
 }
 
 .topbar{
@@ -27,26 +27,27 @@ top:0;
 left:0;
 right:0;
 height:65px;
-background:#111;
+background:rgba(0,0,0,.85);
+backdrop-filter:blur(10px);
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:0 20px;
 z-index:9999;
-box-shadow:0 0 15px rgba(0,0,0,.7);
 }
 
 .logo{
 font-size:24px;
 font-weight:bold;
-color:#ffcc00;
+color:#ffd21f;
 }
 
 .topbtn{
 background:none;
 border:none;
 color:white;
-font-size:28px;
+font-size:30px;
+cursor:pointer;
 }
 
 .menu{
@@ -58,6 +59,7 @@ background:#111;
 border-radius:15px;
 padding:10px;
 z-index:9999;
+box-shadow:0 0 20px rgba(0,0,0,.7);
 }
 
 .menu a{
@@ -77,8 +79,9 @@ overflow:hidden;
 .bg{
 position:absolute;
 width:100%;
-height:100%;
+height:115%;
 object-fit:cover;
+transition:transform .1s linear;
 }
 
 .overlay{
@@ -86,28 +89,30 @@ position:absolute;
 left:0;
 right:0;
 bottom:0;
-height:65%;
+height:80%;
 background:linear-gradient(
 to top,
-rgba(0,0,0,.95),
-rgba(0,0,0,.65),
-transparent
+rgba(0,0,0,1) 0%,
+rgba(0,0,0,.95) 30%,
+rgba(0,0,0,.75) 55%,
+transparent 100%
 );
 }
 
 .content{
 position:absolute;
 left:50%;
-top:56%;
+top:60%;
 transform:translate(-50%,-50%);
 width:100%;
 text-align:center;
 z-index:10;
+padding:0 15px;
 }
 
 .poster{
-width:180px;
-height:260px;
+width:160px;
+height:235px;
 object-fit:cover;
 border-radius:20px;
 border:3px solid #ffd21f;
@@ -153,14 +158,15 @@ font-size:13px;
 display:block;
 width:90%;
 max-width:450px;
-margin:20px auto;
+margin:25px auto;
 background:#ffd21f;
 color:black;
-padding:16px;
-border-radius:15px;
-font-size:20px;
+padding:18px;
+border-radius:18px;
+font-size:22px;
 font-weight:bold;
 text-decoration:none;
+box-shadow:0 0 25px rgba(255,210,31,.5);
 }
 
 </style>
@@ -236,6 +242,16 @@ menu.style.display="block";
 }
 
 }
+
+window.addEventListener("scroll",function(){
+
+const bg=document.querySelector(".bg");
+
+let y=window.pageYOffset;
+
+bg.style.transform="translateY("+(y*0.3)+"px)";
+
+});
 
 </script>
 
