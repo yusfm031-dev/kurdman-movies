@@ -7,6 +7,7 @@
 <title>Squid Game</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -17,7 +18,7 @@ body{
 background:#000;
 font-family:sans-serif;
 color:white;
-overflow-x:hidden;
+overflow:hidden;
 }
 
 .topbar{
@@ -25,33 +26,33 @@ position:fixed;
 top:0;
 left:0;
 right:0;
-height:70px;
-background:rgba(0,0,0,.75);
-backdrop-filter:blur(10px);
+height:65px;
+background:#111;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:0 20px;
 z-index:9999;
+box-shadow:0 0 15px rgba(0,0,0,.7);
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#ffcc00;
 }
 
 .topbtn{
 background:none;
 border:none;
 color:white;
-font-size:30px;
-}
-
-.logo{
 font-size:28px;
-font-weight:bold;
-color:#ffd21f;
 }
 
 .menu{
 display:none;
 position:fixed;
-top:75px;
+top:70px;
 right:15px;
 background:#111;
 border-radius:15px;
@@ -88,49 +89,50 @@ bottom:0;
 height:65%;
 background:linear-gradient(
 to top,
-#000,
-rgba(0,0,0,.85),
+rgba(0,0,0,.95),
+rgba(0,0,0,.65),
 transparent
 );
 }
 
 .content{
 position:absolute;
-top:54%;
 left:50%;
+top:56%;
 transform:translate(-50%,-50%);
 width:100%;
 text-align:center;
-z-index:5;
+z-index:10;
 }
 
 .poster{
-width:220px;
-height:320px;
+width:180px;
+height:260px;
 object-fit:cover;
 border-radius:20px;
 border:3px solid #ffd21f;
-box-shadow:0 0 30px rgba(255,210,31,.8);
+box-shadow:0 0 25px rgba(255,210,31,.8);
 }
 
 .netflix{
-display:inline-block;
-margin-top:10px;
+display:block;
+width:fit-content;
+margin:10px auto;
 background:#111;
-padding:10px 25px;
+padding:8px 20px;
 border-radius:10px;
+font-size:20px;
 font-weight:bold;
-font-size:24px;
 }
 
 .title{
-font-size:50px;
+font-size:34px;
 font-weight:bold;
-margin-top:15px;
+margin-top:12px;
 }
 
 .desc{
-color:#ccc;
+color:#ddd;
 margin-top:8px;
 }
 
@@ -150,16 +152,17 @@ font-size:13px;
 .watch{
 display:block;
 width:90%;
-max-width:500px;
+max-width:450px;
 margin:20px auto;
 background:#ffd21f;
 color:black;
-padding:18px;
+padding:16px;
 border-radius:15px;
-font-size:22px;
+font-size:20px;
 font-weight:bold;
 text-decoration:none;
 }
+
 </style>
 </head>
 
@@ -204,14 +207,12 @@ src="https://raw.githubusercontent.com/yusfm031-dev/kurdman-movies/main/file_000
 <div class="desc">زنجیرەی کۆری</div>
 
 <div class="tags">
-
 <span class="tag">⭐ 8.2</span>
 <span class="tag">54 خولەک</span>
 <span class="tag">2021</span>
 <span class="tag">ئەکشن</span>
 <span class="tag">دراما</span>
 <span class="tag">Kurdistan</span>
-
 </div>
 
 <a href="squidgame.html" class="watch">
@@ -223,7 +224,9 @@ src="https://raw.githubusercontent.com/yusfm031-dev/kurdman-movies/main/file_000
 </div>
 
 <script>
-function toggleMenu() {
+
+function toggleMenu(){
+
 var menu=document.getElementById("menu");
 
 if(menu.style.display==="block"){
@@ -231,7 +234,9 @@ menu.style.display="none";
 }else{
 menu.style.display="block";
 }
+
 }
+
 </script>
 
 </body>
