@@ -2,212 +2,247 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>زنجیرەکان</title>
-</head>
+<title>Squid Game</title>
 
-<body style="
+<style>
+body{
 margin:0;
-background:#070707;
-color:white;
+background:#000;
 font-family:sans-serif;
-">
-
-<!-- Search + Logo + Menu -->
-
-<div style="
-position:absolute;
-top:20px;
-left:20px;
-right:20px;
-z-index:999;
-display:flex;
-justify-content:space-between;
-align-items:center;
-font-size:40px;
 color:white;
-">
+overflow-x:hidden;
+}
 
-<span>🔍</span>
-
-<span style="
-font-size:38px;
-font-weight:bold;
-color:#ffd21f;
-">
-KURDMAN
-</span>
-
-<span>☰</span>
-
-</div>
-
-<!-- Background -->
-
-<div style="
+.hero{
 position:relative;
-width:100%;
 height:100vh;
 overflow:hidden;
-">
+}
 
-<img src="https://raw.githubusercontent.com/yusfm031-dev/kurdman-movies/main/file_000000009bc872439c938875ddb5602c.png"
-style="
+.hero img.bg{
 width:100%;
 height:100%;
 object-fit:cover;
 display:block;
-">
+}
 
-<!-- Dark Overlay -->
-
-<div style="
+.overlay{
 position:absolute;
 left:0;
 right:0;
 bottom:0;
-height:60%;
+height:70%;
 background:linear-gradient(
 to top,
-rgba(0,0,0,0.95),
-rgba(0,0,0,0.7),
+#000 15%,
+rgba(0,0,0,.9) 45%,
+rgba(0,0,0,.3) 75%,
 transparent
 );
-">
-</div>
+}
 
-<!-- Content -->
+.topbar{
+position:absolute;
+top:20px;
+left:15px;
+right:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:999;
+}
 
-<div style="
+.topbtn{
+background:none;
+border:none;
+color:white;
+font-size:34px;
+cursor:pointer;
+}
+
+.logo{
+font-size:32px;
+font-weight:bold;
+color:#ffd21f;
+}
+
+.menu{
+display:none;
+position:absolute;
+top:75px;
+right:15px;
+background:#111;
+border-radius:15px;
+padding:10px;
+z-index:1000;
+box-shadow:0 0 20px rgba(0,0,0,.8);
+}
+
+.menu a{
+display:block;
+padding:12px;
+color:white;
+text-decoration:none;
+}
+
+.content{
 position:absolute;
 left:50%;
 top:58%;
 transform:translate(-50%,-50%);
 text-align:center;
 width:100%;
-z-index:10;
-">
+z-index:5;
+}
 
-<img src="https://raw.githubusercontent.com/yusfm031-dev/kurdman-movies/main/file_0000000001d0720aa5c16e49ba2a1d95.png"
-style="
-width:340px;
-height:500px;
+.poster{
+width:280px;
+height:400px;
 object-fit:cover;
 border-radius:20px;
 border:4px solid #ffd21f;
-box-shadow:0 0 30px rgba(255,210,31,.8);
-">
+box-shadow:0 0 30px rgba(255,210,31,.7);
+}
 
-<div style="
-margin-top:15px;
-background:#111;
+.netflix{
+margin-top:12px;
 display:inline-block;
+background:#111;
 padding:10px 25px;
 border-radius:12px;
-font-size:28px;
 font-weight:bold;
-">
-NETFLIX
-</div>
+font-size:26px;
+}
 
-<h1 style="
-margin:20px 0 10px;
-font-size:56px;
-">
-Squid Game
-</h1>
+.title{
+font-size:50px;
+font-weight:bold;
+margin:15px 0 5px;
+}
 
-<p style="
-color:#ccc;
-font-size:22px;
-">
-زنجیرەی کۆری
-</p>
+.desc{
+color:#bbb;
+font-size:18px;
+}
 
-<div style="
-margin:20px 0;
-">
+.tags{
+margin:18px 0;
+}
 
-<span style="
+.tag{
+display:inline-block;
 background:#222;
-padding:10px 16px;
+padding:8px 14px;
 border-radius:20px;
 margin:4px;
-display:inline-block;
-">
-⭐ 8.2
-</span>
+font-size:14px;
+}
 
-<span style="
-background:#222;
-padding:10px 16px;
-border-radius:20px;
-margin:4px;
-display:inline-block;
-">
-54 خولەک
-</span>
-
-<span style="
-background:#222;
-padding:10px 16px;
-border-radius:20px;
-margin:4px;
-display:inline-block;
-">
-2021
-</span>
-
-<span style="
-background:#222;
-padding:10px 16px;
-border-radius:20px;
-margin:4px;
-display:inline-block;
-">
-ئەکشن
-</span>
-
-<span style="
-background:#222;
-padding:10px 16px;
-border-radius:20px;
-margin:4px;
-display:inline-block;
-">
-دراما
-</span>
-
-<span style="
-background:#222;
-padding:10px 16px;
-border-radius:20px;
-margin:4px;
-display:inline-block;
-">
-Kurdistan
-</span>
-
-</div>
-
-<a href="squidgame.html"
-style="
+.watch{
 display:block;
 width:85%;
 margin:auto;
 background:#ffd21f;
 color:black;
-padding:20px;
-border-radius:15px;
-font-size:28px;
-font-weight:bold;
 text-decoration:none;
-">
+padding:18px;
+border-radius:14px;
+font-size:24px;
+font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="hero">
+
+<img class="bg"
+src="https://raw.githubusercontent.com/yusfm031-dev/kurdman-movies/main/file_000000009bc872439c938875ddb5602c.png">
+
+<div class="overlay"></div>
+
+<div class="topbar">
+
+<button class="topbtn"
+onclick="alert('Search')">
+🔍
+</button>
+
+<div class="logo">
+KURDMAN
+</div>
+
+<button class="topbtn"
+onclick="toggleMenu()">
+☰
+</button>
+
+</div>
+
+<div id="menu" class="menu">
+
+<a href="index.html">🏠 سەرەکی</a>
+
+<a href="movies.html">🎬 فیلمەکان</a>
+
+<a href="series.html">📺 زنجیرەکان</a>
+
+</div>
+
+<div class="content">
+
+<img class="poster"
+src="https://raw.githubusercontent.com/yusfm031-dev/kurdman-movies/main/file_0000000001d0720aa5c16e49ba2a1d95.png">
+
+<div class="netflix">
+NETFLIX
+</div>
+
+<div class="title">
+Squid Game
+</div>
+
+<div class="desc">
+زنجیرەی کۆری
+</div>
+
+<div class="tags">
+
+<span class="tag">⭐ 8.2</span>
+
+<span class="tag">54 خولەک</span>
+
+<span class="tag">2021</span>
+
+<span class="tag">ئەکشن</span>
+
+<span class="tag">دراما</span>
+
+<span class="tag">Kurdistan</span>
+
+</div>
+
+<a href="squidgame.html" class="watch">
 ▶ بینین
 </a>
 
 </div>
 
 </div>
+
+<script>
+function toggleMenu(){
+var menu=document.getElementById("menu");
+
+if(menu.style.display==="block"){
+menu.style.display="none";
+}else{
+menu.style.display="block";
+}
+}
+</script>
 
 </body>
 </html>
