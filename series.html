@@ -2,80 +2,61 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Squid Game</title>
 
 <style>
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 background:#000;
 font-family:sans-serif;
 color:white;
 overflow-x:hidden;
 }
 
-.hero{
-position:relative;
-height:100vh;
-overflow:hidden;
-}
-
-.hero img.bg{
-width:100%;
-height:100%;
-object-fit:cover;
-display:block;
-}
-
-.overlay{
-position:absolute;
+.topbar{
+position:fixed;
+top:0;
 left:0;
 right:0;
-bottom:0;
-height:70%;
-background:linear-gradient(
-to top,
-#000 15%,
-rgba(0,0,0,.9) 45%,
-rgba(0,0,0,.3) 75%,
-transparent
-);
-}
-
-.topbar{
-position:absolute;
-top:20px;
-left:15px;
-right:15px;
+height:70px;
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(10px);
 display:flex;
 justify-content:space-between;
 align-items:center;
-z-index:999;
+padding:0 20px;
+z-index:9999;
 }
 
 .topbtn{
 background:none;
 border:none;
 color:white;
-font-size:34px;
-cursor:pointer;
+font-size:30px;
 }
 
 .logo{
-font-size:32px;
+font-size:28px;
 font-weight:bold;
 color:#ffd21f;
 }
 
 .menu{
 display:none;
-position:absolute;
+position:fixed;
 top:75px;
 right:15px;
 background:#111;
 border-radius:15px;
 padding:10px;
-z-index:1000;
-box-shadow:0 0 20px rgba(0,0,0,.8);
+z-index:9999;
 }
 
 .menu a{
@@ -85,99 +66,112 @@ color:white;
 text-decoration:none;
 }
 
+.hero{
+position:relative;
+width:100%;
+height:100vh;
+overflow:hidden;
+}
+
+.bg{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.overlay{
+position:absolute;
+left:0;
+right:0;
+bottom:0;
+height:65%;
+background:linear-gradient(
+to top,
+#000,
+rgba(0,0,0,.85),
+transparent
+);
+}
+
 .content{
 position:absolute;
+top:54%;
 left:50%;
-top:58%;
 transform:translate(-50%,-50%);
-text-align:center;
 width:100%;
+text-align:center;
 z-index:5;
 }
 
 .poster{
-width:280px;
-height:400px;
+width:220px;
+height:320px;
 object-fit:cover;
 border-radius:20px;
-border:4px solid #ffd21f;
-box-shadow:0 0 30px rgba(255,210,31,.7);
+border:3px solid #ffd21f;
+box-shadow:0 0 30px rgba(255,210,31,.8);
 }
 
 .netflix{
-margin-top:12px;
 display:inline-block;
+margin-top:10px;
 background:#111;
 padding:10px 25px;
-border-radius:12px;
+border-radius:10px;
 font-weight:bold;
-font-size:26px;
+font-size:24px;
 }
 
 .title{
 font-size:50px;
 font-weight:bold;
-margin:15px 0 5px;
+margin-top:15px;
 }
 
 .desc{
-color:#bbb;
-font-size:18px;
+color:#ccc;
+margin-top:8px;
 }
 
 .tags{
-margin:18px 0;
+margin-top:15px;
 }
 
 .tag{
 display:inline-block;
 background:#222;
-padding:8px 14px;
+padding:8px 12px;
 border-radius:20px;
 margin:4px;
-font-size:14px;
+font-size:13px;
 }
 
 .watch{
 display:block;
-width:85%;
-margin:auto;
+width:90%;
+max-width:500px;
+margin:20px auto;
 background:#ffd21f;
 color:black;
-text-decoration:none;
 padding:18px;
-border-radius:14px;
-font-size:24px;
+border-radius:15px;
+font-size:22px;
 font-weight:bold;
+text-decoration:none;
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="hero">
-
-<img class="bg"
-src="https://raw.githubusercontent.com/yusfm031-dev/kurdman-movies/main/file_000000009bc872439c938875ddb5602c.png">
-
-<div class="overlay"></div>
-
 <div class="topbar">
 
-<button class="topbtn"
-onclick="alert('Search')">
-🔍
-</button>
+<button class="topbtn">🔍</button>
 
-<div class="logo">
-KURDMAN
-</div>
+<div class="logo">KURDMAN</div>
 
-<button class="topbtn"
-onclick="toggleMenu()">
-☰
-</button>
+<button class="topbtn" onclick="toggleMenu()">☰</button>
 
 </div>
 
@@ -191,35 +185,31 @@ onclick="toggleMenu()">
 
 </div>
 
+<div class="hero">
+
+<img class="bg"
+src="https://raw.githubusercontent.com/yusfm031-dev/kurdman-movies/main/file_000000009bc872439c938875ddb5602c.png">
+
+<div class="overlay"></div>
+
 <div class="content">
 
 <img class="poster"
 src="https://raw.githubusercontent.com/yusfm031-dev/kurdman-movies/main/file_0000000001d0720aa5c16e49ba2a1d95.png">
 
-<div class="netflix">
-NETFLIX
-</div>
+<div class="netflix">NETFLIX</div>
 
-<div class="title">
-Squid Game
-</div>
+<div class="title">Squid Game</div>
 
-<div class="desc">
-زنجیرەی کۆری
-</div>
+<div class="desc">زنجیرەی کۆری</div>
 
 <div class="tags">
 
 <span class="tag">⭐ 8.2</span>
-
 <span class="tag">54 خولەک</span>
-
 <span class="tag">2021</span>
-
 <span class="tag">ئەکشن</span>
-
 <span class="tag">دراما</span>
-
 <span class="tag">Kurdistan</span>
 
 </div>
@@ -233,7 +223,7 @@ Squid Game
 </div>
 
 <script>
-function toggleMenu(){
+function toggleMenu() {
 var menu=document.getElementById("menu");
 
 if(menu.style.display==="block"){
