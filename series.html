@@ -47,23 +47,34 @@ margin-right:auto;
   }
 
 .topbar{
-height:55px;
+position:fixed;
+top:0;
+left:0;
+right:0;
+height:60px;
+background:rgba(0,0,0,.9);
+display:flex;
+align-items:center;
+justify-content:space-between;
 padding:0 15px;
-background:rgba(0,0,0,.85);
-backdrop-filter:blur(10px);
+z-index:9999;
 }
 
 .logo{
-font-size:16px;
-font-weight:600;
-letter-spacing:2px;
-color:#00e5ff;/* شینی جوان */
-text-shadow:0 0 10px rgba(0,229,255,.5);
+font-size:20px;
+font-weight:700;
+color:#00e5ff;
+text-shadow:0 0 10px #00e5ff;
 }
 
 .topbtn{
-font-size:22px;
-color:#ffffff;
+background:none;
+border:none;
+color:#fff;
+font-size:28px;
+cursor:pointer;
+width:40px;
+text-align:center;
 }
 
 .menu{
