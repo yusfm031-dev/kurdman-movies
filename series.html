@@ -154,17 +154,46 @@ font-size:13px;
 }
 
 .watch{
-display:block;
-width:190px;
-margin:20px auto;
-background:linear-gradient(45deg,#ff0033,#cc001f);
-color:white;
-padding:12px;
-border-radius:40px;
-font-size:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+
+width:220px;
+margin:25px auto;
+
+background:linear-gradient(
+135deg,
+#ffd700,
+#ffb300
+);
+
+color:#111;
+padding:14px 20px;
+
+border:none;
+border-radius:50px;
+
+font-size:20px;
 font-weight:bold;
+
 text-decoration:none;
-box-shadow:0 0 20px rgba(255,0,51,.5);
+
+box-shadow:
+0 8px 25px rgba(255,215,0,.4),
+0 0 20px rgba(255,215,0,.3);
+
+transition:.3s;
+}
+
+.watch:hover{
+transform:translateY(-3px) scale(1.05);
+box-shadow:
+0 12px 30px rgba(255,215,0,.6);
+}
+
+.watch:active{
+transform:scale(.96);
 }
 </style>
 </head>
