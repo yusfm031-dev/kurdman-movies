@@ -66,74 +66,50 @@ font-weight:700;
 color:#00e5ff;
 text-shadow:0 0 10px #00e5ff;
 }
-
-.topbtn{
-background:none;
-border:none;
-color:#fff;
-font-size:28px;
-cursor:pointer;
-width:40px;
-text-align:center;
-}
-
-.menu{
-display:none;
+.topbar{
 position:fixed;
-top:70px;
-right:15px;
-background:#111;
-border-radius:15px;
-padding:10px;
+top:0;
+left:0;
+right:0;
+height:60px;
+background:rgba(0,0,0,.95);
 z-index:9999;
-box-shadow:0 0 20px rgba(0,0,0,.7);
-}
-
-.menu a{
-display:block;
-padding:12px;
-color:white;
-text-decoration:none;
 }
 
 .hero{
 position:relative;
-width:100%;
-height:100vh;
+padding-top:90px;
 overflow:hidden;
 }
 
 .bg{
 position:absolute;
+top:60px;
+left:0;
 width:100%;
-height:100%;
+height:calc(100% - 60px);
 object-fit:cover;
-transform:scale(0.88);
+z-index:1;
 }
 
 .overlay{
 position:absolute;
+top:60px;
 left:0;
 right:0;
 bottom:0;
-height:80%;
 background:linear-gradient(
-to top,
-rgba(0,0,0,1) 0%,
-rgba(0,0,0,.95) 30%,
-rgba(0,0,0,.75) 55%,
-transparent 100%
+to bottom,
+rgba(0,0,0,.15),
+rgba(0,0,0,.55),
+rgba(0,0,0,.95)
 );
+z-index:2;
 }
 
 .content{
-position:absolute;
-left:50%;
-top:64%;
-transform:translate(-50%,-50%);
-width:100%;
-text-align:center;
-z-index:10;
+position:relative;
+z-index:3;
 }
 
 .poster{
