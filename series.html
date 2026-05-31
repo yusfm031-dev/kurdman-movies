@@ -73,19 +73,33 @@ color:white;
 font-size:26px;
 cursor:pointer;
   }
-.topbar{
+  .menu{
+display:none;
 position:fixed;
-top:0;
-left:0;
-right:0;
-height:60px;
-background:rgba(0,0,0,.95);
+top:60px;
+right:15px;
+background:#111;
+border-radius:12px;
+padding:10px;
 z-index:9999;
 }
 
+.menu a{
+display:block;
+color:white;
+text-decoration:none;
+padding:10px 15px;
+}
+
+.menu a:hover{
+background:#222;
+border-radius:8px;
+}
+
+
 .hero{
 position:relative;
-padding-top:120px;
+padding-top:80px;
 min-height:100vh;
 }
 
@@ -124,14 +138,14 @@ max-width:100%;
 }
 
 .poster{
-width:150px;
-height:220px;
+width:175px;
+height:250px;
 object-fit:cover;
 border-radius:20px;
 border:3px solid #ffd21f;
-box-shadow:0 0 15px rgba(255,210,31,.7);
+box-shadow:0 0 20px rgba(255,210,31,.8);
 display:block;
-margin:0 auto 15px auto;
+margin:0 auto;
 }
 
 .netflix{
