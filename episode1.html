@@ -1,30 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="ku">
 <head>
 <meta charset="UTF-8">
-<title>ئەلقەی 1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<title>Squid Game - ئەلقەی 1</title>
 
 <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
 
 <style>
 body{
-background:black;
-color:white;
-text-align:center;
-margin:0;
-padding:10px;
+    margin:0;
+    background:#000;
+    color:#fff;
+    font-family:sans-serif;
+    text-align:center;
 }
 
 h1{
-font-size:22px;
+    padding:15px;
+    font-size:22px;
+}
+
+.video-container{
+    width:100%;
+    max-width:1200px;
+    margin:auto;
 }
 
 video{
-width:100%;
-max-width:1000px;
+    width:100%;
 }
 </style>
 </head>
@@ -33,41 +38,78 @@ max-width:1000px;
 
 <h1>Squid Game - ئەلقەی 1</h1>
 
-<video id="video" controls playsinline></video>
+<div class="video-container">
+    <video id="player" controls playsinline></video>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
 
 <script>
-const video = document.getElementById('video');
-const videoSrc = 'https://vz-5b94d35f-a66.b-cdn.net/2044dee6-eb83-4a55-8bb5-20494272708b/playlist.m3u8';
+
+const source =
+'https://vz-5b94d35f-a66.b-cdn.net/2044dee6-eb83-4a55-8bb5-20494272708b/playlist.m3u8';
 
 if (Hls.isSupported()) {
 
-const hls = new Hls();
-hls.loadSource(videoSrc);
-hls.attachMedia(video);
+    const video = document.getElementById('player');
 
-hls.on(Hls.Events.MANIFEST_PARSED, function() {
+    const hls = new Hls();
 
-new Plyr(video,{
-settings:['quality','speed'],
-quality:{
-default:1080,
-options:[1080,720,360]
+    hls.loadSource(source);
+
+    hls.attachMedia(video);
+
+    hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
+
+        const availableQualities = data.levels.map(level => level.height);
+
+        availableQualities.unshift(0);
+
+        const player = new Plyr(video, {
+
+            settings: ['quality','speed'],
+
+            quality: {
+
+                default: 0,
+
+                options: availableQualities,
+
+                forced: true,
+
+                onChange: (quality) => {
+
+                    if (quality === 0) {
+
+                        hls.currentLevel = -1;
+
+                    } else {
+
+                        hls.levels.forEach((level,index) => {
+
+                            if(level.height === quality){
+
+                                hls.currentLevel = index;
+
+                            }
+
+                        });
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    });
+
 }
-});
+else if (video.canPlayType('application/vnd.apple.mpegurl')) {
 
-});
-
-} else {
-
-video.src = videoSrc;
-
-new Plyr(video,{
-settings:['quality','speed'],
-quality:{
-default:1080,
-options:[1080,720,360]
-}
-});
+    video.src = source;
 
 }
 </script>
