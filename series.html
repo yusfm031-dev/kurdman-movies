@@ -203,63 +203,55 @@ box-shadow:0 4px 15px rgba(124,58,237,.35);
 }  
 
   .episodes-title{
-text-align:center;
-font-size:22px;
+font-size:24px;
 font-weight:bold;
-margin:30px 0 15px;
+margin:30px 15px 15px;
+text-align:right;
 }
 
-.episodes{
-width:90%;
-max-width:500px;
-margin:0 auto 30px;
+.episodes-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+padding:0 15px 30px;
 }
 
-.episode-card{
-display:flex;
-align-items:center;
-justify-content:space-between;
-
-background:#161616;
-
-padding:14px 18px;
-margin-bottom:10px;
-
-border-radius:14px;
-
+.episode-box{
+background:#111;
+border-radius:15px;
+overflow:hidden;
 text-decoration:none;
 color:white;
-
-border:1px solid #2a2a2a;
-
-transition:.3s;
+box-shadow:0 2px 10px rgba(0,0,0,.4);
 }
 
-.episode-card:hover{
-background:#222;
+.episode-box img{
+width:100%;
+height:110px;
+object-fit:cover;
+display:block;
 }
 
-.ep-number{
-background:#ffd21f;
-color:#000;
+.episode-info{
+padding:10px;
+}
 
-width:34px;
-height:34px;
-
-border-radius:50%;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
+.episode-number{
+font-size:13px;
+color:#ffd21f;
 font-weight:bold;
 }
 
-.ep-name{
-flex:1;
-text-align:right;
-margin-right:12px;
+.episode-name{
 font-size:15px;
+margin-top:4px;
+font-weight:600;
+}
+
+.episode-time{
+font-size:12px;
+color:#aaa;
+margin-top:4px;
 }
 </style>
 </head>
@@ -318,34 +310,47 @@ src="https://raw.githubusercontent.com/yusfm031-dev/kurdman-movies/main/file_000
 <a href="squidgame.html" class="watch">
 ▶ بینین
 </a>
-  <h2 class="episodes-title">
-📺 ئەڵقەکان
-</h2>
+  <h2 class="episodes-title">📺 ئەڵقەکان</h2>
 
-<div class="episodes">
+<div class="episodes-grid">
 
-<a href="episode1.html" class="episode-card">
-<div class="ep-number">1</div>
-<div class="ep-name">ئەڵقەی یەکەم</div>
+<a href="episode1.html" class="episode-box">
+<img src="file_00000000a5787246a1c608cfdb79a487.png">
+<div class="episode-info">
+<div class="episode-number">ئەڵقە 1</div>
+<div class="episode-name">Red Light, Green Light</div>
+<div class="episode-time">54 min</div>
+</div>
 </a>
 
-<a href="episode2.html" class="episode-card">
-<div class="ep-number">2</div>
-<div class="ep-name">ئەڵقەی دووەم</div>
+<a href="episode2.html" class="episode-box">
+<img src="file_00000000e19c720a9ff7d58c584e3ebe.png">
+<div class="episode-info">
+<div class="episode-number">ئەڵقە 2</div>
+<div class="episode-name">Hell</div>
+<div class="episode-time">63 min</div>
+</div>
 </a>
 
-<a href="episode3.html" class="episode-card">
-<div class="ep-number">3</div>
-<div class="ep-name">ئەڵقەی سێیەم</div>
+<a href="episode3.html" class="episode-box">
+<img src="file_0000000075407246baaf5bcda0cbf415.png">
+<div class="episode-info">
+<div class="episode-number">ئەڵقە 3</div>
+<div class="episode-name">The Man with the Umbrella</div>
+<div class="episode-time">55 min</div>
+</div>
 </a>
 
-<a href="episode4.html" class="episode-card">
-<div class="ep-number">4</div>
-<div class="ep-name">ئەڵقەی چوارەم</div>
+<a href="episode4.html" class="episode-box">
+<img src="file_00000000930c720aba27c9887569193d.png">
+<div class="episode-info">
+<div class="episode-number">ئەڵقە 4</div>
+<div class="episode-name">Stick to the Team</div>
+<div class="episode-time">58 min</div>
+</div>
 </a>
 
 </div>
-
 </div>
 
 </div>
