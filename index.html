@@ -993,32 +993,45 @@ document.getElementById("popupVideo").pause();
 }
 
 /* SEARCH */
+const searchInput = document.getElementById("searchInput");
 
-const searchInput=document.getElementById("searchInput");
+searchInput.addEventListener("keyup", function(){
 
-searchInput.addEventListener("keyup",function(){
+let value = searchInput.value.toLowerCase();
 
-let value=searchInput.value.toLowerCase();
+let cards = document.querySelectorAll(".movie-card");
 
-let cards=document.querySelectorAll(".movie-card");
+cards.forEach(card => {
 
-cards.forEach(card=>{
+let text = card.innerText.toLowerCase();
 
-let text=card.innerText.toLowerCase();
+if(value === ""){
 
-if(text.includes(value)){
+card.style.display = "block";
 
-card.style.display="block";
+}
 
-}else{
+else if(text.includes(value)){
 
-card.style.display="none";
+card.style.display = "block";
+
+card.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+}
+
+else{
+
+card.style.display = "none";
 
 }
 
 });
 
 });
+
 
 </script>
 
