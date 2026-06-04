@@ -517,6 +517,9 @@ cursor:pointer;
 
 <body>
   
+<h1 style="position:absolute;left:-9999px;">
+Kurdman Movies
+</h1>  
 
 <!-- HEADER -->
 
@@ -989,31 +992,7 @@ document.getElementById("popupVideo").pause();
 
 /* SEARCH */
   
-const searchInput=document.getElementById("searchInput");
 
-searchInput.addEventListener("keyup",function(){
-
-let value=searchInput.value.toLowerCase();
-
-let cards=document.querySelectorAll(".movie-card");
-
-cards.forEach(card=>{
-
-let text=card.innerText.toLowerCase();
-
-if(text.includes(value)){
-
-card.style.display="block";
-
-}else{
-
-card.style.display="none";
-
-}
-
-});
-
-});
 
 </script>
 
