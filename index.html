@@ -565,9 +565,11 @@ font-size:14px;
 
 <input type="text" placeholder="گەران..." id="searchInput">
 
+<div id="searchResults"></div>  
+
 </div>
   
-  <div id="searchResults"></div>
+  
 
 <div class="logo">KurdMan</div>
 
@@ -1067,12 +1069,12 @@ card.style.display = "none";
 
   const movies = [
 {
-title:"نەبیلو",
+title:"ئیلیۆ",
 image:"file_000000007c14720ab85b3d3eaba07005.png",
 link:"elio.html"
 },
 {
-title:"کیل و گیش",
+title:"گیل و گیلتر",
 image:"file_00000000746c71f4a4b1982c67e3de2d.png",
 link:"#"
 },
@@ -1083,7 +1085,6 @@ link:"squidgame.html"
 }
 ];
 
-const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
 
 searchInput.addEventListener("keyup", () => {
