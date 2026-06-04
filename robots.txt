@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yusfm031-dev.github.io/kurdman-movies/sitemap.xml
