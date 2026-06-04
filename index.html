@@ -991,6 +991,44 @@ document.getElementById("popupVideo").pause();
 
 /* SEARCH */
   
+  const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+let value = searchInput.value.toLowerCase();
+
+let cards = document.querySelectorAll(".movie-card");
+
+cards.forEach(card => {
+
+let text = card.innerText.toLowerCase();
+
+if(value === ""){
+
+card.style.display = "block";
+
+}
+
+else if(text.includes(value)){
+
+card.style.display = "block";
+
+card.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+}
+
+else{
+
+card.style.display = "none";
+
+}
+
+});
+
+});
 
 
 </script>
