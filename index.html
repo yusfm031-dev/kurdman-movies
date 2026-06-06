@@ -2,7 +2,9 @@
 <html lang="ku" dir="rtl">
 
 <head>
-
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -829,29 +831,68 @@ showSlide(current);
 
 /* VIDEO */
 
+let player;
+
 function openPopup(videoUrl){
 
-document.getElementById("popup").style.display="flex";
+document.getElementById("popup").style.display = "flex";
 
-let video=document.getElementById("popupVideo");
+const video = document.getElementById("popupVideo");
+
+if(player){
+player.destroy();
+}
 
 if(Hls.isSupported()){
 
-let hls=new Hls();
+const hls = new Hls();
 
 hls.loadSource(videoUrl);
 
 hls.attachMedia(video);
 
-hls.on(Hls.Events.MANIFEST_PARSED,function(){
+hls.on(Hls.Events.MANIFEST_PARSED, function(event,data){
+
+const qualities = data.levels.map(level => level.height);
+
+qualities.unshift(0);
+
+player = new Plyr(video,{
+
+settings:['quality','speed'],
+
+quality:{
+default:0,
+options:qualities,
+forced:true,
+
+onChange:(quality)=>{
+
+if(quality===0){
+hls.currentLevel=-1;
+return;
+}
+
+hls.levels.forEach((level,index)=>{
+if(level.height===quality){
+hls.currentLevel=index;
+}
+});
+
+}
+}
+
+});
 
 video.play();
 
 });
 
-}else if(video.canPlayType('application/vnd.apple.mpegurl')){
+}else{
 
-video.src=videoUrl;
+video.src = videoUrl;
+
+player = new Plyr(video);
 
 video.play();
 
