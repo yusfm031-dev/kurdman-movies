@@ -50,6 +50,6 @@ video:"https://vz-76f7682b-70b.b-cdn.net/71dd4fe9-8435-4465-a72d-38c1b3681501/pl
 title:"ئەلیۆ",
 image:"file_000000007c14720ab85b3d3eaba07005.png",
 quality:"9.0",
-video:"elio.html"
+video:"https://vz-64a6b2bb-12e.b-cdn.net/b5344847-8ed9-4c40-87da-00a019cd4fbc/playlist.m3u8"
 }
 ];
