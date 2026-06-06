@@ -766,168 +766,7 @@ onclick="window.location.href='elio.html'">
 
 <div class="movies-grid" id="moviesGrid">
 
-<!-- MOVIE 1 -->
 
-<div class="movie-card">
-
-<div class="movie-image"
-onclick="openPopup('https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8')">
-
-<img src="file_00000000e440720a9828825168bd0226.png">
-
-<div class="play-icon">▶</div>
-
-<div class="rating">⭐ 8.5</div>
-
-<div class="views">👁 120K</div>
-
-</div>
-
-<div class="movie-info">
-<h3>عەشق و فیتنە</h3>
-</div>
-
-</div>
-
-<!-- MOVIE 2 -->
-
-<div class="movie-card">
-
-<div class="movie-image"
-onclick="openPopup('https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8')">
-
-<img src="file_00000000b37872469944d35385c90010.png">
-
-<div class="play-icon">▶</div>
-
-<div class="rating">⭐ 8.3</div>
-
-<div class="views">👁 95K</div>
-
-</div>
-
-<div class="movie-info">
-<h3>ساوا</h3>
-</div>
-
-</div>
-
-<!-- MOVIE 3 -->
-
-<div class="movie-card">
-
-<div class="movie-image"
-onclick="openPopup('https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8')">
-
-<img src="file_000000001dd871f49685c5a6ef226e96.png">
-
-<div class="play-icon">▶</div>
-
-<div class="rating">⭐ 8.1</div>
-
-<div class="views">👁 77K</div>
-
-</div>
-
-<div class="movie-info">
-<h3>رۆستەم</h3>
-</div>
-
-</div>
-
-<!-- MOVIE 4 -->
-
-<div class="movie-card">
-
-<div class="movie-image"
-onclick="openPopup('https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8')">
-
-<img src="file_000000006ec871f4a20f395a91e29602 (1).png">
-
-<div class="play-icon">▶</div>
-
-<div class="rating">⭐ 8.9</div>
-
-<div class="views">👁 150K</div>
-
-</div>
-
-<div class="movie-info">
-<h3>لمبی</h3>
-</div>
-
-</div>
-
-  <!-- MOVIE 5 -->
-
-<div class="movie-card">
-
-<div class="movie-image"
-onclick="openPopup('https://vz-18bdfcb2-789.b-cdn.net/b3e8d1b4-5a43-4a19-87a1-a0b7073a6f85/playlist.m3u8')">
-
-<img src="image_1779992223418.jpeg">
-
-<div class="play-icon">▶</div>
-
-<div class="rating">⭐ 9.1</div>
-
-<div class="views">👁 210K</div>
-
-</div>
-
-<div class="movie-info">
-<h3>فیلمی نوێ</h3>
-</div>
-
-</div>
-  <!-- MOVIE 6 -->
-
-<div class="movie-card">
-
-<div class="movie-image"
-onclick="openPopup('https://vz-76f7682b-70b.b-cdn.net/71dd4fe9-8435-4465-a72d-38c1b3681501/playlist.m3u8')">
-
-<img src="file_00000000746c71f4a4b1982c67e3de2d.png">
-
-<div class="play-icon">▶</div>
-
-<div class="rating">⭐ 8.8</div>
-
-<div class="views">👁 180K</div>
-
-</div>
-
-<div class="movie-info">
-<h3>گیل و گیتەش</h3>
-</div>
-
-</div>
-
-  <!-- MOVIE 7 -->
-
-<div class="movie-card">
-
-<a href="elio.html">
-
-<div class="movie-image">
-
-<img src="file_000000007c14720ab85b3d3eaba07005.png">
-
-<div class="play-icon">▶</div>
-
-<div class="rating">⭐ 9.0</div>
-
-<div class="views">👁 100K</div>
-
-</div>
-
-</a>
-
-<div class="movie-info">
-<h3>ئەلیۆ</h3>
-</div>
-
-</div>
 
 <!-- POPUP -->
 
@@ -1103,6 +942,29 @@ onclick="window.location.href='${movie.link}'">
 searchResults.style.display =
 results.length ? "block" : "none";
 
+});
+  const moviesGrid = document.getElementById("moviesGrid");
+
+movies.forEach(movie => {
+moviesGrid.innerHTML += `
+<div class="movie-card">
+
+<div class="movie-image" onclick="openPopup('${movie.video}')">
+
+<img src="${movie.image}">
+
+<div class="play-icon">▶</div>
+
+<div class="rating">⭐ ${movie.quality}</div>
+
+</div>
+
+<div class="movie-info">
+<h3>${movie.title}</h3>
+</div>
+
+</div>
+`;
 });
 
 </script>
