@@ -46,10 +46,10 @@ image:"file_00000000746c71f4a4b1982c67e3de2d.png",
 quality:"8.8",
 video:"https://vz-76f7682b-70b.b-cdn.net/71dd4fe9-8435-4465-a72d-38c1b3681501/playlist.m3u8"
 },
-
 {
 title:"ئەلیۆ",
 image:"file_000000007c14720ab85b3d3eaba07005.png",
 quality:"9.0",
 video:"elio.html"
 }
+];
