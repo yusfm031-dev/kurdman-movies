@@ -13,11 +13,11 @@ video:"https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/pl
 },
 
 {
-title:"ساوا",
-image:"file_00000000b37872469944d35385c90010.png",
-quality:"8.3",
-video:"https://vz-908031df-65a.b-cdn.net/c6810e64-9623-43c7-ad52-566b3cc1f02b/playlist.m3u8"
-},
+title:"ئەلیۆ",
+image:"file_000000007c14720ab85b3d3eaba07005.png",
+quality:"9.0",
+video:"https://vz-64a6b2bb-12e.b-cdn.net/b5344847-8ed9-4c40-87da-00a019cd4fbc/playlist.m3u8"
+}
 
 {
 title:"رۆستەم",
