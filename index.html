@@ -765,6 +765,7 @@ onclick="window.location.href='elio.html'">
 </div>
 
 <div class="movies-grid" id="moviesGrid">
+</div>
 
 
 
@@ -949,17 +950,10 @@ const moviesGrid = document.getElementById("moviesGrid");
 
 movies.forEach(movie => {
 
-let action;
-
-if(movie.video.endsWith(".html")){
-    action = "window.location.href='" + movie.video + "'";
-}else{
-    action = "openPopup('" + movie.video + "')";
-}
-  moviesGrid.innerHTML += `
+moviesGrid.innerHTML += `
 <div class="movie-card">
 
-<div class="movie-image" onclick="${action}">
+<div class="movie-image" onclick="openPopup('${movie.video}')">
 
 <img src="${movie.image}">
 
@@ -975,6 +969,7 @@ if(movie.video.endsWith(".html")){
 
 </div>
 `;
+
 });
 
 </script>
