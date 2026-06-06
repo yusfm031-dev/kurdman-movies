@@ -949,12 +949,14 @@ const moviesGrid = document.getElementById("moviesGrid");
 
 movies.forEach(movie => {
 
-let action =
-movie.video.endsWith(".html")
-? `window.location.href='${movie.video}'`
-: `openPopup('${movie.video}')`;
+let action;
 
-moviesGrid.innerHTML += `
+if(movie.video.endsWith(".html")){
+    action = "window.location.href='" + movie.video + "'";
+}else{
+    action = "openPopup('" + movie.video + "')";
+}
+  moviesGrid.innerHTML += `
 <div class="movie-card">
 
 <div class="movie-image" onclick="${action}">
