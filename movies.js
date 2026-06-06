@@ -15,8 +15,8 @@ video:"https://..."
 title:"ساوا",
 image:"file_00000000b37872469944d35385c90010.png",
 quality:"8.3",
-video:"https://..."
-},
+video:"https://vz-xxxxxxxx/playlist.m3u8"
+}
 {
 title:"کەرش",
 image:"file_00000001d8f71f49685c5a6ef22e96.png",
