@@ -778,6 +778,7 @@ onclick="window.location.href='elio.html'">
 
 </div>
 
+<script src="movies.js"></script>
 <script>
 
 /* MENU */
@@ -941,8 +942,9 @@ onclick="window.location.href='${movie.link}'">
 
 searchResults.style.display =
 results.length ? "block" : "none";
+  
 
-});
+}); 
   const moviesGrid = document.getElementById("moviesGrid");
 
 movies.forEach(movie => {
@@ -968,8 +970,6 @@ moviesGrid.innerHTML += `
 });
 
 </script>
-
-  <script src="movies.js"></script>
 
 </body>
 </html>
