@@ -945,13 +945,19 @@ results.length ? "block" : "none";
   
 
 }); 
-  const moviesGrid = document.getElementById("moviesGrid");
+const moviesGrid = document.getElementById("moviesGrid");
 
 movies.forEach(movie => {
+
+let action =
+movie.video.endsWith(".html")
+? `window.location.href='${movie.video}'`
+: `openPopup('${movie.video}')`;
+
 moviesGrid.innerHTML += `
 <div class="movie-card">
 
-<div class="movie-image" onclick="openPopup('${movie.video}')">
+<div class="movie-image" onclick="${action}">
 
 <img src="${movie.image}">
 
