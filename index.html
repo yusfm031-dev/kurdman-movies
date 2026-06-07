@@ -1007,6 +1007,38 @@ document.getElementById("prayerPopup").style.display = "none";
 closePopup();
 
 }
+  function getUserLocation() {
+return new Promise((resolve, reject) => {
+navigator.geolocation.getCurrentPosition(
+position => {
+resolve({
+lat: position.coords.latitude,
+lon: position.coords.longitude
+});
+},
+error => reject(error)
+);
+});
+  }
+  async function getPrayerTimes(){
+
+const location = await getUserLocation();
+
+const res = await fetch(
+`https://api.aladhan.com/v1/timings?latitude=${location.lat}&longitude=${location.lon}&method=3`
+);
+
+const data = await res.json();
+
+return {
+fajr: data.data.timings.Fajr,
+dhuhr: data.data.timings.Dhuhr,
+asr: data.data.timings.Asr,
+maghrib: data.data.timings.Maghrib,
+isha: data.data.timings.Isha
+};
+
+  }
 async function checkPrayerTime(){
 
 const now = new Date();
@@ -1016,8 +1048,14 @@ String(now.getHours()).padStart(2,'0') +
 ":" +
 String(now.getMinutes()).padStart(2,'0');
 
+const times = await getPrayerTimes();
+
 const prayerTimes = [
-"12:07"
+times.fajr,
+times.dhuhr,
+times.asr,
+times.maghrib,
+times.isha
 ];
 
 if(prayerTimes.includes(current)){
