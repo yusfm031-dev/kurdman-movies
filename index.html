@@ -1049,17 +1049,17 @@ String(now.getHours()).padStart(2,'0') +
 ":" +
 String(now.getMinutes()).padStart(2,'0');
 
-const times = await getPrayerTimes();
-  alert(current);
 
 const prayerTimes = [
-"17:2",
+"17:11",
 times.fajr,
 times.dhuhr,
 times.asr,
 times.maghrib,
 times.isha
 ];
+  alert(JSON.stringify(prayerTimes));
+alert(current);
 
 if(prayerTimes.includes(current)){
 alert("IF Works");
