@@ -1049,6 +1049,7 @@ String(now.getHours()).padStart(2,'0') +
 String(now.getMinutes()).padStart(2,'0');
 
 const times = await getPrayerTimes();
+  alert(JSON.stringify(times));
   alert("Prayer API Works");
 
 const prayerTimes = [
