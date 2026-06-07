@@ -1049,22 +1049,14 @@ String(now.getHours()).padStart(2,'0') +
 ":" +
 String(now.getMinutes()).padStart(2,'0');
 
-
 const prayerTimes = [
-"17:41",
-times.fajr,
-times.dhuhr,
-times.asr,
-times.maghrib,
-times.isha
+"17:46"
 ];
-  alert(JSON.stringify(prayerTimes));
-alert(current);
-  
+
 if(prayerTimes.includes(current)){
-    alert("IF Works");
-    showPrayerPopup();
-  
+showPrayerPopup();
+}
+
 }
 }
 
