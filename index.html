@@ -547,6 +547,49 @@ border-radius:8px;
 color:white;
 font-size:14px;
 }
+  .prayer-popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+z-index:999999;
+justify-content:center;
+align-items:center;
+}
+
+.prayer-box{
+background:#111;
+width:90%;
+max-width:420px;
+padding:25px;
+border-radius:20px;
+text-align:center;
+color:#fff;
+}
+
+.watch-btn,
+.prayer-btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+font-size:18px;
+margin-top:12px;
+cursor:pointer;
+}
+
+.watch-btn{
+background:#00c2ff;
+color:#fff;
+}
+
+.prayer-btn{
+background:#1f8b3f;
+color:#fff;
+}
 </style>
 </head>
 
@@ -768,7 +811,34 @@ onclick="window.location.href='elio.html'">
 
 <div class="movies-grid" id="moviesGrid">
 </div>
+<div id="prayerPopup" class="prayer-popup">
 
+  <div class="prayer-box">
+
+    <h2>🕌 کاتی نوێژە</h2>
+
+    <p>
+      براکم / خوشکم 🌷<br>
+      کاتی نوێژ هاتووە.<br><br>
+
+      تکایە بۆ ماوەی 5 خولەک تەرخان بێت بۆ نوێژ.
+
+      <br><br>
+
+      ❤️ پاشان بە ئارامی بگەڕێوە بۆ تماشاکردنی فیلمەکەت.
+    </p>
+
+    <button class="watch-btn" onclick="resumeMovie()">
+      ▶ بەردەوام بە تماشا
+    </button>
+
+    <button class="prayer-btn" onclick="goPrayer()">
+      🕌 دەچم بۆ نوێژ
+    </button>
+
+  </div>
+
+</div>
 
 
 <!-- POPUP -->
@@ -885,6 +955,7 @@ hls.currentLevel=index;
 });
 
 video.play();
+setTimeout(showPrayerPopup, 300000);
 
 });
 
@@ -895,7 +966,7 @@ video.src = videoUrl;
 player = new Plyr(video);
 
 video.play();
-
+setTimeout(showPrayerPopup, 300000);
 }
 
 }
@@ -905,6 +976,31 @@ function closePopup(){
 document.getElementById("popup").style.display="none";
 
 document.getElementById("popupVideo").pause();
+
+}
+  function showPrayerPopup(){
+
+const video = document.getElementById("popupVideo");
+
+video.pause();
+
+document.getElementById("prayerPopup").style.display = "flex";
+
+}
+
+function resumeMovie(){
+
+document.getElementById("prayerPopup").style.display = "none";
+
+document.getElementById("popupVideo").play();
+
+}
+
+function goPrayer(){
+
+document.getElementById("prayerPopup").style.display = "none";
+
+closePopup();
 
 }
 
