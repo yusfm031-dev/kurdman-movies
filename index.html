@@ -1009,7 +1009,6 @@ closePopup();
 }
 async function checkPrayerTime(){
 
-const times = await getPrayerTimes();
 
 const now = new Date();
 
@@ -1018,8 +1017,15 @@ String(now.getHours()).padStart(2,'0') +
 ":" +
 String(now.getMinutes()).padStart(2,'0');
 
+const times = {
+fajr:"12:07",
+dhuhr:"12:07",
+asr:"12:07",
+maghrib:"12:07",
+isha:"12:07"
+};
+
 const prayerTimes = [
-"11:53",
 times.fajr,
 times.dhuhr,
 times.asr,
@@ -1028,10 +1034,8 @@ times.isha
 ];
 
 if(prayerTimes.includes(current)){
-  alert("Prayer Test");
+alert("Prayer Test");
 showPrayerPopup();
-}
-
 }
 
   setInterval(checkPrayerTime, 60000);
