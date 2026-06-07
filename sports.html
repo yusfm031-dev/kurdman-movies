@@ -6,61 +6,97 @@
 <title>KurdMan Sports</title>
 
 <style>
-body{
-background:#050505;
-color:white;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:Cairo,sans-serif;
+}
+
+body{
+background:
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+url("worldcup.jpg");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+color:white;
 padding:20px;
 }
 
 .title{
-font-size:35px;
+font-size:40px;
 font-weight:bold;
 text-align:center;
-margin:20px 0;
+margin:25px 0;
+color:#ffd700;
+text-shadow:0 0 15px #ffd700;
+}
+
+.channels-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
 .channel-card{
-background:#111;
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(10px);
 padding:15px;
 border-radius:20px;
-margin-bottom:15px;
 text-align:center;
+box-shadow:0 0 15px rgba(255,255,255,.15);
+transition:.3s;
+}
+
+.channel-card:hover{
+transform:translateY(-5px);
 }
 
 .channel-card img{
 width:100%;
+height:170px;
+object-fit:cover;
 border-radius:15px;
 }
 
-.watch-btn{
+.channel-card h3{
 margin-top:10px;
-padding:12px 20px;
+font-size:22px;
+}
+
+.watch-btn{
+margin-top:12px;
+width:100%;
+padding:14px;
 border:none;
 border-radius:12px;
-background:#00c853;
+background:linear-gradient(45deg,#ff9800,#ff1744);
 color:white;
 font-size:18px;
+font-weight:bold;
 cursor:pointer;
 }
+
+.watch-btn:hover{
+opacity:.9;
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="title">
-⚽ KurdMan Sports
-</div>
-  
-  <div class="channel-card">
-<img src="rudawsport.jpg">
-<h3>Rudaw Sport</h3>
-<button class="watch-btn">▶ بینین</button>
+🏆 KurdMan Sports
 </div>
 
+<div class="channels-grid">
+
 <div class="channel-card">
-<img src="kurdsat.jpg">
-<h3>Kurdsat Sport</h3>
+<img src="rudawsport.jpg">
+<h3>Rudaw Sport</h3>
 <button class="watch-btn"
 onclick="window.open('https://www.rudaw.net')">
 ▶ بینین
@@ -68,17 +104,45 @@ onclick="window.open('https://www.rudaw.net')">
 </div>
 
 <div class="channel-card">
-<img src="sportnews.jpg">
-<h3>Sport News</h3>
-<button class="watch-btn">▶ بینین</button>
-</div>
-
-<div class="channel-card">
-<img src="sport1.jpg">
-<h3>Sport Channel 1</h3>
+<img src="avasport.jpg">
+<h3>Ava Sport</h3>
 <button class="watch-btn">
 ▶ بینین
 </button>
+</div>
+
+<div class="channel-card">
+<img src="nrtsport.jpg">
+<h3>NRT Sport</h3>
+<button class="watch-btn">
+▶ بینین
+</button>
+</div>
+
+<div class="channel-card">
+<img src="kurdsat.jpg">
+<h3>Kurdsat Sport</h3>
+<button class="watch-btn">
+▶ بینین
+</button>
+</div>
+
+<div class="channel-card">
+<img src="kurdistansport.jpg">
+<h3>Kurdistan Sport</h3>
+<button class="watch-btn">
+▶ بینین
+</button>
+</div>
+
+<div class="channel-card">
+<img src="spedasport.jpg">
+<h3>Speda Sport</h3>
+<button class="watch-btn">
+▶ بینین
+</button>
+</div>
+
 </div>
 
 </body>
