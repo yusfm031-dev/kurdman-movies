@@ -1052,7 +1052,7 @@ String(now.getMinutes()).padStart(2,'0');
 
 const prayerTimes = [
   current,
-"17:16",
+"17:25",
 times.fajr,
 times.dhuhr,
 times.asr,
@@ -1062,11 +1062,10 @@ times.isha
   alert(JSON.stringify(prayerTimes));
 alert(current);
 
-if(prayerTimes.includes(current)){
-alert("IF Works");
+
 showPrayerPopup();
 }
-}
+
 
 setInterval(checkPrayerTime, 60000);
 checkPrayerTime();
