@@ -995,6 +995,30 @@ document.getElementById("prayerPopup").style.display = "none";
 closePopup();
 
 }
+  function checkPrayerTime(){
+
+const now = new Date();
+
+const hour = String(now.getHours()).padStart(2,'0');
+const minute = String(now.getMinutes()).padStart(2,'0');
+
+const current = hour + ":" + minute;
+
+const prayerTimes = [
+"04:00",
+"12:30",
+"15:45",
+"18:30",
+"04:00"
+];
+
+if(prayerTimes.includes(current)){
+showPrayerPopup();
+}
+
+}
+
+setInterval(checkPrayerTime, 60000);
 
 /* SEARCH */
   
