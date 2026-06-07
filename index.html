@@ -1134,7 +1134,7 @@ results.forEach(movie=>{
 
 searchResults.innerHTML += `
 <div class="search-item"
-onclick="window.location.href='${movie.link}'">
+onclick="openPopup('${movie.video}')">
 
 <img src="${movie.image}">
 <span>${movie.title}</span>
