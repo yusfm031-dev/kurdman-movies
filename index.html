@@ -983,6 +983,8 @@ document.getElementById("popupVideo").pause();
   }
 
 function showPrayerPopup(){
+  
+  alert("Popup Works");
 
 const video = document.getElementById("popupVideo");
 
@@ -1051,7 +1053,7 @@ const times = await getPrayerTimes();
   alert(current);
 
 const prayerTimes = [
-"16:52",
+"17:2",
 times.fajr,
 times.dhuhr,
 times.asr,
@@ -1060,9 +1062,9 @@ times.isha
 ];
 
 if(prayerTimes.includes(current)){
+alert("IF Works");
 showPrayerPopup();
 }
-
 }
 
 setInterval(checkPrayerTime, 60000);
