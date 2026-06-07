@@ -1023,7 +1023,7 @@ error => reject(error)
   async function getPrayerTimes(){
 
 const location = await getUserLocation();
-
+alert("Location OK");
 const res = await fetch(
 `https://api.aladhan.com/v1/timings?latitude=${location.lat}&longitude=${location.lon}&method=3`
 );
