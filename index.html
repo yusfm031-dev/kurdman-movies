@@ -607,9 +607,7 @@ margin-right:10px;
 </head>
 
 <body>
- <div id="prayerTimesBar">
-🕌 بارکردنی کاتی نیوژ...
- </div> 
+ 
 
 
 <!-- HEADER -->
@@ -1037,20 +1035,6 @@ showPrayerPopup();
   setInterval(checkPrayerTime, 60000);
 checkPrayerTime();
 
-  async function showPrayerTimesBar(){
-
-const times = await getPrayerTimes();
-
-document.getElementById("prayerTimesBar").innerHTML =
-"🕌 فەجر: " + times.fajr +
-" | نیوەڕۆ: " + times.dhuhr +
-" | عەسر: " + times.asr +
-" | مەغریب: " + times.maghrib +
-" | عیشا: " + times.isha;
-
-}
-
-showPrayerTimesBar();
   
 /* SEARCH */
   
