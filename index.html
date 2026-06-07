@@ -811,34 +811,7 @@ onclick="window.location.href='elio.html'">
 
 <div class="movies-grid" id="moviesGrid">
 </div>
-<div id="prayerPopup" class="prayer-popup">
 
-  <div class="prayer-box">
-
-    <h2>🕌 کاتی نوێژە</h2>
-
-    <p>
-      براکم / خوشکم 🌷<br>
-      کاتی نوێژ هاتووە.<br><br>
-
-      تکایە بۆ ماوەی 5 خولەک تەرخان بێت بۆ نوێژ.
-
-      <br><br>
-
-      ❤️ پاشان بە ئارامی بگەڕێوە بۆ تماشاکردنی فیلمەکەت.
-    </p>
-
-    <button class="watch-btn" onclick="resumeMovie()">
-      ▶ بەردەوام بە تماشا
-    </button>
-
-    <button class="prayer-btn" onclick="goPrayer()">
-      🕌 دەچم بۆ نوێژ
-    </button>
-
-  </div>
-
-</div>
 
 
 <!-- POPUP -->
@@ -975,7 +948,31 @@ document.getElementById("popup").style.display="none";
 
 document.getElementById("popupVideo").pause();
 
+function showPrayerPopup(){
 
+const video = document.getElementById("popupVideo");
+
+video.pause();
+
+document.getElementById("prayerPopup").style.display = "flex";
+
+}
+
+function resumeMovie(){
+
+document.getElementById("prayerPopup").style.display = "none";
+
+document.getElementById("popupVideo").play();
+
+}
+
+function goPrayer(){
+
+document.getElementById("prayerPopup").style.display = "none";
+
+closePopup();
+
+}
 
 /* SEARCH */
   
