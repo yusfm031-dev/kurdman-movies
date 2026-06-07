@@ -591,11 +591,25 @@ color:#fff;
 background:#1f8b3f;
 color:#fff;
 }
+  #prayerTimesBar{
+margin-top:80px;
+background:#111;
+color:#fff;
+padding:10px;
+text-align:center;
+font-size:14px;
+font-weight:bold;
+border-radius:10px;
+margin-left:10px;
+margin-right:10px;
+  }
 </style>
 </head>
 
 <body>
-  
+ <div id="prayerTimesBar">
+🕌 بارکردنی کاتی نیوژ...
+ </div> 
 
 
 <!-- HEADER -->
@@ -1022,6 +1036,21 @@ showPrayerPopup();
 
   setInterval(checkPrayerTime, 60000);
 checkPrayerTime();
+
+  async function showPrayerTimesBar(){
+
+const times = await getPrayerTimes();
+
+document.getElementById("prayerTimesBar").innerHTML =
+"🕌 فەجر: " + times.fajr +
+" | نیوەڕۆ: " + times.dhuhr +
+" | عەسر: " + times.asr +
+" | مەغریب: " + times.maghrib +
+" | عیشا: " + times.isha;
+
+}
+
+showPrayerTimesBar();
   
 /* SEARCH */
   
