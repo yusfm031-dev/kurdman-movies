@@ -51,5 +51,6 @@ title:"ئەلیۆ",
 image:"file_000000007c14720ab85b3d3eaba07005.png",
 quality:"9.0",
 video:"https://vz-64a6b2bb-12e.b-cdn.net/b5344847-8ed9-4c40-87da-00a019cd4fbc/playlist.m3u8"
-}
+},
+  
 ];
