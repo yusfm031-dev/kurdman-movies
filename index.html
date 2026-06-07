@@ -984,7 +984,6 @@ document.getElementById("popupVideo").pause();
 
 function showPrayerPopup(){
   
-  alert("Popup Works");
 
 const video = document.getElementById("popupVideo");
 
@@ -1048,9 +1047,14 @@ const current =
 String(now.getHours()).padStart(2,'0') +
 ":" +
 String(now.getMinutes()).padStart(2,'0');
+const times = await getPrayerTimes();
 
 const prayerTimes = [
-"20:17"
+times.fajr,
+times.dhuhr,
+times.asr,
+times.maghrib,
+times.isha
 ];
 
 if(prayerTimes.includes(current)){
