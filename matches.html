@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KurdMan Live Scores</title>
+<title>KurdMan World Cup</title>
 
 <style>
 body{
@@ -12,7 +12,7 @@ background:#0a0a0a;
 color:white;
 font-family:Arial,sans-serif;
 margin:0;
-padding:20px;
+padding:15px;
 }
 
 .header{
@@ -20,33 +20,49 @@ text-align:center;
 font-size:35px;
 font-weight:bold;
 color:#00ff88;
-margin-bottom:30px;
+margin-bottom:20px;
 text-shadow:0 0 20px #00ff88;
+}
+
+.day{
+font-size:24px;
+font-weight:bold;
+margin:25px 0 10px;
+text-align:center;
+color:#fff;
 }
 
 .match{
 background:#141414;
-border:1px solid #00ff88;
 border-radius:20px;
-padding:20px;
-margin-bottom:15px;
-text-align:center;
+padding:18px;
+margin-bottom:12px;
+border:1px solid #00ff88;
+box-shadow:0 0 10px rgba(0,255,136,.2);
 }
 
-.league{
-color:#00ff88;
-font-weight:bold;
-margin-bottom:10px;
-}
-
-.teams{
-font-size:22px;
+.row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:20px;
 font-weight:bold;
 }
 
 .time{
-margin-top:10px;
-color:#ccc;
+font-size:22px;
+color:#ffd700;
+}
+
+.team{
+width:35%;
+text-align:center;
+}
+
+.flag{
+font-size:30px;
+display:block;
+margin-bottom:5px;
 }
 </style>
 </head>
@@ -54,39 +70,79 @@ color:#ccc;
 <body>
 
 <div class="header">
-⚽ KurdMan Live Scores
+🏆 KurdMan World Cup
 </div>
+<div id="matches"></div>
 
-<div id="matches">
-<div class="match">
-<div class="league">🏆 FIFA World Cup</div>
-<div class="teams">Brazil VS Argentina</div>
-<div class="time">📅 2026-06-15 | 🕒 20:00</div>
-</div>
-
-<div class="match">
-<div class="league">🏆 FIFA World Cup</div>
-<div class="teams">Germany VS France</div>
-<div class="time">📅 2026-06-16 | 🕒 22:00</div>
-</div>
-</div>
-  <script>
+<script>
 
 const API_TOKEN = "4b9eee992e174ffdb102d660eef989f7";
 
-fetch("https://api.football-data.org/v4/competitions/WC/matches",{
+async function loadWorldCup() {
+
+const container = document.getElementById("matches");
+container.innerHTML = "<h2>Loading...</h2>";
+
+try {
+
+const res = await fetch(
+"https://api.football-data.org/v4/competitions/WC/matches",
+{
 headers:{
 "X-Auth-Token": API_TOKEN
 }
-})
-.then(res => res.json())
-.then(data => {
-console.log(data);
-document.getElementById("matches").innerHTML =
-"<pre>"+JSON.stringify(data.matches.slice(0,10),null,2)+"</pre>";
+}
+);
+
+const data = await res.json();
+
+container.innerHTML = "";
+
+data.matches.forEach(match => {
+
+const date = new Date(match.utcDate);
+
+container.innerHTML += `
+<div class="match">
+
+<div class="league">
+🏆 FIFA World Cup
+</div>
+
+<div class="teams">
+${match.homeTeam.name}
+<br><br>
+VS
+<br><br>
+${match.awayTeam.name}
+</div>
+
+<div class="time">
+📅 ${date.toLocaleDateString()}
+<br>
+🕒 ${date.toLocaleTimeString()}
+</div>
+
+</div>
+`;
+
 });
 
-  </script>
+} catch(error){
+
+container.innerHTML =
+"<h2>هەڵە لە API</h2>";
+
+}
+
+}
+
+loadWorldCup();
+
+</script>
+
+</body>
+</html>
 
 </body>
 </html>
