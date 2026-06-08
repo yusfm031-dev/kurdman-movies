@@ -12,57 +12,47 @@ background:#0a0a0a;
 color:white;
 font-family:Arial,sans-serif;
 margin:0;
-padding:15px;
+padding:20px;
 }
 
 .header{
 text-align:center;
-font-size:35px;
+font-size:34px;
 font-weight:bold;
 color:#00ff88;
-margin-bottom:20px;
+margin-bottom:25px;
 text-shadow:0 0 20px #00ff88;
-}
-
-.day{
-font-size:24px;
-font-weight:bold;
-margin:25px 0 10px;
-text-align:center;
-color:#fff;
 }
 
 .match{
 background:#141414;
-border-radius:20px;
-padding:18px;
-margin-bottom:12px;
 border:1px solid #00ff88;
-box-shadow:0 0 10px rgba(0,255,136,.2);
+border-radius:20px;
+padding:15px;
+margin-bottom:15px;
+box-shadow:0 0 10px rgba(0,255,136,.3);
 }
 
-.row{
-display:flex;
-justify-content:space-between;
-align-items:center;
-font-size:20px;
+.league{
+color:#00ff88;
 font-weight:bold;
-}
-
-.time{
-font-size:22px;
-color:#ffd700;
-}
-
-.team{
-width:35%;
+font-size:18px;
+margin-bottom:10px;
 text-align:center;
 }
 
-.flag{
-font-size:30px;
-display:block;
-margin-bottom:5px;
+.teams{
+font-size:22px;
+font-weight:bold;
+text-align:center;
+line-height:1.8;
+}
+
+.time{
+text-align:center;
+margin-top:10px;
+color:#ccc;
+font-size:18px;
 }
 </style>
 </head>
@@ -72,7 +62,10 @@ margin-bottom:5px;
 <div class="header">
 🏆 KurdMan World Cup
 </div>
-<div id="matches"></div>
+
+<div id="matches">
+<h2 style="text-align:center;">Loading...</h2>
+</div>
 
 <script>
 
@@ -81,7 +74,6 @@ const API_TOKEN = "4b9eee992e174ffdb102d660eef989f7";
 async function loadWorldCup() {
 
 const container = document.getElementById("matches");
-container.innerHTML = "<h2>Loading...</h2>";
 
 try {
 
@@ -94,7 +86,11 @@ headers:{
 }
 );
 
+console.log(res);
+
 const data = await res.json();
+
+console.log(data);
 
 container.innerHTML = "";
 
@@ -128,12 +124,14 @@ ${match.awayTeam.name}
 
 });
 
+}
 catch(error){
-alert(error);
+
 console.log(error);
 
 container.innerHTML =
-"<h2>هەڵە لە API</h2>";
+"<h2 style='text-align:center;color:red'>هەڵە لە API</h2>";
+
 }
 
 }
@@ -141,9 +139,6 @@ container.innerHTML =
 loadWorldCup();
 
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
