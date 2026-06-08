@@ -29,16 +29,18 @@ display:flex;
 gap:10px;
 justify-content:center;
 margin-bottom:20px;
+flex-wrap:wrap;
 }
 
 .tabs button{
 background:#00ff88;
 color:#000;
 border:none;
-padding:10px 15px;
-border-radius:10px;
+padding:12px 18px;
+border-radius:12px;
 font-weight:bold;
 cursor:pointer;
+font-size:15px;
 }
 
 .match{
@@ -75,10 +77,11 @@ height:80px;
 border-radius:50%;
 background:white;
 padding:5px;
+object-fit:contain;
 }
 
 .team-name{
-font-size:20px;
+font-size:18px;
 font-weight:bold;
 text-align:center;
 margin-top:10px;
@@ -126,6 +129,7 @@ font-size:16px;
 <div class="tabs">
 <button onclick="loadMatches('today')">📅 Today's Matches</button>
 <button onclick="loadMatches('tomorrow')">📅 Tomorrow Matches</button>
+<button onclick="loadWorldCup()">🏆 World Cup</button>
 </div>
 
 <div id="matches"></div>
@@ -160,36 +164,19 @@ d.setDate(d.getDate() + offset);
 return d.toISOString().split("T")[0];
 }
 
-async function loadMatches(type){
-
-const date = type === "tomorrow"
-? getDate(1)
-: getDate(0);
+async function showMatches(events){
 
 const container = document.getElementById("matches");
 
-container.innerHTML = "<h2 style='text-align:center'>Loading...</h2>";
-
-try{
-const res = await fetch(
-`https://www.thesportsdb.com/api/v1/json/${API_KEY}/eventsnextleague.php?id=4328`
-);
-
-const data = await res.json();
-  
-  console.log(data);
-container.innerHTML = "<pre>" + JSON.stringify(data,null,2) + "</pre>";
-return;
-
 container.innerHTML = "";
 
-if(!data.events){
+if(!events || events.length === 0){
 container.innerHTML =
 "<h2 style='text-align:center'>هیچ یارییەک نەدۆزرایەوە</h2>";
 return;
 }
 
-for(const match of data.events || []){
+for(const match of events){
 
 const homeLogo = await getTeamLogo(match.strHomeTeam);
 const awayLogo = await getTeamLogo(match.strAwayTeam);
@@ -199,7 +186,7 @@ container.innerHTML += `
 <div class="match">
 
 <div class="league">
-🏆 ${match.strLeague}
+🏆 ${match.strLeague || "Football"}
 </div>
 
 <div class="teams">
@@ -207,7 +194,7 @@ container.innerHTML += `
 <div class="team">
 <img src="${homeLogo}">
 <div class="team-name">
-${match.strHomeTeam}
+${match.strHomeTeam || ""}
 </div>
 </div>
 
@@ -220,16 +207,16 @@ VS
 <div class="team">
 <img src="${awayLogo}">
 <div class="team-name">
-${match.strAwayTeam}
+${match.strAwayTeam || ""}
 </div>
 </div>
 
 </div>
 
 <div class="time">
-🕒 ${match.strTime}
+🕒 ${match.strTime || ""}
 <br>
-📅 ${match.dateEvent}
+📅 ${match.dateEvent || ""}
 </div>
 
 </div>
@@ -237,6 +224,55 @@ ${match.strAwayTeam}
 `;
 
 }
+
+}
+
+async function loadMatches(type){
+
+const date = type === "tomorrow"
+? getDate(1)
+: getDate(0);
+
+const container = document.getElementById("matches");
+
+container.innerHTML =
+"<h2 style='text-align:center'>Loading...</h2>";
+
+try{
+
+const res = await fetch(
+`https://www.thesportsdb.com/api/v1/json/${API_KEY}/eventsday.php?d=${date}&s=Soccer`
+);
+
+const data = await res.json();
+
+await showMatches(data.events);
+
+}catch(error){
+
+container.innerHTML =
+"<h2 style='text-align:center'>هەڵەیەک ڕوویدا</h2>";
+
+}
+
+}
+
+async function loadWorldCup(){
+
+const container = document.getElementById("matches");
+
+container.innerHTML =
+"<h2 style='text-align:center'>Loading...</h2>";
+
+try{
+
+const res = await fetch(
+`https://www.thesportsdb.com/api/v1/json/${API_KEY}/eventsnextleague.php?id=4424`
+);
+
+const data = await res.json();
+
+await showMatches(data.events);
 
 }catch(error){
 
