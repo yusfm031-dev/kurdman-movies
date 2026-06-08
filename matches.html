@@ -171,11 +171,15 @@ const container = document.getElementById("matches");
 container.innerHTML = "<h2 style='text-align:center'>Loading...</h2>";
 
 try{
-
-const res = await fetch(`https://www.thesportsdb.com/api/v1/json/${API_KEY}/eventsnextleague.php?id=4328`)
+const res = await fetch(
+`https://www.thesportsdb.com/api/v1/json/${API_KEY}/eventsnextleague.php?id=4328`
 );
 
 const data = await res.json();
+  
+  console.log(data);
+container.innerHTML = "<pre>" + JSON.stringify(data,null,2) + "</pre>";
+return;
 
 container.innerHTML = "";
 
