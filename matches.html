@@ -172,7 +172,7 @@ container.innerHTML = "<h2 style='text-align:center'>Loading...</h2>";
 
 try{
 
-const res = await fetch(`https://www.thesportsdb.com/api/v1/json/${API_KEY}/eventsday.php?d=${date}&s=Soccer`)
+const res = await fetch(`https://www.thesportsdb.com/api/v1/json/${API_KEY}/eventsnextleague.php?id=4328`)
 );
 
 const data = await res.json();
