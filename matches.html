@@ -3,60 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>KurdMan Live Scores</title>
+<title>KurdMan Sports</title>
 
 <style>
 body{
 background:#0a0a0a;
 color:white;
 font-family:Arial,sans-serif;
-margin:0;
 padding:20px;
+margin:0;
 }
 
 .header{
 text-align:center;
-font-size:32px;
+font-size:30px;
 font-weight:bold;
-margin-bottom:25px;
 color:#00ff88;
-text-shadow:0 0 20px #00ff88;
+margin-bottom:20px;
 }
 
-.tabs{
+.btns{
 display:flex;
-gap:10px;
 justify-content:center;
+gap:10px;
 margin-bottom:20px;
 flex-wrap:wrap;
 }
 
-.tabs button{
+.btns button{
 background:#00ff88;
-color:#000;
+color:black;
 border:none;
-padding:12px 18px;
-border-radius:12px;
+padding:10px 15px;
+border-radius:10px;
 font-weight:bold;
 cursor:pointer;
-font-size:15px;
 }
 
 .match{
-background:linear-gradient(135deg,#111,#1a1a1a);
-border-radius:20px;
-padding:20px;
+background:#151515;
+border-radius:15px;
+padding:15px;
 margin-bottom:15px;
 border:1px solid #00ff88;
-box-shadow:0 0 15px rgba(0,255,136,.2);
 }
 
 .league{
-text-align:center;
-font-size:15px;
 color:#00ff88;
-margin-bottom:15px;
+text-align:center;
+margin-bottom:10px;
 font-weight:bold;
 }
 
@@ -72,50 +67,23 @@ width:35%;
 }
 
 .team img{
-width:80px;
-height:80px;
+width:70px;
+height:70px;
 border-radius:50%;
 background:white;
 padding:5px;
-object-fit:contain;
-}
-
-.team-name{
-font-size:18px;
-font-weight:bold;
-text-align:center;
-margin-top:10px;
 }
 
 .score{
-font-size:35px;
+font-size:28px;
 font-weight:bold;
-color:#ffd700;
-text-align:center;
-}
-
-.live-badge{
-background:red;
-color:white;
-padding:5px 12px;
-border-radius:20px;
-font-size:12px;
-display:inline-block;
-margin-top:10px;
-animation:blink 1s infinite;
-}
-
-@keyframes blink{
-50%{
-opacity:.4;
-}
+color:gold;
 }
 
 .time{
-margin-top:15px;
 text-align:center;
+margin-top:10px;
 color:#ccc;
-font-size:16px;
 }
 </style>
 </head>
@@ -123,135 +91,39 @@ font-size:16px;
 <body>
 
 <div class="header">
-⚽ Live Scores
+⚽ KurdMan Live Scores
 </div>
 
-<div class="tabs">
-<button onclick="loadMatches('today')">📅 Today's Matches</button>
-<button onclick="loadMatches('tomorrow')">📅 Tomorrow Matches</button>
-<button onclick="loadWorldCup()">🏆 World Cup</button>
+<div class="btns">
+<button onclick="loadPremierLeague()">🏆 Premier League</button>
+<button onclick="loadWorldCup()">🌍 World Cup</button>
 </div>
 
-<div id="matches"></div>
+<div id="matches">
+<h3 style="text-align:center">Loading...</h3>
+</div>
 
 <script>
 
-const API_KEY = "123";
+async function loadPremierLeague(){
 
-async function getTeamLogo(teamName){
+const container = document.getElementById("matches");
+
+container.innerHTML = "<h3>Loading...</h3>";
 
 try{
 
 const res = await fetch(
-`https://www.thesportsdb.com/api/v1/json/${API_KEY}/searchteams.php?t=${encodeURIComponent(teamName)}`
+"https://www.thesportsdb.com/api/v1/json/123/eventsnextleague.php?id=4328"
 );
 
 const data = await res.json();
 
-if(data.teams && data.teams[0].strBadge){
-return data.teams[0].strBadge;
-}
+showMatches(data.events);
 
-}catch(e){}
+}catch(e){
 
-return "https://cdn-icons-png.flaticon.com/512/53/53283.png";
-
-}
-
-function getDate(offset = 0){
-const d = new Date();
-d.setDate(d.getDate() + offset);
-return d.toISOString().split("T")[0];
-}
-
-async function showMatches(events){
-
-const container = document.getElementById("matches");
-
-container.innerHTML = "";
-
-if(!events || events.length === 0){
-container.innerHTML =
-"<h2 style='text-align:center'>هیچ یارییەک نەدۆزرایەوە</h2>";
-return;
-}
-
-for(const match of events){
-
-const homeLogo = await getTeamLogo(match.strHomeTeam);
-const awayLogo = await getTeamLogo(match.strAwayTeam);
-
-container.innerHTML += `
-
-<div class="match">
-
-<div class="league">
-🏆 ${match.strLeague || "Football"}
-</div>
-
-<div class="teams">
-
-<div class="team">
-<img src="${homeLogo}">
-<div class="team-name">
-${match.strHomeTeam || ""}
-</div>
-</div>
-
-<div class="score">
-VS
-<br>
-<div class="live-badge">LIVE</div>
-</div>
-
-<div class="team">
-<img src="${awayLogo}">
-<div class="team-name">
-${match.strAwayTeam || ""}
-</div>
-</div>
-
-</div>
-
-<div class="time">
-🕒 ${match.strTime || ""}
-<br>
-📅 ${match.dateEvent || ""}
-</div>
-
-</div>
-
-`;
-
-}
-
-}
-
-async function loadMatches(type){
-
-const date = type === "tomorrow"
-? getDate(1)
-: getDate(0);
-
-const container = document.getElementById("matches");
-
-container.innerHTML =
-"<h2 style='text-align:center'>Loading...</h2>";
-
-try{
-
-const res = await fetch(
-`https://www.thesportsdb.com/api/v1/json/${API_KEY}/eventsday.php?d=${date}&s=Soccer`
-);
-
-const data = await res.json();
-
-await showMatches(data.events);
-
-}catch(error){
-
-container.innerHTML =
-"<h2 style='text-align:center'>هەڵەیەک ڕوویدا</h2>";
+container.innerHTML = "<h3>هەڵەیەک ڕوویدا</h3>";
 
 }
 
@@ -261,29 +133,84 @@ async function loadWorldCup(){
 
 const container = document.getElementById("matches");
 
-container.innerHTML =
-"<h2 style='text-align:center'>Loading...</h2>";
+container.innerHTML = "<h3>Loading...</h3>";
 
 try{
 
 const res = await fetch(
-`https://www.thesportsdb.com/api/v1/json/${API_KEY}/eventsnextleague.php?id=4424`
+"https://www.thesportsdb.com/api/v1/json/123/eventsnextleague.php?id=4424"
 );
 
 const data = await res.json();
 
-await showMatches(data.events);
+showMatches(data.events);
 
-}catch(error){
+}catch(e){
+
+container.innerHTML = "<h3>هەڵەیەک ڕوویدا</h3>";
+
+}
+
+}
+
+function showMatches(events){
+
+const container = document.getElementById("matches");
+
+container.innerHTML = "";
+
+if(!events){
 
 container.innerHTML =
-"<h2 style='text-align:center'>هەڵەیەک ڕوویدا</h2>";
+"<h3>هیچ یارییەک نەدۆزرایەوە</h3>";
+
+return;
 
 }
 
+events.forEach(match=>{
+
+container.innerHTML += `
+
+<div class="match">
+
+<div class="league">
+${match.strLeague}
+</div>
+
+<div class="teams">
+
+<div class="team">
+<img src="https://cdn-icons-png.flaticon.com/512/53/53283.png">
+<div>${match.strHomeTeam}</div>
+</div>
+
+<div class="score">
+VS
+</div>
+
+<div class="team">
+<img src="https://cdn-icons-png.flaticon.com/512/53/53283.png">
+<div>${match.strAwayTeam}</div>
+</div>
+
+</div>
+
+<div class="time">
+📅 ${match.dateEvent}
+<br>
+🕒 ${match.strTime}
+</div>
+
+</div>
+
+`;
+
+});
+
 }
 
-loadMatches('today');
+loadPremierLeague();
 
 </script>
 
