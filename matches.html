@@ -24,40 +24,48 @@ color:#00ff88;
 text-shadow:0 0 20px #00ff88;
 }
 
+.tabs{
+display:flex;
+gap:10px;
+justify-content:center;
+margin-bottom:20px;
+}
+
+.tabs button{
+background:#00ff88;
+color:#000;
+border:none;
+padding:10px 15px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
 .match{
-background:#141414;
+background:linear-gradient(135deg,#111,#1a1a1a);
 border-radius:20px;
-padding:15px;
+padding:20px;
 margin-bottom:15px;
+border:1px solid #00ff88;
 box-shadow:0 0 15px rgba(0,255,136,.2);
 }
 
 .league{
+text-align:center;
+font-size:15px;
 color:#00ff88;
-font-size:14px;
-margin-bottom:10px;
+margin-bottom:15px;
+font-weight:bold;
 }
 
 .teams{
 display:flex;
 justify-content:space-between;
 align-items:center;
-font-size:18px;
-font-weight:bold;
-}
-
-.score{
-font-size:26px;
-color:#ffd700;
-font-weight:bold;
-}
-
-.time{
-margin-top:10px;
-color:#bbb;
 text-align:center;
 }
-  .team{
+
+.team{
 width:35%;
 }
 
@@ -72,6 +80,14 @@ padding:5px;
 .team-name{
 font-size:20px;
 font-weight:bold;
+text-align:center;
+margin-top:10px;
+}
+
+.score{
+font-size:35px;
+font-weight:bold;
+color:#ffd700;
 text-align:center;
 }
 
@@ -91,6 +107,13 @@ animation:blink 1s infinite;
 opacity:.4;
 }
 }
+
+.time{
+margin-top:15px;
+text-align:center;
+color:#ccc;
+font-size:16px;
+}
 </style>
 </head>
 
@@ -99,7 +122,11 @@ opacity:.4;
 <div class="header">
 ⚽ Live Scores
 </div>
-  
+
+<div class="tabs">
+<button onclick="loadMatches('today')">📅 Today's Matches</button>
+<button onclick="loadMatches('tomorrow')">📅 Tomorrow Matches</button>
+</div>
 
 <div id="matches"></div>
 
@@ -127,14 +154,35 @@ return "https://cdn-icons-png.flaticon.com/512/53/53283.png";
 
 }
 
-fetch(`https://www.thesportsdb.com/api/v1/json/${API_KEY}/eventsday.php?d=2026-06-09&s=Soccer`)
-.then(response => response.json())
-.then(async data => {
+function getDate(offset = 0){
+const d = new Date();
+d.setDate(d.getDate() + offset);
+return d.toISOString().split("T")[0];
+}
+
+async function loadMatches(type){
+
+const date = type === "tomorrow"
+? getDate(1)
+: getDate(0);
 
 const container = document.getElementById("matches");
 
+container.innerHTML = "<h2 style='text-align:center'>Loading...</h2>";
+
+try{
+
+const res = await fetch(
+`https://www.thesportsdb.com/api/v1/json/${API_KEY}/eventsday.php?d=${date}&s=Soccer`
+);
+
+const data = await res.json();
+
+container.innerHTML = "";
+
 if(!data.events){
-container.innerHTML = "<h2>هیچ یارییەک نەدۆزرایەوە</h2>";
+container.innerHTML =
+"<h2 style='text-align:center'>هیچ یارییەک نەدۆزرایەوە</h2>";
 return;
 }
 
@@ -176,7 +224,9 @@ ${match.strAwayTeam}
 </div>
 
 <div class="time">
-🕒 ${match.strTime} | 📅 ${match.dateEvent}
+🕒 ${match.strTime}
+<br>
+📅 ${match.dateEvent}
 </div>
 
 </div>
@@ -185,8 +235,18 @@ ${match.strAwayTeam}
 
 }
 
-});
+}catch(error){
+
+container.innerHTML =
+"<h2 style='text-align:center'>هەڵەیەک ڕوویدا</h2>";
+
+}
+
+}
+
+loadMatches('today');
 
 </script>
+
 </body>
 </html>
