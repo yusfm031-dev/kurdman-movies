@@ -3,85 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KurdMan Sports</title>
+
+<title>KurdMan Live Scores</title>
 
 <style>
 body{
 background:#0a0a0a;
 color:white;
 font-family:Arial,sans-serif;
-padding:20px;
 margin:0;
+padding:20px;
 }
 
 .header{
 text-align:center;
-font-size:30px;
+font-size:35px;
 font-weight:bold;
 color:#00ff88;
-margin-bottom:20px;
-}
-
-.btns{
-display:flex;
-justify-content:center;
-gap:10px;
-margin-bottom:20px;
-flex-wrap:wrap;
-}
-
-.btns button{
-background:#00ff88;
-color:black;
-border:none;
-padding:10px 15px;
-border-radius:10px;
-font-weight:bold;
-cursor:pointer;
+margin-bottom:30px;
+text-shadow:0 0 20px #00ff88;
 }
 
 .match{
-background:#151515;
-border-radius:15px;
-padding:15px;
-margin-bottom:15px;
+background:#141414;
 border:1px solid #00ff88;
+border-radius:20px;
+padding:20px;
+margin-bottom:15px;
+text-align:center;
 }
 
 .league{
 color:#00ff88;
-text-align:center;
-margin-bottom:10px;
 font-weight:bold;
+margin-bottom:10px;
 }
 
 .teams{
-display:flex;
-justify-content:space-between;
-align-items:center;
-text-align:center;
-}
-
-.team{
-width:35%;
-}
-
-.team img{
-width:70px;
-height:70px;
-border-radius:50%;
-background:white;
-padding:5px;
-}
-
-.score{
-font-size:28px;
+font-size:22px;
 font-weight:bold;
-color:gold;
 }
 
 .time{
-text-align:center;
 margin-top:10px;
 color:#ccc;
 }
@@ -94,125 +57,36 @@ color:#ccc;
 ⚽ KurdMan Live Scores
 </div>
 
-<div class="btns">
-<button onclick="loadPremierLeague()">🏆 Premier League</button>
-<button onclick="loadWorldCup()">🌍 World Cup</button>
-</div>
-
 <div id="matches">
-<h3 style="text-align:center">Loading...</h3>
+<div class="match">
+<div class="league">🏆 FIFA World Cup</div>
+<div class="teams">Brazil VS Argentina</div>
+<div class="time">📅 2026-06-15 | 🕒 20:00</div>
 </div>
-
-<script>
-
-async function loadPremierLeague(){
-
-const container = document.getElementById("matches");
-
-container.innerHTML = "<h3>Loading...</h3>";
-
-try{
-
-const res = await fetch(
-"https://www.thesportsdb.com/api/v1/json/123/eventsnextleague.php?id=4328"
-);
-
-const data = await res.json();
-
-showMatches(data.events);
-
-}catch(e){
-
-container.innerHTML = "<h3>هەڵەیەک ڕوویدا</h3>";
-
-}
-
-}
-
-async function loadWorldCup(){
-
-const container = document.getElementById("matches");
-
-container.innerHTML = "<h3>Loading...</h3>";
-
-try{
-
-const res = await fetch(
-"https://www.thesportsdb.com/api/v1/json/123/eventsnextleague.php?id=4424"
-);
-
-const data = await res.json();
-
-showMatches(data.events);
-
-}catch(e){
-
-container.innerHTML = "<h3>هەڵەیەک ڕوویدا</h3>";
-
-}
-
-}
-
-function showMatches(events){
-
-const container = document.getElementById("matches");
-
-container.innerHTML = "";
-
-if(!events){
-
-container.innerHTML =
-"<h3>هیچ یارییەک نەدۆزرایەوە</h3>";
-
-return;
-
-}
-
-events.forEach(match=>{
-
-container.innerHTML += `
 
 <div class="match">
-
-<div class="league">
-${match.strLeague}
+<div class="league">🏆 FIFA World Cup</div>
+<div class="teams">Germany VS France</div>
+<div class="time">📅 2026-06-16 | 🕒 22:00</div>
 </div>
-
-<div class="teams">
-
-<div class="team">
-<img src="https://cdn-icons-png.flaticon.com/512/53/53283.png">
-<div>${match.strHomeTeam}</div>
 </div>
+  <script>
 
-<div class="score">
-VS
-</div>
+const API_TOKEN = "4b9eee992e174ffdb102d660eef989f7";
 
-<div class="team">
-<img src="https://cdn-icons-png.flaticon.com/512/53/53283.png">
-<div>${match.strAwayTeam}</div>
-</div>
-
-</div>
-
-<div class="time">
-📅 ${match.dateEvent}
-<br>
-🕒 ${match.strTime}
-</div>
-
-</div>
-
-`;
-
+fetch("https://api.football-data.org/v4/competitions/WC/matches",{
+headers:{
+"X-Auth-Token": API_TOKEN
+}
+})
+.then(res => res.json())
+.then(data => {
+console.log(data);
+document.getElementById("matches").innerHTML =
+"<pre>"+JSON.stringify(data.matches.slice(0,10),null,2)+"</pre>";
 });
 
-}
-
-loadPremierLeague();
-
-</script>
+  </script>
 
 </body>
 </html>
