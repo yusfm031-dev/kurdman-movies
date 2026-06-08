@@ -19,7 +19,7 @@ padding:20px;
 text-align:center;
 font-size:32px;
 font-weight:bold;
-margin-bottom:20px;
+margin-bottom:25px;
 color:#00ff88;
 }
 
@@ -46,23 +46,15 @@ font-weight:bold;
 }
 
 .score{
-font-size:28px;
+font-size:26px;
 color:#ffd700;
-}
-
-.live{
-background:red;
-display:inline-block;
-padding:5px 12px;
-border-radius:20px;
-margin-top:10px;
-font-size:12px;
 font-weight:bold;
 }
 
 .time{
 margin-top:10px;
 color:#bbb;
+text-align:center;
 }
 </style>
 </head>
@@ -77,73 +69,56 @@ color:#bbb;
 
 <script>
 
-const matches = [
+const API_KEY = "123";
 
-{
-league:"🏆 World Cup 2026",
-home:"Argentina",
-away:"Brazil",
-score:"2 - 1",
-time:"LIVE"
-},
+fetch(`https://www.thesportsdb.com/api/v1/json/${API_KEY}/eventsday.php?d=2026-06-09&s=Soccer`)
+.then(response => response.json())
+.then(data => {
 
-{
-league:"🏆 Champions League",
-home:"Real Madrid",
-away:"Manchester City",
-score:"1 - 1",
-time:"75'"
-},
+const container = document.getElementById("matches");
 
-{
-league:"🏆 Premier League",
-home:"Liverpool",
-away:"Arsenal",
-score:"0 - 0",
-time:"20:00"
-},
-
-{
-league:"🏆 La Liga",
-home:"Barcelona",
-away:"Atletico Madrid",
-score:"3 - 2",
-time:"Finished"
+if(!data.events){
+container.innerHTML = "<h2>هیچ یارییەک نەدۆزرایەوە</h2>";
+return;
 }
 
-];
+data.events.forEach(match => {
 
-const container=document.getElementById("matches");
-
-matches.forEach(match=>{
-
-container.innerHTML+=`
-
+container.innerHTML += `
 <div class="match">
 
 <div class="league">
-${match.league}
+${match.strLeague}
 </div>
 
 <div class="teams">
 
-<div>${match.home}</div>
+<div>${match.strHomeTeam}</div>
 
 <div class="score">
-${match.score}
+VS
 </div>
 
-<div>${match.away}</div>
-
-</div>
-
-<div class="live">
-${match.time}
-</div>
+<div>${match.strAwayTeam}</div>
 
 </div>
 
+<div class="time">
+${match.dateEvent} | ${match.strTime}
+</div>
+
+</div>
 `;
+
+});
+
+})
+.catch(error => {
+
+document.getElementById("matches").innerHTML =
+"<h2>هەڵەیەک ڕوویدا لە API</h2>";
+
+console.log(error);
 
 });
 
