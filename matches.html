@@ -107,9 +107,29 @@ opacity:.4;
 
 const API_KEY = "123";
 
+async function getTeamLogo(teamName){
+
+try{
+
+const res = await fetch(
+`https://www.thesportsdb.com/api/v1/json/${API_KEY}/searchteams.php?t=${encodeURIComponent(teamName)}`
+);
+
+const data = await res.json();
+
+if(data.teams && data.teams[0].strBadge){
+return data.teams[0].strBadge;
+}
+
+}catch(e){}
+
+return "https://cdn-icons-png.flaticon.com/512/53/53283.png";
+
+}
+
 fetch(`https://www.thesportsdb.com/api/v1/json/${API_KEY}/eventsday.php?d=2026-06-09&s=Soccer`)
 .then(response => response.json())
-.then(data => {
+.then(async data => {
 
 const container = document.getElementById("matches");
 
@@ -118,7 +138,10 @@ container.innerHTML = "<h2>هیچ یارییەک نەدۆزرایەوە</h2>";
 return;
 }
 
-data.events.forEach(match => {
+for(const match of data.events){
+
+const homeLogo = await getTeamLogo(match.strHomeTeam);
+const awayLogo = await getTeamLogo(match.strAwayTeam);
 
 container.innerHTML += `
 
@@ -131,7 +154,7 @@ container.innerHTML += `
 <div class="teams">
 
 <div class="team">
-<img src="https://cdn-icons-png.flaticon.com/512/53/53283.png">
+<img src="${homeLogo}">
 <div class="team-name">
 ${match.strHomeTeam}
 </div>
@@ -144,7 +167,7 @@ VS
 </div>
 
 <div class="team">
-<img src="https://cdn-icons-png.flaticon.com/512/53/53283.png">
+<img src="${awayLogo}">
 <div class="team-name">
 ${match.strAwayTeam}
 </div>
@@ -162,19 +185,10 @@ ${match.strAwayTeam}
 
 `;
 
-});
-
-})
-.catch(error => {
-
-document.getElementById("matches").innerHTML =
-"<h2>هەڵەیەک ڕوویدا لە API</h2>";
-
-console.log(error);
+}
 
 });
 
 </script>
-
 </body>
 </html>
