@@ -56,6 +56,40 @@ margin-top:10px;
 color:#bbb;
 text-align:center;
 }
+  .team{
+width:35%;
+}
+
+.team img{
+width:60px;
+height:60px;
+border-radius:50%;
+background:white;
+padding:5px;
+}
+
+.team-name{
+margin-top:10px;
+font-size:18px;
+font-weight:bold;
+}
+
+.live-badge{
+background:red;
+color:white;
+padding:5px 12px;
+border-radius:20px;
+font-size:12px;
+display:inline-block;
+margin-top:10px;
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+50%{
+opacity:.4;
+}
+}
 </style>
 </head>
 
@@ -85,29 +119,45 @@ return;
 data.events.forEach(match => {
 
 container.innerHTML += `
+
 <div class="match">
 
 <div class="league">
-${match.strLeague}
+🏆 ${match.strLeague}
 </div>
 
 <div class="teams">
 
-<div>${match.strHomeTeam}</div>
+<div class="team">
+<img src="https://cdn-icons-png.flaticon.com/512/53/53283.png">
+<div class="team-name">
+${match.strHomeTeam}
+</div>
+</div>
 
 <div class="score">
 VS
+<br>
+<div class="live-badge">LIVE</div>
 </div>
 
-<div>${match.strAwayTeam}</div>
+<div class="team">
+<img src="https://cdn-icons-png.flaticon.com/512/53/53283.png">
+<div class="team-name">
+${match.strAwayTeam}
+</div>
+</div>
 
 </div>
 
 <div class="time">
-${match.dateEvent} | ${match.strTime}
+🕒 ${match.strTime}
+<br>
+📅 ${match.dateEvent}
 </div>
 
 </div>
+
 `;
 
 });
