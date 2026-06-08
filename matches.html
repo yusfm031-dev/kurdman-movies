@@ -1,1 +1,153 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>KurdMan Live Scores</title>
+
+<style>
+body{
+background:#0a0a0a;
+color:white;
+font-family:Arial,sans-serif;
+margin:0;
+padding:20px;
+}
+
+.header{
+text-align:center;
+font-size:32px;
+font-weight:bold;
+margin-bottom:20px;
+color:#00ff88;
+}
+
+.match{
+background:#141414;
+border-radius:20px;
+padding:15px;
+margin-bottom:15px;
+box-shadow:0 0 15px rgba(0,255,136,.2);
+}
+
+.league{
+color:#00ff88;
+font-size:14px;
+margin-bottom:10px;
+}
+
+.teams{
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:18px;
+font-weight:bold;
+}
+
+.score{
+font-size:28px;
+color:#ffd700;
+}
+
+.live{
+background:red;
+display:inline-block;
+padding:5px 12px;
+border-radius:20px;
+margin-top:10px;
+font-size:12px;
+font-weight:bold;
+}
+
+.time{
+margin-top:10px;
+color:#bbb;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+⚽ Live Scores
+</div>
+
+<div id="matches"></div>
+
+<script>
+
+const matches = [
+
+{
+league:"🏆 World Cup 2026",
+home:"Argentina",
+away:"Brazil",
+score:"2 - 1",
+time:"LIVE"
+},
+
+{
+league:"🏆 Champions League",
+home:"Real Madrid",
+away:"Manchester City",
+score:"1 - 1",
+time:"75'"
+},
+
+{
+league:"🏆 Premier League",
+home:"Liverpool",
+away:"Arsenal",
+score:"0 - 0",
+time:"20:00"
+},
+
+{
+league:"🏆 La Liga",
+home:"Barcelona",
+away:"Atletico Madrid",
+score:"3 - 2",
+time:"Finished"
+}
+
+];
+
+const container=document.getElementById("matches");
+
+matches.forEach(match=>{
+
+container.innerHTML+=`
+
+<div class="match">
+
+<div class="league">
+${match.league}
+</div>
+
+<div class="teams">
+
+<div>${match.home}</div>
+
+<div class="score">
+${match.score}
+</div>
+
+<div>${match.away}</div>
+
+</div>
+
+<div class="live">
+${match.time}
+</div>
+
+</div>
+
+`;
+
+});
+
+</script>
+
+</body>
+</html>
