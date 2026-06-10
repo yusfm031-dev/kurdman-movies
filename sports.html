@@ -6,7 +6,6 @@
 <title>KurdMan Sports</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -15,96 +14,157 @@ font-family:Cairo,sans-serif;
 }
 
 body{
-background:
-linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
-url("worldcup.jpg");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
+background:#0b1020;
 color:white;
-padding:20px;
+padding:15px;
+padding-bottom:90px;
 }
 
 .title{
-font-size:40px;
+font-size:38px;
 font-weight:bold;
-text-align:center;
-margin:25px 0;
-color:#ffd700;
-text-shadow:0 0 15px #ffd700;
+margin:15px 0;
+color:white;
 }
 
-.channels-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+.search-box{
+margin:15px 0;
 }
 
-.channel-card{
-background:rgba(0,0,0,.75);
-backdrop-filter:blur(10px);
-padding:15px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 0 15px rgba(255,255,255,.15);
-transition:.3s;
-}
-
-.channel-card:hover{
-transform:translateY(-5px);
-}
-
-.channel-card img{
+.search-box input{
 width:100%;
-height:170px;
-object-fit:cover;
-border-radius:15px;
+padding:15px;
+border:none;
+border-radius:18px;
+background:#121933;
+color:white;
+font-size:18px;
+outline:none;
 }
 
-.channel-card h3{
-margin-top:10px;
-font-size:22px;
+.menu{
+display:flex;
+gap:10px;
+overflow:auto;
+margin-bottom:20px;
 }
 
-.watch-btn{
-margin-top:12px;
+.menu button{
+background:#121933;
+border:none;
+color:white;
+padding:12px 20px;
+border-radius:30px;
+white-space:nowrap;
+font-size:16px;
+}
+
+.live-btn{
 width:100%;
 padding:14px;
 border:none;
-border-radius:12px;
+border-radius:15px;
 background:linear-gradient(45deg,#ff9800,#ff1744);
 color:white;
 font-size:18px;
 font-weight:bold;
-cursor:pointer;
+margin-bottom:20px;
 }
 
-.watch-btn:hover{
-opacity:.9;
+.channels-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+gap:15px;
 }
 
+.channel-card{
+background:
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),
+url("worldcup.jpg");
+background-size:cover;
+background-position:center;
+border-radius:22px;
+padding:20px;
+text-align:center;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.channel-card img{
+width:90px;
+height:90px;
+object-fit:contain;
+display:block;
+margin:auto;
+border-radius:20px;
+}
+
+.channel-card h3{
+margin-top:15px;
+font-size:22px;
+}
+
+.watch-btn{
+margin-top:15px;
+width:100%;
+padding:12px;
+border:none;
+border-radius:12px;
+background:#6c4cff;
+color:white;
+font-size:17px;
+font-weight:bold;
+}
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+right:0;
+left:0;
+background:#10162c;
+display:flex;
+justify-content:space-around;
+padding:15px;
+border-top:1px solid rgba(255,255,255,.08);
+}
+
+.bottom-nav a{
+color:white;
+text-decoration:none;
+font-size:17px;
+font-weight:bold;
+}
 </style>
 </head>
 
 <body>
 
-<div class="title">
-🏆 KurdMan Sports
+<div class="title">🏆 KurdMan Sports</div>
+
+<div class="search-box">
+<input type="text" placeholder="گەڕان...">
 </div>
-  
-  <button class="watch-btn"
+
+<div class="menu">
+<button>Sports</button>
+<button>Movies</button>
+<button>Kids</button>
+<button>News</button>
+<button>Live TV</button>
+</div>
+
+<button class="live-btn"
 onclick="location.href='matches.html'">
 ⚽ Live Scores
-  </button>
+</button>
 
-
+<div class="channels-grid">
 
 <div class="channel-card">
 <img src="rudawsport.jpg">
 <h3>Rudaw TV</h3>
 <button class="watch-btn"
 onclick="window.open('https://live.rudaw.net/hls/rudaw-tv/master.m3u8')">
-ببین
+▶ بینین
 </button>
 </div>
 
@@ -117,12 +177,12 @@ onclick="window.open('https://live.rudaw.net/hls/rudaw-tv/master.m3u8')">
 </div>
 
 <div class="channel-card">
-    <img src="nrtsport.jpg">
-    <h3>NRT Sport</h3>
-    <button class="watch-btn"
-    onclick="window.open('https://live20.bozztv.com/giatv/giatv-NRT-SPORT/NRT-SPORT/chunks.m3u8')">
-    ▶ بینین
-    </button>
+<img src="nrtsport.jpg">
+<h3>NRT Sport</h3>
+<button class="watch-btn"
+onclick="window.open('https://live20.bozztv.com/giatv/giatv-NRT-SPORT/NRT-SPORT/chunks.m3u8')">
+▶ بینین
+</button>
 </div>
 
 <div class="channel-card">
@@ -148,47 +208,39 @@ onclick="window.open('https://live.rudaw.net/hls/rudaw-tv/master.m3u8')">
 ▶ بینین
 </button>
 </div>
-  <div class="channel-card">
-<img src="bein1.jpg">
-<h3>beIN SPORTS 1</h3>
-<button class="watch-btn">▶ بینین</button>
-</div>
 
 <div class="channel-card">
-    <img src="bein1.jpg">
-    <h3>beIN SPORTS</h3>
-    <button class="watch-btn"
-    onclick="window.open('https://bein-xtra-bein.amagi.tv/playlist.m3u8')">
-    ▶ بینین
-    </button>
+<img src="bein1.jpg">
+<h3>beIN SPORTS</h3>
+<button class="watch-btn"
+onclick="window.open('https://bein-xtra-bein.amagi.tv/playlist.m3u8')">
+▶ بینین
+</button>
 </div>
 
 <div class="channel-card">
 <img src="newline.jpg">
 <h3>New Line Kurd</h3>
-<button class="watch-btn">▶ بینین</button>
+<button class="watch-btn">
+▶ بینین
+</button>
 </div>
 
 <div class="channel-card">
-<img src="avasport.jpg">
-<h3>Ava Sport</h3>
-<button class="watch-btn">▶ بینین</button>
+<img src="iraqiasport.jpg">
+<h3>العراقية الرياضية</h3>
+<button class="watch-btn"
+onclick="window.open('https://imn-live.esite-lab.com/hls/iraqia-sports-1.m3u8')">
+▶ بینین
+</button>
 </div>
 
-<div class="channel-card">
-<img src="nrtsport.jpg">
-<h3>NRT Sport</h3>
-<button class="watch-btn">▶ بینین</button>
 </div>
-  <div class="channel-card">
-    <img src="iraqiasport.jpg">
-    <h3>العراقية الرياضية</h3>
-    <button class="watch-btn"
-    onclick="window.open('https://imn-live.esite-lab.com/hls/iraqia-sports-1.m3u8')">
-    ▶ بینین
-    </button>
-  </div>
 
+<div class="bottom-nav">
+<a href="#">🏠 سەرەکی</a>
+<a href="#">🔍 گەڕان</a>
+<a href="#">⚙️ ڕێکخستن</a>
 </div>
 
 </body>
