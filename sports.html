@@ -140,9 +140,11 @@ font-weight:bold;
 
 <div class="title">🏆 KurdMan Sports</div>
 
-<div class="search-box">
-<input type="text" placeholder="گەڕان...">
-</div>
+<input
+type="text"
+id="searchInput"
+placeholder="گەڕان بە ناوی کەناڵ..."
+onkeyup="searchChannels()">
 
 <div class="menu">
 <button>Sports</button>
@@ -244,6 +246,23 @@ onclick="window.open('https://imn-live.esite-lab.com/hls/iraqia-sports-1.m3u8')"
 <a href="#">🔍 گەڕان</a>
 <a href="#">⚙️ ڕێکخستن</a>
 </div>
+
+    <script>
+function searchChannels(){
+let input=document.getElementById("searchInput").value.toLowerCase();
+let cards=document.querySelectorAll(".channel-card");
+
+cards.forEach(card=>{
+let title=card.querySelector("h3").innerText.toLowerCase();
+
+if(title.includes(input)){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+});
+}
+    </script>
 
 </body>
 </html>
