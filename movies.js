@@ -5,12 +5,6 @@ image:"file_00000000bb8471f4931cdde8b891f1c8.png",
 quality:"1080P",
 video:"https://vz-486dbc69-7fb.b-cdn.net/74179f2f-20ff-4eb7-92e0-f06b725dbc9d/playlist.m3u8"
 },
-{
-title:"عەشق و فیتنە",
-image:"file_00000000e440720a9828825168bd0226.png",
-quality:"8.5",
-video:"https://vz-5ea6d1f8-2d5.b-cdn.net/aeb5ca24-5b0d-4f87-a5a6-ef2f8d6fb168/playlist.m3u8"
-},
 
 {
 title:"ئەلیۆ",
@@ -27,11 +21,12 @@ video:"https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/pl
 },
 
 {
-title:"لمبی",
-image:"file_000000006ec871f4a20f395a91e29602.png",
-quality:"8.9",
-video:"https://vz-84ab955f-09b.b-cdn.net/d7aeff2c-c8ad-4e92-8400-789df53f7991/playlist.m3u8"
+title:"The Great Flood",
+image:"file_0000000076a0720a912dce714ecca643.png",
+quality:"9.0",
+video:"https://vz-fd0a2018-c24.b-cdn.net/04757752-1959-4262-ba04-88064e1d4e60/playlist.m3u8"
 },
+
 
 {
 title:"فیلمی نوێ",
