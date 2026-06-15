@@ -6,11 +6,35 @@
 <title>🕌 نوێژ و کەش و هەوا | KurdMan</title>
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Cairo,sans-serif;
+}
+
 body{
 background:#0b0b0b;
 color:white;
-font-family:Cairo,sans-serif;
 padding:20px;
+}
+
+.back-btn{
+display:inline-block;
+padding:12px 20px;
+background:#ff0066;
+color:white;
+text-decoration:none;
+border-radius:12px;
+margin-bottom:20px;
+font-weight:bold;
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+color:#fff;
 }
 
 .card{
@@ -18,27 +42,35 @@ background:#151515;
 padding:20px;
 border-radius:20px;
 margin-bottom:20px;
+box-shadow:0 0 15px rgba(255,255,255,.05);
 }
 
-h1{
-text-align:center;
-margin-bottom:20px;
+.card h2{
+margin-bottom:15px;
 }
 
 .time{
-padding:10px 0;
+padding:12px 0;
 border-bottom:1px solid #333;
+font-size:18px;
 }
 
-.back-btn{
-display:inline-block;
-padding:10px 20px;
-background:#ff0066;
-color:white;
-text-decoration:none;
-border-radius:12px;
-margin-bottom:20px;
+.time:last-child{
+border-bottom:none;
 }
+
+#nextPrayer{
+font-size:20px;
+font-weight:bold;
+color:#00d4ff;
+}
+
+#weather{
+font-size:20px;
+font-weight:bold;
+color:#ffd700;
+}
+
 </style>
 </head>
 
@@ -49,27 +81,38 @@ margin-bottom:20px;
 <h1>🕌 نوێژ و کەش و هەوا</h1>
 
 <div class="card">
+
 <h2>🕌 کاتەکانی نوێژ</h2>
 
 <div class="time">🌅 فەجر: <span id="fajr">--:--</span></div>
+
 <div class="time">☀️ ظەهر: <span id="dhuhr">--:--</span></div>
+
 <div class="time">🌇 عەسر: <span id="asr">--:--</span></div>
+
 <div class="time">🌙 مەغریب: <span id="maghrib">--:--</span></div>
+
 <div class="time">🌃 عیشا: <span id="isha">--:--</span></div>
+
 </div>
 
 <div class="card">
+
 <h2>⏳ نوێژی داهاتوو</h2>
+
 <p id="nextPrayer">...</p>
+
 </div>
 
 <div class="card">
+
 <h2>🌤️ کەش و هەوا</h2>
+
 <p id="weather">...</p>
+
 </div>
 
-</body>
-  <script>
+<script>
 
 async function getPrayerTimes(){
 
@@ -100,7 +143,8 @@ data.data.timings.Maghrib;
 
 document.getElementById("isha").innerText =
 data.data.timings.Isha;
-  const prayers = [
+
+const prayers = [
 ["فەجر", data.data.timings.Fajr],
 ["ظەهر", data.data.timings.Dhuhr],
 ["عەسر", data.data.timings.Asr],
@@ -118,13 +162,24 @@ let prayerTime = prayer[1].split(":");
 
 let prayerDate = new Date();
 
-prayerDate.setHours(prayerTime[0]);
-prayerDate.setMinutes(prayerTime[1]);
+prayerDate.setHours(parseInt(prayerTime[0]));
+prayerDate.setMinutes(parseInt(prayerTime[1]));
+prayerDate.setSeconds(0);
 
 if(prayerDate > now){
+
 nextPrayer = prayer[0] + " - " + prayer[1];
+
 break;
+
 }
+
+}
+
+if(nextPrayer === ""){
+
+nextPrayer = "فەجر - " + data.data.timings.Fajr;
+
 }
 
 document.getElementById("nextPrayer").innerHTML =
@@ -132,7 +187,29 @@ document.getElementById("nextPrayer").innerHTML =
 
 }
 
-getPrayerTimes();
+async function getWeather(){
 
-  </script>
+const position = await new Promise((resolve,reject)=>{
+navigator.geolocation.getCurrentPosition(resolve,reject);
+});
+
+const lat = position.coords.latitude;
+const lon = position.coords.longitude;
+
+const res = await fetch(
+`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`
+);
+
+const data = await res.json();
+
+document.getElementById("weather").innerHTML =
+`🌡️ ${data.current_weather.temperature}°C`;
+}
+
+getPrayerTimes();
+getWeather();
+
+</script>
+
+</body>
 </html>
