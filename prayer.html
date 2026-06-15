@@ -352,12 +352,21 @@ let lines = clean.split("\n");
 
 console.log(lines);
  
- let prayerData = lines.find(line =>
-  line.includes("فەجر") ||
-  line.includes("بەیانی")
-);
+ let fajrLine = lines.find(line => line.includes("فەجر"));
+let sunriseLine = lines.find(line => line.includes("بەیانی"));
+let dhuhrLine = lines.find(line => line.includes("نیوەڕۆ"));
+let asrLine = lines.find(line => line.includes("عەسر"));
+let maghribLine = lines.find(line => line.includes("مەغریب"));
+let ishaLine = lines.find(line => line.includes("عیشاء"));
 
-console.log("Prayer Data:", prayerData);
+console.log(
+  fajrLine,
+  sunriseLine,
+  dhuhrLine,
+  asrLine,
+  maghribLine,
+  ishaLine
+);
 
 // دواتر کاتەکان لێرە دەردەهێنین
 
