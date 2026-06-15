@@ -84,6 +84,14 @@ color:#ffd700;
 
 <h2>🕌 کاتەکانی نوێژ</h2>
 
+  <select id="citySelect" onchange="getPrayerTimes()">
+  <option value="Erbil">هەولێر</option>
+  <option value="Sulaymaniyah">سلێمانی</option>
+  <option value="Duhok">دهۆک</option>
+  <option value="Halabja">هەڵەبجە</option>
+  <option value="Kirkuk">کەرکووک</option>
+  </select>
+
 <div class="time">🌅 فەجر: <span id="fajr">--:--</span></div>
 
 <div class="time">☀️ ظەهر: <span id="dhuhr">--:--</span></div>
@@ -118,9 +126,12 @@ async function getPrayerTimes(){
 
 const lat = 36.1911; // Erbil
 const lon = 44.0092; // Erbil
+
+  const city =
+document.getElementById("citySelect").value;
   
 const res = await fetch(
-"https://api.aladhan.com/v1/timingsByCity?city=Erbil&country=Iraq&method=4"
+"`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=Iraq&method=4`"
 );
 
 const data = await res.json();
@@ -186,7 +197,7 @@ document.getElementById("nextPrayer").innerHTML =
 
 getPrayerTimes();
   async function getWeather(){
-
+    
 const res = await fetch(
 "https://wttr.in/Erbil?format=%C+%t"
 );
