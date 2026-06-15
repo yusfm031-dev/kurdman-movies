@@ -148,24 +148,27 @@ const prayers = [
 ["عیشا", data.data.timings.Isha]
 ];
 
+const prayers = [
+["فەجر", data.data.timings.Fajr],
+["ظەهر", data.data.timings.Dhuhr],
+["عەسر", data.data.timings.Asr],
+["مەغریب", data.data.timings.Maghrib],
+["عیشا", data.data.timings.Isha]
+];
+
 const now = new Date();
-console.log(now);
-console.log(now.getHours() + ":" + now.getMinutes());
-  
-  
+
 let nextPrayer = "";
 
-for(let prayer of prayers){
+for (let prayer of prayers) {
 
-let prayerTime = prayer[1].split(":");
+const [hour, minute] = prayer[1].split(":").map(Number);
 
-let prayerDate = new Date();
+const prayerDate = new Date();
 
-prayerDate.setHours(parseInt(prayerTime[0]));
-prayerDate.setMinutes(parseInt(prayerTime[1]));
-prayerDate.setSeconds(0);
+prayerDate.setHours(hour, minute, 0, 0);
 
-if(prayerDate > now){
+if (prayerDate.getTime() > now.getTime()) {
 
 nextPrayer = prayer[0] + " - " + prayer[1];
 
@@ -175,7 +178,7 @@ break;
 
 }
 
-if(nextPrayer === ""){
+if (!nextPrayer) {
 
 nextPrayer = "فەجر - " + data.data.timings.Fajr;
 
