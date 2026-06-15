@@ -1039,7 +1039,7 @@ error => reject(error)
 
 const location = await getUserLocation();
 const res = await fetch(
-`https://api.aladhan.com/v1/timings?latitude=${location.lat}&longitude=${location.lon}&method=4`
+`https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=4`
 );
 
 const data = await res.json();
