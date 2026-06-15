@@ -3,215 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🕌 نوێژ و کەش و هەوا | KurdMan</title>
-
+<title>نوێژ و کەش و هەوا - KurdMan</title>
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Cairo,sans-serif;
-}
-
-body{
-background:#0b0b0b;
-color:white;
-padding:20px;
-}
-
-.back-btn{
-display:inline-block;
-padding:12px 20px;
-background:#ff0066;
-color:white;
-text-decoration:none;
-border-radius:12px;
-margin-bottom:20px;
-font-weight:bold;
-}
-
-h1{
-text-align:center;
-margin-bottom:20px;
-color:#fff;
-}
-
-.card{
-background:#151515;
-padding:20px;
-border-radius:20px;
-margin-bottom:20px;
-box-shadow:0 0 15px rgba(255,255,255,.05);
-}
-
-.card h2{
-margin-bottom:15px;
-}
-
-.time{
-padding:12px 0;
-border-bottom:1px solid #333;
-font-size:18px;
-}
-
-.time:last-child{
-border-bottom:none;
-}
-
-#nextPrayer{
-font-size:20px;
-font-weight:bold;
-color:#00d4ff;
-}
-
-#weather{
-font-size:20px;
-font-weight:bold;
-color:#ffd700;
-}
-
+body{background:#0b0b0b;color:#fff;font-family:sans-serif;padding:20px}
+.card{background:#151515;padding:20px;border-radius:16px;margin:15px 0}
+select{width:100%;padding:12px;border-radius:10px}
+.time{padding:10px 0;border-bottom:1px solid #333}
 </style>
 </head>
-
 <body>
-
-<a class="back-btn" href="index.html">⬅ گەڕانەوە</a>
-
 <h1>🕌 نوێژ و کەش و هەوا</h1>
 
 <div class="card">
+<select id="citySelect" onchange="getPrayerTimes()">
+<option value="Erbil">هەولێر</option>
+<option value="Sulaymaniyah">سلێمانی</option>
+<option value="Duhok">دهۆک</option>
+<option value="Halabja">هەڵەبجە</option>
+<option value="Kirkuk">کەرکووک</option>
+<option value="Zakho">زاخۆ</option>
+<option value="Chamchamal">چەمچەماڵ</option>
+<option value="Ranya">ڕانیە</option>
+<option value="Koya">کۆیە</option>
+<option value="Kalar">کەلار</option>
+<option value="Baghdad">بەغداد</option>
+<option value="Basra">بەسرە</option>
+<option value="Mosul">موسڵ</option>
+<option value="Najaf">نەجەف</option>
+<option value="Karbala">کەربەلا</option>
+</select>
 
-<h2>🕌 کاتەکانی نوێژ</h2>
-
-  <select id="citySelect" onchange="getPrayerTimes()">
-  <option value="Erbil">هەولێر</option>
-  <option value="Sulaymaniyah">سلێمانی</option>
-  <option value="Duhok">دهۆک</option>
-  <option value="Halabja">هەڵەبجە</option>
-  <option value="Kirkuk">کەرکووک</option>
-  </select>
-
-<div class="time">🌅 فەجر: <span id="fajr">--:--</span></div>
-
-<div class="time">☀️ ظەهر: <span id="dhuhr">--:--</span></div>
-
-<div class="time">🌇 عەسر: <span id="asr">--:--</span></div>
-
-<div class="time">🌙 مەغریب: <span id="maghrib">--:--</span></div>
-
-<div class="time">🌃 عیشا: <span id="isha">--:--</span></div>
-
+<div class="time">فەجر: <span id="fajr">--:--</span></div>
+<div class="time">ظەهر: <span id="dhuhr">--:--</span></div>
+<div class="time">عەسر: <span id="asr">--:--</span></div>
+<div class="time">مەغریب: <span id="maghrib">--:--</span></div>
+<div class="time">عیشا: <span id="isha">--:--</span></div>
 </div>
 
-<div class="card">
-
-<h2>⏳ نوێژی داهاتوو</h2>
-
-<p id="nextPrayer">...</p>
-
-</div>
-
-<div class="card">
-
-<h2>🌤️ کەش و هەوا</h2>
-
-<p id="weather">...</p>
-
-</div>
+<div class="card"><p id="nextPrayer">...</p></div>
+<div class="card"><p id="weather">...</p></div>
 
 <script>
-
 async function getPrayerTimes(){
+ const city=document.getElementById("citySelect").value;
 
-const lat = 36.1911; // Erbil
-const lon = 44.0092; // Erbil
+ const res=await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=Iraq&method=4`);
+ const data=await res.json();
 
-  const city =
-document.getElementById("citySelect").value;
-  
-const res = await fetch(
-"`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=Iraq&method=4`"
-);
+ fajr.innerText=data.data.timings.Fajr;
+ dhuhr.innerText=data.data.timings.Dhuhr;
+ asr.innerText=data.data.timings.Asr;
+ maghrib.innerText=data.data.timings.Maghrib;
+ isha.innerText=data.data.timings.Isha;
 
-const data = await res.json();
-
-document.getElementById("fajr").innerText =
-data.data.timings.Fajr;
-
-document.getElementById("dhuhr").innerText =
-data.data.timings.Dhuhr;
-
-document.getElementById("asr").innerText =
-data.data.timings.Asr;
-
-document.getElementById("maghrib").innerText =
-data.data.timings.Maghrib;
-
-document.getElementById("isha").innerText =
-data.data.timings.Isha;
-
-
-
-const prayers = [
-["فەجر", data.data.timings.Fajr],
-["ظەهر", data.data.timings.Dhuhr],
-["عەسر", data.data.timings.Asr],
-["مەغریب", data.data.timings.Maghrib],
-["عیشا", data.data.timings.Isha]
-];
-
-const now = new Date();
-
-let nextPrayer = "";
-
-for (let prayer of prayers) {
-
-const [hour, minute] = prayer[1].split(":").map(Number);
-
-const prayerDate = new Date();
-
-prayerDate.setHours(hour, minute, 0, 0);
-
-if (prayerDate.getTime() > now.getTime()) {
-
-nextPrayer = prayer[0] + " - " + prayer[1];
-
-break;
-
+ document.getElementById("nextPrayer").innerHTML="🕌 شار: "+city;
 }
-
-}
-
-if (!nextPrayer) {
-
-nextPrayer = "فەجر - " + data.data.timings.Fajr;
-
-}
-
-document.getElementById("nextPrayer").innerHTML =
-"🕌 نوێژی داهاتوو: " + nextPrayer;
-
-}
-
-
 getPrayerTimes();
-  async function getWeather(){
-    
-const res = await fetch(
-"https://wttr.in/Erbil?format=%C+%t"
-);
-
-const weather = await res.text();
-
-document.getElementById("weather").innerHTML =
-"🌤️ " + weather;
-
-}
-
-getWeather();
-
 </script>
-
 </body>
 </html>
