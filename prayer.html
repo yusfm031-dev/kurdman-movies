@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🕌 نوێژ و کەش و هەوا | KurdMan</title>
+
+<style>
+body{
+background:#0b0b0b;
+color:white;
+font-family:Cairo,sans-serif;
+padding:20px;
+}
+
+.card{
+background:#151515;
+padding:20px;
+border-radius:20px;
+margin-bottom:20px;
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+.time{
+padding:10px 0;
+border-bottom:1px solid #333;
+}
+
+.back-btn{
+display:inline-block;
+padding:10px 20px;
+background:#ff0066;
+color:white;
+text-decoration:none;
+border-radius:12px;
+margin-bottom:20px;
+}
+</style>
+</head>
+
+<body>
+
+<a class="back-btn" href="index.html">⬅ گەڕانەوە</a>
+
+<h1>🕌 نوێژ و کەش و هەوا</h1>
+
+<div class="card">
+<h2>🕌 کاتەکانی نوێژ</h2>
+
+<div class="time">🌅 فەجر: <span id="fajr">--:--</span></div>
+<div class="time">☀️ ظەهر: <span id="dhuhr">--:--</span></div>
+<div class="time">🌇 عەسر: <span id="asr">--:--</span></div>
+<div class="time">🌙 مەغریب: <span id="maghrib">--:--</span></div>
+<div class="time">🌃 عیشا: <span id="isha">--:--</span></div>
+</div>
+
+<div class="card">
+<h2>⏳ نوێژی داهاتوو</h2>
+<p id="nextPrayer">...</p>
+</div>
+
+<div class="card">
+<h2>🌤️ کەش و هەوا</h2>
+<p id="weather">...</p>
+</div>
+
+</body>
+  <script>
+
+async function getPrayerTimes(){
+
+const position = await new Promise((resolve,reject)=>{
+navigator.geolocation.getCurrentPosition(resolve,reject);
+});
+
+const lat = position.coords.latitude;
+const lon = position.coords.longitude;
+
+const res = await fetch(
+`https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=3`
+);
+
+const data = await res.json();
+
+document.getElementById("fajr").innerText =
+data.data.timings.Fajr;
+
+document.getElementById("dhuhr").innerText =
+data.data.timings.Dhuhr;
+
+document.getElementById("asr").innerText =
+data.data.timings.Asr;
+
+document.getElementById("maghrib").innerText =
+data.data.timings.Maghrib;
+
+document.getElementById("isha").innerText =
+data.data.timings.Isha;
+  const prayers = [
+["فەجر", data.data.timings.Fajr],
+["ظەهر", data.data.timings.Dhuhr],
+["عەسر", data.data.timings.Asr],
+["مەغریب", data.data.timings.Maghrib],
+["عیشا", data.data.timings.Isha]
+];
+
+const now = new Date();
+
+let nextPrayer = "";
+
+for(let prayer of prayers){
+
+let prayerTime = prayer[1].split(":");
+
+let prayerDate = new Date();
+
+prayerDate.setHours(prayerTime[0]);
+prayerDate.setMinutes(prayerTime[1]);
+
+if(prayerDate > now){
+nextPrayer = prayer[0] + " - " + prayer[1];
+break;
+}
+}
+
+document.getElementById("nextPrayer").innerHTML =
+"🕌 نوێژی داهاتوو: " + nextPrayer;
+
+}
+
+getPrayerTimes();
+
+  </script>
+</html>
