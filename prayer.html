@@ -324,43 +324,49 @@ getWeather();
 
 // وەرگرتنی کاتەکانی نوێژ
 
+
+
 async function getPrayerTimes(){
 
 let city = citySelect.value;
 
-
-document.getElementById("cityTitle")
-.innerHTML = "📍 " +
-citySelect.options[
-citySelect.selectedIndex
-].text;
+document.getElementById("cityTitle").innerHTML =
+"📍 " + citySelect.options[citySelect.selectedIndex].text;
 
 
+try{
 
 const res = await fetch(
-`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=Iraq&method=4`
+`https://amozhgary.tv/bang/${city}`
 );
 
+const text = await res.text();
 
-const data = await res.json();
+console.log(text);
 
+ let clean = text
+.replace(/\\n/g, "\n")
+.replace(/\\t/g, " ");
 
-let time = data.data.timings;
+let lines = clean.split("\n");
 
+console.log(lines);
+ 
+ let prayerData = lines.find(line =>
+  line.includes("فەجر") ||
+  line.includes("بەیانی")
+);
 
-fajr.innerHTML = time.Fajr;
+console.log("Prayer Data:", prayerData);
 
-dhuhr.innerHTML = time.Dhuhr;
+// دواتر کاتەکان لێرە دەردەهێنین
 
-asr.innerHTML = time.Asr;
+}
+catch(err){
 
-maghrib.innerHTML = time.Maghrib;
+console.log("Amozhgary Error:", err);
 
-isha.innerHTML = time.Isha;
-
-
-showNextPrayer(time);
-
+}
 
 }
 
