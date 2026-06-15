@@ -203,6 +203,19 @@ document.getElementById("weather").innerHTML =
 }
 
 getPrayerTimes();
+  async function getWeather(){
+
+const res = await fetch(
+"https://wttr.in/Erbil?format=%C+%t"
+);
+
+const weather = await res.text();
+
+document.getElementById("weather").innerHTML =
+"🌤️ " + weather;
+
+}
+
 getWeather();
 
 </script>
