@@ -341,31 +341,27 @@ const res = await fetch(
 
 const text = await res.text();
 
-console.log(text);
+ let times = text.match(/\d{2}:\d{2}/g);
 
- let clean = text
-.replace(/\\n/g, "\n")
-.replace(/\\t/g, " ");
+if(times && times.length >= 6){
 
-let lines = clean.split("\n");
+document.getElementById("fajr").innerText = times[0];
+document.getElementById("dhuhr").innerText = times[2];
+document.getElementById("asr").innerText = times[3];
+document.getElementById("maghrib").innerText = times[4];
+document.getElementById("isha").innerText = times[5];
 
-console.log(lines);
- 
- let fajrLine = lines.find(line => line.includes("فەجر"));
-let sunriseLine = lines.find(line => line.includes("بەیانی"));
-let dhuhrLine = lines.find(line => line.includes("نیوەڕۆ"));
-let asrLine = lines.find(line => line.includes("عەسر"));
-let maghribLine = lines.find(line => line.includes("مەغریب"));
-let ishaLine = lines.find(line => line.includes("عیشاء"));
+showNextPrayer({
+Fajr: times[0],
+Dhuhr: times[2],
+Asr: times[3],
+Maghrib: times[4],
+Isha: times[5]
+});
 
-console.log(
-  fajrLine,
-  sunriseLine,
-  dhuhrLine,
-  asrLine,
-  maghribLine,
-  ishaLine
-);
+}
+
+
 
 // دواتر کاتەکان لێرە دەردەهێنین
 
