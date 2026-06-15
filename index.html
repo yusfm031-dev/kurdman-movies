@@ -1038,7 +1038,7 @@ error => reject(error)
 
 const location = await getUserLocation();
 const res = await fetch(
-`https://api.aladhan.com/v1/timings?latitude=${location.lat}&longitude=${location.lon}&method=3`
+`https://api.aladhan.com/v1/timings?latitude=${location.lat}&longitude=${location.lon}&method=4`
 );
 
 const data = await res.json();
@@ -1062,6 +1062,13 @@ String(now.getHours()).padStart(2,'0') +
 String(now.getMinutes()).padStart(2,'0');
   
 const times = await getPrayerTimes();
+  
+  document.getElementById("prayerTimesBar").innerHTML =
+`🌅 ${times.fajr} |
+☀️ ${times.dhuhr} |
+🌇 ${times.asr} |
+🌙 ${times.maghrib} |
+🌃 ${times.isha}`;
 
 const prayerTimes = [
 times.fajr,
@@ -1070,6 +1077,7 @@ times.asr,
 times.maghrib,
 times.isha
 ];
+
 
 if(prayerTimes.includes(current)){
     showPrayerPopup();
