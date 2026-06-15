@@ -3,62 +3,558 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نوێژ و کەش و هەوا - KurdMan</title>
+
+<title>🕌 نوێژ و کەش و هەوا | KurdMan</title>
+
 <style>
-body{background:#0b0b0b;color:#fff;font-family:sans-serif;padding:20px}
-.card{background:#151515;padding:20px;border-radius:16px;margin:15px 0}
-select{width:100%;padding:12px;border-radius:10px}
-.time{padding:10px 0;border-bottom:1px solid #333}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Cairo,sans-serif;
+}
+
+body{
+background:#090909;
+color:#fff;
+padding:15px;
+}
+
+.back-btn{
+display:inline-block;
+background:linear-gradient(45deg,#ff0066,#ff6600);
+color:#fff;
+padding:12px 18px;
+border-radius:14px;
+text-decoration:none;
+font-weight:bold;
+margin-bottom:20px;
+box-shadow:0 0 15px #ff0066;
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+font-size:25px;
+}
+
+.card{
+background:#151515;
+border-radius:22px;
+padding:18px;
+margin-bottom:18px;
+box-shadow:0 0 15px rgba(255,255,255,.08);
+}
+
+.card h2{
+margin-bottom:15px;
+font-size:20px;
+}
+
+.search{
+width:100%;
+padding:13px;
+border:none;
+border-radius:12px;
+background:#222;
+color:#fff;
+font-size:16px;
+margin-bottom:12px;
+outline:none;
+}
+
+#citySelect{
+width:100%;
+padding:13px;
+border:none;
+border-radius:12px;
+background:#222;
+color:#fff;
+font-size:16px;
+}
+
+.time{
+display:flex;
+justify-content:space-between;
+padding:14px 5px;
+border-bottom:1px solid #333;
+font-size:18px;
+}
+
+.time:last-child{
+border:none;
+}
+
+#nextPrayer{
+font-size:19px;
+font-weight:bold;
+color:#00d4ff;
+text-align:center;
+}
+
+#countdown{
+font-size:17px;
+color:#00ff99;
+text-align:center;
+margin-top:8px;
+}
+
+#weather{
+font-size:18px;
+color:#ffd700;
+text-align:center;
+}
+
+.city-title{
+text-align:center;
+color:#00ffcc;
+font-size:18px;
+font-weight:bold;
+margin-bottom:15px;
+}
+
 </style>
+
 </head>
+
 <body>
-<h1>🕌 نوێژ و کەش و هەوا</h1>
+
+<a class="back-btn" href="index.html">
+⬅ گەڕانەوە
+</a>
+
+<h1>
+🕌 نوێژ و کەش و هەوا
+</h1>
 
 <div class="card">
-<select id="citySelect" onchange="getPrayerTimes()">
-<option value="Erbil">هەولێر</option>
-<option value="Sulaymaniyah">سلێمانی</option>
-<option value="Duhok">دهۆک</option>
-<option value="Halabja">هەڵەبجە</option>
-<option value="Kirkuk">کەرکووک</option>
-<option value="Zakho">زاخۆ</option>
-<option value="Chamchamal">چەمچەماڵ</option>
-<option value="Ranya">ڕانیە</option>
-<option value="Koya">کۆیە</option>
-<option value="Kalar">کەلار</option>
-<option value="Baghdad">بەغداد</option>
-<option value="Basra">بەسرە</option>
-<option value="Mosul">موسڵ</option>
-<option value="Najaf">نەجەف</option>
-<option value="Karbala">کەربەلا</option>
-</select>
 
-<div class="time">فەجر: <span id="fajr">--:--</span></div>
-<div class="time">ظەهر: <span id="dhuhr">--:--</span></div>
-<div class="time">عەسر: <span id="asr">--:--</span></div>
-<div class="time">مەغریب: <span id="maghrib">--:--</span></div>
-<div class="time">عیشا: <span id="isha">--:--</span></div>
+<div class="city-title" id="cityTitle">
+📍 هەولێر
 </div>
 
-<div class="card"><p id="nextPrayer">...</p></div>
-<div class="card"><p id="weather">...</p></div>
+<input 
+type="text"
+id="searchCity"
+class="search"
+placeholder="🔍 گەڕان بە ناوی شار...">
+
+
+<select id="citySelect">
+
+</select>
+
+
+<div class="time">
+<span>🌅 فەجر</span>
+<span id="fajr">--:--</span>
+</div>
+
+
+<div class="time">
+<span>☀️ ظەهر</span>
+<span id="dhuhr">--:--</span>
+</div>
+
+
+<div class="time">
+<span>🌇 عەسر</span>
+<span id="asr">--:--</span>
+</div>
+
+
+<div class="time">
+<span>🌙 مەغریب</span>
+<span id="maghrib">--:--</span>
+</div>
+
+
+<div class="time">
+<span>🌃 عیشا</span>
+<span id="isha">--:--</span>
+</div>
+
+</div>
+<div class="card">
+
+<h2>⏳ نوێژی داهاتوو</h2>
+
+<p id="nextPrayer">
+...
+</p>
+
+<p id="countdown">
+...
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>🌤️ کەش و هەوا</h2>
+
+<p id="weather">
+...
+</p>
+
+</div>
+
 
 <script>
-async function getPrayerTimes(){
- const city=document.getElementById("citySelect").value;
 
- const res=await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=Iraq&method=4`);
- const data=await res.json();
 
- fajr.innerText=data.data.timings.Fajr;
- dhuhr.innerText=data.data.timings.Dhuhr;
- asr.innerText=data.data.timings.Asr;
- maghrib.innerText=data.data.timings.Maghrib;
- isha.innerText=data.data.timings.Isha;
+const cities = [
 
- document.getElementById("nextPrayer").innerHTML="🕌 شار: "+city;
+{name:"هەولێر", value:"Erbil"},
+{name:"سلێمانی", value:"Sulaymaniyah"},
+{name:"دهۆک", value:"Duhok"},
+{name:"هەڵەبجە", value:"Halabja"},
+{name:"کەرکووک", value:"Kirkuk"},
+{name:"زاخۆ", value:"Zakho"},
+{name:"چەمچەماڵ", value:"Chamchamal"},
+{name:"دەربەندیخان", value:"Darbandikhan"},
+{name:"ڕانیە", value:"Ranya"},
+{name:"کۆیە", value:"Koya"},
+
+{name:"پێنجوێن", value:"Penjwen"},
+{name:"قەلادزێ", value:"Qaladze"},
+{name:"کەلار", value:"Kalar"},
+{name:"ئاکرێ", value:"Akre"},
+{name:"بەردەڕەش", value:"Bardarash"},
+{name:"داقوق", value:"Daquq"},
+{name:"مەخمور", value:"Makhmur"},
+{name:"کفری", value:"Kifri"},
+{name:"تەلعەفەر", value:"Tal Afar"},
+{name:"موسڵ", value:"Mosul"},
+
+{name:"بەغدا", value:"Baghdad"},
+{name:"بەسرە", value:"Basra"},
+{name:"کەربەلا", value:"Karbala"},
+{name:"نەجەف", value:"Najaf"},
+{name:"حیلە", value:"Hillah"},
+{name:"تکریت", value:"Tikrit"},
+{name:"دیوانیە", value:"Diwaniyah"},
+{name:"کوت", value:"Kut"},
+{name:"سەماوە", value:"Samawah"},
+{name:"سامەڕا", value:"Samarra"},
+
+{name:"فەلوجە", value:"Fallujah"},
+{name:"حدیثە", value:"Haditha"},
+{name:"خانەقین", value:"Khanaqin"},
+{name:"گەرمیان", value:"Garmian"},
+{name:"گەیارە", value:"Qayyarah"},
+{name:"شەرگات", value:"Shirqat"},
+{name:"حەمدانیە", value:"Hamdaniya"},
+{name:"نوخیب", value:"Nukhaib"},
+{name:"شێخان", value:"Shekhan"},
+{name:"دوکان", value:"Dokan"},
+
+{name:"خاڵس", value:"Khalis"},
+{name:"مەدائن", value:"Madain"},
+{name:"نعمانیە", value:"Numaniyah"},
+{name:"قائم", value:"Al Qaim"},
+{name:"قەرەهەنجیر", value:"Qarahanjir"},
+{name:"شارەبان", value:"Sharaban"},
+{name:"گۆڵاڵە", value:"Gulalah"},
+{name:"دۆزخورماتوو", value:"Tuz Khurmatu"},
+{name:"ڕەبیعە", value:"Rabia"},
+{name:"مندەلی", value:"Mandali"},
+
+{name:"قەسری شیرین", value:"Qasr Shirin"}
+
+];
+
+
+const citySelect =
+document.getElementById("citySelect");
+
+
+cities.forEach(city => {
+
+let option =
+document.createElement("option");
+
+option.value = city.value;
+
+option.textContent = city.name;
+
+citySelect.appendChild(option);
+
+});
+
+ // گەڕان لە ناو شارەکان
+
+document.getElementById("searchCity")
+.addEventListener("keyup", function(){
+
+let text = this.value.toLowerCase();
+
+let options = citySelect.options;
+
+
+for(let option of options){
+
+option.style.display =
+option.text.toLowerCase()
+.includes(text)
+? "block"
+: "none";
+
 }
+
+});
+
+
+
+
+// گۆڕینی شار
+
+citySelect.addEventListener("change", ()=>{
+
 getPrayerTimes();
+
+getWeather();
+
+});
+
+
+
+
+// وەرگرتنی کاتەکانی نوێژ
+
+async function getPrayerTimes(){
+
+let city = citySelect.value;
+
+
+document.getElementById("cityTitle")
+.innerHTML = "📍 " +
+citySelect.options[
+citySelect.selectedIndex
+].text;
+
+
+
+const res = await fetch(
+`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=Iraq&method=4`
+);
+
+
+const data = await res.json();
+
+
+let time = data.data.timings;
+
+
+fajr.innerHTML = time.Fajr;
+
+dhuhr.innerHTML = time.Dhuhr;
+
+asr.innerHTML = time.Asr;
+
+maghrib.innerHTML = time.Maghrib;
+
+isha.innerHTML = time.Isha;
+
+
+showNextPrayer(time);
+
+
+}
+
+
+
+
+// کەش و هەوا
+
+async function getWeather(){
+
+let city = citySelect.value;
+
+
+const res = await fetch(
+`https://wttr.in/${city}?format=%C %t`
+);
+
+
+const weather =
+await res.text();
+
+
+document.getElementById("weather")
+.innerHTML =
+"🌤️ " + weather;
+
+
+}
+
+ // نوێژی داهاتوو و کات ماوە
+
+let countdownTimer;
+
+function showNextPrayer(times){
+
+clearInterval(countdownTimer);
+
+
+const prayers = [
+
+["فەجر", times.Fajr],
+["ظەهر", times.Dhuhr],
+["عەسر", times.Asr],
+["مەغریب", times.Maghrib],
+["عیشا", times.Isha]
+
+];
+
+
+function updateCountdown(){
+
+let now = new Date();
+
+let nextName = "";
+let nextDate;
+
+
+for(let prayer of prayers){
+
+
+let [hour, minute] =
+prayer[1].split(":")
+.map(Number);
+
+
+let date = new Date();
+
+date.setHours(
+hour,
+minute,
+0,
+0
+);
+
+
+if(date > now){
+
+nextName = prayer[0];
+
+nextDate = date;
+
+break;
+
+}
+
+
+}
+
+
+// ئەگەر هەموو نوێژەکانی ئەمڕۆ تەواو بووبن
+
+if(!nextDate){
+
+let [hour, minute] =
+prayers[0][1]
+.split(":")
+.map(Number);
+
+
+nextDate = new Date();
+
+nextDate.setDate(
+nextDate.getDate()+1
+);
+
+
+nextDate.setHours(
+hour,
+minute,
+0,
+0
+);
+
+
+nextName = prayers[0][0];
+
+}
+
+
+// ماوەی کات
+
+let diff =
+nextDate - now;
+
+
+let hours =
+Math.floor(diff/1000/60/60);
+
+
+let minutes =
+Math.floor(
+(diff/1000/60)%60
+);
+
+
+document.getElementById("nextPrayer")
+.innerHTML =
+"🕌 نوێژی داهاتوو: " +
+nextName;
+
+
+document.getElementById("countdown")
+.innerHTML =
+"⏳ ماوەی ماوە: " +
+hours +
+" کاتژمێر و " +
+minutes +
+" خولەک";
+
+
+}
+
+
+// یەکجار نیشان بدە
+
+updateCountdown();
+
+
+// هەر یەک خولەک نوێ بکەرەوە
+
+countdownTimer =
+setInterval(
+updateCountdown,
+60000
+);
+
+
+}
+
+
+
+
+// یەکەم جار بارکردنی داتا
+
+getPrayerTimes();
+
+getWeather();
+
+
+
+// هەر 10 خولەک کاتەکان نوێ بکەرەوە
+
+setInterval(()=>{
+
+getPrayerTimes();
+
+getWeather();
+
+},600000);
+
+
+
 </script>
+
 </body>
+
 </html>
