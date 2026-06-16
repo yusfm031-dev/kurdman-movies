@@ -216,54 +216,9 @@ const cities = [
 {name:"چەمچەماڵ", value:"Chamchamal"},
 {name:"دەربەندیخان", value:"Darbandikhan"},
 {name:"ڕانیە", value:"Ranya"},
-{name:"کۆیە", value:"Koya"},
-
+{name:"کۆیە", value:"Koysinjaq"},
 {name:"پێنجوێن", value:"Penjwen"},
-{name:"قەلادزێ", value:"Qaladze"},
-{name:"کەلار", value:"Kalar"},
-{name:"ئاکرێ", value:"Akre"},
-{name:"بەردەڕەش", value:"Bardarash"},
-{name:"داقوق", value:"Daquq"},
-{name:"مەخمور", value:"Makhmur"},
-{name:"کفری", value:"Kifri"},
-{name:"تەلعەفەر", value:"Tal Afar"},
-{name:"موسڵ", value:"Mosul"},
-
-{name:"بەغدا", value:"Baghdad"},
-{name:"بەسرە", value:"Basra"},
-{name:"کەربەلا", value:"Karbala"},
-{name:"نەجەف", value:"Najaf"},
-{name:"حیلە", value:"Hillah"},
-{name:"تکریت", value:"Tikrit"},
-{name:"دیوانیە", value:"Diwaniyah"},
-{name:"کوت", value:"Kut"},
-{name:"سەماوە", value:"Samawah"},
-{name:"سامەڕا", value:"Samarra"},
-
-{name:"فەلوجە", value:"Fallujah"},
-{name:"حدیثە", value:"Haditha"},
-{name:"خانەقین", value:"Khanaqin"},
-{name:"گەرمیان", value:"Garmian"},
-{name:"گەیارە", value:"Qayyarah"},
-{name:"شەرگات", value:"Shirqat"},
-{name:"حەمدانیە", value:"Hamdaniya"},
-{name:"نوخیب", value:"Nukhaib"},
-{name:"شێخان", value:"Shekhan"},
-{name:"دوکان", value:"Dokan"},
-
-{name:"خاڵس", value:"Khalis"},
-{name:"مەدائن", value:"Madain"},
-{name:"نعمانیە", value:"Numaniyah"},
-{name:"قائم", value:"Al Qaim"},
-{name:"قەرەهەنجیر", value:"Qarahanjir"},
-{name:"شارەبان", value:"Sharaban"},
-{name:"گۆڵاڵە", value:"Gulalah"},
-{name:"دۆزخورماتوو", value:"Tuz Khurmatu"},
-{name:"ڕەبیعە", value:"Rabia"},
-{name:"مندەلی", value:"Mandali"},
-
-{name:"قەسری شیرین", value:"Qasr Shirin"}
-
+{name:"ئاکرێ", value:"Akre"}
 ];
 
 
@@ -335,44 +290,64 @@ document.getElementById("cityTitle").innerHTML =
 
 
 try{
-const res = await fetch(
-`https://amozhgary.tv/bang/${city}`
-);
 
-const text = await res.text();
+const response = await fetch("prayer-times.json");
 
- let times = text.match(/\d{2}:\d{2}/g);
+const data = await response.json();
 
-if(times && times.length >= 6){
 
-document.getElementById("fajr").innerText = times[0];
-document.getElementById("dhuhr").innerText = times[2];
-document.getElementById("asr").innerText = times[3];
-document.getElementById("maghrib").innerText = times[4];
-document.getElementById("isha").innerText = times[5];
+let now = new Date();
+
+let dateKey =
+String(now.getMonth()+1).padStart(2,"0")
++ "-"
++
+String(now.getDate()).padStart(2,"0");
+
+
+let times = data[city][dateKey];
+
+
+document.getElementById("fajr").innerText =
+times.fajr;
+
+document.getElementById("dhuhr").innerText =
+times.dhuhr;
+
+document.getElementById("asr").innerText =
+times.asr;
+
+document.getElementById("maghrib").innerText =
+times.maghrib;
+
+document.getElementById("isha").innerText =
+times.isha;
+
 
 showNextPrayer({
-Fajr: times[0],
-Dhuhr: times[2],
-Asr: times[3],
-Maghrib: times[4],
-Isha: times[5]
+
+Fajr: times.fajr,
+
+Dhuhr: times.dhuhr,
+
+Asr: times.asr,
+
+Maghrib: times.maghrib,
+
+Isha: times.isha
+
 });
 
-}
-
-
-
-// دواتر کاتەکان لێرە دەردەهێنین
 
 }
+
 catch(err){
 
-console.log("Amozhgary Error:", err);
+console.log("Prayer JSON Error:", err);
 
 }
 
-}
+ }
 
 
 
