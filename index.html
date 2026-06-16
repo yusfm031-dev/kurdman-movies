@@ -1036,12 +1036,11 @@ closePopup();
 
 }
   
-  
-async function getPrayerTimes() {
+  async function getPrayerTimes() {
 
-    let html = document.documentElement.outerHTML;
+    let text = document.querySelector("table").innerText;
 
-    let times = html.match(/\d{2}:\d{2}/g);
+    let times = text.match(/\d{2}:\d{2}/g);
 
     console.log(times);
 
@@ -1052,7 +1051,7 @@ async function getPrayerTimes() {
         maghrib: times[4],
         isha: times[5]
     };
-}
+  }
 
 
 
