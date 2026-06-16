@@ -844,11 +844,17 @@ onclick="window.location.href='thegreatflood.html'">
 
 <select id="citySelect">
 <option value="Erbil">هەولێر</option>
-<option value="Baghdad">بەغدا</option>
-<option value="Basra">بەسرە</option>
-<option value="Duhok">دهۆک</option>
-<option value="Kirkuk">کەرکووک</option>
 <option value="Sulaymaniyah">سلێمانی</option>
+<option value="Duhok">دهۆک</option>
+<option value="Halabja">هەڵەبجە</option>
+<option value="Kirkuk">کەرکووک</option>
+<option value="Zakho">زاخۆ</option>
+<option value="Akre">ئاکرێ</option>
+<option value="Koysinjaq">کۆیە</option>
+<option value="Ranya">ڕانیە</option>
+<option value="Chamchamal">چەمچەماڵ</option>
+<option value="Penjwen">پێنجوێن</option>
+<option value="Darbandikhan">دەربەندیخان</option>
 </select>
   
 <div id="prayerPopup" class="prayer-popup">
@@ -1037,15 +1043,20 @@ closePopup();
 }
   
   async function getPrayerTimes() {
-    return {
-        fajr: "04:52",
-        dhuhr: "12:08",
-        asr: "15:50",
-        maghrib: "19:26",
-        isha: "21:01"
-    };
-  }
+    const city = document.getElementById("citySelect").value;
 
+    const response = await fetch("prayer-times.json");
+    const data = await response.json();
+
+    const now = new Date();
+
+    const dateKey =
+        String(now.getMonth() + 1).padStart(2, "0") +
+        "-" +
+        String(now.getDate()).padStart(2, "0");
+
+    return data[city][dateKey];
+  }
 
 
 async function checkPrayerTime(){
