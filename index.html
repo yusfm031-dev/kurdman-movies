@@ -1040,23 +1040,15 @@ closePopup();
 
 async function getPrayerTimes() {
 
-let city = document.getElementById("citySelect").value;
+    let times = document.documentElement.innerHTML.match(/\d{2}:\d{2}/g);
 
-const res = await fetch(
-`https://amozghary.tv/bang/${city}`
-);
-
-const text = await res.text();
-
-let times = text.match(/\d{2}:\d{2}/g);
-
-return {
-fajr: times[0],
-dhuhr: times[2],
-asr: times[3],
-maghrib: times[4],
-isha: times[5]
-};
+    return {
+        fajr: times[4],
+        dhuhr: times[3],
+        asr: times[2],
+        maghrib: times[1],
+        isha: times[0]
+    };
 
 }
 
