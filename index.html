@@ -838,6 +838,19 @@ onclick="window.location.href='thegreatflood.html'">
 
 <div class="movies-grid" id="moviesGrid">
 </div>
+  <div id="prayerTimesBar">
+کاتەکانی نوێژ بار دەکرێت...
+</div>
+
+<select id="citySelect">
+<option value="Erbil">هەولێر</option>
+<option value="Baghdad">بەغدا</option>
+<option value="Basra">بەسرە</option>
+<option value="Duhok">دهۆک</option>
+<option value="Kirkuk">کەرکووک</option>
+<option value="Sulaymaniyah">سلێمانی</option>
+</select>
+  
 <div id="prayerPopup" class="prayer-popup">
   <div class="prayer-box">
 
@@ -1026,23 +1039,25 @@ closePopup();
   
 
 async function getPrayerTimes() {
-  let city = citySelect.value;
 
-  const res = await fetch(
-    `https://amozhgary.tv/bang/${city}`
-  );
+let city = document.getElementById("citySelect").value;
 
-  const text = await res.text();
+const res = await fetch(
+`https://amozghary.tv/bang/${city}`
+);
 
-  let times = text.match(/\d{2}:\d{2}/g);
+const text = await res.text();
 
-  return {
-    fajr: times[0],
-    dhuhr: times[2],
-    asr: times[3],
-    maghrib: times[4],
-    isha: times[5]
-  };
+let times = text.match(/\d{2}:\d{2}/g);
+
+return {
+fajr: times[0],
+dhuhr: times[2],
+asr: times[3],
+maghrib: times[4],
+isha: times[5]
+};
+
 }
 
 
