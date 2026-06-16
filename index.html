@@ -1037,22 +1037,21 @@ closePopup();
 }
   
   
-
 async function getPrayerTimes() {
 
-    let text = document.body.innerText;
-let times = text.match(/\d{2}:\d{2}/g);
+    let html = document.documentElement.outerHTML;
 
-console.log(times);
+    let times = html.match(/\d{2}:\d{2}/g);
+
+    console.log(times);
 
     return {
-        fajr: times[4],
-        dhuhr: times[3],
-        asr: times[2],
-        maghrib: times[1],
-        isha: times[0]
+        fajr: times[0],
+        dhuhr: times[2],
+        asr: times[3],
+        maghrib: times[4],
+        isha: times[5]
     };
-
 }
 
 
