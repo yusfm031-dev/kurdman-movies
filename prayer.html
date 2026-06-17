@@ -28,33 +28,43 @@ body{
     position:relative;
 }
 
-/* 🌙 مانگ */
+/* 🌙 مانگی جوانی شەو */
 .moon{
-    width:110px;
-    height:110px;
-    margin:35px auto 20px;
-    border-radius:50%;
-    background:
-    radial-gradient(circle at 35% 35%,
-    #fff7b5,
-    #ffd700 55%,
-    #d99a00 90%);
-    box-shadow:
-    0 0 25px rgba(255,220,0,.6);
-    position:relative;
+width: 130px;
+height: 130px;
+margin: 35px auto 25px;
+border-radius: 50%;
+background:
+radial-gradient(circle at 35% 35%,
+#fff6a0,
+#ffd700 55%,
+#d4a000 100%);
+position: relative;
+box-shadow:
+0 0 18px rgba(255,215,0,0.5);
+animation: moonGlow 4s ease-in-out infinite;
+}
+/* تاریکی مانگ */
+.moon::after{
+content:"";
+position:absolute;
+width: 92px;
+height: 92px;
+background:#000;
+border-radius:50%;
+top:8px;
+right:-5px;
+}
+@keyframes moonGlow{
+0%,100%{
+box-shadow:0 0 15px rgba(255,215,0,0.4);
 }
 
-/* هلالی مانگ */
-.moon::after{
-    content:"";
-    position:absolute;
-    width:85px;
-    height:85px;
-    background:#081528;
-    border-radius:50%;
-    top:5px;
-    right:-5px;
+50%{
+box-shadow:0 0 30px rgba(255,215,0,0.7);
 }
+}
+    
 /* 🌌 ئەستێرەکانی ئاسمان */
 body::before{
 content:
