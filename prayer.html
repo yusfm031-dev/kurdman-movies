@@ -16,42 +16,40 @@ font-family:"Cairo",sans-serif;
 }
 
 body{
-background:
-radial-gradient(circle at top,#102040,#000 60%);
-color:#fff;
-padding:15px;
-min-height:100vh;
-overflow-x:hidden;
-position:relative;
+    background:
+    radial-gradient(circle at top, #08162e, #000);
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
 }
 
-/* ✨ ئەستێرە زۆر */
+/* ✨ ئەستێرەکان */
 body::before{
-content:"";
-position:fixed;
-inset:0;
-background:
-radial-gradient(#fff 1.5px,transparent 2px),
-radial-gradient(#ffd700 1px,transparent 2px),
-radial-gradient(#7df9ff 1px,transparent 2px);
-background-size:
-70px 70px,
-120px 120px,
-170px 170px;
-opacity:.9;
-z-index:-1;
-animation:stars 8s infinite alternate;
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 70% 15%, #fff, transparent),
+    radial-gradient(3px 3px at 80% 45%, #fff, transparent),
+    radial-gradient(2px 2px at 30% 70%, #fff, transparent),
+    radial-gradient(3px 3px at 60% 80%, #fff, transparent),
+    radial-gradient(2px 2px at 90% 70%, #fff, transparent);
+    animation: stars 4s infinite alternate;
+    z-index:-1;
 }
 
 @keyframes stars{
-from{
-opacity:.5;
-transform:translateY(0);
-}
-to{
-opacity:1;
-transform:translateY(-15px);
-}
+    from{
+        opacity:.4;
+    }
+    to{
+        opacity:1;
+    }
 }
 
 /* گەڕانەوە */
