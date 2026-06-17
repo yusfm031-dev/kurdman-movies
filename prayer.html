@@ -113,7 +113,64 @@ font-size:18px;
 font-weight:bold;
 margin-bottom:15px;
 }
+ 
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: "Cairo", sans-serif;
+    background: linear-gradient(180deg, #020617, #0f172a, #1e293b);
+    color: white;
+    min-height: 100vh;
+    direction: rtl;
+    overflow-x: hidden;
+}
 
+/* ئەستێرەکان */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      radial-gradient(white 1px, transparent 1px),
+      radial-gradient(#ffd700 1px, transparent 1px);
+    background-size: 60px 60px, 120px 120px;
+    opacity: 0.5;
+    z-index: -1;
+    animation: starsMove 20s linear infinite;
+}
+
+/* جوڵەی ئەستێرە */
+@keyframes starsMove {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(50px);
+    }
+}
+
+/* کارتەکان */
+.card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 25px;
+    padding: 18px;
+    margin: 18px 0;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+/* ناونیشان */
+h1 {
+    text-align: center;
+    font-size: 30px;
+    color: #ffd700;
+    text-shadow: 0 0 15px #ffd700;
+}
+ 
 </style>
 
 </head>
