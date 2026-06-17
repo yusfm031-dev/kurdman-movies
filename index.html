@@ -1044,10 +1044,9 @@ async function getPrayerTimes() {
 
 const city = localStorage.getItem("prayerCity") || "Erbil";
 
-const response = await fetch("prayer-times.json");
-const data = await response.json();
-
+const response = await fetch("prayer-times-v2.json");
 const now = new Date();
+  
 
 const dateKey =
 String(now.getMonth() + 1).padStart(2, "0") +
