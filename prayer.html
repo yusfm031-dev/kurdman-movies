@@ -55,31 +55,29 @@ body{
     top:5px;
     right:-5px;
 }
-/* ✨ ئەستێرە نەرم */
+/* ✨ ئەستێرە بچووک و نەرمی شەو */
 body::before{
-content:"✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦";
+content:"· ✦ · ✦ · ✦ · ✦ · ✦ ·";
 position:fixed;
-top:30px;
+top:50px;
 left:0;
 width:100%;
 text-align:center;
-font-size:22px;
+font-size:12px;
 color:#fff;
-opacity:0.7;
-letter-spacing:45px;
-animation:stars 4s ease-in-out infinite alternate;
+opacity:0.5;
+letter-spacing:55px;
 pointer-events:none;
+animation:twinkle 2.5s ease-in-out infinite;
 }
 
-@keyframes stars{
-0%{
-opacity:0.3;
-transform:translateY(0);
+@keyframes twinkle{
+0%,100%{
+opacity:0.2;
 }
 
-100%{
-opacity:1;
-transform:translateY(8px);
+50%{
+opacity:0.9;
 }
 }
 
