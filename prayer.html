@@ -133,6 +133,11 @@ margin-bottom:15px;
 <div class="city-title" id="cityTitle">
 📍 هەولێر
 </div>
+ 
+ <div class="date-box">
+  📅 <span id="todayDate">بەروار...</span><br>
+  🗓️ <span id="dayName">ڕۆژ...</span>
+ </div>
 
 <input 
 type="text"
@@ -198,11 +203,31 @@ placeholder="🔍 گەڕان بە ناوی شار...">
 <p id="weather">
 ...
 </p>
-
+ 
 </div>
 
 
 <script>
+
+const days = [
+"یەکشەممە",
+"دووشەممە",
+"سێشەممە",
+"چوارشەممە",
+"پێنجشەممە",
+"هەینی",
+"شەممە"
+];
+
+let today = new Date();
+
+document.getElementById("todayDate").innerText =
+today.toLocaleDateString("en-GB");
+
+document.getElementById("dayName").innerText =
+days[today.getDay()];
+
+
 
 
 const cities = [
@@ -219,7 +244,15 @@ const cities = [
 {name:"کۆیە", value:"Koysinjaq"},
 {name:"پێنجوێن", value:"Penjwen"},
 {name:"ئاکرێ", value:"Akre"}
+ {name:"شەقڵاوە", value:"Shaqlawa"},
+{name:"چۆمان", value:"Choman"},
+{name:"حاجی ئۆمەران", value:"HajiOmaran"},
+{name:"بەغدا", value:"Baghdad"},
+{name:"بەسرا", value:"Basra"},
 ];
+
+
+
 
 
 const citySelect =
@@ -291,8 +324,7 @@ document.getElementById("cityTitle").innerHTML =
 
 try{
 
-const response = await fetch("prayer-times.json");
-
+const response = await fetch("prayer-times-v2.json");
 const data = await response.json();
 
 
