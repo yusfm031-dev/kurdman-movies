@@ -248,7 +248,175 @@ h1::before {
     border-color: #ffe066;
     box-shadow: 0 0 20px #ffe066;
 }
+ /* 🌌 شەوی مانگ و ئەستێرە */
+
+body {
+    background: linear-gradient(
+        180deg,
+        #020b1d 0%,
+        #000000 50%,
+        #050505 100%
+    );
+    overflow-x: hidden;
+}
+
+/* ✨ ئەستێرەکان */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(white 2px, transparent 2px),
+        radial-gradient(#fff7a0 1.5px, transparent 1.5px),
+        radial-gradient(white 1px, transparent 1px);
+
+    background-size:
+        120px 120px,
+        180px 180px,
+        250px 250px;
+
+    background-position:
+        20px 30px,
+        80px 100px,
+        150px 50px;
+
+    opacity: 0.7;
+    animation: starsMove 5s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes starsMove {
+    from {
+        opacity: 0.3;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(-10px);
+    }
+}
+ /* 🌙 سەرەوەی پەڕەی نوێژ */
+
+h1 {
+    font-size: 42px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 0 0 20px #fff;
+    animation: glow 2s infinite alternate;
+}
+
+h1::before {
+    content: "🌙";
+    display: block;
+    font-size: 80px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 25px #ffd700);
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff;
+    }
+    to {
+        text-shadow: 
+        0 0 25px #ffffff,
+        0 0 40px #00ffff;
+    }
+}
+ /* 📍 ناوی شار */
+.city-title{
+    background: rgba(255,255,255,0.10);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 25px;
+    padding: 15px;
+    margin: 15px auto;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #7df9ff;
+    box-shadow: 0 0 20px rgba(125,249,255,0.5);
+    text-shadow: 0 0 15px #7df9ff;
+}
+
+/* 📅 بەروار و ڕۆژ */
+.date-box{
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 14px;
+    text-align: center;
+    font-size: 18px;
+    color: #ffffff;
+    margin: 15px auto 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 18px rgba(255,255,255,0.15);
+    line-height: 1.8;
+}
+
+/* ✨ هەڵسوکەوتی نەرمی */
+.city-title:hover,
+.date-box:hover{
+    transform: translateY(-3px);
+    transition: 0.3s;
+    box-shadow: 0 0 25px #00ffff;
+}
  
+ /* 🕌 کارتەکانی کاتی نوێژ */
+
+.time {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 22px;
+    padding: 18px 20px;
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    box-shadow: 
+        0 0 20px rgba(0,0,0,0.5),
+        inset 0 0 10px rgba(255,255,255,0.08);
+    transition: all 0.4s ease;
+}
+
+/* ✨ کاتێک دەستی لێ دەکەویت */
+.time:hover {
+    transform: translateY(-5px);
+    border-color: #ffd700;
+    box-shadow:
+        0 0 25px #ffd700,
+        0 0 40px rgba(255,215,0,0.5);
+}
+
+/* ⏰ ژمارەی کات */
+.time span:last-child {
+    color: #7df9ff;
+    font-size: 22px;
+    text-shadow: 0 0 15px #7df9ff;
+}
+
+/* 🌟 ئەنیمەیشنی نەرمی */
+@keyframes prayerGlow {
+    from {
+        opacity: 0.85;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.time {
+    animation: prayerGlow 2s infinite alternate;
+                     }
 </style>
 
 </head>
