@@ -1031,13 +1031,14 @@ async function getPrayerTimes() {
 const city = localStorage.getItem("prayerCity") || "Erbil";
 
 const response = await fetch("prayer-times-v2.json");
+const data = await response.json();
+
 const now = new Date();
-  
 
 const dateKey =
-String(now.getMonth() + 1).padStart(2, "0") +
+String(now.getMonth() + 1).padStart(2,"0") +
 "-" +
-String(now.getDate()).padStart(2, "0");
+String(now.getDate()).padStart(2,"0");
 
 return data[city][dateKey];
 
@@ -1055,12 +1056,7 @@ String(now.getMinutes()).padStart(2,'0');
   
 const times = await getPrayerTimes();
   
-  document.getElementById("prayerTimesBar").innerHTML =
-`🌅 ${times.fajr} |
-☀️ ${times.dhuhr} |
-🌇 ${times.asr} |
-🌙 ${times.maghrib} |
-🌃 ${times.isha}`;
+  
 
 const prayerTimes = [
 times.fajr,
