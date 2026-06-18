@@ -1044,10 +1044,28 @@ return data[city][dateKey];
 
 }
 
-
 async function checkPrayerTime(){
 
-    showPrayerPopup();
+const now = new Date();
+
+const current =
+String(now.getHours()).padStart(2,'0') +
+":" +
+String(now.getMinutes()).padStart(2,'0');
+
+const times = await getPrayerTimes();
+
+const prayerTimes = [
+times.fajr,
+times.dhuhr,
+times.asr,
+times.maghrib,
+times.isha
+];
+
+if(prayerTimes.includes(current)){
+showPrayerPopup();
+}
 
 }
 
