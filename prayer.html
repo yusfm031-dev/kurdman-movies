@@ -29,174 +29,136 @@ body{
 }
 
 /* 🌙 مانگی جوانی شەو */
+    /* 🌙 Moon */
 .moon{
-width: 130px;
-height: 130px;
-margin: 35px auto 25px;
-border-radius: 50%;
+width:180px;
+height:180px;
+margin:25px auto;
+border-radius:50%;
 background:
 radial-gradient(circle at 35% 35%,
-#fff6a0,
-#ffd700 55%,
+#fff8c6,
+#ffe066 55%,
 #d4a000 100%);
-position: relative;
-box-shadow:
-0 0 18px rgba(255,215,0,0.5);
-animation: moonGlow 4s ease-in-out infinite;
+position:relative;
+box-shadow:0 0 35px rgba(255,215,0,.5);
+animation:moonGlow 5s ease-in-out infinite;
 }
-/* تاریکی مانگ */
+
 .moon::after{
 content:"";
 position:absolute;
-width: 92px;
-height: 92px;
-background:#000;
+width:125px;
+height:125px;
+background:#071327;
 border-radius:50%;
-top:8px;
-right:-5px;
+top:10px;
+right:-8px;
 }
+
 @keyframes moonGlow{
 0%,100%{
-box-shadow:0 0 15px rgba(255,215,0,0.4);
+box-shadow:0 0 20px rgba(255,215,0,.4);
 }
-
 50%{
-box-shadow:0 0 30px rgba(255,215,0,0.7);
-}
-}
-    
-/* ✨ ئەستێرەی ئاسمانی ڕاستی */
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:250px;
-pointer-events:none;
-z-index:0;
-
-background:
-radial-gradient(2px 2px at 15% 25%, #fff, transparent),
-radial-gradient(1.5px 1.5px at 30% 10%, #fff, transparent),
-radial-gradient(2px 2px at 45% 35%, #fff, transparent),
-radial-gradient(1px 1px at 60% 15%, #fff, transparent),
-radial-gradient(2px 2px at 75% 30%, #fff, transparent),
-radial-gradient(1.5px 1.5px at 85% 8%, #fff, transparent),
-radial-gradient(2px 2px at 90% 40%, #fff, transparent),
-radial-gradient(1px 1px at 10% 45%, #fff, transparent);
-
-animation: twinkle 4s infinite ease-in-out;
-}
-
-@keyframes twinkle{
-0%,100%{
-opacity:0.4;
-}
-
-50%{
-opacity:1;
+box-shadow:0 0 40px rgba(255,215,0,.8);
 }
 }
 
-
-/* 🕌 کارتی کاتەکانی نوێژ */
-.time{
-background: linear-gradient(145deg,#121722,#1d2636);
-border: 1px solid rgba(255,215,0,0.15);
-border-radius: 22px;
-padding: 18px 22px;
-margin: 14px 0;
-color: white;
-}
-
-/* ⏰ کات */
-.time span:last-child{
-    font-size:28px;
-    font-weight:bold;
-    color:#9eefff;
-}
-
-/* 🕌 ناوی نوێژ */
-.time span:first-child{
-    font-size:22px;
-    font-weight:600;
-    color:#ffffff;
-} 
-/* 📍 ناوی شار */
+/* 📍 City */
 .city-title{
-    text-align:center;
-    font-size:30px;
-    font-weight:bold;
-    color:#e8faff;
-    margin:20px 0;
+text-align:center;
+font-size:32px;
+font-weight:700;
+color:#fff;
+margin:20px 0;
+text-shadow:0 0 15px rgba(255,255,255,.15);
 }
 
-
-/* 📅 کارتی بەروار */
+/* 📅 Date */
 .date-box{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.1);
-    border-radius:22px;
-    padding:18px;
-    margin:18px 0;
-    text-align:center;
-    color:#fff;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+border-radius:25px;
+padding:20px;
+margin:18px 0;
+text-align:center;
 }
 
 #todayDate{
-    font-size:30px;
-    font-weight:bold;
-    display:block;
-    margin-bottom:10px;
+font-size:34px;
+font-weight:900;
+color:#fff;
 }
 
 #dayName{
-    font-size:22px;
-    color:#d9e7ff;
+font-size:22px;
+color:#d9e7ff;
 }
 
-
-/* 🔍 خانەی گەڕان */
-.search{
-    width:100%;
-    height:55px;
-    background:#071325;
-    color:white;
-    border:1px solid #233b5e;
-    border-radius:18px;
-    padding:0 18px;
-    font-size:18px;
-    margin:15px 0;
-    outline:none;
+/* 🕌 Prayer Cards */
+.time{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:linear-gradient(135deg,#08152f,#0d2247);
+border:1px solid rgba(255,255,255,.08);
+border-radius:25px;
+padding:22px;
+margin:16px 0;
+box-shadow:0 8px 20px rgba(0,0,0,.35);
 }
 
-
-/* 📋 هەڵبژاردنی شار */
-input, select{
-background: rgba(35,35,45,0.9);
-color: #fff;
-border: 1px solid #3a4a60;
-border-radius: 18px;
-padding: 14px;
+.time span:first-child{
+font-size:22px;
+font-weight:700;
+color:#fff;
 }
-    
-/* ⏳ کارتی نوێژی داهاتوو */
+
+.time span:last-child{
+font-family:'Orbitron',sans-serif;
+font-size:36px;
+font-weight:900;
+color:#8fe8ff;
+letter-spacing:2px;
+text-shadow:0 0 15px rgba(143,232,255,.4);
+}
+
+/* ⏳ Next Prayer */
 #nextPrayer{
-    font-size:26px;
-    color:#ffd700;
-    font-weight:bold;
-    text-align:center;
-    margin:15px 0;
+font-size:30px;
+font-weight:700;
+color:#ffd700;
+text-align:center;
+margin:15px 0;
 }
 
-/* ⌛ کاتی ماوە */
 #countdown{
-    font-size:22px;
-    color:#7cff7c;
-    text-align:center;
-    font-weight:600;
-    margin-bottom:15px;
+font-family:'Orbitron',sans-serif;
+font-size:28px;
+font-weight:900;
+color:#7cff7c;
+text-align:center;
+}
+
+/* 📦 Cards */
+.card{
+background:rgba(20,25,40,.85);
+border:1px solid rgba(255,255,255,.08);
+border-radius:28px;
+padding:20px;
+margin:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+/* 🕌 Main Title */
+h1{
+text-align:center;
+font-size:38px;
+font-weight:900;
+margin-bottom:20px;
+color:#fff;
+text-shadow:0 0 20px rgba(255,255,255,.15);
 }
 
 
@@ -247,8 +209,9 @@ h2{
     border-radius:15px;
     display:inline-block;
 }
-</style>
 
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
