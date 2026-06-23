@@ -7,112 +7,179 @@
 <title>🕌 نوێژ و کەش و هەوا | KurdMan</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Orbitron:wght@700;900&display=swap');
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    background:
-    linear-gradient(
-    180deg,
-    #071327 0%,
-    #0b1f3d 45%,
-    #020812 100%
-    );
-    color:#fff;
-    font-family:"Cairo",sans-serif;
-    min-height:100vh;
-    overflow-x:hidden;
-    position:relative;
+font-family:'Cairo',sans-serif;
+background:linear-gradient(180deg,#020617 0%,#08152f 45%,#000 100%);
+color:#fff;
+min-height:100vh;
+overflow-x:hidden;
+padding:15px;
+position:relative;
 }
 
-/* 🌙 مانگی جوانی شەو */
-    /* 🌙 Moon */
-.moon{
-width:180px;
-height:180px;
-margin:25px auto;
-border-radius:50%;
+/* Stars */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:320px;
+pointer-events:none;
 background:
-radial-gradient(circle at 35% 35%,
-#fff8c6,
-#ffe066 55%,
-#d4a000 100%);
+radial-gradient(2px 2px at 8% 18%,#fff,transparent),
+radial-gradient(2px 2px at 18% 8%,#fff,transparent),
+radial-gradient(1px 1px at 28% 25%,#fff,transparent),
+radial-gradient(2px 2px at 40% 15%,#fff,transparent),
+radial-gradient(1px 1px at 52% 28%,#fff,transparent),
+radial-gradient(2px 2px at 68% 12%,#fff,transparent),
+radial-gradient(1px 1px at 80% 22%,#fff,transparent),
+radial-gradient(2px 2px at 92% 10%,#fff,transparent);
+animation:twinkle 5s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+0%,100%{opacity:.4}
+50%{opacity:1}
+}
+
+/* Moon */
+
+.moon{
+width:95px;
+height:95px;
+margin:20px auto;
+border-radius:50%;
+background:radial-gradient(circle at 35% 35%,#fff8c4,#ffe066 60%,#ffcc00 100%);
 position:relative;
-box-shadow:0 0 35px rgba(255,215,0,.5);
-animation:moonGlow 5s ease-in-out infinite;
+box-shadow:0 0 35px rgba(255,215,0,.6);
+animation:moonGlow 5s infinite;
 }
 
 .moon::after{
 content:"";
 position:absolute;
-width:125px;
-height:125px;
-background:#071327;
+width:68px;
+height:68px;
+background:#020617;
 border-radius:50%;
-top:10px;
+top:3px;
 right:-8px;
 }
 
 @keyframes moonGlow{
-0%,100%{
-box-shadow:0 0 20px rgba(255,215,0,.4);
-}
-50%{
-box-shadow:0 0 40px rgba(255,215,0,.8);
-}
+0%,100%{box-shadow:0 0 20px rgba(255,215,0,.4)}
+50%{box-shadow:0 0 40px rgba(255,215,0,.8)}
 }
 
-/* 📍 City */
-.city-title{
-text-align:center;
-font-size:32px;
-font-weight:700;
+/* Back Button */
+
+.back-btn{
+display:inline-block;
+padding:12px 18px;
+border-radius:16px;
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
+text-decoration:none;
 color:#fff;
-margin:20px 0;
-text-shadow:0 0 15px rgba(255,255,255,.15);
+font-weight:700;
+margin-bottom:15px;
 }
 
-/* 📅 Date */
-.date-box{
-background:rgba(255,255,255,.06);
+/* Main Title */
+
+h1{
+text-align:center;
+font-size:38px;
+font-weight:900;
+margin:10px 0 20px;
+text-shadow:0 0 20px rgba(255,255,255,.15);
+}
+
+/* Cards */
+
+.card{
+background:rgba(10,15,30,.88);
 border:1px solid rgba(255,255,255,.08);
-border-radius:25px;
+border-radius:28px;
 padding:20px;
 margin:18px 0;
+backdrop-filter:blur(12px);
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+/* City */
+
+.city-title{
 text-align:center;
+font-size:30px;
+font-weight:900;
+margin-bottom:15px;
+}
+
+/* Date */
+
+.date-box{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:24px;
+padding:20px;
+text-align:center;
+margin-bottom:18px;
 }
 
 #todayDate{
-font-size:34px;
+display:block;
+font-family:'Orbitron',sans-serif;
+font-size:42px;
 font-weight:900;
-color:#fff;
 }
 
 #dayName{
 font-size:22px;
-color:#d9e7ff;
+color:#cbd5e1;
 }
 
-/* 🕌 Prayer Cards */
+/* Search + Select */
+
+.search,
+select{
+width:100%;
+height:58px;
+background:#0f172a;
+color:#fff;
+border:1px solid #1f3d7a;
+border-radius:18px;
+padding:0 15px;
+font-size:18px;
+margin-bottom:15px;
+outline:none;
+}
+
+/* Prayer Cards */
+
 .time{
 display:flex;
 justify-content:space-between;
 align-items:center;
 background:linear-gradient(135deg,#08152f,#0d2247);
-border:1px solid rgba(255,255,255,.08);
-border-radius:25px;
+border-radius:24px;
 padding:22px;
-margin:16px 0;
-box-shadow:0 8px 20px rgba(0,0,0,.35);
+margin:15px 0;
+box-shadow:0 10px 25px rgba(0,0,0,.35);
 }
 
 .time span:first-child{
-font-size:22px;
+font-size:24px;
 font-weight:700;
-color:#fff;
 }
 
 .time span:last-child{
@@ -121,97 +188,50 @@ font-size:36px;
 font-weight:900;
 color:#8fe8ff;
 letter-spacing:2px;
-text-shadow:0 0 15px rgba(143,232,255,.4);
+text-shadow:0 0 15px rgba(143,232,255,.45);
 }
 
-/* ⏳ Next Prayer */
-#nextPrayer{
-font-size:30px;
-font-weight:700;
-color:#ffd700;
+/* Section Titles */
+
+h2{
 text-align:center;
-margin:15px 0;
+font-size:30px;
+font-weight:900;
+margin-bottom:18px;
+}
+
+/* Next Prayer */
+
+#nextPrayer{
+font-size:28px;
+font-weight:900;
+text-align:center;
+color:#ffd700;
+margin-bottom:12px;
 }
 
 #countdown{
 font-family:'Orbitron',sans-serif;
-font-size:28px;
+font-size:26px;
 font-weight:900;
+text-align:center;
 color:#7cff7c;
-text-align:center;
 }
 
-/* 📦 Cards */
-.card{
-background:rgba(20,25,40,.85);
-border:1px solid rgba(255,255,255,.08);
-border-radius:28px;
-padding:20px;
-margin:18px;
-box-shadow:0 10px 25px rgba(0,0,0,.25);
-}
+/* Weather */
 
-/* 🕌 Main Title */
-h1{
-text-align:center;
-font-size:38px;
-font-weight:900;
-margin-bottom:20px;
-color:#fff;
-text-shadow:0 0 20px rgba(255,255,255,.15);
-}
-
-
-/* 🌤️ کارتی کەش و هەوا */
 #weather{
-    background:
-    linear-gradient(145deg,#0b1b35,#12274a);
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:22px;
-    min-height:120px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:26px;
-    color:#ffffff;
-    text-align:center;
-    padding:20px;
-}
-
-
-/* 📦 کارتە گشتییەکان */
-.card{
-background: rgba(25,25,35,0.85);
-border: 1px solid rgba(255,255,255,0.1);
-border-radius: 25px;
-padding: 18px;
-margin: 18px;
-box-shadow: 0 0 20px rgba(255,215,0,0.12);
-}
-
-
-/* 🕌 ناونیشانی بەشەکان */
-h2{
-    text-align:center;
-    color:#ffffff;
-    font-size:30px;
-    margin-bottom:18px;
-    font-weight:bold;
-}
-
-/* 🔙 دوگمەی گەڕانەوە */
-.back-btn{
-    color:white ;
-    text-decoration:none;
-    font-size:15px;
-    padding:10px 15px;
-    background: linear-gradient(135deg, #0d47a1, #1a237e);
-    border-radius:15px;
-    display:inline-block;
-}
+background:linear-gradient(135deg,#0f172a,#1e3a8a);
+border-radius:25px;
+padding:25px;
+font-size:28px;
+font-weight:700;
+text-align:center;
+box-shadow:0 0 25px rgba(59,130,246,.25);
+    }
 
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
