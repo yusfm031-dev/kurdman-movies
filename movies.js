@@ -3,7 +3,7 @@ const movies = [
 title:"هۆبس و شۆو",
 image:"file_00000000bb8471f4931cdde8b891f1c8.png",
 quality:"1080P",
-video:"https://vz-486dbc69-7fb.b-cdn.net/74179f2f-20ff-4eb7-92e0-f06b725dbc9d/playlist.m3u8"
+video:"https://vz-486dbc69-7fb.b-cdn.net/74179f2f-20ff-4eb7-92e0-f06b725dbc9d/playlist.m3u8",
  vip:false 
 },
 
@@ -11,14 +11,14 @@ video:"https://vz-486dbc69-7fb.b-cdn.net/74179f2f-20ff-4eb7-92e0-f06b725dbc9d/pl
 title:"ئەلیۆ",
 image:"file_000000007c14720ab85b3d3eaba07005.png",
 quality:"9.0",
-video:"https://vz-64a6b2bb-12e.b-cdn.net/b5344847-8ed9-4c40-87da-00a019cd4fbc/playlist.m3u8"
+video:"https://vz-64a6b2bb-12e.b-cdn.net/b5344847-8ed9-4c40-87da-00a019cd4fbc/playlist.m3u8",
 },
 
 {
 title:"رۆستەم",
 image:"file_000000001dd871f49685c5a6ef226e96.png",
 quality:"8.1",
-video:"https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8"
+video:"https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/playlist.m3u8",
   vip:false
 },
 
@@ -26,7 +26,7 @@ video:"https://vz-62e66ed7-6fe.b-cdn.net/edf3202f-9dee-476e-a52a-a3ad0039795e/pl
 title:"The Great Flood",
 image:"file_0000000076a0720a912dce714ecca643.png",
 quality:"9.0",
-video:"https://vz-fd0a2018-c24.b-cdn.net/04757752-1959-4262-ba04-88064e1d4e60/playlist.m3u8"
+video:"https://vz-fd0a2018-c24.b-cdn.net/04757752-1959-4262-ba04-88064e1d4e60/playlist.m3u8",
 vip:true
 },
 
@@ -35,7 +35,7 @@ vip:true
 title:"فیلمی نوێ",
 image:"image_1779992223418.jpeg",
 quality:"9.1",
-video:"https://vz-18bdfcb2-789.b-cdn.net/b3e8d1b4-5a43-4a19-87a1-a0b7073a6f85/playlist.m3u8"
+video:"https://vz-18bdfcb2-789.b-cdn.net/b3e8d1b4-5a43-4a19-87a1-a0b7073a6f85/playlist.m3u8",
   vip:false
 },
 
@@ -43,14 +43,14 @@ video:"https://vz-18bdfcb2-789.b-cdn.net/b3e8d1b4-5a43-4a19-87a1-a0b7073a6f85/pl
 title:"گیل و گیتەش",
 image:"file_00000000746c71f4a4b1982c67e3de2d.png",
 quality:"8.8",
-video:"https://vz-76f7682b-70b.b-cdn.net/71dd4fe9-8435-4465-a72d-38c1b3681501/playlist.m3u8"
+video:"https://vz-76f7682b-70b.b-cdn.net/71dd4fe9-8435-4465-a72d-38c1b3681501/playlist.m3u8",
 vip:false
 },
 {
 title:"ئەلیۆ",
 image:"file_000000007c14720ab85b3d3eaba07005.png",
 quality:"9.0",
-video:"https://vz-64a6b2bb-12e.b-cdn.net/b5344847-8ed9-4c40-87da-00a019cd4fbc/playlist.m3u8"
+video:"https://vz-64a6b2bb-12e.b-cdn.net/b5344847-8ed9-4c40-87da-00a019cd4fbc/playlist.m3u8",
 vip:true
 },
   
