@@ -1184,7 +1184,7 @@ movies.forEach(movie => {
 moviesGrid.innerHTML += `
 <div class="movie-card">
 
-<div class="movie-image" onclick="playMovie(movie)">
+onclick="openPopup('${movie.video}')"
 
 <img src="${movie.image}">
 
