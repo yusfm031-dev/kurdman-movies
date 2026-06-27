@@ -1215,6 +1215,13 @@ ${movie.vip ? '<span class="vip-tag">👑 VIP</span>' : ''}
 `;
 
 });
+  function showVipPopup(){
+  document.getElementById("vipPopup").style.display = "flex";
+}
+
+function closeVipPopup(){
+  document.getElementById("vipPopup").style.display = "none";
+}
 
 </script>
 <div id="vipPopup" style="display:none;">
@@ -1224,7 +1231,7 @@ ${movie.vip ? '<span class="vip-tag">👑 VIP</span>' : ''}
     <p>ئەم فیلمە تایبەتە بە ئەندامانی KurdMan VIP.</p>
 
     <button>💳 ئیشتراک بکە</button>
-    <button onclick="document.getElementById('vipPopup').style.display='none'">
+    <button onclick="closeVipPopup()">
       داخستن
     </button>
   </div>
