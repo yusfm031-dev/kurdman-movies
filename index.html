@@ -1173,7 +1173,7 @@ results.forEach(movie=>{
 
 searchResults.innerHTML += `
 <div class="search-item"
-onclick="openPopup('${movie.video}')">
+onclick="handleMovieClick(movie)"
 
 <img src="${movie.image}">
 <span>${movie.title}</span>
@@ -1195,7 +1195,7 @@ movies.forEach(movie => {
 moviesGrid.innerHTML += `
 <div class="movie-card">
 
-<div class="movie-image" onclick="openPopup('${movie.video}')">
+<div class="movie-image" onclick="handleMovieClick(movie)"
 
 <img src="${movie.image}">
 ${movie.vip ? '<span class="vip-tag">👑 VIP</span>' : ''}
@@ -1222,6 +1222,15 @@ ${movie.vip ? '<span class="vip-tag">👑 VIP</span>' : ''}
 function closeVipPopup(){
   document.getElementById("vipPopup").style.display = "none";
 }
+  function handleMovieClick(movie){
+
+    if(movie.vip){
+        showVipPopup();
+        return;
+    }
+
+    openPopup(movie.video);
+  }
 
 </script>
 <div id="vipPopup" style="display:none;">
