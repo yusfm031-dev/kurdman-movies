@@ -949,6 +949,7 @@ if(player){
 player.destroy();
 }
 
+
 if(Hls.isSupported()){
 
 const hls = new Hls();
@@ -1010,6 +1011,19 @@ function closePopup(){
 document.getElementById("popup").style.display="none";
 
 document.getElementById("popupVideo").pause();
+  }
+  function playMovie(movie){
+
+if(movie.vip){
+
+alert("🔒 ئەم فیلمە تایبەتە بە ئەندامانی KurdMan VIP.\n\nبۆ بینینی ئەم فیلمە تکایە ئیشتراک بکە.");
+
+return;
+
+}
+
+openPopup(movie.video);
+
   }
 
 function showPrayerPopup(){
