@@ -625,6 +625,17 @@ font-weight:bold;
 z-index:10;
 box-shadow:0 0 10px gold;
   }
+  .vip-tag{
+position:absolute;
+top:10px;
+left:10px;
+background:#FFD700;
+color:#000;
+padding:4px 8px;
+border-radius:8px;
+font-size:11px;
+font-weight:bold;
+  }
 </style>
 </head>
 
@@ -1187,6 +1198,7 @@ moviesGrid.innerHTML += `
 <div class="movie-image" onclick="openPopup('${movie.video}')">
 
 <img src="${movie.image}">
+${movie.vip ? '<span class="vip-tag">👑 VIP</span>' : ''}
 
 
 <div class="play-icon">▶</div>
