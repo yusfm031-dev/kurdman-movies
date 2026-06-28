@@ -164,11 +164,18 @@ async function loadUsers(){
 const res=await fetch("https://kurdmantv.com/kurdmantv_api/get_users.php");
 
 const users=await res.json();
+  document.getElementById("totalUsers").innerText = users.length;
+
+const vipCount = users.filter(user => user.is_vip == 1).length;
+document.getElementById("vipUsers").innerText = vipCount;
 
 let html="";
-
+let pendingCount = 0;
 users.forEach(user=>{
-
+if (user.status == 0) {
+    pendingCount++;
+}
+  
 html+=`
 <tr>
 
@@ -198,6 +205,7 @@ Remove
 `;
 
 });
+  document.querySelector(".card:nth-child(4) span").innerText = pendingCount;
 
 document.getElementById("users").innerHTML=html;
 
