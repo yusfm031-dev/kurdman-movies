@@ -1295,7 +1295,13 @@ function handleMovieClick(id){
     openPopup(movie.video);
 
 }
+function showVipPopup(){
+    document.getElementById("vipPopup").style.display = "flex";
+}
 
+function closeVipPopup(){
+    document.getElementById("vipPopup").style.display = "none";
+}
 </script>
 <div id="vipPopup">
   <div class="vip-box">
@@ -1303,7 +1309,9 @@ function handleMovieClick(id){
 
     <p>ئەم فیلمە تایبەتە بە ئەندامانی KurdMan VIP.</p>
 
-    <button>💳 ئیشتراک بکە</button>
+    <button onclick="window.location.href='login.html'">
+💳 ئیشتراک بکە
+    </button>
     <button onclick="closeVipPopup()">داخستن</button>
     </button>
   </div>
