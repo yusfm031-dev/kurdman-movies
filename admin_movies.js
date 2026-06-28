@@ -73,3 +73,47 @@ async function deleteMovie(id){
     loadMovies();
 
 }
+document.getElementById("addMovie").onclick = function(){
+
+    const form = document.getElementById("addMovieForm");
+
+    if(form.style.display=="none"){
+
+        form.style.display="block";
+
+    }else{
+
+        form.style.display="none";
+
+    }
+
+};
+
+async function saveMovie(){
+
+    const formData = new FormData();
+
+    formData.append("title",document.getElementById("title").value);
+    formData.append("description",document.getElementById("description").value);
+    formData.append("poster",document.getElementById("poster").value);
+    formData.append("video_url",document.getElementById("video_url").value);
+    formData.append("category",document.getElementById("category").value);
+    formData.append("year",document.getElementById("year").value);
+    formData.append("quality",document.getElementById("quality").value);
+    formData.append("vip",document.getElementById("vip").value);
+
+    const res = await fetch(
+        "https://kurdmantv.com/kurdmantv_api/add_movie.php",
+        {
+            method:"POST",
+            body:formData
+        }
+    );
+
+    const data = await res.json();
+
+    alert(data.message);
+
+    loadMovies();
+
+}
