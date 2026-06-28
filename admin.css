@@ -1,0 +1,58 @@
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0f172a;
+    color:white;
+    display:flex;
+}
+
+.sidebar{
+    width:240px;
+    background:#111827;
+    min-height:100vh;
+    padding:20px;
+    box-sizing:border-box;
+}
+
+.sidebar h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.sidebar a:hover,
+.sidebar .active{
+    background:#2563eb;
+}
+
+.content{
+    flex:1;
+    padding:30px;
+}
+
+#addMovie{
+    background:#16a34a;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+#movieList{
+    margin-top:20px;
+    background:#1e293b;
+    border-radius:10px;
+    padding:20px;
+    min-height:300px;
+}
