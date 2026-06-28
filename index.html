@@ -1024,17 +1024,7 @@ document.getElementById("popup").style.display="none";
 document.getElementById("popupVideo").pause();
   }
   function playMovie(movie){
-
-if(movie.vip){
-
-alert("🔒 ئەم فیلمە تایبەتە بە ئەندامانی KurdMan VIP.\n\nبۆ بینینی ئەم فیلمە تکایە ئیشتراک بکە.");
-
-return;
-
-}
-
-openPopup(movie.video);
-
+    handleMovieClick(movie.id);
   }
 
 function showPrayerPopup(){
@@ -1195,7 +1185,7 @@ movies.forEach(movie => {
 moviesGrid.innerHTML += `
 <div class="movie-card">
 
-<div class="movie-image" onclick="handleMovieClick(movie)">
+<div class="movie-image" onclick="handleMovieClick(${movie.id})"
 
 <img src="${movie.image}">
 ${movie.vip ? '<span class="vip-tag">👑 VIP</span>' : ''}
@@ -1222,7 +1212,9 @@ ${movie.vip ? '<span class="vip-tag">👑 VIP</span>' : ''}
 function closeVipPopup(){
   document.getElementById("vipPopup").style.display = "none";
 }
-  function handleMovieClick(movie){
+  function handleMovieClick(id){
+
+    const movie = movies.find(m => m.id === id);
 
     if(movie.vip){
         showVipPopup();
@@ -1230,7 +1222,7 @@ function closeVipPopup(){
     }
 
     openPopup(movie.video);
-  }
+    }
 
 </script>
 <div id="vipPopup" style="display:none;">
