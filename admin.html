@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KurdMan Admin</title>
+
+<style>
+
+body{
+margin:0;
+padding:20px;
+background:#111827;
+color:#fff;
+font-family:Arial;
+}
+
+h1{
+text-align:center;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th,td{
+border:1px solid #333;
+padding:10px;
+text-align:center;
+}
+
+button{
+padding:8px 14px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+color:#fff;
+margin:2px;
+}
+
+.approve{
+background:#16a34a;
+}
+
+.remove{
+background:#dc2626;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🎬 KurdMan Admin Panel</h1>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Username</th>
+
+<th>Email</th>
+
+<th>VIP</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="users"></tbody>
+
+</table>
+
+<script>
+
+async function loadUsers(){
+
+const res=await fetch("https://kurdmantv.com/kurdmantv_api/get_users.php");
+
+const users=await res.json();
+
+let html="";
+
+users.forEach(user=>{
+
+html+=`
+<tr>
+
+<td>${user.id}</td>
+
+<td>${user.username}</td>
+
+<td>${user.email}</td>
+
+<td>${user.is_vip==1?"✅":"❌"}</td>
+
+<td>
+
+<button class="approve"
+onclick="approveVip(${user.id})">
+VIP
+</button>
+
+<button class="remove"
+onclick="removeVip(${user.id})">
+Remove
+</button>
+
+</td>
+
+</tr>
+`;
+
+});
+
+document.getElementById("users").innerHTML=html;
+
+}
+
+loadUsers();
+async function approveVip(id){
+
+const res=await fetch(
+"https://kurdmantv.com/kurdmantv_api/approve_vip.php",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/x-www-form-urlencoded"
+},
+body:"id="+id
+});
+
+const data=await res.json();
+
+alert(data.message);
+
+loadUsers();
+
+}
+
+async function removeVip(id){
+
+const res=await fetch(
+"https://kurdmantv.com/kurdmantv_api/remove_vip.php",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/x-www-form-urlencoded"
+},
+body:"id="+id
+});
+
+const data=await res.json();
+
+alert(data.message);
+
+loadUsers();
+
+}
+
+</script>
+
+</body>
+</html>
