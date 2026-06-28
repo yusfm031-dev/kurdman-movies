@@ -1277,25 +1277,24 @@ ${movie.vip ? '<span class="vip-tag">👑 VIP</span>' : ''}
 `;
 
 });
-  function showVipPopup(){
-  document.getElementById("vipPopup").style.display = "flex";
-}
-
-function closeVipPopup(){
-  document.getElementById("vipPopup").style.display = "none";
-}
-  function handleMovieClick(id){
+function handleMovieClick(id){
 
     const movie = movies.find(m => m.id === id);
-    console.log(movie);
+
+    const user = JSON.parse(localStorage.getItem("user"));
 
     if(movie.vip){
-        showVipPopup();
-        return;
+
+        if(!user || user.is_vip != 1){
+            showVipPopup();
+            return;
+        }
+
     }
 
     openPopup(movie.video);
-    }
+
+}
 
 </script>
 <div id="vipPopup">
@@ -1309,6 +1308,13 @@ function closeVipPopup(){
     </button>
   </div>
 </div>
+  <script>
+const user = localStorage.getItem("user");
+
+if(!user){
+    window.location.replace("login.html");
+}
+  </script>
 
 </body>
 </html>
