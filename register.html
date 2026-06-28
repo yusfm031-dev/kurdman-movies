@@ -1,1 +1,157 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>KurdMan VIP Register</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0d1117;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.register-box{
+width:90%;
+max-width:380px;
+background:#161b22;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,.5);
+}
+
+h2{
+color:#fff;
+text-align:center;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+background:#21262d;
+color:#fff;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#0066ff;
+border:none;
+border-radius:10px;
+color:#fff;
+font-size:17px;
+cursor:pointer;
+margin-top:10px;
+}
+
+#msg{
+margin-top:15px;
+text-align:center;
+color:#fff;
+}
+
+a{
+display:block;
+text-align:center;
+margin-top:15px;
+color:#00aaff;
+text-decoration:none;
+}
+</style>
+
+</head>
+<body>
+
+<div class="register-box">
+
+<h2>دروستکردنی هەژمار</h2>
+
+<input type="text" id="username" placeholder="Username">
+
+<input type="email" id="email" placeholder="Email">
+
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="register()">Register</button>
+
+<div id="msg"></div>
+
+<a href="login.html">هەژمارت هەیە؟ بچۆ بۆ Login</a>
+
+</div>
+
+<script>
+  function register(){
+
+let username=document.getElementById("username").value;
+let email=document.getElementById("email").value;
+let password=document.getElementById("password").value;
+
+let device_id=navigator.userAgent;
+
+fetch("https://kurdmantv.com/kurdmantv_api/register.php",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/x-www-form-urlencoded"
+},
+
+body=
+"username="+encodeURIComponent(username)+
+"&email="+encodeURIComponent(email)+
+"&password="+encodeURIComponent(password)+
+"&device_id="+encodeURIComponent(device_id)
+
+})
+
+.then(res=>res.json())
+
+.then(data=>{
+
+if(data.success){
+
+document.getElementById("msg").innerHTML="✅ هەژمار بە سەرکەوتوویی دروستکرا";
+
+setTimeout(function(){
+
+window.location.href="login.html";
+
+},1500);
+
+}else{
+
+document.getElementById("msg").innerHTML="❌ "+data.message;
+
+}
+
+})
+
+.catch(function(){
+
+document.getElementById("msg").innerHTML="❌ Server Error";
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
