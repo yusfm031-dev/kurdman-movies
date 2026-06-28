@@ -121,37 +121,15 @@ body=
 
 })
 
-.then(res=>res.text())
-.then(data=>{
+.then(res => res.text())
+.then(data => {
     console.log(data);
     document.getElementById("msg").innerHTML = data;
 })
-
-.then(data=>{
-
-if(data.success){
-
-document.getElementById("msg").innerHTML="✅ هەژمار بە سەرکەوتوویی دروستکرا";
-
-setTimeout(function(){
-
-window.location.href="login.html";
-
-},1500);
-
-}else{
-
-document.getElementById("msg").innerHTML="❌ "+data.message;
-
-}
-
-})
-
 .catch(function(){
-
-document.getElementById("msg").innerHTML="❌ Server Error";
-
+    document.getElementById("msg").innerHTML = "❌ Server Error";
 });
+
 
 }
 
