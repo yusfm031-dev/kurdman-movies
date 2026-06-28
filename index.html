@@ -1185,7 +1185,7 @@ movies.forEach(movie => {
 moviesGrid.innerHTML += `
 <div class="movie-card">
 
-<div class="movie-image" onclick="handleMovieClick(${movie.id})"
+<div class="movie-image" onclick="handleMovieClick(${movie.id})">
 
 <img src="${movie.image}">
 ${movie.vip ? '<span class="vip-tag">👑 VIP</span>' : ''}
