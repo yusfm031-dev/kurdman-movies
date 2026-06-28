@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>KurdMan VIP Register</title>
 
 <style>
@@ -88,48 +87,51 @@ text-decoration:none;
 
 <input type="password" id="password" placeholder="Password">
 
-<button onclick="register()">Register</button>
+<button type="button" onclick="registerUser()">Register</button>
 
 <div id="msg"></div>
 
-<a href="login.html">هەژمارت هەیە؟ بچۆ بۆ Login</a>
+<a href="login.html">هەژمارت هەیە؟ Login</a>
 
 </div>
 
 <script>
-  function register(){
-    alert("Register clicked");
-let username=document.getElementById("username").value;
-let email=document.getElementById("email").value;
-let password=document.getElementById("password").value;
 
-let device_id=navigator.userAgent;
+async function registerUser(){
 
-fetch("https://kurdmantv.com/kurdmantv_api/register.php",{
+const username=document.getElementById("username").value.trim();
+const email=document.getElementById("email").value.trim();
+const password=document.getElementById("password").value.trim();
+const device_id=navigator.userAgent;
 
+if(!username || !email || !password){
+document.getElementById("msg").innerHTML="❌ هەموو خانەکان پڕبکە";
+return;
+}
+
+try{
+
+const response=await fetch("https://kurdmantv.com/kurdmantv_api/register.php",{
 method:"POST",
-
 headers:{
 "Content-Type":"application/x-www-form-urlencoded"
 },
-
-body=
+body:
 "username="+encodeURIComponent(username)+
 "&email="+encodeURIComponent(email)+
 "&password="+encodeURIComponent(password)+
 "&device_id="+encodeURIComponent(device_id)
-
-})
-
-.then(res => res.text())
-.then(data => {
-    console.log(data);
-    document.getElementById("msg").innerHTML = data;
-})
-.catch(function(){
-    document.getElementById("msg").innerHTML = "❌ Server Error";
 });
 
+const text=await response.text();
+
+document.getElementById("msg").innerHTML=text;
+
+}catch(e){
+
+document.getElementById("msg").innerHTML="❌ "+e.message;
+
+}
 
 }
 
