@@ -1,11 +1,147 @@
 <!DOCTYPE html>
-<html>
+<html lang="ku">
 <head>
-<title>KurdMan Profile</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Account</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Cairo,sans-serif;
+}
+
+body{
+background:#0d1117;
+color:white;
+padding:20px;
+}
+
+.card{
+max-width:450px;
+margin:auto;
+background:#161b22;
+border-radius:20px;
+padding:25px;
+box-shadow:0 0 20px rgba(0,0,0,.5);
+}
+
+.avatar{
+width:90px;
+height:90px;
+border-radius:50%;
+background:#FFD700;
+color:#000;
+font-size:40px;
+font-weight:bold;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:0 auto 20px;
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+.info{
+margin:15px 0;
+padding:15px;
+background:#222;
+border-radius:12px;
+}
+
+.info b{
+color:#FFD700;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+font-size:18px;
+margin-top:15px;
+cursor:pointer;
+}
+
+.logout{
+background:#e53935;
+color:white;
+}
+
+.password{
+background:#1976d2;
+color:white;
+}
+</style>
 </head>
+
 <body>
 
-Loading...
+<div class="card">
+
+<div class="avatar" id="avatar">K</div>
+
+<h2>My Account</h2>
+
+<div class="info">
+<b>Username:</b>
+<p id="username">Loading...</p>
+</div>
+
+<div class="info">
+<b>Email:</b>
+<p id="email">Loading...</p>
+</div>
+
+<div class="info">
+<b>VIP Status:</b>
+<p id="vip">Loading...</p>
+</div>
+
+<div class="info">
+<b>VIP Expire:</b>
+<p id="expire">Loading...</p>
+</div>
+
+<button class="password">
+Change Password
+</button>
+
+<button class="logout" onclick="logout()">
+Logout
+</button>
+
+</div>
+
+<script>
+
+const user=JSON.parse(localStorage.getItem("user"));
+
+if(!user){
+location.href="login.html";
+}
+
+document.getElementById("username").innerText=user.username;
+document.getElementById("email").innerText=user.email;
+document.getElementById("avatar").innerText=user.username.charAt(0).toUpperCase();
+
+document.getElementById("vip").innerText=user.is_vip==1?"👑 VIP":"Free";
+
+document.getElementById("expire").innerText=user.vip_end||"-";
+
+function logout(){
+localStorage.removeItem("user");
+location.href="login.html";
+}
+
+</script>
 
 </body>
 </html>
