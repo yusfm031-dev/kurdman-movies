@@ -123,10 +123,23 @@ body:
 "&device_id="+encodeURIComponent(device_id)
 });
 
-const text=await response.text();
+const data = await response.json();
 
-document.getElementById("msg").innerHTML=text;
+if (data.success) {
 
+    document.getElementById("msg").innerHTML =
+    "✅ هەژمار بە سەرکەوتوویی دروستکرا";
+
+    setTimeout(function () {
+        window.location.href = "login.html";
+    }, 1500);
+
+} else {
+
+    document.getElementById("msg").innerHTML =
+    "❌ " + data.message;
+
+}
 }catch(e){
 
 document.getElementById("msg").innerHTML="❌ "+e.message;
