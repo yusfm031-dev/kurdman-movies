@@ -121,7 +121,11 @@ body=
 
 })
 
-.then(res=>res.json())
+.then(res=>res.text())
+.then(data=>{
+    console.log(data);
+    document.getElementById("msg").innerHTML = data;
+})
 
 .then(data=>{
 
