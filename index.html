@@ -1145,6 +1145,7 @@ let value = searchInput.value.toLowerCase();
 let cards = document.querySelectorAll(".movie-card");
 
 cards.forEach(card => {
+  
 
 let text = card.innerText.toLowerCase();
 
@@ -1245,6 +1246,7 @@ function closeVipPopup(){
   function handleMovieClick(id){
 
     const movie = movies.find(m => m.id === id);
+    console.log(movie);
 
     if(movie.vip){
         showVipPopup();
@@ -1255,15 +1257,14 @@ function closeVipPopup(){
     }
 
 </script>
-<div id="vipPopup" style="display:none;">
+<div id="vipPopup">
   <div class="vip-box">
     <h2>👑 KurdMan VIP</h2>
 
     <p>ئەم فیلمە تایبەتە بە ئەندامانی KurdMan VIP.</p>
 
     <button>💳 ئیشتراک بکە</button>
-    <button onclick="closeVipPopup()">
-      داخستن
+    <button onclick="closeVipPopup()">داخستن</button>
     </button>
   </div>
 </div>
