@@ -45,6 +45,32 @@
 ➕ Add Movie
 
 </button>
+  <div id="addMovieForm" style="display:none; margin:20px 0;">
+
+<input type="text" id="title" placeholder="Movie Title">
+
+<input type="text" id="poster" placeholder="Poster URL">
+
+<input type="text" id="video_url" placeholder="Video URL">
+
+<input type="text" id="description" placeholder="Description">
+
+<input type="text" id="category" placeholder="Category">
+
+<input type="number" id="year" placeholder="Year">
+
+<input type="text" id="quality" placeholder="1080p">
+
+<select id="vip">
+    <option value="0">Free</option>
+    <option value="1">VIP</option>
+</select>
+
+<button onclick="saveMovie()">
+💾 Save Movie
+</button>
+
+  </div>
 
 <div id="movieList">
 
