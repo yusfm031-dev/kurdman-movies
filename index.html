@@ -753,6 +753,21 @@ font-weight:bold;
   <a href="sports.html">⚽ سپۆرت</a>
   <a href="matches.html">🏆 یاریەکان</a>
   <a href="prayer.html">🕌 نوێژ و کەش و هەوا</a>
+  <a href="profile.html" id="profileLink" style="display:none">
+👤 My Account
+</a>
+
+<a href="login.html" id="loginLink">
+🔐 Login
+</a>
+
+<a href="register.html" id="registerLink">
+📝 Register
+</a>
+
+<a href="#" id="logoutLink" onclick="logout()" style="display:none">
+🚪 Logout
+</a>
 
 </div>
 
@@ -1301,6 +1316,33 @@ function showVipPopup(){
 
 function closeVipPopup(){
     document.getElementById("vipPopup").style.display = "none";
+}
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+
+if(currentUser){
+
+    document.getElementById("loginLink").style.display = "none";
+    document.getElementById("registerLink").style.display = "none";
+
+    document.getElementById("profileLink").style.display = "flex";
+    document.getElementById("logoutLink").style.display = "flex";
+
+}else{
+
+    document.getElementById("loginLink").style.display = "flex";
+    document.getElementById("registerLink").style.display = "flex";
+
+    document.getElementById("profileLink").style.display = "none";
+    document.getElementById("logoutLink").style.display = "none";
+
+}
+
+function logout(){
+
+    localStorage.removeItem("user");
+
+    window.location.href = "login.html";
+
 }
 </script>
 <div id="vipPopup">
