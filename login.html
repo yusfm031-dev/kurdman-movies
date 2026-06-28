@@ -90,7 +90,7 @@ text-align:center;
 
 <input type="password" id="password" placeholder="Password">
 
-<button onclick="login()">Login</button>
+<button type="button" onclick="loginUser()">Login</button>
 
 <div id="msg"></div>
 
@@ -99,12 +99,19 @@ text-align:center;
 </div>
 
 <script>
-  function login(){
+async function loginUser(){
 
-let email=document.getElementById("email").value;
-let password=document.getElementById("password").value;
+const email=document.getElementById("email").value.trim();
+const password=document.getElementById("password").value.trim();
 
-fetch("https://kurdmantv.com/kurdmantv_api/login.php",{
+if(!email || !password){
+document.getElementById("msg").innerHTML="❌ هەموو خانەکان پڕبکە";
+return;
+}
+
+try{
+
+const response=await fetch("https://kurdmantv.com/kurdmantv_api/login.php",{
 
 method:"POST",
 
@@ -116,11 +123,9 @@ body:
 "email="+encodeURIComponent(email)+
 "&password="+encodeURIComponent(password)
 
-})
+});
 
-.then(res=>res.json())
-
-.then(data=>{
+const data=await response.json();
 
 if(data.success){
 
@@ -140,13 +145,11 @@ document.getElementById("msg").innerHTML="❌ "+data.message;
 
 }
 
-})
+}catch(e){
 
-.catch(function(){
+document.getElementById("msg").innerHTML="❌ "+e.message;
 
-document.getElementById("msg").innerHTML="❌ Server Error";
-
-});
+}
 
 }
 </script>
