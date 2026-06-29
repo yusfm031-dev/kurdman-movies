@@ -225,3 +225,100 @@ async function saveMovie() {
     }
 
 }
+function resetForm(){
+
+    document.getElementById("title").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("poster").value = "";
+    document.getElementById("video_url").value = "";
+    document.getElementById("category").value = "";
+    document.getElementById("year").value = "";
+    document.getElementById("quality").value = "";
+    document.getElementById("vip").value = "0";
+
+}
+
+async function deleteMovie(id){
+
+    if(!confirm("Delete this movie?")) return;
+
+    const formData = new FormData();
+
+    formData.append("id", id);
+
+    try{
+
+        const response = await fetch(API + "delete_movie.php",{
+            method:"POST",
+            body:formData
+        });
+
+        const data = await response.json();
+
+        if(data.success){
+
+            alert("✅ Movie Deleted");
+
+            loadMovies();
+
+        }else{
+
+            alert(data.message);
+
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+        alert("❌ Delete Failed");
+
+    }
+
+}
+function editMovie(id){
+
+    const movie = movies.find(m => Number(m.id) === Number(id));
+
+    if(!movie){
+
+        alert("Movie Not Found");
+
+        return;
+
+    }
+
+    document.getElementById("title").value = movie.title;
+    document.getElementById("description").value = movie.description;
+    document.getElementById("poster").value = movie.poster;
+    document.getElementById("video_url").value = movie.video_url;
+    document.getElementById("category").value = movie.category;
+    document.getElementById("year").value = movie.year;
+    document.getElementById("quality").value = movie.quality;
+    document.getElementById("vip").value = movie.vip;
+
+    editMovieId = movie.id;
+
+    movieModal.style.display = "block";
+
+}
+document.getElementById("prevPage").onclick = function(){
+
+    if(currentPage > 1){
+
+        currentPage--;
+
+        renderMovies(movies);
+
+    }
+
+};
+
+document.getElementById("nextPage").onclick = function(){
+
+    currentPage++;
+
+    renderMovies(movies);
+
+};
+console.log("✅ KurdMan Admin Ready");
