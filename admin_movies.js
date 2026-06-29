@@ -44,8 +44,6 @@ async function loadMovies() {
     movieList.innerHTML = "<h3>Loading...</h3>";
 
     try {
-console.log(title);
-console.log(formData);
         const response = await fetch(API + "get_movies.php");
         
 
