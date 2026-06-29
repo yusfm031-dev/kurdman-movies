@@ -90,6 +90,7 @@ document.getElementById("addMovie").onclick = function(){
 };
 
 async function saveMovie(){
+    alert("Save Button Works");
 
     const formData = new FormData();
 
