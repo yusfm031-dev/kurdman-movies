@@ -1,97 +1,85 @@
-async function loadMovies(){
+async function loadMovies() {
 
-    const res = await fetch("https://kurdmantv.com/kurdmantv_api/get_movies.php");
+    try {
 
-    const movies = await res.json();
+        const res = await fetch("https://kurdmantv.com/kurdmantv_api/get_movies.php");
+        const movies = await res.json();
 
-    let html = "";
+        let html = "";
 
-    movies.forEach(movie=>{
+        movies.forEach(movie => {
 
-        html += `
-        <div class="movie-card">
+            html += `
+            <div class="movie-card">
 
-            <img src="${movie.poster}" width="80">
+                <img src="${movie.poster}" width="80">
 
-            <div class="info">
+                <div class="info">
 
-                <h3>${movie.title}</h3>
+                    <h3>${movie.title}</h3>
 
-                <p>${movie.category}</p>
+                    <p>${movie.category}</p>
 
-                <p>${movie.year}</p>
+                    <p>${movie.year}</p>
 
-                <p>${movie.vip==1?"👑 VIP":"🆓 Free"}</p>
+                    <p>${movie.quality}</p>
+
+                    <p>${movie.vip == 1 ? "👑 VIP" : "🆓 Free"}</p>
+
+                    <p>⭐ ${movie.rating}</p>
+
+                    <p>👁 ${movie.views}</p>
+
+                </div>
+
+                <div>
+
+                    <button onclick="editMovie(${movie.id})">
+                    ✏️ Edit
+                    </button>
+
+                    <button onclick="deleteMovie(${movie.id})">
+                    🗑 Delete
+                    </button>
+
+                </div>
 
             </div>
+            `;
 
-            <div>
+        });
 
-                <button onclick="editMovie(${movie.id})">
-                ✏️ Edit
-                </button>
+        document.getElementById("movieList").innerHTML = html;
 
-                <button onclick="deleteMovie(${movie.id})">
-                🗑 Delete
-                </button>
+    } catch (e) {
 
-            </div>
+        document.getElementById("movieList").innerHTML =
+        "<h3 style='color:red'>Loading Error</h3>";
 
-        </div>
-        `;
+        alert(e);
 
-    });
-
-    document.getElementById("movieList").innerHTML = html;
+    }
 
 }
 
 loadMovies();
 
-function editMovie(id){
-
-    alert("Edit Movie ID : "+id);
-
-}
-
-async function deleteMovie(id){
-
-    if(!confirm("Delete Movie?")) return;
-
-    await fetch("https://kurdmantv.com/kurdmantv_api/delete_movie.php",{
-
-        method:"POST",
-
-        headers:{
-            "Content-Type":"application/x-www-form-urlencoded"
-        },
-
-        body:"id="+id
-
-    });
-
-    loadMovies();
-
-}
-document.getElementById("addMovie").onclick = function(){
+document.getElementById("addMovie").onclick = function () {
 
     const form = document.getElementById("addMovieForm");
 
-    if(form.style.display=="none"){
+    if (form.style.display == "none") {
 
-        form.style.display="block";
+        form.style.display = "block";
 
-    }else{
+    } else {
 
-        form.style.display="none";
+        form.style.display = "none";
 
     }
 
 };
-
-async function saveMovie(){
-
-    alert("Save Button Works");
+async function saveMovie() {
 
     const formData = new FormData();
 
@@ -106,13 +94,10 @@ async function saveMovie(){
 
     try {
 
-        const res = await fetch(
-            "https://kurdmantv.com/kurdmantv_api/add_movie.php",
-            {
-                method: "POST",
-                body: formData
-            }
-        );
+        const res = await fetch("https://kurdmantv.com/kurdmantv_api/add_movie.php", {
+            method: "POST",
+            body: formData
+        });
 
         const text = await res.text();
 
@@ -120,10 +105,36 @@ async function saveMovie(){
 
         loadMovies();
 
+        document.getElementById("addMovieForm").style.display = "none";
+
     } catch (e) {
 
-        alert("ERROR:\n" + e);
+        alert("ERROR: " + e);
 
     }
+
+}
+
+document.getElementById("saveMovie").onclick = saveMovie;
+
+function editMovie(id) {
+
+    alert("Edit Movie ID : " + id);
+
+}
+
+async function deleteMovie(id) {
+
+    if (!confirm("Delete Movie?")) return;
+
+    await fetch("https://kurdmantv.com/kurdmantv_api/delete_movie.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "id=" + id
+    });
+
+    loadMovies();
 
 }
