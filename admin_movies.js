@@ -111,9 +111,9 @@ async function saveMovie(){
         }
     );
 
-    const data = await res.json();
+    const text = await res.text();
 
-    alert(data.message);
+alert(text);
 
     loadMovies();
 
