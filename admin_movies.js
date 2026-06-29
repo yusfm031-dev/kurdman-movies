@@ -183,11 +183,13 @@ async function saveMovie() {
 
     } catch (error) {
 
-        console.error(error);
+    console.error(error);
 
-        alert("Connection Error");
+    alert("Connection Error");
 
-    }
+}
+
+}
 
 }
 // ================================
