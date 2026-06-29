@@ -115,7 +115,6 @@ async function saveMovie() {
 
 }
 
-document.getElementById("saveMovie").onclick = saveMovie;
 
 function editMovie(id) {
 
