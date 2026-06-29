@@ -13,51 +13,34 @@
 
 <body>
 
-<div class="sidebar">
+<div class="container">
 
-<h2>🎬 KurdMan</h2>
+<h1>🎬 Movies Manager</h1>
 
-<a href="index.html">🏠 Dashboard</a>
-
-<a href="movies.html" class="active">🎬 Movies</a>
-
-<a href="users.html">👥 Users</a>
-
-<a href="payments.html">💳 Payments</a>
-
-<a href="settings.html">⚙️ Settings</a>
-
-</div>
-
-<div class="main">
-
-<h1>Movie Manager</h1>
-<button id="addMovie" class="btn">
+<button id="addMovieBtn" class="btn">
 ➕ Add Movie
 </button>
 
-<div id="addMovieForm" style="display:none; margin-top:20px;">
+<div id="addMovieForm" style="display:none;">
 
-<input type="text" id="title" placeholder="Movie Title"><br><br>
+<input type="text" id="title" placeholder="Movie Title">
 
-<input type="text" id="poster" placeholder="Poster URL"><br><br>
+<input type="text" id="poster" placeholder="Poster URL">
 
-<input type="text" id="video_url" placeholder="Video URL"><br><br>
+<input type="text" id="video_url" placeholder="Video URL">
 
-<textarea id="description" placeholder="Description"></textarea><br><br>
+<textarea id="description" placeholder="Description"></textarea>
 
-<input type="text" id="category" placeholder="Category"><br><br>
+<input type="text" id="category" placeholder="Category">
 
-<input type="number" id="year" placeholder="Year"><br><br>
+<input type="number" id="year" placeholder="Year">
 
-<input type="text" id="quality" placeholder="1080p"><br><br>
+<input type="text" id="quality" placeholder="1080P">
 
 <select id="vip">
-    <option value="0">Free</option>
-    <option value="1">VIP</option>
+<option value="0">Free</option>
+<option value="1">VIP</option>
 </select>
-
-<br><br>
 
 <button id="saveMovie" class="btn">
 💾 Save Movie
@@ -65,14 +48,17 @@
 
 </div>
 
-<hr style="margin:30px 0;">
+<hr>
 
 <div id="movieList">
-Loading...
-</div>
-<script src="admin_movies.js"></script>
+
+<h3>Loading...</h3>
 
 </div>
+
+</div>
+
+<script src="admin_movies.js"></script>
 
 </body>
 </html>
