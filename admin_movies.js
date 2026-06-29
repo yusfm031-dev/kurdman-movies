@@ -58,9 +58,12 @@ async function loadMovies() {
 
         let html = "";
 
-        movies.forEach(movie => {
+        const movies = await response.json();
 
-    html += `
+        console.log(response.status);
+        console.log(movies);
+
+        let html = "";
     <div class="movie-card"
          style="display:flex;
                 justify-content:space-between;
