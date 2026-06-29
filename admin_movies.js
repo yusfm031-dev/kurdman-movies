@@ -22,7 +22,7 @@ async function loadMovies() {
 
     try {
 
-        const response = await fetch(API + "get_movies.php");
+        const response = await fetch("https://kurdmantv.com/kurdmantv_api/get_movies.php");
 
         const movies = await response.json();
 
