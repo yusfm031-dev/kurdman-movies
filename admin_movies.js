@@ -1,18 +1,19 @@
-// ===============================
+// ================================
 // KurdMan Admin CMS v2
 // admin_movies.js
-// Part 1
-// ===============================
+// Part 3
+// ================================
 
 const API = "https://kurdmantv.com/kurdmantv_api/";
 
 const movieList = document.getElementById("movieList");
-const addMovieBtn = document.getElementById("addMovie");
+const addMovieBtn = document.getElementById("addMovieBtn");
 const addMovieForm = document.getElementById("addMovieForm");
 const saveMovieBtn = document.getElementById("saveMovie");
 
-// Toggle Add Movie Form
-addMovieBtn.addEventListener("click", () => {
+// Show / Hide Form
+
+addMovieBtn.onclick = () => {
 
     if (addMovieForm.style.display === "none" || addMovieForm.style.display === "") {
 
@@ -24,18 +25,19 @@ addMovieBtn.addEventListener("click", () => {
 
     }
 
-});
+};
 
 // Page Loaded
+
 document.addEventListener("DOMContentLoaded", () => {
 
     loadMovies();
 
 });
-// ===============================
-// Part 2
+
+// ================================
 // Load Movies
-// ===============================
+// ================================
 
 async function loadMovies() {
 
@@ -46,117 +48,110 @@ async function loadMovies() {
         const response = await fetch(API + "get_movies.php");
 
         if (!response.ok) {
+
             throw new Error("API Error");
+
         }
 
         const movies = await response.json();
+        window.moviesData = movies;
 
         if (!Array.isArray(movies)) {
+
             movieList.innerHTML = "<h3>No Movies Found</h3>";
+
             return;
+
         }
 
         let html = "";
+        movies.forEach(movie => {
 
-        const movies = await response.json();
+            html += `
 
-        console.log(response.status);
-        console.log(movies);
+            <div class="movie-card">
 
-        let html = "";
-    <div class="movie-card"
-         style="display:flex;
-                justify-content:space-between;
-                align-items:center;
-                background:#1e293b;
-                padding:15px;
-                margin-bottom:15px;
-                border-radius:10px;">
+                <img src="${movie.poster}" alt="${movie.title}">
 
-        <div style="display:flex;align-items:center;gap:15px;">
+                <div class="movie-info">
 
-            <img src="${movie.poster}"
-                 width="80"
-                 style="border-radius:8px;">
+                    <h2>${movie.title}</h2>
 
-            <div>
+                    <p>📂 ${movie.category}</p>
 
-                <h3>${movie.title}</h3>
+                    <p>📅 ${movie.year}</p>
 
-                <p>${movie.category}</p>
+                    <p>🎞 ${movie.quality}</p>
 
-                <p>${movie.year}</p>
+                    <p>${movie.vip == 1
+                        ? '<span class="vip">👑 VIP</span>'
+                        : '<span class="free">🆓 Free</span>'}</p>
 
-                <p>${movie.vip == 1 ? "👑 VIP" : "🆓 Free"}</p>
+                    <p>⭐ Rating : ${movie.rating} (${movie.rating_count})</p>
+
+                    <p>👁 Views : ${movie.views}</p>
+
+                    <p>❤️ Favorites : ${movie.favorites}</p>
+
+                    <div class="actions">
+
+                        <button
+                        class="btn edit-btn"
+                        onclick="editMovie(${movie.id})">
+
+                        ✏ Edit
+
+                        </button>
+
+                        <button
+                        class="btn delete-btn"
+                        onclick="deleteMovie(${movie.id})">
+
+                        🗑 Delete
+
+                        </button>
+
+                    </div>
+
+                </div>
 
             </div>
 
-        </div>
+            `;
 
-        <div>
-
-            <button class="btn"
-                onclick="editMovie(${movie.id})">
-                ✏️ Edit
-            </button>
-
-            <button class="btn"
-                onclick="deleteMovie(${movie.id})">
-                🗑 Delete
-            </button>
-
-        </div>
-
-    </div>
-    `;
-
-});
+        });
 
         movieList.innerHTML = html;
 
-    } catch (error) {
+    }
 
-        alert(error);
-console.error(error);
+    catch(error){
 
-        movieList.innerHTML = "<h3>❌ Failed To Load Movies</h3>";
+        console.error(error);
+
+        movieList.innerHTML = "<h2>❌ Failed To Load Movies</h2>";
 
     }
 
 }
-// ===============================
-// Part 3
+// ================================
 // Save Movie
-// ===============================
+// ================================
 
 saveMovieBtn.addEventListener("click", saveMovie);
 
 async function saveMovie() {
 
-    const title = document.getElementById("title").value.trim();
-    const poster = document.getElementById("poster").value.trim();
-    const video_url = document.getElementById("video_url").value.trim();
-    const description = document.getElementById("description").value.trim();
-    const category = document.getElementById("category").value.trim();
-    const year = document.getElementById("year").value.trim();
-    const quality = document.getElementById("quality").value.trim();
-    const vip = document.getElementById("vip").value;
-
-    if (!title || !poster || !video_url) {
-        alert("Please fill Title, Poster and Video URL");
-        return;
-    }
-
     const formData = new FormData();
 
-    formData.append("title", title);
-    formData.append("poster", poster);
-    formData.append("video_url", video_url);
-    formData.append("description", description);
-    formData.append("category", category);
-    formData.append("year", year);
-    formData.append("quality", quality);
-    formData.append("vip", vip);
+    formData.append("title", document.getElementById("title").value.trim());
+    formData.append("poster", document.getElementById("poster").value.trim());
+    formData.append("video_url", document.getElementById("video_url").value.trim());
+    formData.append("description", document.getElementById("description").value.trim());
+    formData.append("category", document.getElementById("category").value.trim());
+    formData.append("year", document.getElementById("year").value.trim());
+    formData.append("quality", document.getElementById("quality").value.trim());
+    formData.append("vip", document.getElementById("vip").value);
 
     try {
 
@@ -195,49 +190,98 @@ async function saveMovie() {
     }
 
 }
-// ===============================
-// Part 4
-// Edit & Delete
-// ===============================
+// ================================
+// Edit Movie
+// ================================
 
 function editMovie(id){
 
-    alert("Edit Movie ID : " + id);
+    const movie = window.moviesData.find(m => m.id == id);
+
+    if(!movie) return;
+
+    addMovieForm.style.display = "block";
+
+    document.getElementById("title").value = movie.title;
+    document.getElementById("poster").value = movie.poster;
+    document.getElementById("video_url").value = movie.video_url;
+    document.getElementById("description").value = movie.description;
+    document.getElementById("category").value = movie.category;
+    document.getElementById("year").value = movie.year;
+    document.getElementById("quality").value = movie.quality;
+    document.getElementById("vip").value = movie.vip;
+
+    saveMovieBtn.innerHTML = "💾 Update Movie";
+
+    saveMovieBtn.onclick = () => updateMovie(id);
 
 }
+
+// ================================
+// Update Movie
+// ================================
+
+async function updateMovie(id){
+
+    const formData = new FormData();
+
+    formData.append("id", id);
+    formData.append("title", document.getElementById("title").value.trim());
+    formData.append("poster", document.getElementById("poster").value.trim());
+    formData.append("video_url", document.getElementById("video_url").value.trim());
+    formData.append("description", document.getElementById("description").value.trim());
+    formData.append("category", document.getElementById("category").value.trim());
+    formData.append("year", document.getElementById("year").value.trim());
+    formData.append("quality", document.getElementById("quality").value.trim());
+    formData.append("vip", document.getElementById("vip").value);
+
+    const response = await fetch(API + "update_movie.php",{
+        method:"POST",
+        body:formData
+    });
+
+    const result = await response.json();
+
+    alert(result.message);
+
+    if(result.success){
+
+        saveMovieBtn.innerHTML="💾 Save Movie";
+        saveMovieBtn.onclick=saveMovie;
+
+        addMovieForm.style.display="none";
+
+        loadMovies();
+
+    }
+
+}
+
+// ================================
+// Delete Movie
+// ================================
 
 async function deleteMovie(id){
 
     if(!confirm("Delete this movie?")) return;
 
-    try{
+    const formData = new FormData();
 
-        const formData = new FormData();
+    formData.append("id",id);
 
-        formData.append("id", id);
+    const response = await fetch(API+"delete_movie.php",{
+        method:"POST",
+        body:formData
+    });
 
-        const response = await fetch(API + "delete_movie.php",{
-            method:"POST",
-            body:formData
-        });
+    const result = await response.json();
 
-        const result = await response.json();
+    alert(result.message);
 
-        alert(result.message);
+    if(result.success){
 
-        if(result.success){
-
-            loadMovies();
-
-        }
-
-    }catch(error){
-
-        console.error(error);
-
-        alert("Delete Failed");
+        loadMovies();
 
     }
 
-       }
-
+}
