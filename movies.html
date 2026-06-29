@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>KurdMan Admin - Movies</title>
 
 <link rel="stylesheet" href="admin.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
@@ -20,247 +15,64 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <div class="sidebar">
 
-<div class="logo">
-
 <h2>🎬 KurdMan</h2>
 
-<p>Admin Panel</p>
+<a href="index.html">🏠 Dashboard</a>
 
-</div>
+<a href="movies.html" class="active">🎬 Movies</a>
 
-<ul>
+<a href="users.html">👥 Users</a>
 
-<li class="active">
+<a href="payments.html">💳 Payments</a>
 
-<a href="movies.html">
-
-<i class="fa-solid fa-film"></i>
-
-Movies
-
-</a>
-
-</li>
-
-<li>
-
-<a href="users.html">
-
-<i class="fa-solid fa-users"></i>
-
-Users
-
-</a>
-
-</li>
-
-<li>
-
-<a href="payments.html">
-
-<i class="fa-solid fa-credit-card"></i>
-
-Payments
-
-</a>
-
-</li>
-
-<li>
-
-<a href="settings.html">
-
-<i class="fa-solid fa-gear"></i>
-
-Settings
-
-</a>
-
-</li>
-
-<li>
-
-<a href="admin.html">
-
-<i class="fa-solid fa-chart-line"></i>
-
-Dashboard
-
-</a>
-
-</li>
-
-</ul>
+<a href="settings.html">⚙️ Settings</a>
 
 </div>
 
 <div class="main">
 
-<div class="topbar">
-
-<h1>
-
-🎬 Movie Manager
-
-</h1>
-
-<div class="top-actions">
-
-<input
-type="text"
-id="searchMovie"
-placeholder="Search Movie...">
-
-<button id="addMovie">
-
-<i class="fa-solid fa-plus"></i>
-
-Add Movie
-
+<h1>Movie Manager</h1>
+<button id="addMovie" class="btn">
+➕ Add Movie
 </button>
 
-</div>
+<div id="addMovieForm" style="display:none; margin-top:20px;">
 
-</div>
-<div class="stats">
+<input type="text" id="title" placeholder="Movie Title"><br><br>
 
-<div class="card">
-<h2 id="totalMovies">0</h2>
-<p>Total Movies</p>
-</div>
+<input type="text" id="poster" placeholder="Poster URL"><br><br>
 
-<div class="card">
-<h2 id="vipMovies">0</h2>
-<p>VIP Movies</p>
-</div>
+<input type="text" id="video_url" placeholder="Video URL"><br><br>
 
-<div class="card">
-<h2 id="freeMovies">0</h2>
-<p>Free Movies</p>
-</div>
+<textarea id="description" placeholder="Description"></textarea><br><br>
 
-<div class="card">
-<h2 id="totalViews">0</h2>
-<p>Total Views</p>
-</div>
+<input type="text" id="category" placeholder="Category"><br><br>
 
-</div>
+<input type="number" id="year" placeholder="Year"><br><br>
 
-<div class="movie-container">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Poster</th>
-
-<th>Title</th>
-
-<th>Category</th>
-
-<th>Year</th>
-
-<th>Quality</th>
-
-<th>Type</th>
-
-<th>Views</th>
-
-<th>Actions</th>
-
-</tr>
-
-</thead>
-
-<tbody id="movieList">
-
-<tr>
-
-<td colspan="8">
-
-Loading Movies...
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-<div class="modal" id="movieModal">
-
-<div class="modal-content">
-
-<h2>Add Movie</h2>
-
-<input type="text" id="title" placeholder="Movie Title">
-
-<input type="text" id="poster" placeholder="Poster URL">
-
-<input type="text" id="video_url" placeholder="Video URL">
-
-<textarea id="description" placeholder="Description"></textarea>
-
-<input type="text" id="category" placeholder="Category">
-
-<input type="number" id="year" placeholder="Year">
-
-<input type="text" id="quality" placeholder="1080P">
+<input type="text" id="quality" placeholder="1080p"><br><br>
 
 <select id="vip">
-
-<option value="0">Free</option>
-
-<option value="1">VIP</option>
-
+    <option value="0">Free</option>
+    <option value="1">VIP</option>
 </select>
 
-<div class="buttons">
+<br><br>
 
-<button id="saveMovie">
-
+<button id="saveMovie" class="btn">
 💾 Save Movie
-
-</button>
-
-<button id="closeModal">
-
-❌ Close
-
 </button>
 
 </div>
 
+<hr style="margin:30px 0;">
+
+<div id="movieList">
+Loading...
 </div>
-
-</div>
-<div class="pagination">
-
-<button id="prevPage">
-⬅ Previous
-</button>
-
-<span id="pageNumber">
-
-Page 1
-
-</span>
-
-<button id="nextPage">
-Next ➡
-</button>
-
-</div>
-
-</div>
-
 <script src="admin_movies.js"></script>
 
-</body>
+</div>
 
+</body>
 </html>
