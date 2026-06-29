@@ -127,14 +127,30 @@ const user=JSON.parse(localStorage.getItem("user"));
 if(!user){
 location.href="login.html";
 }
+  const formData = new FormData();
+formData.append("id", user.id);
 
-document.getElementById("username").innerText=user.username;
-document.getElementById("email").innerText=user.email;
-document.getElementById("avatar").innerText=user.username.charAt(0).toUpperCase();
+fetch("https://kurdmantv.com/kurdmantv_api/profile.php", {
+    method: "POST",
+    body: formData
+})
+.then(res => res.json())
+.then(data => {
 
-document.getElementById("vip").innerText=user.is_vip==1?"👑 VIP":"Free";
+    if(data.success){
 
-document.getElementById("expire").innerText=user.vip_end||"-";
+        const u = data.user;
+
+        document.getElementById("username").innerText = u.username;
+        document.getElementById("email").innerText = u.email;
+        document.getElementById("avatar").innerText = u.username.charAt(0).toUpperCase();
+        document.getElementById("vip").innerText = u.is_vip == 1 ? "👑 VIP" : "Free";
+        document.getElementById("expire").innerText = u.vip_end ?? "-";
+
+    }
+
+});
+
 
 function logout(){
 localStorage.removeItem("user");
