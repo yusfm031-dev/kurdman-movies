@@ -90,31 +90,40 @@ document.getElementById("addMovie").onclick = function(){
 };
 
 async function saveMovie(){
+
     alert("Save Button Works");
 
     const formData = new FormData();
 
-    formData.append("title",document.getElementById("title").value);
-    formData.append("description",document.getElementById("description").value);
-    formData.append("poster",document.getElementById("poster").value);
-    formData.append("video_url",document.getElementById("video_url").value);
-    formData.append("category",document.getElementById("category").value);
-    formData.append("year",document.getElementById("year").value);
-    formData.append("quality",document.getElementById("quality").value);
-    formData.append("vip",document.getElementById("vip").value);
+    formData.append("title", document.getElementById("title").value);
+    formData.append("description", document.getElementById("description").value);
+    formData.append("poster", document.getElementById("poster").value);
+    formData.append("video_url", document.getElementById("video_url").value);
+    formData.append("category", document.getElementById("category").value);
+    formData.append("year", document.getElementById("year").value);
+    formData.append("quality", document.getElementById("quality").value);
+    formData.append("vip", document.getElementById("vip").value);
 
-    const res = await fetch(
-        "https://kurdmantv.com/kurdmantv_api/add_movie.php",
-        {
-            method:"POST",
-            body:formData
-        }
-    );
+    try {
 
-    const text = await res.text();
+        const res = await fetch(
+            "https://kurdmantv.com/kurdmantv_api/add_movie.php",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
 
-alert(text);
+        const text = await res.text();
 
-    loadMovies();
+        alert(text);
+
+        loadMovies();
+
+    } catch (e) {
+
+        alert("ERROR:\n" + e);
+
+    }
 
 }
