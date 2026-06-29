@@ -113,7 +113,8 @@ async function loadMovies() {
 
     } catch (error) {
 
-        console.error(error);
+        alert(error);
+console.error(error);
 
         movieList.innerHTML = "<h3>❌ Failed To Load Movies</h3>";
 
