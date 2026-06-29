@@ -188,6 +188,7 @@ async function saveMovie() {
     alert("Connection Error");
 
 }
+}
 
 
 
