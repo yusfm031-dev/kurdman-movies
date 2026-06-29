@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>KurdMan Admin - Movies</title>
 
 <link rel="stylesheet" href="admin.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
@@ -14,38 +20,183 @@
 
 <div class="sidebar">
 
+<div class="logo">
+
 <h2>🎬 KurdMan</h2>
 
-<a href="admin.html">🏠 Dashboard</a>
-
-<a href="movies.html" class="active">
-🎬 Movies
-</a>
-
-<a href="users.html">
-👥 Users
-</a>
-
-<a href="payments.html">
-💳 Payments
-</a>
-
-<a href="settings.html">
-⚙️ Settings
-</a>
+<p>Admin Panel</p>
 
 </div>
 
-<div class="content">
+<ul>
 
-<h1>🎬 Movie Manager</h1>
+<li class="active">
+
+<a href="movies.html">
+
+<i class="fa-solid fa-film"></i>
+
+Movies
+
+</a>
+
+</li>
+
+<li>
+
+<a href="users.html">
+
+<i class="fa-solid fa-users"></i>
+
+Users
+
+</a>
+
+</li>
+
+<li>
+
+<a href="payments.html">
+
+<i class="fa-solid fa-credit-card"></i>
+
+Payments
+
+</a>
+
+</li>
+
+<li>
+
+<a href="settings.html">
+
+<i class="fa-solid fa-gear"></i>
+
+Settings
+
+</a>
+
+</li>
+
+<li>
+
+<a href="admin.html">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+
+<h1>
+
+🎬 Movie Manager
+
+</h1>
+
+<div class="top-actions">
+
+<input
+type="text"
+id="searchMovie"
+placeholder="Search Movie...">
 
 <button id="addMovie">
 
-➕ Add Movie
+<i class="fa-solid fa-plus"></i>
+
+Add Movie
 
 </button>
-  <div id="addMovieForm" style="display:none; margin:20px 0;">
+
+</div>
+
+</div>
+<div class="stats">
+
+<div class="card">
+<h2 id="totalMovies">0</h2>
+<p>Total Movies</p>
+</div>
+
+<div class="card">
+<h2 id="vipMovies">0</h2>
+<p>VIP Movies</p>
+</div>
+
+<div class="card">
+<h2 id="freeMovies">0</h2>
+<p>Free Movies</p>
+</div>
+
+<div class="card">
+<h2 id="totalViews">0</h2>
+<p>Total Views</p>
+</div>
+
+</div>
+
+<div class="movie-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Poster</th>
+
+<th>Title</th>
+
+<th>Category</th>
+
+<th>Year</th>
+
+<th>Quality</th>
+
+<th>Type</th>
+
+<th>Views</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="movieList">
+
+<tr>
+
+<td colspan="8">
+
+Loading Movies...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<div class="modal" id="movieModal">
+
+<div class="modal-content">
+
+<h2>Add Movie</h2>
 
 <input type="text" id="title" placeholder="Movie Title">
 
@@ -53,28 +204,56 @@
 
 <input type="text" id="video_url" placeholder="Video URL">
 
-<input type="text" id="description" placeholder="Description">
+<textarea id="description" placeholder="Description"></textarea>
 
 <input type="text" id="category" placeholder="Category">
 
 <input type="number" id="year" placeholder="Year">
 
-<input type="text" id="quality" placeholder="1080p">
+<input type="text" id="quality" placeholder="1080P">
 
 <select id="vip">
-    <option value="0">Free</option>
-    <option value="1">VIP</option>
+
+<option value="0">Free</option>
+
+<option value="1">VIP</option>
+
 </select>
 
+<div class="buttons">
+
 <button id="saveMovie">
+
 💾 Save Movie
+
 </button>
 
-  </div>
+<button id="closeModal">
 
-<div id="movieList">
+❌ Close
 
-Loading...
+</button>
+
+</div>
+
+</div>
+
+</div>
+<div class="pagination">
+
+<button id="prevPage">
+⬅ Previous
+</button>
+
+<span id="pageNumber">
+
+Page 1
+
+</span>
+
+<button id="nextPage">
+Next ➡
+</button>
 
 </div>
 
