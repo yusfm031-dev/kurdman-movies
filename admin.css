@@ -1,22 +1,29 @@
-body{
+*{
     margin:0;
-    font-family:Arial,sans-serif;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Cairo,sans-serif;
+}
+
+body{
     background:#0f172a;
-    color:white;
-    display:flex;
+    color:#fff;
 }
 
 .sidebar{
-    width:240px;
+    position:fixed;
+    width:250px;
+    height:100vh;
     background:#111827;
-    min-height:100vh;
+    left:0;
+    top:0;
     padding:20px;
-    box-sizing:border-box;
 }
 
 .sidebar h2{
-    text-align:center;
+    color:#3b82f6;
     margin-bottom:30px;
+    text-align:center;
 }
 
 .sidebar a{
@@ -24,35 +31,36 @@ body{
     color:white;
     text-decoration:none;
     padding:12px;
+    border-radius:10px;
     margin-bottom:10px;
-    border-radius:8px;
     transition:.3s;
 }
 
-.sidebar a:hover,
-.sidebar .active{
+.sidebar a:hover{
     background:#2563eb;
 }
 
-.content{
-    flex:1;
-    padding:30px;
+.main{
+    margin-left:270px;
+    padding:25px;
 }
 
-#addMovie{
-    background:#16a34a;
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.btn{
+    background:#2563eb;
     color:white;
     border:none;
     padding:12px 20px;
-    border-radius:8px;
+    border-radius:10px;
     cursor:pointer;
-    font-size:16px;
 }
 
-#movieList{
-    margin-top:20px;
-    background:#1e293b;
-    border-radius:10px;
-    padding:20px;
-    min-height:300px;
+.btn:hover{
+    background:#1d4ed8;
 }
