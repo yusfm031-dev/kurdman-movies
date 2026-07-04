@@ -132,16 +132,11 @@ if(data.success){
 localStorage.setItem("user",JSON.stringify(data.user));
 
 document.getElementById("msg").innerHTML="✅ چوونەژوورەوە سەرکەوتوو بوو";
+setTimeout(function(){
 
-const movieId = localStorage.getItem("vipMovieId");
+window.location.href="index.html";
 
-if(movieId){
-    localStorage.removeItem("vipMovieId");
-    window.location.href = "index.html?movie=" + movieId;
-}else{
-    window.location.href = "index.html";
-}
-return;
+},1000);
 
 }else{
 
