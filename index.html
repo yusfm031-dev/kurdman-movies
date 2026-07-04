@@ -1292,23 +1292,44 @@ ${movie.vip ? '<span class="vip-tag">👑 VIP</span>' : ''}
 `;
 
 });
-function handleMovieClick(id){
+async function handleMovieClick(id){
 
     const movie = movies.find(m => m.id === id);
+
+    if(!movie) return;
 
     const user = JSON.parse(localStorage.getItem("user"));
 
     if(movie.vip){
 
-        if(!user || user.is_vip != 1){
+        if(!user){
             showVipPopup();
             return;
         }
 
+        try{
+
+            const res = await fetch(
+                "https://kurdmantv.com/kurdmantv_api/check_vip.php?id=" + user.id
+            );
+
+            const data = await res.json();
+
+            if(data.success && data.vip){
+                openPopup(movie.video);
+            }else{
+                showVipPopup();
+            }
+
+        }catch(e){
+            console.log(e);
+            alert("VIP Check Error");
+        }
+
+        return;
     }
 
     openPopup(movie.video);
-
 }
 function showVipPopup(){
     document.getElementById("vipPopup").style.display = "flex";
