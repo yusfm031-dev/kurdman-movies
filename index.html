@@ -1310,24 +1310,23 @@ showVipPopup();
 
         try{
 
-            const res = await fetch(
-                "https://kurdmantv.com/kurdmantv_api/check_vip.php?id=" + user.id
-            );
+    const res = await fetch(
+        "https://kurdmantv.com/kurdmantv_api/check_vip.php?id=" + user.id
+    );
 
-            const data = await res.json();
+    const data = await res.json();
 
-            if(data.success && data.vip){
-                openPopup(movie.video);
-            }else{
-                showVipPopup();
-            }
+    if(data.success && data.vip){
+        openPopup(movie.video);
+    }else{
+        showVipPopup();
+    }
 
-  
-catch(e){
+}catch(e){
     console.log(e);
     alert(e.message);
     showVipPopup();
-}
+        }
         return;
     }
 
