@@ -1303,8 +1303,7 @@ async function handleMovieClick(id){
     if(movie.vip){
 
         if(!user){
-            localStorage.setItem("vipMovieId", id);
-showVipPopup();
+            showVipPopup();
             return;
         }
 
