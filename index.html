@@ -1322,10 +1322,11 @@ showVipPopup();
                 showVipPopup();
             }
 
-        }catch(e){
-            console.log(e);
-            alert("VIP Check Error");
-        }
+        catch(e){
+    console.log(e);
+    alert(e.message);
+    showVipPopup();
+}
 
         return;
     }
