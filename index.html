@@ -1294,19 +1294,40 @@ ${movie.vip ? '<span class="vip-tag">👑 VIP</span>' : ''}
 });
 async function handleMovieClick(id){
 
-    const movie = movies.find(m => m.id === id);
-
+    const movie = movies.find(m => m.id == id);
     if(!movie) return;
 
+    // فیلمی ئاسایی
+    if(!movie.vip){
+        openPopup(movie.video);
+        return;
+    }
+
+    // Login نەکراوە
     const user = JSON.parse(localStorage.getItem("user"));
 
-    if(movie.vip){
+    if(!user){
+        localStorage.setItem("vipMovieId", id);
+        window.location.href = "login.html";
+        return;
+    }
 
-        if(!user){
-           localStorage.setItem("vipMovieId", id);
-showVipPopup(); 
-            return;
+    try{
+
+        const res = await fetch("https://kurdmantv.com/kurdmantv_api/check_vip.php?id=" + user.id);
+        const data = await res.json();
+
+        if(data.success && data.vip){
+            openPopup(movie.video);
+        }else{
+            showVipPopup();
         }
+
+    }catch(e){
+        alert("Connection Error");
+    }
+
+}
 
         try{
 
