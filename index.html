@@ -1322,6 +1322,7 @@ alert(user.id);
         );
 
         const data = await res.json();
+      alert(JSON.stringify(data));
 
         if(data.success && data.vip){
             openPopup(movie.video);
