@@ -1295,7 +1295,6 @@ ${movie.vip ? '<span class="vip-tag">👑 VIP</span>' : ''}
 async function handleMovieClick(id){
 
     const movie = movies.find(m => m.id == id);
-  alert(movie.vip);
     if(!movie) return; 
   
 if(!movie.vip){
