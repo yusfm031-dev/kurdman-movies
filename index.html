@@ -1304,7 +1304,7 @@ async function handleMovieClick(id){
     id: localStorage.getItem("userId")
 };
 
-    if(!user.id){
+    if(!user){
         localStorage.setItem("vipMovieId", id);
         window.location.href = "login.html";
         return;
