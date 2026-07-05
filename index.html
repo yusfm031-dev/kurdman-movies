@@ -1296,8 +1296,12 @@ async function handleMovieClick(id){
 
     const movie = movies.find(m => m.id == id);
   alert(movie.vip);
-    if(!movie) return;
-
+    if(!movie) return; 
+  
+if(!movie.vip){
+    openPopup(movie.video);
+    return;
+}
   
 
     // Login نەکراوە
