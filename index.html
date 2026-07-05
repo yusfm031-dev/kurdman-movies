@@ -1329,33 +1329,9 @@ async function handleMovieClick(id){
         alert("Connection Error");
     }
 
-}
+}    
 
-        try{
-
-    const res = await fetch(
-        "https://kurdmantv.com/kurdmantv_api/check_vip.php?id=" + user.id
-    );
-
-    const data = await res.json();
-
-    if(data.success && data.vip){
-    alert(movie.video);
-    openPopup(movie.video);
-}else{
-    showVipPopup();
-    }
-
-}catch(e){
-    console.log(e);
-    alert(e.message);
-    showVipPopup();
-        }
-        return;
-    }
-
-    openPopup(movie.video);
-}
+    
 function showVipPopup(){
     document.getElementById("vipPopup").style.display = "flex";
 }
