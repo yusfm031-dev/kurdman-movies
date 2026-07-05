@@ -1317,9 +1317,10 @@ showVipPopup();
     const data = await res.json();
 
     if(data.success && data.vip){
-        openPopup(movie.video);
-    }else{
-        showVipPopup();
+    alert(movie.video);
+    openPopup(movie.video);
+}else{
+    showVipPopup();
     }
 
 }catch(e){
