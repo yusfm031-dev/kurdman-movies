@@ -1297,18 +1297,14 @@ async function handleMovieClick(id){
     const movie = movies.find(m => m.id == id);
     if(!movie) return;
 
-    // فیلمی ئاسایی
-    if(!movie.vip){
-        openPopup(movie.video);
-        return;
-    }
+  
 
     // Login نەکراوە
     const user = {
     id: localStorage.getItem("userId")
 };
 
-    if(!user){
+    if(!user.id){
         localStorage.setItem("vipMovieId", id);
         window.location.href = "login.html";
         return;
