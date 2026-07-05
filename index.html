@@ -1295,43 +1295,43 @@ ${movie.vip ? '<span class="vip-tag">👑 VIP</span>' : ''}
 async function handleMovieClick(id){
 
     const movie = movies.find(m => m.id == id);
-    if(!movie) return; 
-  
-if(!movie.vip){
-    openPopup(movie.video);
-    return;
-}
-  
+    if(!movie) return;
 
-    // Login نەکراوە
-    const user = {
-    id: localStorage.getItem("userId")
-};
-
-if(!user.id){
-    localStorage.setItem("vipMovieId", id);
-    window.location.href = "login.html";
-    return;
-}
-
-   try {
-    const res = await fetch(
-        "https://kurdmantv.com/kurdmantv_api/check_vip.php?id=" + user.id
-    );
-
-    const data = await res.json();
-
-    if (data.success && data.vip) {
+    // فیلمی ئاسایی
+    if(!movie.vip){
         openPopup(movie.video);
-    } else {
+        return;
+    }
+
+    // زانیاری بەکارهێنەر
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    // ئەگەر Login نەبوو
+    if(!user){
+        showVipPopup();
+        return;
+    }
+
+    try{
+
+        const res = await fetch(
+            "https://kurdmantv.com/kurdmantv_api/check_vip.php?id=" + user.id
+        );
+
+        const data = await res.json();
+
+        if(data.success && data.vip){
+            openPopup(movie.video);
+        }else{
+            showVipPopup();
+        }
+
+    }catch(e){
+        console.log(e);
         showVipPopup();
     }
-    } 
 
-catch(e){
-    console.log(e);
 }
-          }
     
 function showVipPopup(){
     document.getElementById("vipPopup").style.display = "flex";
