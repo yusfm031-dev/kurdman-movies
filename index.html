@@ -1304,7 +1304,9 @@ async function handleMovieClick(id){
     }
 
     // Login نەکراوە
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = {
+    id: localStorage.getItem("userId")
+};
 
     if(!user){
         localStorage.setItem("vipMovieId", id);
