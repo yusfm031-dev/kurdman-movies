@@ -1317,9 +1317,11 @@ async function handleMovieClick(id){
 console.log(user);
 alert(user.id);
       
+      alert("before fetch");
         const res = await fetch(
             "https://kurdmantv.com/kurdmantv_api/check_vip.php?id=" + user.id
         );
+      alert("after fetch");
 
         const data = await res.json();
       
