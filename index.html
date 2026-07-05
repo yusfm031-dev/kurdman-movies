@@ -1367,6 +1367,14 @@ function logout(){
     window.location.href = "login.html";
 
 }
+  const params = new URLSearchParams(window.location.search);
+const movieId = params.get("movie");
+
+if (movieId) {
+    setTimeout(() => {
+        handleMovieClick(parseInt(movieId));
+    }, 500);
+                                  }
 </script>
 <div id="vipPopup">
   <div class="vip-box">
