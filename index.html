@@ -1313,7 +1313,10 @@ async function handleMovieClick(id){
     }
 
     try{
-
+      
+console.log(user);
+alert(user.id);
+      
         const res = await fetch(
             "https://kurdmantv.com/kurdmantv_api/check_vip.php?id=" + user.id
         );
