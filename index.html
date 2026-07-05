@@ -1304,11 +1304,11 @@ async function handleMovieClick(id){
     id: localStorage.getItem("userId")
 };
 
-    if(!user){
-        localStorage.setItem("vipMovieId", id);
-        window.location.href = "login.html";
-        return;
-    }
+if(!user.id){
+    localStorage.setItem("vipMovieId", id);
+    window.location.href = "login.html";
+    return;
+}
 
    try {
     const res = await fetch(
