@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KurdMan VIP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+}
+
+body{
+background:#050505;
+color:#fff;
+}
+
+.header{
+padding:25px;
+text-align:center;
+background:#111;
+border-bottom:2px solid #FFD700;
+}
+
+.header h1{
+font-size:34px;
+color:#FFD700;
+}
+
+.header p{
+margin-top:8px;
+color:#bbb;
+}
+
+.container{
+padding:20px;
+}
+  .plan-card{
+    background:#161616;
+    border:2px solid #2d2d2d;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:20px;
+    text-align:center;
+    transition:.3s;
+}
+
+.plan-card:hover{
+    border-color:#FFD700;
+    transform:scale(1.02);
+}
+
+.plan-card h2{
+    color:#FFD700;
+    margin-bottom:10px;
+}
+
+.plan-card h3{
+    color:#fff;
+    margin-bottom:10px;
+    font-size:28px;
+}
+
+.plan-card p{
+    color:#bbb;
+    margin-bottom:20px;
+}
+
+.plan-card button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#FFD700;
+    color:#000;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.plan-card button:hover{
+    background:#ffca00;
+}
+  
+
+</style>
+
+</head>
+<body>
+
+<div class="header">
+  
+<h1>👑 KurdMan VIP</h1>
+<p>پلانی ئیشتراک هەڵبژێرە</p>
+</div>
+
+<div class="container">
+<div class="plan-card">
+    <h2>🟢 VIP 1 ڕۆژ</h2>
+    <h3>1,000 IQD</h3>
+    <p>بینینی هەموو فیلمە VIP ـەکان بۆ ١ ڕۆژ</p>
+    <button onclick="subscribe('1day')">💳 ئیشتراک بکە</button>
+</div>
+
+<div class="plan-card">
+    <h2>🔵 VIP 7 ڕۆژ</h2>
+    <h3>2,000 IQD</h3>
+    <p>بینینی هەموو فیلمە VIP ـەکان بۆ ٧ ڕۆژ</p>
+    <button onclick="subscribe('7days')">💳 ئیشتراک بکە</button>
+</div>
+
+<div class="plan-card">
+    <h2>🟡 VIP 1 مانگ</h2>
+    <h3>5,000 IQD</h3>
+    <p>بینینی هەموو فیلمە VIP ـەکان بۆ ١ مانگ</p>
+    <button onclick="subscribe('1month')">💳 ئیشتراک بکە</button>
+</div>
+
+<div class="plan-card">
+    <h2>🟣 VIP 3 مانگ</h2>
+    <h3>12,000 IQD</h3>
+    <p>بینینی هەموو فیلمە VIP ـەکان بۆ ٣ مانگ</p>
+    <button onclick="subscribe('3months')">💳 ئیشتراک بکە</button>
+</div>
+
+<div class="plan-card">
+    <h2>🔴 VIP 1 ساڵ</h2>
+    <h3>40,000 IQD</h3>
+    <p>بینینی هەموو فیلمە VIP ـەکان بۆ ١ ساڵ</p>
+    <button onclick="subscribe('1year')">💳 ئیشتراک بکە</button>
+</div>
+</div>
+<script>
+function subscribe(plan){
+
+    localStorage.setItem("selectedPlan", plan);
+
+    window.location.href = "payment.html";
+
+}
+      </script>
+</body>
+</html>
